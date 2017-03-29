@@ -1,0 +1,2287 @@
+<!doctype html>
+<html lang="">
+  <!-- VT CCSC Map Viewer -->
+  <!-- Copyright 2016 NESCAUM / NYSERDA -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>VT CCSC Map Viewer</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" media="all">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+        <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
+        <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css">
+        <link rel="stylesheet" href="./css/main.css?__inline=true" media='all'>
+  </head>
+
+  <body>
+    <div class="print-header visible-print">
+        <img height="50px;" src="img/nyccsc_logo.png">
+        <img height="50px;" src="img/nyccsc_title.png">
+    </div>
+    <div id="container">
+      <div id='ractive_root'>
+        <div id='control_panel_root'></div>
+      </div>
+
+      <div id="map" class="sidebar-map" style="background-color:white;"></div>
+    </div>
+
+    <div class='print-legend-page visible-print visible-print-block'>
+      <!--PRINT PARAMETERS-->
+    </div>
+
+<!-- VIEW TEMPLATES -->
+
+<script id='control_panel_template' type="text/ractive">
+  {{>map_controls_template}}
+  {{>layer_controls_template}}
+  {{>layer_info_modal_template}}
+  {{>sharing_modal_template}}
+  {{>map_details_modal_template}}
+  {{>printing_legends_template}}
+  {{>wizard_template}}
+  {{>wizard_standalone_template}}
+</script>
+
+<script id='wizard_link_template' type='text/ractive'>
+  Show a Link Here
+</script>
+
+<script id='wizard_standalone_template' type="text/ractive">
+  <div class='modal-wrapper {{wizard.standalone ? "open" : "closed"}} '>
+    <div class='modal-bg' on-tap="close-standalone-wizard"></div>
+    <div class='modal-content wizard-modal'>
+      <div class='container-fluid'>
+        <span class='show-cursor fa fa-close' on-tap="close-standalone-wizard"></span>
+        Add some logic here.  If "layer_name" === wizard.standalone -- then show some info about that layer.
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id='wizard_template' type="text/ractive">
+  <div class='modal-wrapper {{wizard.open ? "open" : "closed"}}'>
+    <div class='modal-bg' on-tap="close-wizard"></div>
+    <div class='modal-content wizard-modal'>
+      <div class='container-fluid'>
+        <span class='show-cursor fa fa-close' on-tap="close-wizard"></span>
+        <span class='fa fa-arrow-right noselect' on-tap="next-wizard"></span>
+        <span class='fa fa-arrow-left noselect' on-tap="prev-wizard"></span>
+        {{#if "welcome" != wizard.steps[wizard.current_step]}}
+          <span class='btn btn-sm btn-primary back-to-start show-cursor' on-tap="show-wizard">Back To Start</span>
+        {{/if "welcome" != wizard.steps[wizard.current_step]}}
+
+        {{#if "welcome" === wizard.steps[wizard.current_step]}}
+---  TO BE FILLED IN ---
+          <ul>
+            <li> <a class='show-cursor' on-tap='wizard-sidebar-intro'> Learn about the sidebar </a> </li>
+            <li> <a class='show-cursor' on-tap='wizard-base-layers'> Moving the map and base layers </a> </li>
+            <li> <a class='show-cursor' on-tap='wizard-adding-things'> Adding things to the map </a> </li>
+            <li> <a class='show-cursor' on-tap='wizard-find-more-info'> Finding out more about a layer </a> </li>
+            <li> <a class='show-cursor' on-tap='wizard-order-layers'> Ordering layers </a> </li>
+            <li> <a class='show-cursor' on-tap='wizard-using-legends-tab'> Using Legends Tab </a> </li>
+            <li> <a class='show-cursor' on-tap='wizard-printing'> Printing the Map </a> </li>
+            <li> <a class='show-cursor' on-tap='wizard-advanced-layer-controls'> Advanced Layer Controls </a> </li>
+          </ul>
+        {{/if "welcome" === wizard.steps[wizard.current_step]}}
+        {{#if "sidebar_intro" === wizard.steps[wizard.current_step]}}
+          <h1> Using the sidebar </h1>
+          <img src="img/wizard/sidebar_intro.gif">
+          <p><strong>Layers</strong>
+            tab gives you access to a variety of map layers and data sources organized by sector. You can browse the layers in each sector or use the search box at the top.
+          </p>
+
+          <p>
+            <strong>Legend</strong>
+            tab provides map legend information, allows you to adjust the layer information and how it is shown in the map.
+          </p>
+
+          <p>
+            <strong>Locations</strong>
+            tab allows you to search for a location (town, country, watershed) in Vermont. The map will zoom to the location you select from the search results.
+          </p>
+        {{/if "sidebar_intro" === wizard.steps[wizard.current_step]}}
+
+        {{#if "base_layers" === wizard.steps[wizard.current_step]}}
+          <h1> Adjusting your map view and base layer</h1>
+          <img src="img/wizard/base_layers.gif">
+          <p><strong>Click and drag</strong>
+            on the map itself to adjust the map view.
+          </p>
+          <p>
+            Use the controls in the upper right to <strong> zoom in and out </strong>.  You may also double-click on the map, or use your mouse scroll wheel to zoom.
+          </p>
+
+          <p>
+            Click the <strong>House</strong> icon (<span class='fa fa-home'></span>) to return to the default view of Vermont.
+          </p>
+
+          <p>
+            Click the <strong>Target</strong> icon (<span class='fa fa-crosshairs'></span>) to zoom to your current location
+            <br>
+            <em>(note: your browser will request permission to locate you)</em>
+          </p>
+
+          <p>
+            Click the <strong>Base Map</strong> button to select one of the available base map layers.
+          </p>
+        {{/if "base_layers" === wizard.steps[wizard.current_step]}}
+
+        {{#if "adding_things" === wizard.steps[wizard.current_step]}}
+          <h1> Adding things to the map</h1>
+          <img src="img/wizard/adding_things.gif">
+          <p>
+            You can add layers by clicking on the Layers tab, which will show you all the layers available to be added to the map.
+            <br>
+            You can also use the search box to find layers.
+          </p>
+          <p>
+            Once you find a layer you are interested in, you can click its name or checkbox to enable it. Once it is loaded it will display on the map. Some layers may take a few moments to load.
+          </p>
+        {{/if "adding_things" === wizard.steps[wizard.current_step]}}
+
+        {{#if "find_more_info" === wizard.steps[wizard.current_step]}}
+          <h1> Finding out more about a layer</h1>
+          <p>
+            Click on the <span class='fa fa-info-circle'></span> to learn more about the layer
+            and find a link to its source, where you can often find detailed data descriptions and relevant information.
+          </p>
+          <p>
+            For some layers you can also click <strong>directly on the map</strong> to identify the value at that location.
+          </p>
+          <img class='full-width' src="img/wizard/find_more_info.gif">
+        {{/if "find_more_info" === wizard.steps[wizard.current_step]}}
+
+        {{#if "order_layers" === wizard.steps[wizard.current_step]}}
+          <h1> Ordering Layers </h1>
+          <p>
+            If a layer is active but you cannot see any features, it may be hidden behind other layers.
+            Layers are ordered in the sidebar as they are ‘stacked’ in the map view.
+          </p>
+          <p>
+            You can use the <span class='fa fa-angle-double-up'></span> to move layers to the top, or click and drag on the <span class='fa fa-hand-stop-o'></span> to drag layers into the order you prefer.
+            Note that some types of layers will always draw on top of other layers - and these will not have the <span class='fa fa-angle-double-up'></span> or <span class='fa fa-hand-stop-o'></span> available.
+          </p>
+          <p>
+            You can always hide (<span class='fa fa-eye'></span>) or remove (<span class='fa fa-trash'></span>) these layers to take them out of the map view.
+          </p>
+          <img class='full-width' src="img/wizard/order_layers.gif">
+        {{/if "order_layers" === wizard.steps[wizard.current_step]}}
+
+        {{#if "using_legends_tab" === wizard.steps[wizard.current_step]}}
+          <h1> Using Legends Tab </h1>
+          <p>
+            Each layer has a set of buttons that vary depending on the functions available for that layer.
+          </p>
+          <p>
+            All layers have:
+              <br>
+              <span class='fa fa-angle-double-up'></span> which moves the layer to the top of the map
+              <br>
+              <span class='fa fa-eye'></span> which hides or shows the layer
+              <br>
+              <span class='fa fa-info-circle'></span> which provides layer information
+              <br>
+              <span class='fa fa-trash'></span> which removes the layer from the view
+          </p>
+          <p>
+            Opacity can be adjusted using the slider
+          </p>
+          <p>
+            <strong>Expand / Collapse all </strong> – these buttons change how the legend information is viewed in the sidebar. It does not affect how layers appear in the map view. Each legend can also be opened or closed by clicking on the layer name or the triangle to the left.
+            <br>
+            <strong>Hide all </strong> – this hides all layers but does not remove them from the map view or change how their legends appear in the sidebar.
+            <br>
+            <strong>Remove all</strong> – this removes all layers from the map and their legends from the sidebar.
+          </p>
+          <img class='full-width' src="img/wizard/order_layers.gif">
+        {{/if "using_legends_tab" === wizard.steps[wizard.current_step]}}
+
+        {{#if "printing" === wizard.steps[wizard.current_step]}}
+          <h1> Printing the Map </h1>
+          <p>
+            The <span class='fa fa-print'></span> button will export your map and legends to a layout and open the print dialog window automatically from your browser.
+          </p>
+          <p>
+            The print layout includes a full-page map view and one or more additional pages for legend information. Note that the map view that is exported includes the area beneath the sidebar.
+          </p>
+          <p>
+            <em> Hint: you can hide the sidebar by double-clicking on any tab name, or clicking on the name of the open tab. When the sidebar is collapsed, the map view shows what will be sent to the print layout.  </em>
+          </p>
+          <img class='full-width' src="img/wizard/printing.gif">
+        {{/if "printing" === wizard.steps[wizard.current_step]}}
+        {{#if "advanced_layer_controls" === wizard.steps[wizard.current_step]}}
+          <h1> Advanced Layer Controls </h1>
+          <p>
+            Some layers, especially those in the <strong>Climate Data</strong> and <strong>Ecosystems</strong> folders, contain multiple datasets as part of the layer. These datasets can be accessed using customized controls found in the <strong>Legend</strong> tab once the layer is active.
+          </p>
+          <p>
+            Use drop down menus, buttons and sliders to navigate to the data you are interested in. <em>Note: for most interactive layers, the legend color bar will automatically adjust based on which data you select to show in the map.</em>
+          </p>
+          <p>
+          You can also <strong>Clone</strong> (<span class='fa fa-clone'></span>) a specific dataset and add it to the map as a ‘stand-alone’ layer. This is helpful when comparing multiple datasets from one or more of these types of interactive layers. The new layer is added to the list in the <strong>Legend</strong> tab (but does <em>not</em> appear in the list on the <strong>Layers</strong> tab).
+          </p>
+          <p>
+            Most interactive layers include the ability to click on the map <span class='fa fa-map-marker'></span> to return a value for that location.
+          </p>
+          <img class='full-width' src="img/wizard/advanced_layer_controls.gif">
+        {{/if "advanced_layer_controls" === wizard.steps[wizard.current_step]}}
+
+        <!--
+          <div class='footer'>
+            Hint {{wizard.current_step + 1}} / {{wizard.steps.length}}
+          </div>
+        -->
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id='printing_legends_template' type="text/ractive">
+  <div class='printing-legends visible-print-block'>
+    <div class='columns'>
+      {{#layers.active}}
+        <div class='active-layer'>
+          <label class='layer-name'> {{name}} </label>
+         {{> layer_controls_details_blocks_template}}
+        </div>
+      {{/layers.active}}
+    </div>
+  </div>
+</script>
+
+<script id='map_details_modal_template' type="text/ractive">
+  <div class='modal-wrapper {{(map_details.location && has_feature_info_responses(map_details.feature_info_responses)) ? "open" : "closed"}}' >
+    <div class='modal-bg' on-tap="hide-feature-info-modal"></div>
+    <div class='modal-content feature-info-modal'>
+      <div class='container-fluid'>
+        <span class='show-cursor fa fa-close' on-tap="hide-feature-info-modal"></span>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <h2>
+              Location Info
+              <small>{{map_details.location.lat}},{{map_details.location.lng}}</small>
+            </h2>
+          </div>
+        </div>
+        {{#map_details.feature_info_responses}}
+          {{#if ("sovi" === renderer_id && xml.children.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th> % Asian </th>
+                    <th> % Black </th>
+                    <th> % Hispanic </th>
+                    <th> % Native American </th>
+                    <th> Median Age </th>
+                    <th> Ppl Per Unit</th>
+                    <th> % Poverty</th>
+                    <th> Per Capita </th>
+                  </tr>
+                  {{#fields_from_sovi_response(xml)}}
+                    <tr>
+                      <td>{{(QASIAN * 1.0).toFixed(2)}} </td>
+                      <td>{{(QBLACK * 1.0).toFixed(2)}} </td>
+                      <td>{{(QHISP * 1.0).toFixed(2)}} </td>
+                      <td>{{(QNATAM * 1.0).toFixed(2)}} </td>
+                      <td>{{(MEDAGE * 1.0).toFixed(2)}}</td>
+                      <td>{{(PPUNIT * 1.0).toFixed(2)}} </td>
+                      <td>{{(QPOVTY * 1.0).toFixed(2)}} </td>
+                      <td>${{(PERCAP * 1.0).toFixed(0)}} </td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("rare_plants_and_animals" === renderer_id && json.results.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Layer Name</th>
+                    <th>Stretched value</th>
+                    <th>Pixel Value</th>
+                    <th>Count</th>
+                  </tr>
+                  {{#json.results}}
+                    <tr>
+                      <td>{{layerName}}</td>
+                      <td>{{attributes["Stretched value"]}}</td>
+                      <td>{{attributes["Pixel Value"]}}</td>
+                      <td>{{attributes["Count"]}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("extreme_precip" === renderer_id && json.results.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Stretched Value</th>
+                    <th>Pixel Value</th>
+                  </tr>
+                  {{#json.results}}
+                    <tr>
+                      <td>{{attributes["Stretched value"]}}</td>
+                      <td>{{attributes["Pixel Value"]}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("power_stations" === renderer_id && json.results.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Utility</th>
+                    <th>Technology</th>
+                    <th>Total Net Summer Capacity</th>
+                  </tr>
+                  {{#json.results}}
+                    <tr>
+                      <td>{{attributes.Plant_Name}}</td>
+                      <td><a target="_blank" href="https://www.eia.gov/beta/enerdat/#/plant/{{attributes.plant_code}}">Plant {{attributes.plant_code}}</a></td>
+                      <td>{{attributes.Utility_Name}}</td>
+                      <td>{{attributes.tech_desc}}</td>
+                      <td>{{attributes.source_desc}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("dow_uncon_aqui_main" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>GID</th>
+                    <th>Len</th>
+                    <th>Area</th>
+                    <th>Type</th>
+                    <th>Yield</th>
+                    <th>Primary Aquifer</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.gid}}</td>
+                      <td>{{properties.len}}</td>
+                      <td>{{properties.area}}</td>
+                      <td>{{properties.type}}</td>
+                      <td>{{properties.yield}}</td>
+                      <td>{{properties.primary_aq}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("primary_aquifers" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>GID</th>
+                    <th>Source</th>
+                    <th>Shape Area</th>
+                    <th>Shape Length</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.gid}}</td>
+                      <td>{{properties.source}}</td>
+                      <td>{{properties.shape_area}}</td>
+                      <td>{{properties.shape_len}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("superfund" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>EPA Link</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.site_name}}</td>
+                      <td><a target="_blank" href="{{properties.SITE_PROFI}}"> Additional EPA Site Information </a></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("boundary_counties" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>FIPS code</th>
+                    <th>GNIS code</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>{{properties.fips}}</td>
+                      <td>{{properties.gnis}}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("regulated_wells" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Well Type</th>
+                    <th>Link</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>{{properties.company}}</td>
+                      <td>{{properties.well_type}}</td>
+                      <td><a target='_blank'
+                        href="{{properties.link}}">Online Report</a></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("water_wells" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>Well Depth (ft.)</th>
+                    <th>Rock Depth (ft.)</th>
+                    <th>Groundwater Depth (ft.)</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.dec_well_n}}</td>
+                      <td>{{properties.well_depth}}</td>
+                      <td>{{properties.rock_depth}}</td>
+                      <td>{{properties.gw_depth}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("aadt_2012" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>AADT Type</th>
+                    <th>Avg. Cars/Day</th>
+                    <th>Data Link</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.tdv_route}}</td>
+                      <td>{{properties.aadt_type}}</td>
+                      <td>{{properties.aadt}}</td>
+                      <td><a target='_blank'
+                        href="{{properties.vol_url1}}">PDF Report</a></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("boundary_climate_divisions" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>Sample Queries</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>
+                        <a href="http://www.ncdc.noaa.gov/cag/time-series/us/{{properties.clim_div_id_state}}/{{properties.clim_div_id}}/pcp/ytd/12/1895-2015?base_prd=true&firstbaseyear=1895&lastbaseyear=2015&trend=true&trend_base=10&firsttrendyear=1905&lasttrendyear=2015&filter=true&filterType=binomial" target="_blank">Annual PPT 1895-2015</a><br>
+                        <a href="http://www.ncdc.noaa.gov/cag/time-series/us/{{properties.clim_div_id_state}}/{{properties.clim_div_id}}/tmax/1/9/1950-2015?base_prd=true&firstbaseyear=1950&lastbaseyear=2015&trend=true&trend_base=10&firsttrendyear=1950&lasttrendyear=2015&filter=true&filterType=binomial" target="_blank">Sept Max Temp 1895-2015</a>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("railroad" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Line Name</th>
+                    <th>Track Name</th>
+                    <th>Owner</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.line_name}}</td>
+                      <td>{{properties.trk_name}}</td>
+                      <td>{{properties.owner_name}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("bulkstorage" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Type</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>{{properties.id}}</td>
+                      <td>{{properties.type}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("remediation_sites" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>Program</th>
+                    <th>Site Code</th>
+                    <th>Address</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>{{properties.program}}</td>
+                      <td>{{properties.sitecode}}</td>
+                      <td>{{properties.address}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("wtrcls_line" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>ID</th>
+                    <th>Classification</th>
+                    <th>Standard</th>
+                    <th>Protected</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.partitem}}</td>
+                      <td>{{properties.classifica}}</td>
+                      <td>{{properties.standard}}</td>
+                      <td>{{properties.protected}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("wtrcls_poly" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>ID</th>
+                    <th>Classification</th>
+                    <th>Standard</th>
+                    <th>Protected</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.partitem}}</td>
+                      <td>{{properties.classifica}}</td>
+                      <td>{{properties.standard}}</td>
+                      <td>{{properties.protected}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("trout_streams" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>ID</th>
+                    <th>Classification</th>
+                    <th>Standard</th>
+                    <th>Protected</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.partitem}}</td>
+                      <td>{{properties.classifica}}</td>
+                      <td>{{properties.standard}}</td>
+                      <td>{{properties.protected}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("anthromes" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                {{#json.features}}
+                  <div>
+                    Value: {{properties.GRAY_INDEX}}
+                  </div>
+                {{/json.features}}
+              </div>
+          {{/if}}
+          {{#if ("subway_lines" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Division</th>
+                    <th>Line</th>
+                    <th>Route ID</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.division}}</td>
+                      <td>{{properties.line}}</td>
+                      <td>{{properties.route_id}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+            </div>
+          {{/if}}
+          {{#if ("fema_historic" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table" style="text-align:center;">
+                  <tr>
+                    <th>County</th>
+                    <th>Total</th>
+                    <th>Drought</th>
+                    <th>Earthquake</th>
+                    <th>Fire</th>
+                    <th>Flood</th>
+                    <th>Hurricane</th>
+                    <th>Ice Storm</th>
+                    <th>Snow</th>
+                    <th>Storm</th>
+                    <th>Tornado</th>
+                  </tr>
+
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.county}}</td>
+                      <td>{{properties.total_decl}}</td>
+                      <td>{{properties.drought}}</td>
+                      <td>{{properties.earthquake}}</td>
+                      <td>{{properties.fire}}</td>
+                      <td>{{properties.flood}}</td>
+                      <td>{{properties.hurricane}}</td>
+                      <td>{{properties.ice_storm}}</td>
+                      <td>{{properties.snow}}</td>
+                      <td>{{properties.storm}}</td>
+                      <td>{{properties.tornado}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("boundary_huc8" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>HUC8 Reachcode</th>
+                    <th>Shapefile Link</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>{{properties.huc8}}</td>
+                      <td><a target='_blank'
+                        href="ftp://ftp.horizon-systems.com/NHDPlus/NHDPlusV1/NHDPlusExtensions/Subbasins/NHDPlus02/NHDPlus{{properties.huc8}}.zip">Shapefile(s)</a></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("boundary_municipal" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>GNIS code</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>{{properties.gnis}}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("carbon" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                {{#json.features}}
+                  <div>
+                    Value: {{properties.GRAY_INDEX}}
+                  </div>
+                {{/json.features}}
+              </div>
+          {{/if}}
+          {{#if ("climaid_temp" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  Projected Change in Temperature: {{fixed_precision(json.count, 3)}} &deg;F <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("climaid_precip" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  Projected Change in Precipitation: {{fixed_precision(json.count,3)}} cm <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("nlcd" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                {{#json.features}}
+                  <div>
+                    GRAY_INDEX: {{properties.GRAY_INDEX}}
+                  </div>
+                {{/json.features}}
+              </div>
+          {{/if}}
+          {{#if ("sandysurge" === renderer_id && json.results.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                {{#json.results}}
+                  <div>
+                    State: {{value}} <br>
+                    Status: {{attributes.Status}} <br>
+                    DEM Source: {{attributes.DEMSource}} <br>
+                    Comments: {{attributes.Comments}} <br>
+                    Source Data: {{attributes.SourceData}} <br>
+                  </div>
+                {{/json.results}}
+              </div>
+          {{/if}}
+          {{#if ("invasive_animals" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  County: {{json.county}} <br>
+                  Species: {{json.species}} <br>
+                  Number reported: {{json.count}} <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("invasive_insects" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  County: {{json.county}} <br>
+                  Species: {{json.species}} <br>
+                  Number reported: {{json.count}} <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("invasive_plants" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  County: {{json.county}} <br>
+                  Species: {{json.species}} <br>
+                  Number reported: {{json.count}} <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("prism_temp" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  Summarized value for selected parameters: {{fixed_precision(json.count,3)}} &deg;F <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("prism_precip" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  Summarized value for selected parameters: {{fixed_precision(json.count,3)}} cm <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("narccap_precip" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  Projected Change in Precipitation: {{fixed_precision(json.count,3)}} cm <br>
+                </div>
+              </div>
+          {{/if}}
+          {{#if ("narccap_temp" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  Projected Change in Temperature: {{fixed_precision(json.count, 3)}} &deg;F <br>
+                </div>
+              </div>
+          {{/if}}
+        {{/map_details.feature_info_requests}}
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id='sharing_modal_template' type="text/ractive">
+  <div class='modal-wrapper {{sharing_modal_loading ? "open" : "closed"}}'>
+    <div class='modal-bg' on-tap="hide-sharing-modal"></div>
+    <div class='modal-content sharing-loading-modal'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <h2>
+              Loading your map...
+              <span class='fa fa-spinner fa-spin-custom'></span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='modal-wrapper {{sharing_modal.open ? "open" : "closed"}}'>
+    <div class='modal-bg' on-tap="hide-sharing-modal"></div>
+    <div class='modal-content'>
+      <div class='container-fluid'>
+        <span class='show-cursor fa fa-close' on-tap="hide-sharing-modal"></span>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <h2>
+              Saving and Sharing Maps
+            </h2>
+          </div>
+        </div>
+        <div class='row'>
+          <hr/>
+        </div>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <p> You can save the current map view, including all active layers and settings, by requesting a save link below. Bookmark the link to return to the map.</p>
+            <p>Share this link with others and they will be able to load up the map directly in their web browser.</p>
+          </div>
+        </div>
+        <hr/>
+        <div class='row'>
+          {{#if sharing_modal.token }}
+            {{#if "loading" === sharing_modal.token}}
+              <div class='col-xs-3'> &nbsp; </div>
+              <a disabled class='btn btn-primary col-xs-6' on-click="request-share-link-token">
+                <span class='fa fa-spinner fa-spin-custom'></span>
+                Requesting Link...
+              </a>
+              <div class='col-xs-3'> &nbsp; </div>
+            {{ else }}
+              <div class='col-xs-1'></div>
+              <div class='col-xs-10'>
+                <div class='input-group'>
+                  <input class='form-control' value='{{sharing_url(sharing_modal.token)}}'>
+                  <span class='input-group-btn'>
+                    <button id='sharing_copy_button' class='btn btn-primary'
+                            disabled="{{(sharing_modal.token || sharing_modal.copied) ? "" :"disabled"}}">{{sharing_modal.copied ? "Copied!" : "Copy"}}</button>
+                  </span>
+                </div>
+              </div>
+              <div class='col-xs-1'></div>
+            {{/if}}
+          {{ else }}
+            <div class='col-xs-3'> &nbsp; </div>
+            <a class='btn btn-primary col-xs-6' on-click="request-share-link-token"> Request Link </a>
+            <div class='col-xs-3'> &nbsp; </div>
+          {{/if sharing_modal.token}}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id='layer_info_modal_template' type="text/ractive">
+  <div class='modal-wrapper {{layer_controls.current_layer_info ? "open" : "closed"}}'>
+    <div class='modal-bg' on-tap="hide-layer-info-modal"></div>
+    <div class='modal-content layer-info-modal'>
+      <div class='container-fluid'>
+        <span class='show-cursor fa fa-close' on-tap="hide-layer-info-modal"></span>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <h2>
+              {{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).name}}
+              <small>{{layer_controls.current_layer_info}}</small>
+            </h2>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-4'>
+            <label> Service Status </label>
+          </div>
+          <span class='col-xs-8'>
+            <span class='label label-{{layer_load_state(layers_loading_states, layer_controls.current_layer_info)}}'>
+              {{layer_load_state_error_count(layers_loading_states, layer_controls.current_layer_info)}}
+            </span>
+          </span>
+          <span class='col-xs-2'>
+          </span>
+        </div>
+        <div class='row'>
+          <div class='col-xs-4'>
+            <label> Folder </label>
+          </div>
+          <span class='col-xs-8'>{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).folder}}</span>
+        </div>
+        <div class='row'>
+          <div class='col-xs-4'>
+            <label> Description </label>
+          </div>
+          <span class='col-xs-8'>{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).description}}</span>
+        </div>
+        <div class='row'>
+          <div class='col-xs-4'>
+            <label> Sectors </label>
+          </div>
+          <span class='col-xs-8'>{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).sectors}}</span>
+        </div>
+        <div class='row'>
+          <div class='col-xs-4'>
+            <label> Source </label>
+          </div>
+          <span class='col-xs-8'>{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).source}}</span>
+        </div>
+        <div class='row'>
+          <div class='col-xs-4'>
+            <label> Source URL </label>
+          </div>
+          <span class='col-xs-8'>
+            <a href="{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).source_url}}" target="_blank">
+              {{u.shorten_url(get_layer_defaults(layers.defaults, layer_controls.current_layer_info).source_url, 40)}}
+            </a>
+          </span>
+        </div>
+
+        {{#if get_layer_defaults(layers.defaults, layer_controls.current_layer_info).download_url}}
+          <div class='row'>
+            <div class='col-xs-4'>
+              <label> Download URL </label>
+            </div>
+            <span class='col-xs-8'>
+              <a href="{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).download_url}}" download target="_blank">
+                {{u.shorten_url(get_layer_defaults(layers.defaults, layer_controls.current_layer_info).download_url, 40)}}
+              </a>
+            </span>
+          </div>
+        {{/if}}
+        {{#if get_layer_defaults(layers.defaults, layer_controls.current_layer_info).metadata_url}}
+          <div class='row'>
+            <div class='col-xs-4'>
+              <label> MetaData URL </label>
+            </div>
+            <span class='col-xs-8'>
+              <a href="{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).metadata_url}}" target="_blank">
+                {{u.shorten_url(get_layer_defaults(layers.defaults, layer_controls.current_layer_info).metadata_url, 40)}}
+              </a>
+            </span>
+          </div>
+        {{/if}}
+
+        <!--
+        {{#if get_layer_defaults(layers.defaults, layer_controls.current_layer_info).legend_url }}
+          <div class='row'>
+            <div class='col-xs-4'>
+              <label> Legend</label>
+            </div>
+            <span class='col-xs-8'>
+              <a href="{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).legend_url}}" target="_blank">
+                <img class='legend-img' src="{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).legend_url}}">
+              </a>
+            </span>
+          </div>
+        {{/if}}
+        -->
+
+
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="zoom_controls_template" type="text/ractive">
+  <div class='zoom-controls noselect'>
+    <a class='noselect {{map_state.zoom > map_state.zoom_max ? "disable" : ""}}  >'
+       decorator="tooltip:Zoom in" on-tap="map-zoom-in"> <span class='fa fa-plus'></span> </a>
+    {{#if has_geolocation }}
+      <a class='noselect' decorator="tooltip:Zoom to your location" on-tap='map-zoom-me'> <span class='fa fa-crosshairs'></span></a>
+    {{/if}}
+    <a class='noselect' decorator="tooltip:Zoom to original view" on-tap='map-zoom-home'> <span class='fa fa-home'></span></a>
+    <a class='noselect {{map_state.zoom < 1 ? "disable" : ""}}' decorator="tooltip:Zoom out" on-tap="map-zoom-out"> <span class='fa fa-minus'></span> </a>
+  </div>
+</script>
+
+<script id="layer_controls_template" type="text/ractive">
+  <div class='layer-controls noselect'>
+    <div class='header'>
+      <img height="50px;" src="img/nyccsc_logo.png">
+      <img height="50px;" src="img/nyccsc_title.png">
+    </div>
+    <div class='tabs container-fluid'>
+      <div class='row'>
+        <a on-tap="show-layers-control" class="layers-tab col-xs-3 {{layer_controls.active_tab === 'layers' ? 'active': '' }}">
+          <span class='fa fa-map'></span>
+          Layers
+        </a>
+        <a on-tap="show-details-control" class="legend-map-controls-tab col-xs-6 {{layer_controls.active_tab === 'details' ? 'active': ''}}">
+          <span class='fa fa-globe'></span>
+          Legend &amp; Map Controls
+          {{#if layers.active.length > 0 }}
+            <span class='label label-default label-xs'>{{layers.active.length}}</span>
+          {{/if}}
+        </a>
+        <a on-tap='show-search-control' class="locations-tab col-xs-3 {{layer_controls.active_tab === 'search' ? 'active': ''}} " >
+          <span class='fa fa-search'></span>
+          Locations
+        </a>
+      </div>
+    </div>
+    <div class="tray {{layer_controls.tray.open ? 'show' : ''}}">
+      <div class='tray-container'>
+        {{#if layer_controls.active_tab === "layers"}}
+          {{>layer_controls_layers_template }}
+        {{else}}
+          {{#if layer_controls.active_tab === "search"}}
+            {{>layer_controls_search_template}}
+          {{else}}
+            {{>layer_controls_details_template }}
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="layer_controls_search_template" type="text/ractive">
+  <div class='search-header'>
+    <input id="search_input" placeholder="Type a search" value="{{layer_controls.search_string}}">
+    {{#if layer_controls.search_string.length > 0 }}
+      <a>
+        <span class='fa fa-times-circle-o show-cursor' on-tap="clear-search-query"></span>
+      </a>
+    {{/if}}
+  </div>
+
+  <div class='search-results'>
+    {{#layer_controls.search_results}}
+      <div class='result show-cursor'
+            on-tap="zoom-to-search-result">
+        <a class='' decorator="tooltip:Focus map on {{properties.name}}">
+          <span class='fa fa-circle-o'></span>
+        </a>
+        <span> {{properties.name}} ({{properties.type}})</span>
+      </div>
+    {{/layer_controls.search_results}}
+
+    {{#if layer_controls.search_results.length === 0}}
+      <div class='search-results-empty'>
+        <span class='fa fa-search'></span>
+        <div class='text'>
+          Type a search above to find New York locations.
+        </div>
+      </div>
+    {{/if layer_controls.search_results.length === 0}}
+
+  </div>
+</script>
+
+<script id="layer_controls_layer_group_template" type="text/ractive">
+      <div class='show-cursor' on-tap="toggle-layer-active" >
+        {{#if is_active}}
+          <span class='fa fa-check-square-o'></span>
+        {{else}}
+          <span class='fa fa-square-o'></span>
+        {{/if is_active}}
+        <label class='show-cursor'>{{name}}</label>
+      </div>
+</script>
+
+<script id="layer_controls_layer_group_tree_template" type="text/ractive">
+  <li>
+    {{#if folder_name}}
+      <label on-tap="toggle-layer-group-collapse">
+        {{#if is_expanded}}
+          <span class='fa fa-caret-down'></span>
+        {{else}}
+          <span class='fa fa-caret-right'></span>
+        {{/if}}
+
+        {{folder_name}}
+      </label>
+    {{/if}}
+
+    {{#if is_expanded}}
+      <ul class='layer-group'>
+        {{#children:i}}
+          {{#if this.folder_name}}
+            {{> layer_controls_layer_group_tree_template}}
+          {{else}}
+            <li class='layer show-cursor' on-tap="toggle-layer-active">
+              {{#is_active_layer(layers.active, this)}}
+                {{#if (layer_load_state(layers_loading_states, this) === "success")}}
+                  <span class='fa fa-check-square-o'></span>
+                {{else}}
+                  <span class='fa fa-spinner fa-spin-custom'></span>
+                {{/if}}
+              {{else}}
+                <span class='fa fa-square-o'></span>
+              {{/if}}
+              <a class='info {{layer_load_state(layers_loading_states, this)}}'
+                 on-tap='show-layer-info'>
+                <span class='fa fa-info'> </span>
+              </a>
+              <span>{{get_layer_defaults(layers.defaults, this).name}}</span>
+            </li>
+          {{/if}}
+        {{/children}}
+      </ul>
+    {{/if}}
+  </li>
+</script>
+
+<script id="layer_controls_layers_template" type="text/ractive">
+  <div class='contents'>
+    <div class='search-header'>
+      <input id="layers_search_input" placeholder="Search for layers..." value="{{layers.search_string}}">
+      {{#if layers.search_string.length > 0 }}
+        <a>
+          <span class='fa fa-times-circle-o show-cursor' on-tap="clear-layers-search-query"></span>
+        </a>
+      {{/if}}
+    </div>
+    <div class='search-results'>
+      <ul class='layer-group'>
+        {{#if layers.tree}}
+          {{> layer_controls_layer_group_tree_template layers.tree}}
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script id="layer_controls_details_blocks_template" type="text/ractive">
+  {{#if !copied_source}}
+    {{#if "noaa_slr" === layer_default_id}}
+      <div class='detail-block sea-level'>
+        <label decorator='tooltip:Use slider to select sea level (feet above mean higher high water)'> Sea Level: </label>
+        <input type="range"
+              min="0"
+              max="6"
+              value="{{parameters.sea_level_height}}">
+        <span> {{parameters.sea_level_height}} ft. </span>
+        <div style='margin-left: 25%' >Feet above Mean Height High Water</div>
+      </div>
+
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Display modeled sea level or model confidence'> Display: </label>
+        <input type="radio" name='{{parameters.display_layer}}' value="slr"> Sea Level
+        <input type="radio" name='{{parameters.display_layer}}' value="conf"> Confidence
+      </div>
+    {{/if}}
+    {{#if "dewberry_slr" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Use slider to select sea level (inches above mean higher high water)'> Sea Level: </label>
+        <select value='{{parameters.rise}}'>
+            <option value='0'>0 inches</option>
+            <option value='1'>12 inches</option>
+            <option value='2'>18 inches</option>
+            <option value='3'>24 inches</option>
+            <option value='4'>36 inches</option>
+            <option value='5'>48 inches</option>
+            <option value='6'>60 inches</option>
+            <option value='7'>72 inches</option>
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose a storm return period'> Storm Return: </label>
+        <select value='{{parameters.year}}'>
+            <option value='0'>10 year</option>
+            <option value='1'>50 year</option>
+            <option value='2'>100 year</option>
+            <option value='3'>500 year</option>
+        </select>
+      </div>
+    {{/if}}
+    {{#if "nyserda_slr" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Use slider to select sea level (inches above mean higher high water)'> Sea Level: </label>
+        <select value='{{parameters.rise}}'>
+            <option value='06'>6 inches</option>
+            <option value='12'>12 inches</option>
+            <option value='18'>18 inches</option>
+            <option value='24'>24 inches</option>
+            <option value='30'>30 inches</option>
+            <option value='36'>36 inches</option>
+            <option value='48'>48 inches</option>
+            <option value='60'>60 inches</option>
+            <option value='72'>72 inches</option>
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose a storm return period'> Storm Return: </label>
+        <select value='{{parameters.year}}'>
+            <option value='0005'>5 year</option>
+            <option value='0010'>10 year</option>
+            <option value='0020'>20 year</option>
+            <option value='0050'>50 year</option>
+            <option value='0100'>100 year</option>
+            <option value='0200'>200 year</option>
+            <option value='0500'>500 year</option>
+            <option value='1000'>1000 year</option>
+        </select>
+      </div>
+    {{/if}}
+
+    {{#if "taccimo" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose a tree species'> Species: </label>
+        <select value='{{parameters.species}}'>
+            <option value='4'>Red Maple</option>
+            <option value='5'>Sugar Maple</option>
+            <option value='7'>Yellow Birch</option>
+            <option value='10'>Pignut hickory</option>
+            <option value='14'>American beech</option>
+            <option value='15'>White ash</option>
+            <option value='28'>Red spruce</option>
+            <option value='35'>Eastern white pine</option>
+            <option value='40'>Quaking aspen</option>
+            <option value='41'>Black cherry</option>
+            <option value='42'>White oak</option>
+            <option value='49'>Northern Red oak</option>
+            <option value='55'>Eastern Hemlock</option>
+        </select>
+      </div>
+      <div class='detail-block sea-level'>
+        <label decorator='tooltip:Choose an emissions scenario'> Emissions Scenario: </label>
+        <input type="range"
+              min="0"
+              max="112"
+              step="56"
+              value="{{parameters.scenario}}">
+        <span>
+          {{#if (parameters.scenario === 0) }}
+            Current
+          {{/if}}
+          {{#if (parameters.scenario === 56) }}
+            Low
+          {{/if}}
+          {{#if (parameters.scenario === 112) }}
+            High
+          {{/if}}
+        </span>
+      </div>
+    {{/if}}
+
+    {{#if "sandysurge" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Resolution: </label>
+        <select style="max-width: 70%;" value='{{parameters.resolution}}'>
+          <option value='0'> Final Extent</option>
+          <option value='1'> Very High Resolution (1m)</option>
+          <option value='2'> High Resolution (3)</option>
+        </select>
+      </div>
+    {{/if}}
+    {{#if "invasive_animals" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Species: </label>
+        <select style="max-width: 70%;" value='{{parameters.species}}'>
+          {{#parameters.all_species}}
+            <option value='{{this}}'> {{this}} </option>
+          {{/parameters.all_species}}
+        </select>
+      </div>
+    {{/if}}
+    {{#if "invasive_insects" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Species: </label>
+        <select style="max-width: 70%;" value='{{parameters.species}}'>
+          {{#parameters.all_species}}
+            <option value='{{this}}'> {{this}} </option>
+          {{/parameters.all_species}}
+        </select>
+      </div>
+    {{/if}}
+    {{#if "invasive_plants" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Species: </label>
+        <select style="max-width: 70%;" value='{{parameters.species}}'>
+          {{#parameters.all_species}}
+            <option value='{{this}}'> {{this}} </option>
+          {{/parameters.all_species}}
+        </select>
+      </div>
+    {{/if}}
+
+    {{#if "prism_temp" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose variable to summarize'> Data Product: </label>
+        <select value='{{parameters.prod}}'>
+            <option value='avgt'>Average Temperature</option>
+            <option value='mint'>Min Temperature</option>
+            <option value='maxt'>Max Temperature</option>
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by season'> Season: </label>
+        <select value='{{parameters.season}}'>
+            <option value='ANN'>Annual</option>
+            <option value='MAM'>March-April-May</option>
+            <option value='JJA'>June-July-Aug</option>
+            <option value='SON'>Sept-Oct-Nov</option>
+            <option value='DJF'>Dec-Jan-Feb</option>
+            <option value='Jan'>January</option>
+            <option value='Feb'>February</option>
+            <option value='Mar'>March</option>
+            <option value='Apr'>April</option>
+            <option value='May'>May</option>
+            <option value='Jun'>June</option>
+            <option value='Jul'>July</option>
+            <option value='Aug'>August</option>
+            <option value='Sep'>September</option>
+            <option value='Oct'>October</option>
+            <option value='Nov'>November</option>
+            <option value='Dec'>December</option>
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by county or watershed'> Summarize by </label>
+        <select value="{{parameters.area}}">
+          <option value='county'> County </option>
+          <option value='basin'> Watershed </option>
+        </select>
+      </div>
+    {{/if}}
+    {{#if "prism_precip" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by season'> Season: </label>
+        <select value='{{parameters.season}}'>
+            <option value='ANN'>Annual</option>
+            <option value='MAM'>March-April-May</option>
+            <option value='JJA'>June-July-Aug</option>
+            <option value='SON'>Sept-Oct-Nov</option>
+            <option value='DJF'>Dec-Jan-Feb</option>
+            <option value='Jan'>January</option>
+            <option value='Feb'>February</option>
+            <option value='Mar'>March</option>
+            <option value='Apr'>April</option>
+            <option value='May'>May</option>
+            <option value='Jun'>June</option>
+            <option value='Jul'>July</option>
+            <option value='Aug'>August</option>
+            <option value='Sep'>September</option>
+            <option value='Oct'>October</option>
+            <option value='Nov'>November</option>
+            <option value='Dec'>December</option>
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by county or watershed'> Summarize by </label>
+        <select value="{{parameters.area}}">
+          <option value='county'> County </option>
+          <option value='basin'> Watershed </option>
+        </select>
+      </div>
+    {{/if}}
+    {{#if "narccap_temp" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose the variable to summarize'> Data Product: </label>
+        <select value='{{parameters.prod}}'>
+            <option value='avgt'>Average Temperature</option>
+            <option value='mint'>Min Temperature</option>
+            <option value='maxt'>Max Temperature</option>
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by season'> Season: </label>
+        <select value='{{parameters.season}}'>
+            <option value='ANN'>Annual</option>
+            <option value='MAM'>March-April-May</option>
+            <option value='JJA'>June-July-Aug</option>
+            <option value='SON'>Sept-Oct-Nov</option>
+            <option value='DJF'>Dec-Jan-Feb</option>
+            <option value='Jan'>January</option>
+            <option value='Feb'>February</option>
+            <option value='Mar'>March</option>
+            <option value='Apr'>April</option>
+            <option value='May'>May</option>
+            <option value='Jun'>June</option>
+            <option value='Jul'>July</option>
+            <option value='Aug'>August</option>
+            <option value='Sep'>September</option>
+            <option value='Oct'>October</option>
+            <option value='Nov'>November</option>
+            <option value='Dec'>December</option>
+        </select>
+      </div>
+      <div class='detail-block sea-level'>
+        <label decorator='tooltip:Use slider to select date range'> Year: </label>
+        <input type="range"
+              min="2039"
+              max="2069"
+              step="{{parameters.date_step}}"
+              value="{{parameters.date}}">
+        <span> {{parameters.date}}-{{(parameters.date+parameters.date_step)}}</span>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by county or watershed.'> Summarize by </label>
+        <select value="{{parameters.area}}">
+          <option value='county'> County </option>
+          <option value='basin'> Watershed </option>
+        </select>
+      </div>
+    {{/if}}
+    {{#if "narccap_precip" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by season'> Season: </label>
+        <select value='{{parameters.season}}'>
+            <option value='ANN'>Annual</option>
+            <option value='MAM'>March-April-May</option>
+            <option value='JJA'>June-July-Aug</option>
+            <option value='SON'>Sept-Oct-Nov</option>
+            <option value='DJF'>Dec-Jan-Feb</option>
+            <option value='Jan'>January</option>
+            <option value='Feb'>February</option>
+            <option value='Mar'>March</option>
+            <option value='Apr'>April</option>
+            <option value='May'>May</option>
+            <option value='Jun'>June</option>
+            <option value='Jul'>July</option>
+            <option value='Aug'>August</option>
+            <option value='Sep'>September</option>
+            <option value='Oct'>October</option>
+            <option value='Nov'>November</option>
+            <option value='Dec'>December</option>
+        </select>
+      </div>
+      <div class='detail-block sea-level'>
+        <label decorator='tooltip:Use slider to select date range'> Year: </label>
+        <input type="range"
+              min="2039"
+              max="2069"
+              step="{{parameters.date_step}}"
+              value="{{parameters.date}}">
+        <span> {{parameters.date}}-{{(parameters.date+parameters.date_step)}}</span>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by county or watershed.'> Summarize by </label>
+        <select value="{{parameters.area}}">
+          <option value='county'> County </option>
+          <option value='basin'> Watershed </option>
+        </select>
+      </div>
+    {{/if}}
+    {{#if "anthromes" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Model Year: </label>
+        <input type="radio" name='{{parameters.year}}' value="1800"> 1800
+        <input type="radio" name='{{parameters.year}}' value="1900"> 1900
+        <input type="radio" name='{{parameters.year}}' value="2000"> 2000
+      </div>
+    {{/if}}
+
+    {{#if "carbon" === layer_default_id}}
+      <div class='detail-block show-confidence carbon'>
+        <label> Year / Scenario: </label>
+        <div class='options'>
+          <div>
+            <input  type="radio" name='{{parameters.scenario_year}}' value="a2_2010">
+            2010 - A2 (medium-high emissions)
+          </div>
+          <div>
+            <input  type="radio" name='{{parameters.scenario_year}}' value="a2_2050">
+            2050 - A2 (medium-high emissions)
+          </div>
+          <div >
+            <input type="radio" name='{{parameters.scenario_year}}' value="b1_2050">
+            2050 - B1 (lower emissions)
+          </div>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if "fema_historic" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose an emergency type'> Summarize by: </label>
+        <select value='{{parameters.fema_historic_layer}}'>
+            <option value='0'>Total</option>
+            <option value='2'>Drought</option>
+            <option value='3'>Fire</option>
+            <option value='4'>Flood</option>
+            <option value='5'>Hurricane</option>
+            <option value='6'>Severe Storm</option>
+            <option value='7'>Snow/Ice/Freezing</option>
+            <option value='8'>Tornado</option>
+        </select>
+      </div>
+    {{/if}}
+
+    {{#if "soils" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Layer: </label>
+        <input type="radio" name='{{parameters.soils_layer}}' value=0> Soil Moisture
+        <input type="radio" name='{{parameters.soils_layer}}' value=1> Surface Geology
+      </div>
+      <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
+        {{#if "0" === parameters.soils_layer}}
+        <img class='soils-{{parameters.soils_layer}}' src="{{legend_base_url}}0">
+        <div>
+          Drainage class
+        </div>
+        {{ else }}
+        <img class='soils-{{parameters.soils_layer}}' src="{{legend_base_url}}1">
+        <div>
+          Parent material
+        </div>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    {{#if "climaid_temp" === layer_default_id}}
+      <div class='detail-block sea-level'>
+        <label decorator='tooltip:Use slider to select date'> Year: </label>
+        <input type="range"
+              min="2020"
+              max="2080"
+              step="30"
+              value="{{parameters.timestep}}">
+        <span>{{parameters.timestep}}</span>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Emissions Scenario'> Scenario: </label>
+        <input decorator='tooltip:Low Emissions Scenario' type="radio" name='{{parameters.scenario}}' value="45"> Low (4.5)
+        <input decorator='tooltip:High Emissions Scenario' type="radio" name='{{parameters.scenario}}' value="85"> High (8.5)
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip: Percentile standing among all possible models'> Percentile: </label>
+        <input type="radio" decorator='tooltip:10th Percentile: nearly all models predict greater change' name='{{parameters.percentile}}' value="10"> 10
+        <input type="radio" decorator='tooltip:Median: half of the models predict less change, half predict greater change'decorator='tooltip:25th Percentile: most models predict greater change' name='{{parameters.percentile}}' value="25"> 25
+        <input type="radio" decorator='tooltip:Median: half of the models predict less change, half predict greater change' name='{{parameters.percentile}}' value="mean"> median
+        <input type="radio" decorator='tooltip:75th Percentile: most models predict less change' name='{{parameters.percentile}}' value="75"> 75
+        <input type="radio" decorator='tooltip:90th Percentile: nearly all models predict less change' name='{{parameters.percentile}}' value="90"> 90
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:The data range from which the color scale will be constructed'> Symbolize By: </label>
+        <input decorator='tooltip:Colors will encompass entire range of data within each emissions scenario' type="radio" name='{{parameters.symbology}}' value="scenario"> Scenario
+        <input decorator='tooltip:Colors will encompass entire range of data within each time step'type="radio" name='{{parameters.symbology}}' value="year"> Years
+        <input decorator='tooltip:Colors will encompass entire range of data within each percentile'type="radio" name='{{parameters.symbology}}' value="percentile"> Percentile
+      </div>
+    {{/if}}
+    {{#if "climaid_precip" === layer_default_id}}
+      <div class='detail-block sea-level'>
+        <label decorator='tooltip:Use slider to select date'> Year: </label>
+        <input type="range"
+              min="2020"
+              max="2080"
+              step="30"
+              value="{{parameters.timestep}}">
+        <span>{{parameters.timestep}}</span>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Emissions Scenario'> Scenario: </label>
+        <input decorator='tooltip:Low Emssions Scenario' type="radio" name='{{parameters.scenario}}' value="45"> Low (4.5)
+        <input decorator='tooltip:High Emissions Scenario' type="radio" name='{{parameters.scenario}}' value="85"> High (8.5)
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip: Percentile standing among all possible models'> Percentile: </label>
+        <input type="radio" decorator='tooltip:10th Percentile: nearly all models predict greater change' name='{{parameters.percentile}}' value="10"> 10
+        <input type="radio" decorator='tooltip:Median: half of the models predict less change, half predict greater change'decorator='tooltip:25th Percentile: most models predict greater change' name='{{parameters.percentile}}' value="25"> 25
+        <input type="radio" decorator='tooltip:Median: half of the models predict less change, half predict greater change' name='{{parameters.percentile}}' value="mean"> median
+        <input type="radio" decorator='tooltip:75th Percentile: most models predict less change' name='{{parameters.percentile}}' value="75"> 75
+        <input type="radio" decorator='tooltip:90th Percentile: nearly all models predict less change' name='{{parameters.percentile}}' value="90"> 90
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:The data range from which the color scale will be constructed'> Symbolize By: </label>
+        <input decorator='tooltip:Colors will encompass entire range of data within each emissions scenario' type="radio" name='{{parameters.symbology}}' value="scenario"> Scenario
+        <input decorator='tooltip:Colors will encompass entire range of data within each time step'type="radio" name='{{parameters.symbology}}' value="year"> Years
+        <input decorator='tooltip:Colors will encompass entire range of data within each percentile'type="radio" name='{{parameters.symbology}}' value="percentile"> Percentile
+      </div>
+    {{/if}}
+
+    {{#if "ny_mask" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Mask Color: </label>
+        <select value='{{parameters.color}}'>
+          <option value='#000'>Black </option>
+          <option value='#fff'>White </option>
+        </select>
+      </div>
+    {{/if}}
+
+    {{#if "gas_wells" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Well Status: </label>
+        <select value='{{parameters.status}}'>
+          <option value='All'>All </option>
+          {{#parameters.all_statii}}
+            <option value='{{.}}'>{{.}}</option>
+          {{/parameters.all_statii}}
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label> Well Sub-type: </label>
+        <select value='{{parameters.type}}'>
+          <option value='All'>All </option>
+          {{#parameters.all_types}}
+            <option value='{{.}}'>{{.}}</option>
+          {{/parameters.all_types}}
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label> Showing: </label>
+        <div style='text-align: center'>
+          <div class='gas-wells-cluster' style='display: inline-block'>
+            {{parameters.total_shown}}
+          </div>
+          <span class='legend-text'> Number of gas wells shown </span>
+        </div>
+      </div>
+    {{/if}}
+    {{#if "other_wells" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Well Status: </label>
+        <select value='{{parameters.status}}'>
+          <option value='All'>All </option>
+          {{#parameters.all_statii}}
+            <option value='{{.}}'>{{.}}</option>
+          {{/parameters.all_statii}}
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label> Well Sub-type: </label>
+        <select value='{{parameters.type}}'>
+          <option value='All'>All </option>
+          {{#parameters.all_types}}
+            <option value='{{.}}'>{{.}}</option>
+          {{/parameters.all_types}}
+        </select>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label> Showing: </label>
+        <div style='text-align: center'>
+          <div class='other-wells-cluster' style='display: inline-block'>
+            {{parameters.total_shown}}
+          </div>
+        </div>
+      </div>
+    {{/if}}
+    {{#if "spdes" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Showing: </label>
+        <div style='text-align: center'>
+          <div class='spdesCluster' style='line-height: 100px; display: inline-block'>
+            {{parameters.total_shown}}
+          </div>
+          <span class='legend-text'> Number of water treatment facilities shown </span>
+        </div>
+      </div>
+    {{/if "spdes" === layer_default_id}}
+    {{#if "sewer_overflows" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label> Showing: </label>
+        <div style='text-align: center'>
+          <div class='sewer_overflowsCluster' style='display: inline-block'>
+            {{parameters.total_shown}}
+          </div>
+          <span class='legend-text'> Number of sewer overflows shown </span>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if "extreme_precip" === layer_default_id}}
+      <div class='detail-block show-confidence plants-and-animals'>
+        <label> Event Type: </label>
+        <select value='{{parameters.event_type}}'>
+        {{#parameters.event_types}}
+          <option value='{{.}}'> {{.}} </option>
+        {{/parameters.event_types}}
+        </select>
+      </div>
+      <div class='detail-block show-confidence extreme-precip'>
+        <label> Timeframe: </label>
+        <select value='{{parameters.time}}'>
+        {{#parameters.event_timeframes[parameters.event_type]}}
+          <option value='{{.}}'> {{.}} </option>
+        {{/parameters.event_timeframes[parameters.event_type]}}
+        </select>
+      </div>
+
+      {{#if parameters.legend_data}}
+        <div class='detail-block show-confidence extreme-precip'>
+          <label> Legend: </label>
+        </div>
+        <div class='detail-block show-confidence extreme-precip esri-legend'>
+          {{#parameters.legend_data.legend}}
+            <div class='detail-block legend-block'>
+              <img src="data:{{contentType}};base64,{{imageData}}" >
+              <span> {{label}} </span>
+            </div>
+          {{/parameters.legend_data.legend}}
+        </div>
+
+        <div class='detail-block legend-url-text {{layer_default_id}} {{legend_classname}}'>
+          <span class='legend-text'>
+            {{#if parameters.time === "Current Magnitude"}}
+              Inches precipitation
+            {{ else }}
+              {{#if parameters.time === "Future Avg Percent Increase"}}
+                % change in precipitation amount
+              {{ else }}
+                {{#if parameters.time === "Future Recurrance"}}
+                  Return interval (years)
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          </span>
+        </div>
+      {{/if parameters.legend_data}}
+
+    {{/if}}
+
+    {{#if "dams" === layer_default_id}}
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.a}}"> -->
+        <img src="img/dam-a.png"/>
+        <span> Class "A" - Low Hazard </span>
+       </div>
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.b}}"> -->
+        <img src="img/dam-b.png"/>
+        <span> Class "B" - Intermediate Hazard </span>
+       </div>
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.c}}"> -->
+        <img src="img/dam-c.png"/>
+        <span> Class "C" - High Hazard </span>
+       </div>
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.unk}}"> -->
+        <img src="img/dam-unk.png"/>
+        <span> Class "D/?" - Unknown Hazard </span>
+       </div>
+    {{/if "dams" === layer_default_id}}
+
+    {{#if "rare_plants_and_animals" === layer_default_id}}
+      <div class='detail-block show-confidence plants-and-animals'>
+        <label> Species: </label>
+        <select value='{{parameters.species_group}}'>
+        {{#parameters.species_names}}
+          <option value='{{.}}'> {{.}} </option>
+        {{/parameters.species_names}}
+        </select>
+      </div>
+      <div class='detail-block show-confidence plants-and-animals'>
+        <label> Timeframe: </label>
+        <select value='{{parameters.time}}'>
+        {{#parameters.species_timeframes[parameters.species_group]}}
+          <option value='{{.}}'> {{.}} </option>
+        {{/parameters.species_timeframes[parameters.species_group]}}
+        </select>
+      </div>
+      {{#if parameters.legend_data}}
+        <div class='detail-block show-confidence plants-and-animals esri-legend'>
+          {{#parameters.legend_data.legend}}
+            <div class='detail-block legend-block' style="width: {{98 / parameters.legend_data.legend.length}}%;">
+              <img src="data:{{contentType}};base64,{{imageData}}">
+              <span> {{label}} &nbsp; </span>
+            </div>
+          {{/parameters.legend_data.legend}}
+        </div>
+        <div class='detail-block legend-url-text {{layer_default_id}} {{legend_classname}}'>
+          <span class='legend-text'>
+            Species richness based on habitat suitability models
+          </span>
+        </div>
+      {{/if parameters.legend_data}}
+    {{/if}}
+
+  {{/if !copied_source}}
+
+  {{#if parameters.opacity !== false}}
+    <div class='detail-block opacity'>
+      <label  decorator='tooltip:Use slider to adjust layer transparency'> Opacity: </label>
+      <input type="range" value="{{parameters.opacity}}" min="0" max="100">
+      {{parameters.opacity}}%
+    </div>
+  {{/if}}
+
+  {{#if legend_url}}
+    <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
+      <label> Legend </label>
+      <img  src="{{legend_url}}">
+    </div>
+  {{/if}}
+
+  {{#if parameters.legend_range }}
+    <div class='detail-block legend'>
+      {{#parameters.legend_text}}
+        <div class='color-legend'>{{parameters.legend_text}}</div>
+      {{/parameters.legend_text}}
+      {{#parameters.legend_range}}
+        <div class='color-block' style="width: {{100.0 / parameters.legend_range.length}}%;">
+          <svg width="100" height="100">
+            <rect height="100" width="100" style="fill: {{c}}; opacity:{{(0.7 * parameters.opacity / 100.0) + 0.3}}; "/>
+          </svg>
+          {{#if v}}
+            <label>{{fixed_precision(v, parameters.legend_significant_digits)}}</label>
+          {{/if v}}
+
+          {{#if s}}
+            <label>{{s}} </label>
+          {{/if s}}
+        </div>
+      {{/parameters.legend_range}}
+    </div>
+  {{/if}}
+
+  {{#if parameters.legend_json}}
+    <div class='detail-block legend {{layer_default_id}}'>
+      {{#if "power_stations" === layer_default_id}}
+        <!-- This is pretty hacky, but... is what it is -->
+        {{#parameters.legend_json}}
+          <div class='col-xs-12'>
+            <img  src="data:{{legend[0].contentType}};base64,{{legend[0].imageData}}">
+            <span class='legend-label'>{{layerName}}</span>
+          </div>
+        {{/parameters.legend_json}}
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if( legend_url_text.length > 0)}}
+    <div class='detail-block legend-url-text {{layer_default_id}} {{legend_classname}}'>
+      <span class='legend-text'> {{{legend_url_text}}}</span>
+    </div>
+  {{/if}}
+
+</script>
+
+<script id="layer_controls_details_template" type="text/ractive">
+  {{#if layers.active.length > 0 }}
+    <div class='bulk'>
+      {{#if !all_active_collapsed(layers.active)}}
+        <a on-tap='collapse-all-layers' class='show-cursor'> Collapse All</a>
+      {{else}}
+        <a on-tap='expand-all-layers' class='show-cursor'> Expand All</a>
+      {{/if}}
+
+      {{#if !all_active_hidden(layers.active)}}
+        <a on-tap='hide-all-layers' class='show-cursor'> Hide All</a>
+      {{else}}
+        <a on-tap='visible-all-layers' class='show-cursor'> Show All</a>
+      {{/if}}
+
+      <a on-tap='deactivate-all-layers' class='show-cursor'> Remove All</a>
+    </div>
+  {{else}}
+    <div class='active-layers-empty'>
+      <span class='fa fa-globe'></span>
+      <div class='text'>
+        You need to select some layers to display on the map.
+        <br/>
+        Look in the Layers tab to the left to choose.
+      </div>
+    </div>
+  {{/if}}
+
+  {{#each layers.active}}
+    <div decorator='{{parameters.no_sorting ? "" : "sortable"}}' class='active-layer'>
+      <label class='name' on-tap="toggle-active-collapsed">
+        <span class='show-cursor'>
+          {{#if is_collapsed}}
+            <span decorator="tooltip:Expand Legend" class='fa fa-caret-right'></span>
+            {{#if layer_load_state(layers_loading_states, layer_default_id) !== "success"}}
+              <a decorator="tooltip:Show layer metadata" on-tap="show-active-layer-info" class='info {{layer_load_state(layers_loading_states, layer_default_id)}}'>
+                <span class='show-cursor fa fa-info'></span>
+              </a>
+            {{/if}}
+          {{else}}
+            <span decorator="tooltip:Minimize Legend" class='fa fa-caret-down'></span>
+          {{/if}}
+          {{#if !parameters.no_sorting}}
+            <span decorator="tooltip:Drag to reorder layer" class='drag-handle fa fa-hand-stop-o'></span>
+          {{/if !parameters.no_sorting}}
+          {{name}}
+        </span>
+      </label>
+
+      {{#if !is_collapsed}}
+        <div class='active-details'>
+          <div class='control-bar'>
+            <a decorator="tooltip:Remove layer" on-tap="remove-active">
+              <span class='show-cursor fa fa-trash-o' > </span>
+            </a>
+            {{#if !parameters.no_sorting}}
+              <a decorator="tooltip:Move to top" on-tap='move-active-to-top'>
+                <span class='show-cursor fa fa-angle-double-up'> </span>
+              </a>
+            {{/if}}
+            {{#if is_hidden}}
+              <a decorator="tooltip:Make layer visible"  on-tap='make-active-visible'>
+                <span class='show-cursor fa fa-eye-slash' ></span>
+              </a>
+            {{else}}
+              <a decorator="tooltip:Make layer hidden"  on-tap='make-active-hidden'>
+                <span class='show-cursor fa fa-eye'></span>
+              </a>
+            {{/if}}
+
+            {{#if able_to_copy(this) }}
+              <a decorator="tooltip:Clone this layer" on-tap="clone-active-layer">
+                <span class='show-cursor fa fa-clone'></span>
+              </a>
+            {{/if}}
+
+            <a decorator="tooltip:Show layer metadata" on-tap="show-active-layer-info" class='info {{layer_load_state(layers_loading_states, layer_default_id)}}'>
+              <span class='show-cursor fa fa-info'></span>
+            </a>
+
+            {{#if layer_has_click_info(this)}}
+              <a decorator="tooltip:Click on the map to find out more details">
+                <span class='fa fa-map-marker' > </span>
+              </a>
+            {{/if layer_has_click_info(this)}}
+
+            {{#if layer_has_standalone_wizard(this)}}
+              <a decorator="tooltip:This layer has detailed instructions. Click to view" on-tap="show-standalone-wizard">
+                <span class='fa fa-question'> </span>
+              </a>
+            {{/if layer_has_standalone_wizard(this)}}
+
+          </div>
+          {{> layer_controls_details_blocks_template}}
+        </div>
+      {{/if}}
+    </div>
+  {{/each}}
+</script>
+
+<script id="map_controls_template" type="text/ractive">
+<div class='map-controls'>
+  <div class='map-control print-control btn-group'>
+    <span class='btn btn-md btn-default' on-tap="show-wizard">
+      <span class='fa fa-question'></span>
+    </span>
+    <span class='btn btn-md btn-default'
+          on-tap="print-map">
+      <span class='fa fa-print'></span>
+    </span>
+
+    <span class='btn btn-md btn-default'
+          on-tap="open-sharing-modal">
+      <span class='fa fa-share-alt'></span>
+    </span>
+
+  </div>
+
+  <div class='map-control'>
+    <span class='btn btn-md btn-default {{map_controls.base_layer_control_open ? "active" : ""}}'
+          on-tap="toggle-base-layer-control"
+      > Base Map </span>
+    {{#map_controls.base_layer_control_open }}
+      <div class='control-details base-layers'>
+        {{#each base_layers}}
+          <a class="base-layer show-cursor {{map_controls.active_base_layer === name ? 'active' : ''}}" on-tap="activate-base-layer">{{name}}</a>
+        {{/each}}
+      </div>
+      <div class='map-control-bg' on-tap='toggle-base-layer-control'></div>
+    {{/map_controls.base_layer_control_open }}
+  </div>
+  {{>zoom_controls_template}}
+</div>
+</script>
+
+<!-- VIEW TEMPLATES -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+    <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
+    <script src="./vendor/esri-leaflet-1.0.0/esri-leaflet-src.js?__inline=true"></script>
+    <script src="./vendor/TileLayer.EsriRest.js?__inline=true"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js">
+    <script type="text/javascript" src="./vendor/topojson-master/topojson.js?__inline=true"></script>
+    <script type="text/javascript" src="./vendor/L.D3SvgOverlay.js?__inline=true"></script>
+    <script type="text/javascript" src="./vendor/topojsonHelper.js?__inline=true"></script>
+
+
+    <script>
+      if (!console) {
+        window.console = { log: function () { }, warn: function() {}, error: function () {}};
+      }
+    </script>
+
+    <!-- OUR SYSTEM CODE -->
+
+    <script src="./vendor/zero-clipboard/ZeroClipboard.js?__inline=true"></script>
+    <script src="./vendor/uri.js?__inline=true"></script>
+    <script src="./vendor/colorbrewer.js?__inline=true"></script>
+    <script src="./vendor/queue.js?__inline=true"></script>
+    <script src="./js/ractive.js?__inline=true"></script>
+    <script src="./js/ractive-decorators-sortable.js?__inline=true"></script>
+    <script src="./js/ractive-events-tap.js?__inline=true"></script>
+    <script src="./js/leaflet-sidebar.js?__inline=true"></script>
+    <script src="./js/leaflet-pip.js?__inline=true"></script>
+    <script src="./vendor/topojson.js?__inline=true"></script>
+    <script src='./vendor/ractive-tooltip.min.js?__inline=true'></script>
+    <script src='./vendor/path-data-polyfill.js?__inline=true'></script>
+    <!-- THIS NEEDS TO BE FIRST -->
+    <script src="./js/config.js?__inline=true"></script>
+    <script src="./js/LayerInfo.js?__inline=true"></script>
+
+    <!-- Add all the javascript libs here -->
+    <script src="./js/lodash.min.js?__inline=true"></script>
+    <script src="./js/hoops.min.js?__inline=true"></script>
+    <script src="./js/api_handler.js?__inline=true"></script>
+
+    <script src="./js/base_layers.js?__inline=true"></script>
+    <script src="./js/renderers/utils.js?__inline=true"></script>
+    <script src="./js/renderers/nlcd.js?__inline=true"></script>
+    <script src="./js/renderers/superfund.js?__inline=true"></script>
+    <script src="./js/renderers/gap_lc.js?__inline=true"></script>
+    <script src="./js/renderers/soils.js?__inline=true"></script>
+    <script src="./js/renderers/croplands.js?__inline=true"></script>
+    <script src="./js/renderers/pastures.js?__inline=true"></script>
+    <script src="./js/renderers/sandysurge.js?__inline=true"></script>
+    <script src="./js/renderers/anthromes.js?__inline=true"></script>
+    <script src="./js/renderers/dewberry_slr.js?__inline=true"></script>
+    <script src="./js/renderers/noaa_slr.js?__inline=true"></script>
+    <script src="./js/renderers/nyserda_slr.js?__inline=true"></script>
+    <script src="./js/renderers/taccimo.js?__inline=true"></script>
+    <script src="./js/renderers/prism.js?__inline=true"></script>
+    <script src="./js/renderers/prism_precip.js?__inline=true"></script>
+    <script src="./js/renderers/prism_temp.js?__inline=true"></script>
+    <script src="./js/renderers/narccap.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_precip.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_temp.js?__inline=true"></script>
+    <script src="./js/renderers/climaid.js?__inline=true"></script>
+    <script src="./js/renderers/climaid_precip.js?__inline=true"></script>
+    <script src="./js/renderers/climaid_temp.js?__inline=true"></script>
+    <script src="./js/renderers/airmon.js?__inline=true"></script>
+    <script src="./js/renderers/ghg_facilities.js?__inline=true"></script>
+    <script src="./js/renderers/hospital.js?__inline=true"></script>
+    <script src="./js/renderers/dams.js?__inline=true"></script>
+    <script src="./js/renderers/bulkstorage.js?__inline=true"></script>
+    <script src="./js/renderers/lulc_2011.js?__inline=true"></script>
+    <script src="./js/renderers/lulc_2050.js?__inline=true"></script>
+    <script src="./js/renderers/dec_wetlands.js?__inline=true"></script>
+    <script src="./js/renderers/trout_streams.js?__inline=true"></script>
+    <script src="./js/renderers/wtrcls_line.js?__inline=true"></script>
+    <script src="./js/renderers/wtrcls_poly.js?__inline=true"></script>
+    <script src="./js/renderers/primary_aquifers.js?__inline=true"></script>
+    <script src="./js/renderers/dow_uncon_aqui_main.js?__inline=true"></script>
+    <script src="./js/renderers/sovi.js?__inline=true"></script>
+    <script src="./js/renderers/cfem_critical.js?__inline=true"></script>
+    <script src="./js/renderers/spdes.js?__inline=true"></script>
+    <script src="./js/renderers/remediation_sites.js?__inline=true"></script>
+    <script src="./js/renderers/sewer_overflows.js?__inline=true"></script>
+    <script src="./js/renderers/subway_lines.js?__inline=true"></script>
+    <script src="./js/renderers/railroad.js?__inline=true"></script>
+    <script src="./js/renderers/peja.js?__inline=true"></script>
+    <script src="./js/renderers/aadt_2012.js?__inline=true"></script>
+    <script src="./js/renderers/carbon.js?__inline=true"></script>
+    <script src="./js/renderers/nfhl.js?__inline=true"></script>
+    <script src="./js/renderers/fema_historic.js?__inline=true"></script>
+    <script src="./js/renderers/usgs_streamflow.js?__inline=true"></script>
+    <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
+    <script src="./js/renderers/boundary_municipal.js?__inline=true"></script>
+    <script src="./js/renderers/boundary_huc8.js?__inline=true"></script>
+    <script src="./js/renderers/boundary_climate_divisions.js?__inline=true"></script>
+    <script src="./js/renderers/power_stations.js?__inline=true"></script>
+    <script src="./js/renderers/ny_mask.js?__inline=true"></script>
+    <script src="./js/renderers/regulated_wells.js?__inline=true"></script>
+    <script src="./js/renderers/water_wells.js?__inline=true"></script>
+    <script src="./js/renderers/invasive_plants.js?__inline=true"></script>
+    <script src="./js/renderers/invasive_insects.js?__inline=true"></script>
+    <script src="./js/renderers/invasive_animals.js?__inline=true"></script>
+    <script src="./js/renderers/rare_plants_and_animals.js?__inline=true"></script>
+    <script src="./js/renderers/extreme_precip.js?__inline=true"></script>
+    <script src="./js/geometry_loader.js?__inline=true"></script>
+
+    <script> var Controllers = {}; </script>
+    <script src="./js/controllers/search.js?__inline=true"></script>
+    <script src="./js/controllers/layers.js?__inline=true"></script>
+    <script src="./js/controllers/sharing.js?__inline=true"></script>
+    <script src="./js/controllers/feature_info.js?__inline=true"></script>
+
+    <script> var Views = {}; </script>
+
+    <!-- Add all the view controllers here -->
+    <script src="./js/views/utils.js?__inline=true"></script>
+    <script src="./js/views/control_panel.js?__inline=true"></script>
+
+    <script src="./js/init.js?__inline=true"></script>
+  </body>
+</html>

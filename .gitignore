@@ -1,0 +1,11 @@
+*.swp
+node_modules
+dist/*
+*.swo
+*.swn
+*.php
+TODO
+.elasticbeanstalk
+server/dist
+server/env
+*.swm
