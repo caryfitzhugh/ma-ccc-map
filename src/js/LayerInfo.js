@@ -1,5 +1,6 @@
 /*global Config, _ , URI, console*/
 var GEOSERVER = "http://geoserver.nescaum-ccsc-dataservices.com/geoserver";
+var API_SERVER = "http://api.nescaum-ccsc-dataservices.com/";
 
 var CDN = function (url_str) {
   var url;
@@ -10,10 +11,13 @@ var CDN = function (url_str) {
     var hostname = uri.hostname();
 
     if (hostname.match(/geoserver.nescaum-ccsc-dataservices.com/)) {
-        console.log("The CDN isn't set up correctly yet");
-//      uri.hostname("d3k0ernyjb0bdf.cloudfront.net");
-//      uri.port(null);
-//      uri.scheme("https");
+      uri.hostname("d3dfsz5phlpu8l.cloudfront.net");
+      uri.port(null);
+      uri.scheme("https");
+    } else if (hostname.match(/api.nescaum-ccsc-dataservices.com/)) {
+      uri.hostname("d2749s27r5h52i.cloudfront.net");
+      uri.port(null);
+      uri.scheme("https");
     } else {
       console.warn("Hostname not in a CDN", hostname);
     }

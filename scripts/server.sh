@@ -1,1 +1,1 @@
-ruby -run -e httpd . -p 4000
+ruby -run -e httpd . -p ${PORT-4000}
