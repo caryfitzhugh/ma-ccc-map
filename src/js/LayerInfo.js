@@ -1,5 +1,5 @@
 /*global Config, _ , URI, console*/
-var MAP_SERVER_HOST = "http://52.2.5.122:8080";
+var GEOSERVER = "http://geoserver.nescaum-ccsc-dataservices.com/geoserver";
 
 var CDN = function (url_str) {
   var url;
@@ -9,110 +9,10 @@ var CDN = function (url_str) {
     var uri = new URI(url_str);
     var hostname = uri.hostname();
 
-    if (hostname.match(/52.2.5.122/) && uri.port() === "8080") {
-      // Connect with HTTP to this server.
-      // The CDN is https only.
+    if (hostname.match(/geoserver.nescaum-ccsc-dataservices.com/)) {
       uri.hostname("d3k0ernyjb0bdf.cloudfront.net");
       uri.port(null);
       uri.scheme("https");
-    } else if (hostname.match(/services.coastalresilience.org/)) {
-      uri.hostname("d18gzmw5vlbmyb.cloudfront.net");
-      uri.scheme("https");
-    } else if (hostname.match(/52.2.5.122/)) {
-      // Connect with HTTP to this server.
-      // The CDN is https only.
-      uri.hostname("d3fjr20luljspz.cloudfront.net");
-      uri.port(null);
-      uri.scheme("https");
-
-    } else if (hostname.match(/wassimap.sgcp.ncsu.edu/) && uri.port() === "8399") {
-      // Origin is HTTP
-      // Force https on CDN
-      uri.hostname("dh1v11fzfseb3.cloudfront.net");
-      uri.port(null);
-      uri.scheme("https");
-    } else if (hostname.match(/sedac.ciesin.columbia.edu/)) {
-      // Origin is HTTP sedac
-      // Force to https in CDN
-      uri.hostname("d32q476m7pp27o.cloudfront.net");
-      uri.scheme("https");
-    } else if (hostname.match(/ciesin.columbia.edu/)) {
-      // Origin is HTTP sedac
-      // Force to https in CDN
-      uri.hostname("d2rmz9ar041i8l.cloudfront.net");
-      uri.scheme("https");
-    } else if (hostname.match(/toolkit.climate.gov/)) {
-      // Origin is HTTP
-      // Force https to CDN
-      uri.hostname("d2mwwvzdxh7i97.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/coast.noaa.gov/)) {
-      // Origin is HTTP
-      // Force https to CDN
-      uri.hostname("d3mqbuc9pg41k9.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/www.coast.noaa.gov/)) {
-      // Origin is HTTPS
-      // Force https on CDN
-      uri.hostname("d3mqbuc9pg41k9.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/gis1.usgs.gov/)) {
-      // Origin is HTTP
-      // Force https on CDN
-      uri.hostname("d2mdm1yqt1xmc6.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/www.hazards.fema.gov/)) {
-      // Origin is HTTP
-      // Force https on CDN
-      uri.hostname("dlkgz4yeb7f1r.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/raster.nationalmap.gov/)) {
-      // Origin is HTTP
-      // Force to https on CDN
-      uri.hostname("dkzcl33zr6v82.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/coastalmap.marine.usgs.gov/)) {
-      // Origin is HTTP
-      // Force to https on CDN
-      uri.hostname("d68xxx0sqi1cg.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/services.femadata.com/)) {
-      uri.hostname("d2l0p3wlvv1c89.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/rmgsc.cr.usgs.gov/)) {
-      // Origin is HTTP
-      // Force to https on CDN
-      uri.hostname("dtfhsiq73elec.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/gis.fema.gov/)) {
-      // Origin is https
-      // Force CDN to https
-      uri.hostname("d2b0t5v3kbtimp.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/eia-ms.esri.com/)) {
-      // Origin is https
-      // Force CDN to https
-      uri.hostname("d7j9bwn9pdtkz.cloudfront.net");
-      uri.scheme("https");
-
-    } else if (hostname.match(/s3.amazonaws.com/)) {
-      // It's already CDN-ish.
-      uri.scheme("https");
-
-    } else if (hostname.match(/services.nyserda.ny.gov/)) {
-      uri.hostname("d38v9w0zy9nqdj.cloudfront.net");
-      uri.scheme("https");
-
     } else {
       console.warn("Hostname not in a CDN", hostname);
     }
@@ -127,6 +27,23 @@ var CDN = function (url_str) {
 // http://ec2-52-11-55-233.us-west-2.compute.amazonaws.com/
 
 var LayerInfo = [
+    {
+      "id": "vt_mask",
+      "sort_key": 0,
+      "folder": "Boundaries",
+      "name": "VT State Mask",
+      "description": "This layer masks out map features outside of the VT state boundaries.  Derived from TIGER 2013 Simplified County Boundaries, designed for 1:500k or smaller.  The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database.  ",
+      "source": "US Census Bureau",
+      "source_url": "https://www.census.gov/en.html",
+      "sectors": "",
+      "parameters": {
+        "opacity": 80,
+        "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
+        "color": "#000",
+        "no_sorting": true
+      }
+    },
+    /*
     {
       "id": "nlcd",
       "folder": "Land Cover",
@@ -196,7 +113,7 @@ var LayerInfo = [
         "opacity": 70
       }
     },
-/*    {
+    {
       "id": "soils",
       "folder": "Ecosystems",
       "name": "Soils & Surficial Geology",
@@ -210,7 +127,7 @@ var LayerInfo = [
         "opacity": 70,
         "soils_layer" : "0"
       }
-    },*/
+    },
     {
       "id": "sandysurge",
       "folder": "Coastal Zones",
@@ -877,22 +794,6 @@ var LayerInfo = [
       }
     },
     {
-      "id": "ny_mask",
-      "sort_key": 0,
-      "folder": "Boundaries",
-      "name": "NY State Mask",
-      "description": "This layer masks out map features outside of the NY state boundaries.  Derived from TIGER 2013 Simplified County Boundaries, designed for 1:500k or smaller.  The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database.  ",
-      "source": "US Census Bureau",
-      "source_url": "https://www.census.gov/en.html",
-      "sectors": "",
-      "parameters": {
-        "opacity": 80,
-        "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
-        "color": "#000",
-        "no_sorting": true
-      }
-    },
-    {
       "id": "regulated_wells",
       "folder": "Energy",
       "name": "Regulated Wells",
@@ -996,4 +897,5 @@ var LayerInfo = [
         "event_type": "10 Year Event"
       }
     }
+    */
   ];
