@@ -1,30 +1,25 @@
-/*global L, Renderers, MAP_SERVER_HOST */
+/*global L, Renderers, GEOSERVER */
 Renderers.boundary_huc8 = {
   pickle: function (al) {
     delete al.legend_url;
     al.leaflet_layer_ids = [];
   },
-  update_legend_url: function (active_layer) {
-    active_layer.legend_url = CDN(MAP_SERVER_HOST + "/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:huc8&format=image/png");
-  },
-  create_leaflet_layers: function (map, active_layer) {
-    if (_.isEmpty(active_layer.leaflet_layer_ids)) {
-      var layer = new L.TileLayer.WMS(CDN (MAP_SERVER_HOST + "/geoserver/nyccsc/wms/"), {
-        layers: 'huc8',
-        format: 'image/png',
-        transparent: true,
-        opacity: 1,
-        zIndex: 100
-      });
 
-      layer.on("tileload", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-      layer.on("tileerror", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
-      layer.addTo(map);
-      active_layer.leaflet_layer_ids = [layer._leaflet_id];
-    }
-  },
+  update_legend_url:
+     Renderers.defaults.legend_url.constant(CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=nyccsc:huc8&format=image/png")),
+
+  create_leaflet_layers: Renderers.defaults.create.wms(
+        CDN (GEOSERVER + "/vt/wms/"),
+        {
+          layers: 'vt:huc8',
+          format: 'image/png',
+          transparent: true,
+          opacity: 1,
+          zIndex: 100
+        }),
+
   get_feature_info_url: function (active_layer) {
-    return CDN(MAP_SERVER_HOST + "/geoserver/nyccsc/wms" +
+    return CDN(GEOSERVER + "/nyccsc/wms" +
               "?SERVICE=WMS&VERSION=1.1.1&"+
               "REQUEST=GetFeatureInfo&"+
               "LAYERS=huc8&"+

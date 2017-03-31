@@ -2,6 +2,17 @@
 var Renderers = {
   defaults: {
     create:  {
+      wms: function (url, opts) {
+        return function (map, active_layer) {
+          if (_.isEmpty(active_layer.leaflet_layer_ids)) {
+            var layer = new L.TileLayer.WMS(url, opts);
+            layer.on("tileload", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
+            layer.on("tileerror", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
+            layer.addTo(map);
+            active_layer.leaflet_layer_ids = [layer._leaflet_id];
+          }
+        };
+      },
       geojson: function (url) {
         return function (map, active_layer) {
           if (_.isEmpty(active_layer.leaflet_layer_ids)) {
@@ -31,6 +42,11 @@ var Renderers = {
       },
     },
     legend_url: {
+      constant: function (url) {
+        return function (active_layer) {
+          active_layer.legend_url = url;
+        };
+      },
       empty: function() {
         return function (active_layer) {
           active_layer.legend_url = null;

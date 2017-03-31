@@ -44,6 +44,18 @@ var LayerInfo = [
         "no_sorting": true
       }
     },
+    {
+      "id": "boundary_huc8",
+      "folder": "Boundaries",
+      "name": "Major Watersheds",
+      "description": "Sub-basin (8-digit HUC) boundaries derived from the National Hydrography Dataset (NHD).",
+      "source": "USGS",
+      "source_url": "http:\/\/nhd.usgs.gov/",
+      "metadata_url": "ftp:\/\/nhdftp.usgs.gov\/DataSets\/Staged\/States/FileGDB\/MediumResolution\/",
+      "parameters": {
+        "opacity": 100
+      }
+    },
     /*
     {
       "id": "nlcd",
@@ -743,19 +755,6 @@ var LayerInfo = [
         // No Opacity, b/c it doesn't work on the markers.
         "no_sorting": true,
         "opacity": 70
-      }
-    },
-    {
-      "id": "boundary_huc8",
-      "folder": "Boundaries",
-      "name": "Major Watersheds",
-      "description": "Sub-basin (8-digit HUC) boundaries derived from the National Hydrography Dataset (NHD).",
-      "source": "USGS",
-      "source_url": "http:\/\/nhd.usgs.gov/",
-      "metadata_url": "ftp:\/\/nhdftp.usgs.gov\/DataSets\/Staged\/States/FileGDB\/MediumResolution\/",
-      "download_url": "ftp:\/\/nhdftp.usgs.gov\/DataSets\/Staged\/States/FileGDB\/MediumResolution\/NHDM_NY_931v220.zip",
-      "parameters": {
-        "opacity": 100
       }
     },
     {
