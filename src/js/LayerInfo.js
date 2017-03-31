@@ -56,6 +56,19 @@ var LayerInfo = [
         "opacity": 100
       }
     },
+    {
+      "id": "boundary_counties",
+      "folder": "Boundaries",
+      "name": "Counties",
+      "description": "TIGER 2013 Simplified County Boundaries, designed for 1:500k or smaller.  The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database.   These boundary files are specifically designed for small scale thematic mapping. ",
+      "source": "US Census Bureau",
+      "source_url": "https://www.census.gov/en.html",
+      "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html",
+      "download_url": "http://www2.census.gov/geo/tiger/GENZ2013/cb_2013_us_county_500k.zip",
+      "parameters": {
+        "opacity": 100
+      }
+    },
     /*
     {
       "id": "nlcd",
