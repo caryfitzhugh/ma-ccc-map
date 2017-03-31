@@ -271,7 +271,7 @@ var LayerInfo = [
         "opacity": 70,
         "year": "2000"
       }
-    },
+    },*/
     {
       "id": "prism_temp",
       "folder": "Climate Data.Temperature",
@@ -289,6 +289,7 @@ var LayerInfo = [
         "season" : "ANN"
       }
     },
+    /*
     {
       "id": "prism_precip",
       "folder": "Climate Data.Precipitation",

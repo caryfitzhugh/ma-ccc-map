@@ -1,8 +1,8 @@
 var GeometryLoader ={
   load: function (name, callback, error_cb) {
     var paths = {
-      "county": CDN("http://52.2.5.122:8080/geoserver/www/counties.geojson.json"),
-      "basin": CDN("http://52.2.5.122:8080/geoserver/www/basin.topojson.json")
+      "county": CDN(GEOSERVER + "/vt/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=vt:county_boundary&maxFeatures=50&outputFormat=application%2Fjson"),
+      "basin": CDN("http://api.nescaum-ccsc-dataservices.com/basin.topojson.json")
     };
 
     if (GeometryLoader.cache[name]) {
