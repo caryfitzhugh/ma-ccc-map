@@ -6,7 +6,7 @@ Renderers.boundary_huc8 = {
   },
 
   update_legend_url:
-     Renderers.defaults.legend_url.constant(CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=nyccsc:huc8&format=image/png")),
+     Renderers.defaults.legend_url.constant(CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:huc8&format=image/png")),
 
   create_leaflet_layers: Renderers.defaults.create.wms(
         CDN (GEOSERVER + "/vt/wms/"),
