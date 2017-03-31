@@ -10,9 +10,10 @@ var CDN = function (url_str) {
     var hostname = uri.hostname();
 
     if (hostname.match(/geoserver.nescaum-ccsc-dataservices.com/)) {
-      uri.hostname("d3k0ernyjb0bdf.cloudfront.net");
-      uri.port(null);
-      uri.scheme("https");
+        console.log("The CDN isn't set up correctly yet");
+//      uri.hostname("d3k0ernyjb0bdf.cloudfront.net");
+//      uri.port(null);
+//      uri.scheme("https");
     } else {
       console.warn("Hostname not in a CDN", hostname);
     }
