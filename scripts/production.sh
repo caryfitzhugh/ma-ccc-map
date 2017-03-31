@@ -2,6 +2,6 @@ if [[ -n $(git status --porcelain) ]]; then echo "repo is not checked in fully. 
 rm -rf dist/*
 grunt
 
-aws s3 sync --profile=nescaum dist/ s3://vt-nescaum-ccsc-dataservices
+aws s3 sync --profile=nescaum dist/ s3://vt-map-nescaum-ccsc-dataservices
 
 rm -rf dist/*
