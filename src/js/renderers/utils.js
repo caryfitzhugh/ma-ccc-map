@@ -2,6 +2,23 @@
 var Renderers = {
   defaults: {
     create:  {
+      esri: function (opts) {
+        return function (map, active_layer) {
+          if (_.isEmpty(active_layer.leaflet_layer_ids)) {
+            opts = _.merge({}, {
+                  layers: [0],
+                  f:"image",
+                  clickable: false
+            }, opts);
+
+            var layer = new L.esri.dynamicMapLayer(opts);
+            layer.on("nyccsc-loaded", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
+            layer.on("nyccsc-error", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
+            layer.addTo(map);
+            active_layer.leaflet_layer_ids = [layer._leaflet_id];
+          }
+        };
+      },
       wms: function (url, opts) {
         return function (map, active_layer) {
           if (_.isEmpty(active_layer.leaflet_layer_ids)) {

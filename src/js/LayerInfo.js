@@ -106,6 +106,20 @@ var LayerInfo = [
         "season" : "ANN"
       }
     },
+    {
+      "id": "nfhl",
+      "folder": "Water Resources",
+      "name": "Flood Hazard",
+      "description": "FEMA National Flood Hazard Layer",
+      "source": "FEMA",
+      "source_url": "http:\/\/www.fema.gov\/",
+      "sectors": "Water Resources",
+      "download_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
+      "metadata_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
+      "parameters": {
+        "opacity": 70
+      }
+    },
     /*
     {
       "id": "nlcd",
@@ -725,20 +739,6 @@ var LayerInfo = [
       "sectors": "Transportation",
       "download_url": "http:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1282&file=AADT_2015_tdv.zip",
       "metadata_url": null,
-      "parameters": {
-        "opacity": 70
-      }
-    },
-    {
-      "id": "nfhl",
-      "folder": "Water Resources",
-      "name": "Flood Hazard",
-      "description": "FEMA National Flood Hazard Layer",
-      "source": "FEMA",
-      "source_url": "http:\/\/www.fema.gov\/",
-      "sectors": "Water Resources",
-      "download_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
-      "metadata_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
       "parameters": {
         "opacity": 70
       }
