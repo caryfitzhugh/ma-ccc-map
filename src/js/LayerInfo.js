@@ -121,7 +121,7 @@ var LayerInfo = [
         "opacity": 70
       }
     },
-    {
+    /*{
       "id": "power_stations",
       "folder": "Energy",
       "name": "Power Plants",
