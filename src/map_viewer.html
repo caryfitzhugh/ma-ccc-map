@@ -542,31 +542,6 @@
                 </table>
               </div>
           {{/if}}
-          {{#if ("aadt_2012" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Name</th>
-                    <th>AADT Type</th>
-                    <th>Avg. Cars/Day</th>
-                    <th>Data Link</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.tdv_route}}</td>
-                      <td>{{properties.aadt_type}}</td>
-                      <td>{{properties.aadt}}</td>
-                      <td><a target='_blank'
-                        href="{{properties.vol_url1}}">PDF Report</a></td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
           {{#if ("boundary_climate_divisions" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -610,28 +585,6 @@
                       <td>{{properties.line_name}}</td>
                       <td>{{properties.trk_name}}</td>
                       <td>{{properties.owner_name}}</td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("bulkstorage" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Name</th>
-                    <th>ID</th>
-                    <th>Type</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.name}}</td>
-                      <td>{{properties.id}}</td>
-                      <td>{{properties.type}}</td>
                     </tr>
                   {{/json.features}}
                 </table>
@@ -2239,6 +2192,7 @@
     <script src="./js/renderers/gap_lc.js?__inline=true"></script>
     <script src="./js/renderers/nfhl.js?__inline=true"></script>
     <script src="./js/renderers/nlcd.js?__inline=true"></script>
+    <script src="./js/renderers/noaa_slr.js?__inline=true"></script>
     <script src="./js/renderers/prism.js?__inline=true"></script>
     <script src="./js/renderers/prism_precip.js?__inline=true"></script>
     <script src="./js/renderers/prism_temp.js?__inline=true"></script>

@@ -148,7 +148,23 @@ var LayerInfo = [
         "opacity": 70
       }
     },
-
+    {
+      "id": "noaa_slr",
+      "folder": "Coastal Zones",
+      "name": "Sea Level Rise (NOAA)",
+      "description": "Sea Level Rise: the maps show inland extent and relative depth of inundation from 0 to 6 feet above mean higher high water (MHHW). Areas that are hydrologically connected (according to the digital elevation model used) are shown in shades of blue. Low-lying areas, displayed in green, are considered hydrologically “unconnected” areas that may flood. The inundation maps are created by subtracting the NOAA VDATUM MHHW surface from the digital elevation model. Mapping Confidence: blue areas denote a high confidence of inundation, orange areas denote a low confidence of inundation, and unshaded areas denote a high confidence that these areas will be dry given the chosen water level.",
+      "source": "NOAA",
+      "source_url": "http:\/\/coast.noaa.gov\/slr\/",
+      "sectors": "All",
+      "legend_url": null,
+      "download_url": null,
+      "metadata_url": "https:\/\/coast.noaa.gov\/digitalcoast\/tools\/slr",
+      "parameters": {
+        "opacity": 70,
+        "sea_level_height": 0,
+        "display_layer" : "slr" // conf
+      }
+    },
     /*{
       "id": "power_stations",
       "folder": "Energy",
@@ -410,22 +426,6 @@ var LayerInfo = [
       }
     },
     {
-      "id": "airmon",
-      "folder": "Air Emissions",
-      "name": "Air Monitoring Stations",
-      "description": "This dataset shows the location of each ambient air quality monitoring station currently being operated by the Bureau of Air Quality Surveillance (BAQS), Division of Air Resources, New York State Department of Environmental Conservation. Real-time air quality conditions may be accessed for most stations by clicking on the icon in the map view.",
-      "source": "New York State Department of Environmental Conservation",
-      "source_url": "http:\/\/www.dec.ny.gov",
-      "sectors": "Public Health",
-      "download_url": "https:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1159&file=AirMonStations.zip",
-      "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.AirMon.shp.xml",
-      "parameters": {
-        // Don't do opacity, they are markers.
-        "opacity": false,
-        "no_sorting": true
-      }
-    },
-    {
       "id": "ghg_facilities",
       "folder": "Air Emissions",
       "name": "GHG Emissions from Large Facilities",
@@ -472,21 +472,6 @@ var LayerInfo = [
         // Don't do opacity, they are markers.
         "opacity": false,
         "no_sorting": true
-      }
-    },
-    {
-      "id": "bulkstorage",
-      "folder": "Public Health",
-      "name": "Bulk Storage Sites",
-      "description": "Point locations for: 1) Chemical Bulk Storage (CBS) Facilities, pursuant to the Hazardous Substance Bulk Storage Law, Article 40 of ECL; And 6 NYCRR 595-599. 2) Major Oil Storage Facilities, pursuant to Article 12 of the Navigation Law. 3) Petroleum Bulk Storage (PBS) Facilities, registered pursuant to title 10 of Article 17.",
-      "source": "NYS DEC",
-      "source_url": "http:\/\/gis.ny.gov\/gisdata\/inventories\/details.cfm?DSID=1253",
-      "sectors": "Public Health,Energy",
-      "download_url": "ftp:\/\/ftp.dec.state.ny.us\/der\/FOIL\/bulkstorageGIS.zip",
-      "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.BS.xml",
-      "parameters": {
-        // Don't do opacity, they are markers.
-        "opacity": 70
       }
     },
     {
@@ -739,20 +724,6 @@ var LayerInfo = [
       "sectors": "Public Health",
       "download_url": "http:\/\/www.dec.ny.gov\/maps\/pejalink.kmz",
       "metadata_url": "http:\/\/www.dec.ny.gov\/public\/899.html",
-      "parameters": {
-        "opacity": 70
-      }
-    },
-    {
-      "id": "aadt_2012",
-      "folder": "Transportation",
-      "name": "Traffic: Avg Annualized Daily",
-      "description": "A line shapefile showing traffic volumes (daily average in 2012) on significant roads in New York State. Includes links to detailed, hourly reports for volume, speed, and vehicle classification data. UTM NAD 83 Zone 18N. ",
-      "source": "NYS DOT",
-      "source_url": "http:\/\/gis.ny.gov\/gisdata\/inventories\/details.cfm?DSID=1282",
-      "sectors": "Transportation",
-      "download_url": "http:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1282&file=AADT_2015_tdv.zip",
-      "metadata_url": null,
       "parameters": {
         "opacity": 70
       }
