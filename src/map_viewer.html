@@ -301,6 +301,30 @@
                 </table>
               </div>
           {{/if}}
+          {{#if ("gap_lc" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>NVC Class</th>
+                    <th>NVC SubClass</th>
+                    <th>NVC Formation</th>
+                    <th>NVC Division</th>
+                    <th>NVC Macrogroup</th>
+                  </tr>
+                    <tr>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_class")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_subcl")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_form")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_div")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_macro")}}</td>
+                    </tr>
+                </table>
+              </div>
+          {{/if}}
           {{#if ("rare_plants_and_animals" === renderer_id && json.results.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -2212,6 +2236,7 @@
 
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
     <script src="./js/renderers/boundary_huc8.js?__inline=true"></script>
+    <script src="./js/renderers/gap_lc.js?__inline=true"></script>
     <script src="./js/renderers/nfhl.js?__inline=true"></script>
     <script src="./js/renderers/prism.js?__inline=true"></script>
     <script src="./js/renderers/prism_precip.js?__inline=true"></script>

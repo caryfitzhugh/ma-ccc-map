@@ -120,6 +120,20 @@ var LayerInfo = [
         "opacity": 70
       }
     },
+    {
+      "id": "gap_lc",
+      "folder": "Land Cover",
+      "name": "GAP Land Cover Dataset",
+      "description": "GAP Land Cover 3 National Vegetation Classification-Formation Land Use for the contiguous United States. For more information about the National Vegetation Classification Standard please visit this link: http://usnvc.org/data-standard/",
+      "source": "USGS",
+      "source_url": "https://catalog.data.gov/dataset/u-s-geological-survey-gap-analysis-program-land-cover-data-v2-2",
+      "sectors": "Agriculture,Ecosystems",
+      "download_url": null,
+      "metadata_url": "https://gis1.usgs.gov/arcgis/rest/services/gap/GAP_Land_Cover_NVC_Class_Landuse/MapServer",
+      "parameters": {
+        "opacity": 70
+      }
+    },
     /*
     {
       "id": "nlcd",

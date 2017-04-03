@@ -9,10 +9,6 @@ Renderers.nfhl = {
   create_leaflet_layers: Renderers.defaults.create.esri({
             url: CDN("http://www.hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer"),
             // No longer defaults to image, but JSON
-            layers: [
-              0,
-             16,
-              28,
-              ],
+            layers: [ 0, 16, 28 ],
             attribution: 'FEMA'})
 };
