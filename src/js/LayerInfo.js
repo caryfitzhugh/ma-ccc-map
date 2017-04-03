@@ -73,6 +73,39 @@ var LayerInfo = [
         "opacity": 100
       }
     },
+    {
+      "id": "prism_temp",
+      "folder": "Climate Data.Temperature",
+      "name": "PRISM Historical Temperatures 1980-2014",
+      "description": "Gridded 4km resolution monthly temperature data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
+      "source": "PRISM",
+      "source_url": "http:\/\/www.prism.oregonstate.edu",
+      "sectors": "All",
+      "download_url": null,
+      "metadata_url": "http:\/\/www.prism.oregonstate.edu\/recent",
+      "parameters": {
+        "opacity": 70,
+        "area" : "county",
+        "prod" : "avgt",
+        "season" : "ANN"
+      }
+    },
+    {
+      "id": "prism_precip",
+      "folder": "Climate Data.Precipitation",
+      "name": "PRISM Historical Precipitation 1980-2014",
+      "description": "Gridded 4km resolution monthly precipitation data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
+      "source": "PRISM",
+      "source_url": "http:\/\/www.prism.oregonstate.edu",
+      "sectors": "All",
+      "download_url": null,
+      "metadata_url": "http:\/\/www.prism.oregonstate.edu\/recent",
+      "parameters": {
+        "opacity": 70,
+        "area" : "county",
+        "season" : "ANN"
+      }
+    },
     /*
     {
       "id": "nlcd",
@@ -272,40 +305,7 @@ var LayerInfo = [
         "year": "2000"
       }
     },*/
-    {
-      "id": "prism_temp",
-      "folder": "Climate Data.Temperature",
-      "name": "PRISM Historical Temperatures 1980-2014",
-      "description": "Gridded 4km resolution monthly temperature data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
-      "source": "PRISM",
-      "source_url": "http:\/\/www.prism.oregonstate.edu",
-      "sectors": "All",
-      "download_url": null,
-      "metadata_url": "http:\/\/www.prism.oregonstate.edu\/recent",
-      "parameters": {
-        "opacity": 70,
-        "area" : "county",
-        "prod" : "avgt",
-        "season" : "ANN"
-      }
-    },
     /*
-    {
-      "id": "prism_precip",
-      "folder": "Climate Data.Precipitation",
-      "name": "PRISM Historical Precipitation 1980-2014",
-      "description": "Gridded 4km resolution monthly precipitation data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
-      "source": "PRISM",
-      "source_url": "http:\/\/www.prism.oregonstate.edu",
-      "sectors": "All",
-      "download_url": null,
-      "metadata_url": "http:\/\/www.prism.oregonstate.edu\/recent",
-      "parameters": {
-        "opacity": 70,
-        "area" : "county",
-        "season" : "ANN"
-      }
-    },
     {
       "id": "narccap_precip",
       "folder": "Climate Data.Precipitation",
