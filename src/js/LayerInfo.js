@@ -134,7 +134,6 @@ var LayerInfo = [
         "opacity": 70
       }
     },
-    /*
     {
       "id": "nlcd",
       "folder": "Land Cover",
@@ -149,6 +148,7 @@ var LayerInfo = [
         "opacity": 70
       }
     },
+
     /*{
       "id": "power_stations",
       "folder": "Energy",
