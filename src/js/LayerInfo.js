@@ -165,6 +165,21 @@ var LayerInfo = [
         "display_layer" : "slr" // conf
       }
     },
+    {
+      "id": "superfund",
+      "folder": "Miscellaneous",
+      "name": "Superfund Sites",
+      "description": "The Agency for Toxic Substances and Disease Registry (ATSDR) Hazardous Waste Site Polygon Data with CIESIN Modifications, Version 2 is a database providing georeferenced data for 1,572 National Priorities List (NPL) Superfund sites",
+      "source": "Center for International Earth Science Information Network (CIESIN)",
+      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/superfund-atsdr-hazardous-waste-site-ciesin-mod-v2",
+      "sectors": "",
+      "legend_url": "http:\/\/sedac.ciesin.columbia.edu\/geoserver\/wms?request=GetLegendGraphic&LAYER=superfund:superfund-atsdr-hazardous-waste-site-ciesin-mod-v2&format=image\/png",
+      "download_url": null,
+      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/superfund-atsdr-hazardous-waste-site-ciesin-mod-v2",
+      "parameters": {
+        "opacity": 70
+      }
+    },
     /*{
       "id": "power_stations",
       "folder": "Energy",
@@ -218,21 +233,6 @@ var LayerInfo = [
       "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/maps\/services#Global Agricultural Lands",
       "parameters": {
         "opacity": 70
-      }
-    },
-    {
-      "id": "soils",
-      "folder": "Ecosystems",
-      "name": "Soils & Surficial Geology",
-      "description": "The topographic moisture potential for the conterminous United States was derived to help contribute substrate moisture regimes into the ecosystems model (Cress and others, 2009c). The method used to produce these topographic moisture potential classes was based on the derivation of ground moisture potential using a combination of computed topographic characteristics (CTI, slope, and aspect) and mapped National Wetland Inventory boundaries. This method does not use climate or soil attributes to calculate relative topographic moisture potential since these characteristics are incorporated into the ecosystem model though other input layers. All of the topographic data used for this assessment was derived from the USGS 30-meter NED including the National Compound Topographic Index.",
-      "source": "USGS Geosciences and Environmental Change Science Center",
-      "source_url": "https:\/\/catalog.data.gov\/dataset\/terrestrial-ecosystems-topographic-moisture-potential-of-the-conterminous-united-states",
-      "sectors": "Agriculture,Ecosystems",
-      "download_url": null,
-      "metadata_url": "https:\/\/catalog.data.gov\/dataset\/terrestrial-ecosystems-topographic-moisture-potential-of-the-conterminous-united-states",
-      "parameters": {
-        "opacity": 70,
-        "soils_layer" : "0"
       }
     },
     {
@@ -316,21 +316,6 @@ var LayerInfo = [
         "opacity": 70,
         "species": 5,
         "scenario": 0
-      }
-    },
-    {
-      "id": "superfund",
-      "folder": "Miscellaneous",
-      "name": "Superfund Sites",
-      "description": "The Agency for Toxic Substances and Disease Registry (ATSDR) Hazardous Waste Site Polygon Data with CIESIN Modifications, Version 2 is a database providing georeferenced data for 1,572 National Priorities List (NPL) Superfund sites",
-      "source": "Center for International Earth Science Information Network (CIESIN)",
-      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/superfund-atsdr-hazardous-waste-site-ciesin-mod-v2",
-      "sectors": "",
-      "legend_url": "http:\/\/sedac.ciesin.columbia.edu\/geoserver\/wms?request=GetLegendGraphic&LAYER=superfund:superfund-atsdr-hazardous-waste-site-ciesin-mod-v2&format=image\/png",
-      "download_url": null,
-      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/superfund-atsdr-hazardous-waste-site-ciesin-mod-v2",
-      "parameters": {
-        "opacity": 70
       }
     },
     {
