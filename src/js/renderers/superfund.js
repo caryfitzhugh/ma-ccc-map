@@ -9,21 +9,14 @@ Renderers.superfund = {
     active_layer.legend_url = CDN("http://sedac.ciesin.columbia.edu/geoserver/wms?request=GetLegendGraphic&LAYER=superfund:superfund-atsdr-hazardous-waste-site-ciesin-mod-v2&format=image/png");
     active_layer.legend_url_text = "Superfund site boundary (click for info)";
   },
-  create_leaflet_layers: function (map, active_layer) {
-    if (_.isEmpty(active_layer.leaflet_layer_ids)) {
-      var layer = new L.TileLayer.WMS(CDN("http://sedac.ciesin.columbia.edu/geoserver/wms"), {
+  create_leaflet_layers: Renderers.defaults.create.wms(CDN("http://sedac.ciesin.columbia.edu/geoserver/wms"), {
+
                   layers: 'superfund:superfund-atsdr-hazardous-waste-site-ciesin-mod-v2',
                   format: 'image/png',
                   transparent: true,
                   opacity: 0,
-                  zIndex: -1
-                });
-      layer.on("tileload", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-      layer.on("tileerror", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
-      layer.addTo(map);
-      active_layer.leaflet_layer_ids = [layer._leaflet_id];
-    }
-  },
+                  zIndex: -1}),
+
   get_feature_info_url: function (active_layer) {
     return CDN("http://sedac.ciesin.columbia.edu/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+

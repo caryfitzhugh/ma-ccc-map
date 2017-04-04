@@ -180,6 +180,97 @@ var LayerInfo = [
         "opacity": 70
       }
     },
+    {
+      "id": "taccimo",
+      "folder": "Ecosystems",
+      "name": "USFS Climate Change Atlas - Tree Species",
+      "description": "Modeled importance value (IV) of 13 New York State native tree species for three climate conditions: 1) current climate (1961-1990 average); 2) future climate (2071-2100 average) with IPCC scenario B1 (significant conservation and reduction of CO2 emissions); and 3) future climate (2071-2100 average) with IPCC scenario A1FI (high emissions, no modification in current emission trends). Importance Value measures the dominance of a tree species in a forest, based on the relative frequency, density, and basal area of the species. For more information on the models and to explore more tree species and climate scenarios, visit the US Forest Service Climate Change Atlas: http://www.fs.fed.us/nrs/atlas/",
+      "source": "USDA Forest Service Northern Research Station",
+      "source_url": "http:\/\/www.fs.fed.us\/nrs\/atlas\/",
+      "sectors": "Ecosystems",
+      "legend_url": null,
+      "download_url": null,
+      "metadata_url": null,
+      "parameters": {
+        "opacity": 70,
+        "species": 5,
+        "scenario": 0
+      }
+    },
+    {
+      "id": "anthromes",
+      "folder": "Land Cover",
+      "name": "Anthropogenic Biomes",
+      "description": "The Anthropogenic Biomes of the World Version 2 data set describes anthropogenic transformations within the terrestrial biosphere caused by sustained direct human interaction with ecosystems, including agriculture and urbanization circa the year 2000. Potential natural vegetation, biomes, such as tropical rainforests or grasslands, are based on global vegetation patterns related to climate and geology. Anthropogenic transformation within each biome is approximated using population density, agricultural intensity (cropland and pasture) and urbanization. The data, as part of a time series provide global patterns of historical transformation of the terrestrial biosphere during the Industrial Revolution. This data set is distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
+      "source": "Center for International Earth Science Information Network (CIESIN)",
+      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/anthromes-anthropogenic-biomes-world-v2-2000",
+      "sectors": "Ecosystems, Agriculture, Buildings",
+      "legend_url": "http:\/\/sedac.ciesin.columbia.edu\/geoserver\/wms?request=GetLegendGraphic&LAYER=anthromes:anthromes-anthropogenic-biomes-world-v2-1700&format=image\/png",
+      "download_url": null,
+      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/anthromes-anthropogenic-biomes-world-v2-2000",
+      "parameters": {
+        "opacity": 70,
+        "year": "2000"
+      }
+    },
+    {
+      "id": "croplands",
+      "folder": "Agriculture",
+      "name": "Global Croplands,2000",
+      "description": "The Global Croplands dataset represents the proportion of land areas used as cropland (land used for the cultivation of food) in the year 2000. Satellite data from Modetate Resolution Imaging Spectroradiometer (MODIS) and Satellite Pour l'Observation de la Terre (SPOT) Image Vegetation sensor were combined with agricultural inventory data to create a global data set. The visual presentation of this data demonstrates the extent to which human land use for agriculture has changed the Earth and in which areas this change is most intense. The data was compiled by Navin Ramankutty , et. al. (2008) and distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
+      "source": "Center for International Earth Science Information Network (CIESIN)",
+      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/",
+      "sectors": "Agriculture,Ecosystems",
+      "download_url": null,
+      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/maps\/services#Global Agricultural Lands",
+      "parameters": {
+        "opacity": 70
+      }
+    },
+    {
+      "id": "fema_historic",
+      "folder": "Water Resources",
+      "name": "FEMA Historic Emergencies 1964-2014",
+      "description": "This layer summarizes FEMA historic disaster declarations from 1964 through 2014, categorized by type.",
+      "source": "FEMA",
+      "source_url": "https:\/\/catalog.data.gov\/dataset\/fema-historical-disaster-declarations-shp",
+      "sectors": "All Sectors",
+      "legend_url": CDN("http://52.2.5.122:8080/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:fema_historic&format=image/png"),
+      "download_url": "http:\/\/gis.fema.gov\/kmz\/HistoricDeclarations.zip",
+      "metadata_url": "https:\/\/www.fema.gov\/openfema-dataset-disaster-declarations-summaries-v1",
+      "parameters": {
+        "opacity": 70,
+        "fema_historic_layer" : "0"
+      }
+    },
+    {
+      "id": "pastures",
+      "folder": "Agriculture",
+      "name": "Global Pastures,2000",
+      "description": "The Global Pastures dataset represents the proportion of land areas used as pasture land (land used to support grazing animals) in the year 2000. Satellite data from Modetate Resolution Imaging Spectroradiometer (MODIS) and Satellite Pour l'Observation de la Terre (SPOT) Image Vegetation sensor were combined with agricultural inventory data to create a global data set. The visual presentation of this data demonstrates the extent to which human land use for agriculture has changed the Earth and in which areas this change is most intense. The data was compiled by Navin Ramankutty, et. al. (2008) and distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
+      "source": "Center for International Earth Science Information Network (CIESIN)",
+      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/",
+      "sectors": "Agriculture,Ecosystems",
+      "download_url": null,
+      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/maps\/services#Global Agricultural Lands",
+      "parameters": {
+        "opacity": 70
+      }
+    },
+    {
+      "id": "cfem_critical",
+      "folder": "Coastal Zones",
+      "name": "HAZUS Critical Facilities",
+      "description": "Selected facilities and structures along the Atlantic and Gulf coasts that, if flooded, would present an immediate threat to life, public health, or safety.",
+      "source": "NOAA Office For Coastal Management",
+      "source_url": "http:\/\/catalog.data.gov\/dataset\/fema-hazus-critical-facilities-for-coastal-geographies",
+      "sectors": "Public Health,Coastal Zones",
+      "download_url": null,
+      "metadata_url": "http:\/\/catalog.data.gov\/dataset\/fema-hazus-critical-facilities-for-coastal-geographies",
+      "parameters": {
+        "opacity": 90
+      }
+    },
     /*{
       "id": "power_stations",
       "folder": "Energy",
@@ -203,34 +294,6 @@ var LayerInfo = [
       "sectors": "Agriculture,Ecosystems",
       "download_url": null,
       "metadata_url": "https://gis1.usgs.gov/arcgis/rest/services/gap/GAP_Land_Cover_NVC_Class_Landuse/MapServer",
-      "parameters": {
-        "opacity": 70
-      }
-    },
-    {
-      "id": "croplands",
-      "folder": "Agriculture",
-      "name": "Global Croplands,2000",
-      "description": "The Global Croplands dataset represents the proportion of land areas used as cropland (land used for the cultivation of food) in the year 2000. Satellite data from Modetate Resolution Imaging Spectroradiometer (MODIS) and Satellite Pour l'Observation de la Terre (SPOT) Image Vegetation sensor were combined with agricultural inventory data to create a global data set. The visual presentation of this data demonstrates the extent to which human land use for agriculture has changed the Earth and in which areas this change is most intense. The data was compiled by Navin Ramankutty , et. al. (2008) and distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
-      "source": "Center for International Earth Science Information Network (CIESIN)",
-      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/",
-      "sectors": "Agriculture,Ecosystems",
-      "download_url": null,
-      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/maps\/services#Global Agricultural Lands",
-      "parameters": {
-        "opacity": 70
-      }
-    },
-    {
-      "id": "pastures",
-      "folder": "Agriculture",
-      "name": "Global Pastures,2000",
-      "description": "The Global Pastures dataset represents the proportion of land areas used as pasture land (land used to support grazing animals) in the year 2000. Satellite data from Modetate Resolution Imaging Spectroradiometer (MODIS) and Satellite Pour l'Observation de la Terre (SPOT) Image Vegetation sensor were combined with agricultural inventory data to create a global data set. The visual presentation of this data demonstrates the extent to which human land use for agriculture has changed the Earth and in which areas this change is most intense. The data was compiled by Navin Ramankutty, et. al. (2008) and distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
-      "source": "Center for International Earth Science Information Network (CIESIN)",
-      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/",
-      "sectors": "Agriculture,Ecosystems",
-      "download_url": null,
-      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/maps\/services#Global Agricultural Lands",
       "parameters": {
         "opacity": 70
       }
@@ -301,39 +364,6 @@ var LayerInfo = [
         "year": "1000"
       }
     },
-    {
-      "id": "taccimo",
-      "folder": "Ecosystems",
-      "name": "USFS Climate Change Atlas - Tree Species",
-      "description": "Modeled importance value (IV) of 13 New York State native tree species for three climate conditions: 1) current climate (1961-1990 average); 2) future climate (2071-2100 average) with IPCC scenario B1 (significant conservation and reduction of CO2 emissions); and 3) future climate (2071-2100 average) with IPCC scenario A1FI (high emissions, no modification in current emission trends). Importance Value measures the dominance of a tree species in a forest, based on the relative frequency, density, and basal area of the species. For more information on the models and to explore more tree species and climate scenarios, visit the US Forest Service Climate Change Atlas: http://www.fs.fed.us/nrs/atlas/",
-      "source": "USDA Forest Service Northern Research Station",
-      "source_url": "http:\/\/www.fs.fed.us\/nrs\/atlas\/",
-      "sectors": "Ecosystems",
-      "legend_url": null,
-      "download_url": null,
-      "metadata_url": null,
-      "parameters": {
-        "opacity": 70,
-        "species": 5,
-        "scenario": 0
-      }
-    },
-    {
-      "id": "anthromes",
-      "folder": "Land Cover",
-      "name": "Anthropogenic Biomes",
-      "description": "The Anthropogenic Biomes of the World Version 2 data set describes anthropogenic transformations within the terrestrial biosphere caused by sustained direct human interaction with ecosystems, including agriculture and urbanization circa the year 2000. Potential natural vegetation, biomes, such as tropical rainforests or grasslands, are based on global vegetation patterns related to climate and geology. Anthropogenic transformation within each biome is approximated using population density, agricultural intensity (cropland and pasture) and urbanization. The data, as part of a time series provide global patterns of historical transformation of the terrestrial biosphere during the Industrial Revolution. This data set is distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
-      "source": "Center for International Earth Science Information Network (CIESIN)",
-      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/anthromes-anthropogenic-biomes-world-v2-2000",
-      "sectors": "Ecosystems, Agriculture, Buildings",
-      "legend_url": "http:\/\/sedac.ciesin.columbia.edu\/geoserver\/wms?request=GetLegendGraphic&LAYER=anthromes:anthromes-anthropogenic-biomes-world-v2-1700&format=image\/png",
-      "download_url": null,
-      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/anthromes-anthropogenic-biomes-world-v2-2000",
-      "parameters": {
-        "opacity": 70,
-        "year": "2000"
-      }
-    },*/
     /*
     {
       "id": "narccap_precip",
@@ -610,20 +640,6 @@ var LayerInfo = [
       }
     },
     {
-      "id": "cfem_critical",
-      "folder": "Coastal Zones",
-      "name": "HAZUS Critical Facilities",
-      "description": "Selected facilities and structures along the Atlantic and Gulf coasts that, if flooded, would present an immediate threat to life, public health, or safety.",
-      "source": "NOAA Office For Coastal Management",
-      "source_url": "http:\/\/catalog.data.gov\/dataset\/fema-hazus-critical-facilities-for-coastal-geographies",
-      "sectors": "Public Health,Coastal Zones",
-      "download_url": null,
-      "metadata_url": "http:\/\/catalog.data.gov\/dataset\/fema-hazus-critical-facilities-for-coastal-geographies",
-      "parameters": {
-        "opacity": 90
-      }
-    },
-    {
       "id": "spdes",
       "folder": "Water Resources",
       "name": "Waste Treatment Plants",
@@ -711,22 +727,6 @@ var LayerInfo = [
       "metadata_url": "http:\/\/www.dec.ny.gov\/public\/899.html",
       "parameters": {
         "opacity": 70
-      }
-    },
-    {
-      "id": "fema_historic",
-      "folder": "Water Resources",
-      "name": "FEMA Historic Emergencies 1964-2014",
-      "description": "This layer summarizes FEMA historic disaster declarations from 1964 through 2014, categorized by type.",
-      "source": "FEMA",
-      "source_url": "https:\/\/catalog.data.gov\/dataset\/fema-historical-disaster-declarations-shp",
-      "sectors": "All Sectors",
-      "legend_url": CDN("http://52.2.5.122:8080/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:fema_historic&format=image/png"),
-      "download_url": "http:\/\/gis.fema.gov\/kmz\/HistoricDeclarations.zip",
-      "metadata_url": "https:\/\/www.fema.gov\/openfema-dataset-disaster-declarations-summaries-v1",
-      "parameters": {
-        "opacity": 70,
-        "fema_historic_layer" : "0"
       }
     },
     {
