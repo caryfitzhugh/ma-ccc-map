@@ -270,6 +270,20 @@ var LayerInfo = [
       "parameters": {
         "opacity": 70
       }
+    },
+    {
+      "id": "vt_invasives",
+      "folder": "Ecosystems",
+      "name": "Invasives",
+      "description": "The Invasive Species layer is created from the ANR Invasive Species database.",
+      "source": "Vermont Open Geodata Portal",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::invasive-species-1",
+      "sectors": "Ecosystems",
+      "download_url": "https:\/\/opendata.arcgis.com\/datasets/b1ae7b7b110447c3b452d9cacffeed36_174.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "metadata_url": "https:\/\/www.arcgis.com\/sharing\/rest\/content\/items\/b1ae7b7b110447c3b452d9cacffeed36\/info\/metadata\/metadata.xml?format=default&output=html",
+      "parameters": {
+        "opacity": 70
+      }
     }
     /*{
       "id": "cfem_critical",

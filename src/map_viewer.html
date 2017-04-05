@@ -542,6 +542,26 @@
                 </table>
               </div>
           {{/if}}
+          {{#if ("vt_invasives" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Species</th>
+                    <th>Site Name</th>
+                    <th>Observation Date</th>
+                  </tr>
+                    <tr>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("InvasiveName")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("SiteName")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("ObservationDate")}}</td>
+                    </tr>
+                </table>
+              </div>
+          {{/if}}
           {{#if ("vt_town_bridges" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -2222,6 +2242,7 @@
     <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/superfund.js?__inline=true"></script>
     <script src="./js/renderers/vt_mask.js?__inline=true"></script>
+    <script src="./js/renderers/vt_invasives.js?__inline=true"></script>
     <script src="./js/renderers/vt_town_bridges.js?__inline=true"></script>
 
     <script src="./js/geometry_loader.js?__inline=true"></script>
