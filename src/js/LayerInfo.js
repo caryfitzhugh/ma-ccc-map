@@ -312,6 +312,20 @@ var LayerInfo = [
       "parameters": {
         "opacity": 70
       }
+    },
+    {
+      "id": "hospitals",
+      "folder": "Public Health",
+      "name": "Hopsitals",
+      "description": "This data layer contains point locations of all major community, regional, comprehensive health, and healthcare provider hospitals in the state of Vermont. The listing of current hospitals was obtained from the 1998/1999 & 2000/2001 Vermont Manufacturers' Directory, published annually by the Vermont Business Magazine. Included within the attributes of the database are Annual Sales Ranges, Employment numbers, and hospital contact information. This data layer does not include Psychiatric or Specialty hospitals. Many of the point locations of hospital sites were obtained from EmergencyE911_ESITE data layers and verified with checking USGS topographic quadrangle maps, while other point locations were captured from orthophotos or USGS topographic quadrangle maps directly.",
+      "source": "Vermont Open Geodata Portal",
+      "source_url": "http://geodata.vermont.gov/datasets/vt-hospital-site-locations",
+      "sectors": "Ecosystems",
+      "download_url": "https://opendata.arcgis.com/datasets/128c419772234581ac4209e4e429f882_5.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "metadata_url": "http://maps.vcgi.vermont.gov/gisdata/metadata/FacilitiesHospitals_HOSPITAL.htm",
+      "parameters": {
+        "opacity": 70
+      }
     }
     /*{
       "id": "cfem_critical",
