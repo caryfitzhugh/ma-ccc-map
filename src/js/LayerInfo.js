@@ -148,7 +148,7 @@ var LayerInfo = [
         "opacity": 70
       }
     },
-    {
+/*    {
       "id": "noaa_slr",
       "folder": "Coastal Zones",
       "name": "Sea Level Rise (NOAA)",
@@ -164,7 +164,7 @@ var LayerInfo = [
         "sea_level_height": 0,
         "display_layer" : "slr" // conf
       }
-    },
+    },*/
     {
       "id": "superfund",
       "folder": "Miscellaneous",
@@ -261,12 +261,12 @@ var LayerInfo = [
       "id": "vt_town_bridges",
       "folder": "Transportation",
       "name": "Town Bridges",
-      "description": "The Global Pastures dataset represents the proportion of land areas used as pasture land (land used to support grazing animals) in the year 2000. Satellite data from Modetate Resolution Imaging Spectroradiometer (MODIS) and Satellite Pour l'Observation de la Terre (SPOT) Image Vegetation sensor were combined with agricultural inventory data to create a global data set. The visual presentation of this data demonstrates the extent to which human land use for agriculture has changed the Earth and in which areas this change is most intense. The data was compiled by Navin Ramankutty, et. al. (2008) and distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
-      "source": "Center for International Earth Science Information Network (CIESIN)",
-      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/",
-      "sectors": "Agriculture,Ecosystems",
-      "download_url": null,
-      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/maps\/services#Global Agricultural Lands",
+      "description": "BCVOBCIT is a statewide set of transportation structures, which includes town owned (maintained) bridges and culverts inventoried by Regional Planning Commissions, towns, and/or consultants. The BCVOBCIT dataset is limited to structures (bridges and culverts) maintained by municipalities, typically Town Shorts (TS) and Town Ultra-Shorts (TU).",
+      "source": "Vermont Open Geodata Portal",
+      "source_url": "http:\/\/geodata.vermont.gov\/datasets\/vt-town-bridges-vobcit-extract",
+      "sectors": "Transportation",
+      "download_url": "https:\/\/opendata.arcgis.com\/datasets\/872f86b1f43a4077af2749a14e6b41f7_5.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "metadata_url": "http:\/\/maps.vcgi.vermont.gov\/gisdata\/metadata\/TransStructures_BCVOBCIT.htm",
       "parameters": {
         "opacity": 70
       }
