@@ -3,7 +3,7 @@ RendererTemplates.wms("vt_invasives",{
 
   url: CDN("http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?"),
 
-  wms_options: {
+  wms_opts: {
       layers: 12,
       format: 'image/png',
       opacity: 0,

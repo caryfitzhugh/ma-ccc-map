@@ -1,4 +1,4 @@
-RendererTemplates.wms = function (layer_id, opts) {
+RendererTemplates.esri = function (layer_id, opts) {
   var renderer = {
     pickle: function (al) {
       delete al.legend_url;
@@ -9,9 +9,15 @@ RendererTemplates.wms = function (layer_id, opts) {
 
     render: function (map, active_layer, z_index) {
       if (_.isEmpty(active_layer.leaflet_layer_ids)) {
-        var layer = new L.TileLayer.WMS(opts.url, opts.wms_opts);
-        layer.on("tileload", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-        layer.on("tileerror", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
+        esri_opts = _.merge({}, {
+              layers: [0],
+              f:"image",
+              clickable: false
+        }, opts.esri_opts);
+
+        var layer = new L.esri.dynamicMapLayer(esri_opts);
+        layer.on("nyccsc-loaded", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
+        layer.on("nyccsc-error", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
         layer.addTo(map);
         active_layer.leaflet_layer_ids = [layer._leaflet_id];
       }
@@ -26,7 +32,6 @@ RendererTemplates.wms = function (layer_id, opts) {
         layer.setOpacity(opacity);
         layer.setZIndex(z_index);
       });
-
     },
     get_feature_info_xml_url: opts.get_feature_info_xml_url,
     get_feature_info_url: opts.get_feature_info_url,

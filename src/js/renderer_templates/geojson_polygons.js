@@ -1,4 +1,4 @@
-RendererTemplates.geojson_points = function (layer_id, opts) {
+RendererTemplates.geojson_polygons = function (layer_id, opts) {
   var renderer = {
     pickle: function (al) {
       delete al.legend_url;
@@ -6,7 +6,6 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
     },
 
     update_legend: Renderers.update_legend(opts),
-
     create_leaflet_layers: function (map, active_layer) {
       if (_.isEmpty(active_layer.leaflet_layer_ids)) {
         active_layer.leaflet_layer_ids = ['loading-so-we-avoid-race-conditions'];
@@ -44,8 +43,9 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
     var layers = Renderers.lookup_layers(map, leaflet_ids);
 
     _.each(layers, function (layer) {
-      _.each(layer._layers, function (point) {
-        point.setOpacity(opacity);
+      _.each(layer._layers, function (polygon) {
+        polygon.setStyle({"fillOpacity": opacity, "opacity": opacity});
+        if (opts.each_polygon) { opts.each_polygon(polygon); }
       });
     });
   }

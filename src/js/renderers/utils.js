@@ -2,76 +2,22 @@
 var RendererTemplates = { }
 
 var Renderers = {
-  defaults: {
-    create:  {
-      esri: function (opts) {
-        return function (map, active_layer) {
-          if (_.isEmpty(active_layer.leaflet_layer_ids)) {
-            opts = _.merge({}, {
-                  layers: [0],
-                  f:"image",
-                  clickable: false
-            }, opts);
-
-            var layer = new L.esri.dynamicMapLayer(opts);
-            layer.on("nyccsc-loaded", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-            layer.on("nyccsc-error", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
-            layer.addTo(map);
-            active_layer.leaflet_layer_ids = [layer._leaflet_id];
-          }
-        };
-      },
-      wms: function (url, opts) {
-        return function (map, active_layer) {
-          if (_.isEmpty(active_layer.leaflet_layer_ids)) {
-            var layer = new L.TileLayer.WMS(url, opts);
-            layer.on("tileload", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-            layer.on("tileerror", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
-            layer.addTo(map);
-            active_layer.leaflet_layer_ids = [layer._leaflet_id];
-          }
-        };
-      },
-      geojson_polygons: function (url) {
-        return function (map, active_layer) {
-          if (_.isEmpty(active_layer.leaflet_layer_ids)) {
-            Renderers.add_raw_geojson(map, active_layer, url);
-          }
-        }
+  update_legend: function(opts) {
+    return  function (active_layer) {
+      if (typeof opts.update_legend === "string") {
+        active_layer.legend_url = opts.update_legend;
+      } else  if (!opts.update_legend) {
+        // Leave empty
+        active_layer.legend_url = null;
+      } else  if (typeof opts.update_legend === "object") {
+        active_layer.legend_url = opts.update_legend.url;
+        active_layer.legend_url_text = opts.update_legend.text;
+      } else if (opts.update_legend) {
+        opts.update_legend(active_layer);
+      } else {
+        active_layer.legend_url = null;
       }
-    },
-    render: {
-      geojson_polygons: function(layer_id, options) {
-        options = options || {};
-        return function (map, active_layer, z_index) {
-            // Make sure the right layers are created!
-            Renderers[layer_id].create_leaflet_layers(map, active_layer);
-            Renderers[layer_id].update_legend_url(active_layer);
-
-            var opacity = (active_layer.is_hidden ? 0 : active_layer.parameters.opacity) / 100.0;
-            var leaflet_ids = active_layer.leaflet_layer_ids;
-            var layers = Renderers.lookup_layers(map, leaflet_ids);
-            _.each(layers, function (layer) {
-                _.each(layer._layers, function (polygon) {
-                    polygon.setStyle({"fillOpacity": opacity, "opacity": opacity});
-                    if (options.each_polygon) { options.each_polygon(polygon); }
-                });
-              });
-        };
-      },
-    },
-    legend_url: {
-      constant: function (url) {
-        return function (active_layer) {
-          active_layer.legend_url = url;
-        };
-      },
-      empty: function() {
-        return function (active_layer) {
-          active_layer.legend_url = null;
-        }
-      }
-    }
+    };
   },
   add_to_map: function (map, active_layer, addable) {
     addable.addTo(map);

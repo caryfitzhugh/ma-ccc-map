@@ -1,21 +1,16 @@
 /*global L, Renderers, GEOSERVER */
-Renderers.boundary_counties = {
-  pickle: function (al) {
-    delete al.legend_url;
-    al.leaflet_layer_ids = [];
-  },
-  update_legend_url:
-     Renderers.defaults.legend_url.constant(CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:county_boundary&format=image/png")),
+RendererTemplates.wms("boundary_counties", {
 
-  create_leaflet_layers: Renderers.defaults.create.wms(
-        CDN (GEOSERVER + "/vt/wms/"),
-        {
+  update_legend: CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:county_boundary&format=image/png"),
+
+  url: CDN (GEOSERVER + "/vt/wms/"),
+  wms_opts: {
           layers: 'vt:county_boundary',
           format: 'image/png',
           transparent: true,
           opacity: 1,
           zIndex: 100
-        }),
+        },
 
   get_feature_info_url: function (active_layer) {
     return CDN(GEOSERVER + "/vt/wms" +
@@ -33,4 +28,4 @@ Renderers.boundary_counties = {
               "SRS=EPSG%3A4326&"+
               "X=<%= x %>&Y=<%= y %>");
   }
-};
+});

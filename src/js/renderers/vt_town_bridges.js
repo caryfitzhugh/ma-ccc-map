@@ -1,20 +1,13 @@
+RendererTemplates.wms("vt_town_bridges", {
+  update_legend: CDN("http://maps.vcgi.vermont.gov/arcgis/services/EGC_services/OPENDATA_VCGI_TRANSPORTATION_SP_NOCACHE_v1/MapServer/WMSServer?TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&EXCEPTIONS=application%2Fvnd.ogc.se_xml&LAYER=2&FORMAT=image/png"),
 
-Renderers.vt_town_bridges = {
-  pickle: function (al) {
-    delete al.legend_url;
-    al.leaflet_layer_ids = [];
-  },
-  update_legend_url: Renderers.defaults.legend_url.constant(
-    CDN("http://maps.vcgi.vermont.gov/arcgis/services/EGC_services/OPENDATA_VCGI_TRANSPORTATION_SP_NOCACHE_v1/MapServer/WMSServer?TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&EXCEPTIONS=application%2Fvnd.ogc.se_xml&LAYER=2&FORMAT=image/png")),
-
-  create_leaflet_layers: Renderers.defaults.create.wms(
-    CDN("http://maps.vcgi.vermont.gov/arcgis/services/EGC_services/OPENDATA_VCGI_TRANSPORTATION_SP_NOCACHE_v1/MapServer/WMSServer?"),
-    {
+  url:  CDN("http://maps.vcgi.vermont.gov/arcgis/services/EGC_services/OPENDATA_VCGI_TRANSPORTATION_SP_NOCACHE_v1/MapServer/WMSServer?"),
+  wms_opts:  {
       layers: 2,
       format: 'image/png',
       opacity: 0,
       zIndex: -1,
-      transparent: true }),
+      transparent: true },
 
   get_feature_info_xml_url: function (active_layer) {
     return CDN("http://maps.vcgi.vermont.gov/arcgis/services/EGC_services/OPENDATA_VCGI_TRANSPORTATION_SP_NOCACHE_v1/MapServer/WMSServer?") +
@@ -34,4 +27,4 @@ Renderers.vt_town_bridges = {
           "SRS=EPSG%3A4326&"+
           "X=<%= x %>&Y=<%= y %>";
   }
-};
+});

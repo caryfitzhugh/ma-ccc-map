@@ -1,17 +1,13 @@
-Renderers.pastures = {
-  pickle: function (al) {
-    delete al.legend_url;
-    delete al.legend_url_text;
-    al.leaflet_layer_ids = [];
+RendererTemplates.wms("pastures", {
+  update_legend: {
+    url: CDN("http://sedac.ciesin.columbia.edu/geoserver/wms?request=GetLegendGraphic&LAYER=aglands:aglands-pastures-2000&format=image/png"),
+    text: "% cell area in pasture",
   },
-  update_legend_url: function (active_layer) {
-    active_layer.legend_url = CDN("http://sedac.ciesin.columbia.edu/geoserver/wms?request=GetLegendGraphic&LAYER=aglands:aglands-pastures-2000&format=image/png");
-    active_layer.legend_url_text = "% cell area in pasture";
-  },
-  create_leaflet_layers: Renderers.defaults.create.wms(CDN("http://sedac.ciesin.columbia.edu/geoserver/wms"), {
-                      layers: 'aglands:aglands-pastures-2000',
-                      format: 'image/png',
-                      opacity: 0,
-                      zIndex: -1,
-                      transparent: true }),
-};
+  url: CDN("http://sedac.ciesin.columbia.edu/geoserver/wms"),
+  wms_opts: {
+    layers: 'aglands:aglands-pastures-2000',
+    format: 'image/png',
+    opacity: 0,
+    zIndex: -1,
+    transparent: true },
+});

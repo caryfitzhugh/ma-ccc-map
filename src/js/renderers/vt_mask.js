@@ -1,17 +1,9 @@
-Renderers.vt_mask = {
-  pickle: function (al) {
-    al.leaflet_layer_ids = [];
-  },
+RendererTemplates.geojson_polygons('vt_mask' ,{
+  update_legend: null,
 
-  update_legend_url: Renderers.defaults.legend_url.empty(),
+  url: CDN(GEOSERVER + "/vt/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=vt:state_mask&maxFeatures=50&outputFormat=application%2Fjson"),
 
-  create_leaflet_layers: Renderers.defaults.create.geojson_polygons(
-        CDN(GEOSERVER + "/vt/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=vt:state_mask&maxFeatures=50&outputFormat=application%2Fjson")),
-
-  render: Renderers.defaults.render.geojson_polygons("vt_mask",
-    {each_polygon: // This is a special
-         function (polygon) {
-            polygon.setStyle({"color": "#000"});
-          }
-      })
-};
+  each_polygon: function (polygon) {
+        polygon.setStyle({"color": "#000"});
+      }
+});
