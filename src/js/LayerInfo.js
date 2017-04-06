@@ -52,10 +52,10 @@ var LayerInfo = [
       "id": "boundary_huc8",
       "folder": "Boundaries",
       "name": "Major Watersheds",
-      "description": "Sub-basin (8-digit HUC) boundaries derived from the National Hydrography Dataset (NHD).",
-      "source": "USGS",
-      "source_url": "http:\/\/nhd.usgs.gov/",
-      "metadata_url": "ftp:\/\/nhdftp.usgs.gov\/DataSets\/Staged\/States/FileGDB\/MediumResolution\/",
+      "description": "The Watershed Boundary Dataset (WBD) defines the areal extent of surface water drainage to a point, accounting for all land and surface areas. Watershed Boundaries are determined solely upon science-based hydrologic principles, not favoring any administrative boundaries or special projects, nor particular program or agency. The intent of defining Hydrologic Units (HU) for the Watershed Boundary Dataset is to establish a baseline drainage boundary framework, accounting for all land and surface areas. At a minimum, the WBD is being delineated and georeferenced to the USGS 1:24,000 scale topographic base map meeting National Map Accuracy Standards (NMAS). Hydrologic units are given a Hydrologic Unit Code (HUC).",
+      "source": "USDA",
+      "source_url": "https://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState",
+      "metadata_url": "https://gdg.sc.egov.usda.gov/Catalog/ProductDescription/WBD.html",
       "parameters": {
         "opacity": 100
       }
@@ -103,6 +103,43 @@ var LayerInfo = [
       "parameters": {
         "opacity": 70,
         "area" : "county",
+        "season" : "ANN"
+      }
+    },
+    {
+      "id": "narccap_precip",
+      "folder": "Climate Data.Precipitation",
+      "name": "NARCCAP Precipitation Projections",
+      "description": "NARCCAP projected changes in average precipitation summarized by year and NYS county, from 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "source": "ACIS",
+      "source_url": "http:\/www.rcc-acis.org",
+      "sectors": "",
+      "download_url": null,
+      "metadata_url": "http:\/\/www.narccap.ucar.edu",
+      "parameters": {
+        "opacity": 70,
+        "area" : "county",
+        "date_step": 10,
+        "date" : 2039,
+        "season" : "ANN"
+      }
+    },
+    {
+      "id": "narccap_temp",
+      "folder": "Climate Data.Temperature",
+      "name": "NARCCAP Temperature Projections",
+      "description": "NARCCAP projected changes in average minimum, maximum, and average temperature summarized by year and county, for the years 2039 to 2069.Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html ",
+      "source": "ACIS",
+      "source_url": "http:\/www.rcc-acis.org",
+      "sectors": "",
+      "download_url": null,
+      "metadata_url": "http:\/\/www.narccap.ucar.edu",
+      "parameters": {
+        "opacity": 70,
+        "area" : "county",
+        "date" : 2039,
+        "date_step": 10,
+        "prod" : "avgt",
         "season" : "ANN"
       }
     },
@@ -435,43 +472,7 @@ var LayerInfo = [
       }
     },
     /*
-    {
-      "id": "narccap_precip",
-      "folder": "Climate Data.Precipitation",
-      "name": "NARCCAP Precipitation Projections",
-      "description": "NARCCAP projected changes in average precipitation summarized by year and NYS county, from 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
-      "source": "ACIS",
-      "source_url": "http:\/www.rcc-acis.org",
-      "sectors": "",
-      "download_url": null,
-      "metadata_url": "http:\/\/www.narccap.ucar.edu",
-      "parameters": {
-        "opacity": 70,
-        "area" : "county",
-        "date_step": 10,
-        "date" : 2039,
-        "season" : "ANN"
-      }
-    },
-    {
-      "id": "narccap_temp",
-      "folder": "Climate Data.Temperature",
-      "name": "NARCCAP Temperature Projections",
-      "description": "NARCCAP projected changes in average minimum, maximum, and average temperature summarized by year and county, for the years 2039 to 2069.Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html ",
-      "source": "ACIS",
-      "source_url": "http:\/www.rcc-acis.org",
-      "sectors": "",
-      "download_url": null,
-      "metadata_url": "http:\/\/www.narccap.ucar.edu",
-      "parameters": {
-        "opacity": 70,
-        "area" : "county",
-        "date" : 2039,
-        "date_step": 10,
-        "prod" : "avgt",
-        "season" : "ANN"
-      }
-    },
+    
     {
       "id": "climaid_temp",
       "folder": "Climate Data.Temperature",
