@@ -1,4 +1,6 @@
 /*global _ , L, Views */
+var RendererTemplates = { }
+
 var Renderers = {
   defaults: {
     create:  {
@@ -30,7 +32,7 @@ var Renderers = {
           }
         };
       },
-      geojson: function (url) {
+      geojson_polygons: function (url) {
         return function (map, active_layer) {
           if (_.isEmpty(active_layer.leaflet_layer_ids)) {
             Renderers.add_raw_geojson(map, active_layer, url);
@@ -39,7 +41,7 @@ var Renderers = {
       }
     },
     render: {
-      geojson: function(layer_id, options) {
+      geojson_polygons: function(layer_id, options) {
         options = options || {};
         return function (map, active_layer, z_index) {
             // Make sure the right layers are created!
@@ -153,5 +155,10 @@ var Renderers = {
   // This is used by map layer dialogs to "Zoom to " something
   zoom_to: function (center, zoom) {
     Views.ControlPanel.fire("map-set-view", center, zoom);
-  }
+  },
+  utils: {
+    zoom_to_location_link: function (geometry) {
+      return "<a href='#' onclick='Renderers.zoom_to([" + geometry.coordinates[1] + "," + geometry.coordinates[0] + "], 15);'>Zoom to feature</a>";
+    }
+  },
 };

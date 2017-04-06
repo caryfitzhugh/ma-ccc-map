@@ -562,26 +562,6 @@
                 </table>
               </div>
           {{/if}}
-          {{#if ("vt_invasives" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Species</th>
-                    <th>Site Name</th>
-                    <th>Observation Date</th>
-                  </tr>
-                    <tr>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("InvasiveName")}}</td>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("SiteName")}}</td>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("ObservationDate")}}</td>
-                    </tr>
-                </table>
-              </div>
-          {{/if}}
           {{#if ("flood_hazard_areas" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -2267,27 +2247,29 @@
     <script src="./js/base_layers.js?__inline=true"></script>
 
     <script src="./js/renderers/utils.js?__inline=true"></script>
+    <script src="./js/renderer_templates/geojson_points.js?__inline=true"></script>
+    <script src="./js/renderer_templates/wms.js?__inline=true"></script>
 
     <script src="./js/renderers/anthromes.js?__inline=true"></script>
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
     <script src="./js/renderers/boundary_huc8.js?__inline=true"></script>
     <script src="./js/renderers/croplands.js?__inline=true"></script>
+    <script src="./js/renderers/dfirm_floodways.js?__inline=true"></script>
     <script src="./js/renderers/fema_historic.js?__inline=true"></script>
+    <script src="./js/renderers/flood_hazard_areas.js?__inline=true"></script>
     <script src="./js/renderers/gap_lc.js?__inline=true"></script>
+    <script src="./js/renderers/hospitals.js?__inline=true"></script>
     <script src="./js/renderers/nfhl.js?__inline=true"></script>
     <script src="./js/renderers/nlcd.js?__inline=true"></script>
     <script src="./js/renderers/pastures.js?__inline=true"></script>
     <script src="./js/renderers/prism.js?__inline=true"></script>
     <script src="./js/renderers/prism_precip.js?__inline=true"></script>
     <script src="./js/renderers/prism_temp.js?__inline=true"></script>
-    <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/superfund.js?__inline=true"></script>
-    <script src="./js/renderers/vt_mask.js?__inline=true"></script>
+    <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/vt_invasives.js?__inline=true"></script>
+    <script src="./js/renderers/vt_mask.js?__inline=true"></script>
     <script src="./js/renderers/vt_town_bridges.js?__inline=true"></script>
-    <script src="./js/renderers/flood_hazard_areas.js?__inline=true"></script>
-    <script src="./js/renderers/dfirm_floodways.js?__inline=true"></script>
-    <script src="./js/renderers/hospitals.js?__inline=true"></script>
 
     <script src="./js/geometry_loader.js?__inline=true"></script>
 
