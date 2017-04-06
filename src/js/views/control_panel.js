@@ -359,12 +359,14 @@ Views.ControlPanel.on({
     Controllers.Layers.deactivate_all(Views.ControlPanel);
   },
   "zoom-to-search-result": function (evt) {
+    console.log(evt)
     var map = Views.ControlPanel.get('map');
-    var bbox = evt.context.properties.bbox.split(",")
+    /*var bbox = evt.context.properties.bbox.split(",")
     if (bbox) {
       map.fitBounds(new L.LatLngBounds(new L.LatLng(bbox[1], bbox[0]),
                                        new L.LatLng(bbox[3], bbox[2])));
-    }
+    }*/
+    map.setView([evt.context.lat,evt.context.lng],16);
   },
   "print-map": function (evt) {
     var cp = Views.ControlPanel;
