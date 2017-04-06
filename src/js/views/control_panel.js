@@ -359,7 +359,6 @@ Views.ControlPanel.on({
     Controllers.Layers.deactivate_all(Views.ControlPanel);
   },
   "zoom-to-search-result": function (evt) {
-    console.log(evt)
     var map = Views.ControlPanel.get('map');
     /*var bbox = evt.context.properties.bbox.split(",")
     if (bbox) {
