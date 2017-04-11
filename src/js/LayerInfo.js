@@ -33,6 +33,22 @@ var CDN = function (url_str) {
 
 var LayerInfo = [
     {
+      "id": "vt_boundary",
+      "sort_key": 0,
+      "folder": "Boundaries",
+      "name": "VT State Boundary",
+      "description": "This layer shows the Vermont State Boundary.  Derived from TIGER 2013 Simplified County Boundaries, designed for 1:500k or smaller.  The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database.  ",
+      "source": "US Census Bureau",
+      "source_url": "https://www.census.gov/en.html",
+      "sectors": "",
+      "parameters": {
+        "opacity": 15,
+        "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
+        "color": "#000",
+        "no_sorting": true
+      }
+    },
+    {
       "id": "vt_mask",
       "sort_key": 0,
       "folder": "Boundaries",
@@ -42,7 +58,7 @@ var LayerInfo = [
       "source_url": "https://www.census.gov/en.html",
       "sectors": "",
       "parameters": {
-        "opacity": 80,
+        "opacity": 10,
         "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
         "color": "#000",
         "no_sorting": true

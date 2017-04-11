@@ -45,7 +45,8 @@ RendererTemplates.geojson_polygons = function (layer_id, opts) {
     _.each(layers, function (layer) {
       _.each(layer._layers, function (polygon) {
         polygon.setStyle({"fillOpacity": opacity, "opacity": opacity});
-        if (opts.each_polygon) { opts.each_polygon(polygon); }
+        if (opts.each_polygon) { console.log(opts.each_polygon)
+          opts.each_polygon(polygon); }
       });
     });
   }
