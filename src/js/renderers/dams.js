@@ -10,15 +10,16 @@ RendererTemplates.geojson_points("dams", {
     return L.marker(latlng, {
         icon: L.icon({
             iconUrl: icon_url,
-            iconSize: [24, 28],
-            iconAnchor: [12, 28],
-            popupAnchor: [0, -25]
+            iconSize: [18, 21],
+            iconAnchor: [9, 21],
+            popupAnchor: [0, -19]
         }),
         title: feature.properties.DamName
     });
   },
   popupContents: function (feature) {
     return "<strong>Name: " + feature.properties.DamName + "</strong></br>" +
+           "Status:" + feature.properties.DamStatus + "<br/>"+
            "Hazard Class:" + feature.properties.DamHazClass + "<br/>"+
           "</br>"+
            Renderers.utils.zoom_to_location_link( feature.geometry );
