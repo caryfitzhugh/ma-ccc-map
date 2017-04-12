@@ -760,7 +760,7 @@
                 {{/json.features}}
               </div>
           {{/if}}
-          {{#if ("subway_lines" === renderer_id && json.features.length > 0)}}
+          {{#if ("culverts" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
                 <label> {{name}} </label>
@@ -768,15 +768,17 @@
               <div class='col-xs-10'>
                 <table class="table">
                   <tr>
-                    <th>Division</th>
-                    <th>Line</th>
-                    <th>Route ID</th>
+                    <th>Culvert Type</th>
+                    <th>Last Inspection</th>
+                    <th>Height</th>
+                    <th>Length</th>
                   </tr>
                   {{#json.features}}
                     <tr>
-                      <td>{{properties.division}}</td>
-                      <td>{{properties.line}}</td>
-                      <td>{{properties.route_id}}</td>
+                      <td>{{properties.type}}</td>
+                      <td>{{properties.inv_dt}}</td>
+                      <td>{{properties.height}}</td>
+                      <td>{{properties.length}}</td>
                     </tr>
                   {{/json.features}}
                 </table>
@@ -1606,7 +1608,7 @@
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose the layer to view'> Data Product: </label>
         <select value='{{parameters.display_layer}}'>
-          <option value='10'> Surface WaterSPA </option>
+          <option value='10'> Surface Water SPA </option>
           <option value='13'> Ground Water SPA </option>
           <option value='34'> Private Wells </option>
           <option value='33'> Public Water Sources </option>
@@ -2277,6 +2279,7 @@
     <script src="./js/renderers/anthromes.js?__inline=true"></script>
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
     <script src="./js/renderers/boundary_huc8.js?__inline=true"></script>
+    <script src="./js/renderers/culverts.js?__inline=true"></script>
     <script src="./js/renderers/croplands.js?__inline=true"></script>
     <script src="./js/renderers/dfirm_floodways.js?__inline=true"></script>
     <script src="./js/renderers/fema_historic.js?__inline=true"></script>

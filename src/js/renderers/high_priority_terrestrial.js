@@ -32,6 +32,7 @@ Renderers.high_priority_terrestrial = {
     if (!active_leaflet_layer) {
         var new_layer =  new L.TileLayer.WMS(CDN("http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?"), {
                 layers: display_layer,
+                minZoom: 7,
                 format: 'image/png',
                 opacity: 0,
                 zIndex: -1,

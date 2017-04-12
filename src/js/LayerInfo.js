@@ -85,6 +85,19 @@ var LayerInfo = [
       }
     },
     {
+      "id": "culverts",
+      "folder": "Infrastructure",
+      "name": "Culverts",
+      "description": "",
+      "source": "US Census Bureau",
+      "source_url": "https://www.census.gov/en.html",
+      "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html",
+      "download_url": "http://www2.census.gov/geo/tiger/GENZ2013/cb_2013_us_county_500k.zip",
+      "parameters": {
+        "opacity": 100
+      }
+    },
+    {
       "id": "prism_temp",
       "folder": "Climate Data.Temperature",
       "name": "PRISM Historical Temperatures 1980-2014",
@@ -337,7 +350,7 @@ var LayerInfo = [
     },
     {
       "id": "town_bridges",
-      "folder": "Transportation",
+      "folder": "Infrastructure",
       "name": "Town Bridges",
       "description": "BCVOBCIT is a statewide set of transportation structures, which includes town owned (maintained) bridges and culverts inventoried by Regional Planning Commissions, towns, and/or consultants. The BCVOBCIT dataset is limited to structures (bridges and culverts) maintained by municipalities, typically Town Shorts (TS) and Town Ultra-Shorts (TU).",
       "source": "Vermont Open Geodata Portal",
