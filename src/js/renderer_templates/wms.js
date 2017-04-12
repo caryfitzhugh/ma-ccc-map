@@ -6,12 +6,22 @@ RendererTemplates.wms = function (layer_id, opts) {
     },
 
     update_legend: Renderers.update_legend(opts),
+    get_feature_info_xml_url: opts.get_feature_info_xml_url,
+    get_feature_info_url: opts.get_feature_info_url,
+  }
 
-    render: function (map, active_layer, z_index) {
+  renderer.render = function (map, active_layer, z_index) {
       if (_.isEmpty(active_layer.leaflet_layer_ids)) {
+        // Make sure we never come back in this block again!
+        active_layer.leaflet_layer_ids = ['loading-so-we-avoid-race-conditions'];
+
         var layer = new L.TileLayer.WMS(opts.url, opts.wms_opts);
-        layer.on("tileload", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-        layer.on("tileerror", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
+        layer.on("tileload", function (loaded) {
+          Views.ControlPanel.fire("tile-layer-loaded", active_layer);
+        });
+        layer.on("tileerror", function (err) {
+          Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
+        });
         layer.addTo(map);
         active_layer.leaflet_layer_ids = [layer._leaflet_id];
       }
@@ -27,10 +37,7 @@ RendererTemplates.wms = function (layer_id, opts) {
         layer.setZIndex(z_index);
       });
 
-    },
-    get_feature_info_xml_url: opts.get_feature_info_xml_url,
-    get_feature_info_url: opts.get_feature_info_url,
-  }
+    };
 
   Renderers[layer_id] = renderer;
 }

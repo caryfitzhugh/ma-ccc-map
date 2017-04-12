@@ -19,31 +19,13 @@ var Renderers = {
       }
     };
   },
-  add_to_map: function (map, active_layer, addable) {
+  geojson_add_to_map: function (map, active_layer, addable) {
     addable.addTo(map);
     active_layer.leaflet_layer_ids = [addable._leaflet_id];
     Views.ControlPanel.fire("tile-layer-loaded", active_layer);
   },
   add_layer_error: function (active_layer) {
     Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
-  },
-  add_raw_geojson: function (map, active_layer, url) {
-      active_layer.leaflet_layer_ids = ['loading-so-we-avoid-race-conditions'];
-      $.ajax({
-        cache: true,
-        dataType: "json",
-        url: url,
-        success: function (data) {
-          var layer = new L.GeoJSON(data);
-          Renderers.add_to_map(map, active_layer, layer);
-        },
-        error:   function (err) {
-          if (err.status !== 200) {
-            Renderers.add_layer_error(active_layer);
-          }
-        }
-      });
-
   },
   lookup_layers: function (map, leaflet_layer_ids) {
     var leaflet_layers = [];

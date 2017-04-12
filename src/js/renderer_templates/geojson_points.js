@@ -23,7 +23,7 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
                 }
               },
             });
-            Renderers.add_to_map(map, active_layer, layer);
+            Renderers.geojson_add_to_map(map, active_layer, layer);
           },
           error:   function (err) {
             if (err.status !== 200) {
