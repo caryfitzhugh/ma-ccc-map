@@ -1592,6 +1592,16 @@
         </select>
       </div>
     {{/if}}
+    {{#if "high_priority_terrestrial" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose the layer to view'> Data Product: </label>
+        <select value='{{parameters.display_layer}}'>
+          <option value='1'> Physical Landscape Diversity Blocks </option>
+          <option value='2'> Interior Forest Blocks </option>
+          <option value='3'> Connectivity Blocks </option>
+        </select>
+      </div>
+    {{/if}}
     {{#if "narccap_temp" === layer_default_id}}
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose the variable to summarize'> Data Product: </label>
@@ -2263,6 +2273,7 @@
     <script src="./js/renderers/gap_lc.js?__inline=true"></script>
     <script src="./js/renderers/hospitals.js?__inline=true"></script>
     <script src="./js/renderers/invasives.js?__inline=true"></script>
+    <script src="./js/renderers/high_priority_terrestrial.js?__inline=true"></script>
     <script src="./js/renderers/dams.js?__inline=true"></script>
     <script src="./js/renderers/nfhl.js?__inline=true"></script>
     <script src="./js/renderers/nlcd.js?__inline=true"></script>

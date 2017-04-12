@@ -39,7 +39,7 @@ var LayerInfo = [
       "sectors": "",
       "active_on_load": true,
       "parameters": {
-        "opacity": 50,
+        "opacity": 25,
         "color": "#000",
         "no_sorting": true
       }
@@ -194,6 +194,21 @@ var LayerInfo = [
       "metadata_url": "http:\/\/catalog.data.gov\/dataset\/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-#sec-dates",
       "parameters": {
         "opacity": 70
+      }
+    },
+    {
+      "id": "high_priority_terrestrial",
+      "folder": "Ecosystems",
+      "name": "Highest Priority Terrestrial Areas",
+      "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
+      "source": "USGS",
+      "source_url": "http://geodata.vermont.gov/datasets?q=Highest%20Priority",
+      "sectors": "Ecosystems,",
+      "download_url": null,
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/b05737376a3f4553a025967aba4cac6a/info/metadata/metadata.xml?format=default&output=html",
+      "parameters": {
+        "opacity": 70,
+        "display_layer": 1
       }
     },
 /*    {

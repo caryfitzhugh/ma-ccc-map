@@ -1,6 +1,6 @@
 RendererTemplates.geojson_points("dams", {
   url: CDN("https://opendata.arcgis.com/datasets/75b9d3671f474323a22165ba5a4c2677_161.geojson"),
-  update_legend: "./img/hospital.png",
+  update_legend: "./img/Dam.png",
   pointToLayer: function (feature, latlng) {
     var icon_url;
     if(String(feature.properties.DamHazClass).length <5) {
