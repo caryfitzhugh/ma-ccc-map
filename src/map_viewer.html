@@ -1602,6 +1602,17 @@
         </select>
       </div>
     {{/if}}
+    {{#if "air_water" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose the layer to view'> Data Product: </label>
+        <select value='{{parameters.display_layer}}'>
+          <option value='10'> Surface WaterSPA </option>
+          <option value='13'> Ground Water SPA </option>
+          <option value='34'> Private Wells </option>
+          <option value='33'> Public Water Sources </option>
+        </select>
+      </div>
+    {{/if}}
     {{#if "narccap_temp" === layer_default_id}}
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose the variable to summarize'> Data Product: </label>
@@ -2274,6 +2285,7 @@
     <script src="./js/renderers/hospitals.js?__inline=true"></script>
     <script src="./js/renderers/invasives.js?__inline=true"></script>
     <script src="./js/renderers/high_priority_terrestrial.js?__inline=true"></script>
+    <script src="./js/renderers/air_water.js?__inline=true"></script>
     <script src="./js/renderers/dams.js?__inline=true"></script>
     <script src="./js/renderers/nfhl.js?__inline=true"></script>
     <script src="./js/renderers/nlcd.js?__inline=true"></script>

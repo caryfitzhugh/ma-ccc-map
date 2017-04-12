@@ -201,14 +201,29 @@ var LayerInfo = [
       "folder": "Ecosystems",
       "name": "Highest Priority Terrestrial Areas",
       "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
-      "source": "USGS",
-      "source_url": "http://geodata.vermont.gov/datasets?q=Highest%20Priority",
+      "source": "VT ANR",
+      "source_url": "http://anr.vermont.gov/",
       "sectors": "Ecosystems,",
       "download_url": null,
-      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/b05737376a3f4553a025967aba4cac6a/info/metadata/metadata.xml?format=default&output=html",
+      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?request=GetCapabilities&service=WMS",
       "parameters": {
         "opacity": 70,
         "display_layer": 1
+      }
+    },
+    {
+      "id": "air_water",
+      "folder": "Water Resources",
+      "name": "Open Data Layers",
+      "description": "Layers served from the open data portal..",
+      "source": "VT ANR",
+      "source_url": "http://anr.vermont.gov/",
+      "sectors": "Ecosystems,",
+      "download_url": null,
+      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "parameters": {
+        "opacity": 70,
+        "display_layer": 33
       }
     },
 /*    {
