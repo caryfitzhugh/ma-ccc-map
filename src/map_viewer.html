@@ -760,6 +760,27 @@
                 {{/json.features}}
               </div>
           {{/if}}
+          {{#if ("bridges" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Bridge Type</th>
+                    <th>Last Inspection</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.type}}</td>
+                      <td>{{properties.inv_dt}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+            </div>
+          {{/if}}
           {{#if ("culverts" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -2303,7 +2324,7 @@
     <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/vt_boundary.js?__inline=true"></script>
     <script src="./js/renderers/vt_mask.js?__inline=true"></script>
-    <script src="./js/renderers/town_bridges.js?__inline=true"></script>
+    <script src="./js/renderers/bridges.js?__inline=true"></script>
 
     <script src="./js/geometry_loader.js?__inline=true"></script>
 

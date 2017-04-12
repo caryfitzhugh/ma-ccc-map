@@ -349,9 +349,9 @@ var LayerInfo = [
       }
     },
     {
-      "id": "town_bridges",
+      "id": "bridges",
       "folder": "Infrastructure",
-      "name": "Town Bridges",
+      "name": "Bridges",
       "description": "BCVOBCIT is a statewide set of transportation structures, which includes town owned (maintained) bridges and culverts inventoried by Regional Planning Commissions, towns, and/or consultants. The BCVOBCIT dataset is limited to structures (bridges and culverts) maintained by municipalities, typically Town Shorts (TS) and Town Ultra-Shorts (TU).",
       "source": "Vermont Open Geodata Portal",
       "source_url": "http:\/\/geodata.vermont.gov\/datasets\/vt-town-bridges-vobcit-extract",
