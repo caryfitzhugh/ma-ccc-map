@@ -1046,6 +1046,17 @@
                 </div>
               </div>
           {{/if}}
+          {{#if ("narccap_degree_days" === renderer_id)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <div>
+                  Degree-Day Accumulation: {{fixed_precision(json.count, 3)}} &deg;F <br>
+                </div>
+              </div>
+          {{/if}}
         {{/map_details.feature_info_requests}}
       </div>
     </div>
@@ -1665,6 +1676,32 @@
             <option value='Oct'>October</option>
             <option value='Nov'>November</option>
             <option value='Dec'>December</option>
+        </select>
+      </div>
+      <div class='detail-block sea-level'>
+        <label decorator='tooltip:Use slider to select date range'> Year: </label>
+        <input type="range"
+              min="2039"
+              max="2069"
+              step="{{parameters.date_step}}"
+              value="{{parameters.date}}">
+        <span> {{parameters.date}}-{{(parameters.date+parameters.date_step)}}</span>
+      </div>
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Summarize by county or watershed.'> Summarize by </label>
+        <select value="{{parameters.area}}">
+          <option value='county'> County </option>
+          <option value='basin'> Watershed </option>
+        </select>
+      </div>
+    {{/if}}
+    {{#if "narccap_degree_days" === layer_default_id}}
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose the variable to summarize'> Data Product: </label>
+        <select value='{{parameters.prod}}'>
+            <option value='gdd50'>Growing Degree-Day Accumulation</option>
+            <option value='hdd65'>Heating Degree-Day Accumulation</option>
+            <option value='cdd65'>Cooling Degree-Day Accumulation</option>
         </select>
       </div>
       <div class='detail-block sea-level'>
@@ -2320,6 +2357,7 @@
     <script src="./js/renderers/narccap.js?__inline=true"></script>
     <script src="./js/renderers/narccap_precip.js?__inline=true"></script>
     <script src="./js/renderers/narccap_temp.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_degree_days.js?__inline=true"></script>
     <script src="./js/renderers/superfund.js?__inline=true"></script>
     <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/vt_boundary.js?__inline=true"></script>

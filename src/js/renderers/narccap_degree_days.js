@@ -1,5 +1,5 @@
 /*global _, Renderers, L, narccap, LayerInfo, GeometryLoader, d3, colorbrewer, Views */
-Renderers.narccap_temp = {
+Renderers.narccap_degree_days = {
   pickle: function (al) {
     al.leaflet_layer_ids = [];
     delete al.parameters.legend_range;
@@ -9,7 +9,7 @@ Renderers.narccap_temp = {
   has_standalone_wizard: true,
   find_geo_json: function (map, active_layer, evt) {
     var details_at_point = null;
-    var active_svg_layer = Renderers.narccap_temp.active_leaflet_layer(map, active_layer);
+    var active_svg_layer = Renderers.narccap_degree_days.active_leaflet_layer(map, active_layer);
     var layer = Renderers.lookup_layers(map, [active_svg_layer.leaflet_id])[0];
 
     if (layer) {
@@ -39,8 +39,8 @@ Renderers.narccap_temp = {
       }, []);
       console.log('cd',cd,'legend',legend,'reduce',_.range(cd[0], cd[1], (cd[1] - cd[0]) / 8).concat([cd[1]]))
       active_layer.parameters.legend_range = legend;
-      active_layer.parameters.legend_significant_digits = 1;
-      active_layer.parameters.legend_text = "Projected Change in Temperature (°F)";
+      active_layer.parameters.legend_significant_digits = 0;
+      active_layer.parameters.legend_text = "Degree-Day Accumulation";
     }
   },
 
@@ -54,7 +54,7 @@ Renderers.narccap_temp = {
   create_leaflet_layers: function (map, active_layer) {
     var p = _.pick(active_layer.parameters, ["date", "prod", "area", "season"]);
 
-    var active_leaflet_layer = Renderers.narccap_temp.active_leaflet_layer(map, active_layer);
+    var active_leaflet_layer = Renderers.narccap_degree_days.active_leaflet_layer(map, active_layer);
 
     if (!active_leaflet_layer) {
       active_layer.leaflet_layer_ids.push(_.merge({}, p, { leaflet_id: "layer-loading"}));
@@ -74,11 +74,11 @@ Renderers.narccap_temp = {
                 var color = d3.scale.quantile();
 
                 // Set different color ranges
-                if (p.prod === "avgt") {
+                if (p.prod === "gdd50") {
                   color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
-                } else if (p.prod === 'mint') {
+                } else if (p.prod === 'hdd65') {
                   color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
-                } else if (p.prod === 'maxt') {
+                } else if (p.prod === 'cdd65') {
                   color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
                 }
 
@@ -93,7 +93,7 @@ Renderers.narccap_temp = {
                 new_layer.addTo(map);
 
                 // Lookup the active placeholder
-                active_leaflet_layer = Renderers.narccap_temp.active_leaflet_layer(map, active_layer);
+                active_leaflet_layer = Renderers.narccap_degree_days.active_leaflet_layer(map, active_layer);
                 active_leaflet_layer.leaflet_id = new_layer._leaflet_id;
 
 
@@ -121,10 +121,10 @@ Renderers.narccap_temp = {
 
   render: function (map, active_layer, z_index) {
     // Make sure the right layers are created!
-    Renderers.narccap_temp.create_leaflet_layers(map, active_layer);
-    Renderers.narccap_temp.update_legend(map, active_layer);
+    Renderers.narccap_degree_days.create_leaflet_layers(map, active_layer);
+    Renderers.narccap_degree_days.update_legend(map, active_layer);
 
-    var active_svg_layer = Renderers.narccap_temp.active_leaflet_layer(map, active_layer);
+    var active_svg_layer = Renderers.narccap_degree_days.active_leaflet_layer(map, active_layer);
     var leaflet_ids = _.pluck(active_layer.leaflet_layer_ids, "leaflet_id");
     var layers = Renderers.lookup_layers(map, leaflet_ids);
 
