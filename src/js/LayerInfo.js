@@ -33,6 +33,22 @@ var CDN = function (url_str) {
 
 var LayerInfo = [
     {
+      "id": "vt_boundary",
+      "sort_key": 0,
+      "folder": "Boundaries",
+      "name": "VT State Boundary",
+      "description": "This layer shows the Vermont State Boundary.  Derived from TIGER 2013 Simplified County Boundaries, designed for 1:500k or smaller.  The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database.  ",
+      "source": "US Census Bureau",
+      "source_url": "https://www.census.gov/en.html",
+      "sectors": "",
+      "parameters": {
+        "opacity": 15,
+        "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
+        "color": "#000",
+        "no_sorting": true
+      }
+    },
+    {
       "id": "vt_mask",
       "sort_key": 0,
       "folder": "Boundaries",
@@ -42,7 +58,7 @@ var LayerInfo = [
       "source_url": "https://www.census.gov/en.html",
       "sectors": "",
       "parameters": {
-        "opacity": 80,
+        "opacity": 10,
         "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
         "color": "#000",
         "no_sorting": true
@@ -295,7 +311,7 @@ var LayerInfo = [
       }
     },
     {
-      "id": "vt_town_bridges",
+      "id": "town_bridges",
       "folder": "Transportation",
       "name": "Town Bridges",
       "description": "BCVOBCIT is a statewide set of transportation structures, which includes town owned (maintained) bridges and culverts inventoried by Regional Planning Commissions, towns, and/or consultants. The BCVOBCIT dataset is limited to structures (bridges and culverts) maintained by municipalities, typically Town Shorts (TS) and Town Ultra-Shorts (TU).",
@@ -309,15 +325,29 @@ var LayerInfo = [
       }
     },
     {
-      "id": "vt_invasives",
+      "id": "invasives",
       "folder": "Ecosystems",
       "name": "Invasives",
       "description": "The Invasive Species layer is created from the ANR Invasive Species database.",
       "source": "Vermont Open Geodata Portal",
       "source_url": "http://geodata.vermont.gov/datasets/VTANR::invasive-species-1",
       "sectors": "Ecosystems",
-      "download_url": "https:\/\/opendata.arcgis.com\/datasets/b1ae7b7b110447c3b452d9cacffeed36_174.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "download_url": "https://opendata.arcgis.com/datasets/b1ae7b7b110447c3b452d9cacffeed36_174.geojson",
       "metadata_url": "https:\/\/www.arcgis.com\/sharing\/rest\/content\/items\/b1ae7b7b110447c3b452d9cacffeed36\/info\/metadata\/metadata.xml?format=default&output=html",
+      "parameters": {
+        "opacity": 70
+      }
+    },
+    {
+      "id": "dams",
+      "folder": "Infrastructure",
+      "name": "Dams",
+      "description": "This dataset  is generated from from the Vermont Dam Inventory (VDI). The VDI is managed by the VT DEC's Dam Safety and Hydrology Section and contains information about Vermont's dams. The Dam Safety and Hydrology Section manages programs that promote dam safety and protection of flows in Vermont's rivers and streams. The VDI supports them in this effort by tracking physical attributes, managing construction (permits) and inspection information, and reporting to the US Army Corps of Engineers.",
+      "source": "Vermont Open Geodata Portal",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::dams-1",
+      "sectors": "Ecosystems",
+      "download_url": "https://opendata.arcgis.com/datasets/75b9d3671f474323a22165ba5a4c2677_161.geojson",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/75b9d3671f474323a22165ba5a4c2677/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
         "opacity": 70
       }

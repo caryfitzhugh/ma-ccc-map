@@ -1,4 +1,4 @@
-RendererTemplates.wms("vt_town_bridges", {
+RendererTemplates.wms("town_bridges", {
   update_legend: CDN("http://maps.vcgi.vermont.gov/arcgis/services/EGC_services/OPENDATA_VCGI_TRANSPORTATION_SP_NOCACHE_v1/MapServer/WMSServer?TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&EXCEPTIONS=application%2Fvnd.ogc.se_xml&LAYER=2&FORMAT=image/png"),
 
   url:  CDN("http://maps.vcgi.vermont.gov/arcgis/services/EGC_services/OPENDATA_VCGI_TRANSPORTATION_SP_NOCACHE_v1/MapServer/WMSServer?"),

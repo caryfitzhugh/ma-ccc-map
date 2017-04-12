@@ -33,7 +33,7 @@ Renderers.narccap_temp = {
 
     if (active_leaflet_layer && active_leaflet_layer.color) {
       var cd = active_leaflet_layer.color.domain();
-      var legend = _.reduce(_.range(cd[0], cd[1], (cd[1] - cd[0]) / 10).concat([cd[1]]), function (legend, step) {
+      var legend = _.reduce(_.range(cd[0], cd[1], (cd[1] - cd[0]) / 8).concat([cd[1]]), function (legend, step) {
         legend.push({v: step, c: active_leaflet_layer.color(step)});
         return legend;
       }, []);
@@ -74,11 +74,11 @@ Renderers.narccap_temp = {
 
                 // Set different color ranges
                 if (p.prod === "avgt") {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[8]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
                 } else if (p.prod === 'mint') {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[8]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
                 } else if (p.prod === 'maxt') {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[8]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
                 }
 
                 //Caclulate the domain of color based on the range of data

@@ -1,4 +1,4 @@
-RendererTemplates.geojson_polygons = function (layer_id, opts) {
+RendererTemplates.geojson_lines = function (layer_id, opts) {
   var renderer = {
     pickle: function (al) {
       delete al.legend_url;
@@ -22,7 +22,7 @@ RendererTemplates.geojson_polygons = function (layer_id, opts) {
                 }
               },
             });
-            Renderers.geojson_add_to_map(map, active_layer, layer);
+            Renderers.add_to_map(map, active_layer, layer);
           },
           error:   function (err) {
             if (err.status !== 200) {
@@ -43,10 +43,10 @@ RendererTemplates.geojson_polygons = function (layer_id, opts) {
     var layers = Renderers.lookup_layers(map, leaflet_ids);
 
     _.each(layers, function (layer) {
-      _.each(layer._layers, function (polygon) {
-        polygon.setStyle({"fillOpacity": opacity, "opacity": opacity});
-        if (opts.each_polygon) { console.log(opts.each_polygon)
-          opts.each_polygon(polygon); }
+      _.each(layer._layers, function (line) {
+        line.setStyle({"opacity": opacity});
+        if (opts.each_line) { console.log(opts.each_line)
+          opts.each_line(line); }
       });
     });
   }

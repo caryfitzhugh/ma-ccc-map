@@ -36,7 +36,7 @@ Renderers.prism_precip = {
 
     if (active_leaflet_layer && active_leaflet_layer.color) {
       var cd = active_leaflet_layer.color.domain();
-      var legend = _.reduce(_.range(cd[0], cd[1], (cd[1] - cd[0]) / 10).concat([cd[1]]), function (legend, step) {
+      var legend = _.reduce(_.range(cd[0], cd[1], (cd[1] - cd[0]) / 8).concat([cd[1]]), function (legend, step) {
         legend.push({v: step, c: active_leaflet_layer.color(step)});
         return legend;
       }, []);
