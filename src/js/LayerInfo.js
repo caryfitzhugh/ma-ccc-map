@@ -27,10 +27,6 @@ var CDN = function (url_str) {
   return url;
 };
 
-// This is pointing to port 8080 on the origin machine.
-// The public server hostname is
-// http://ec2-52-11-55-233.us-west-2.compute.amazonaws.com/
-
 var LayerInfo = [
     {
       "id": "vt_boundary",
@@ -41,9 +37,9 @@ var LayerInfo = [
       "source": "US Census Bureau",
       "source_url": "https://www.census.gov/en.html",
       "sectors": "",
+      "active_on_load": true,
       "parameters": {
-        "opacity": 15,
-        "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
+        "opacity": 50,
         "color": "#000",
         "no_sorting": true
       }
@@ -59,7 +55,6 @@ var LayerInfo = [
       "sectors": "",
       "parameters": {
         "opacity": 10,
-        "fixed_z_index": 5000, // Set this to 5000 if you want markers on top. Or 15000 if you want markers under.
         "color": "#000",
         "no_sorting": true
       }
@@ -502,7 +497,7 @@ var LayerInfo = [
       }
     },
     /*
-    
+
     {
       "id": "climaid_temp",
       "folder": "Climate Data.Temperature",

@@ -29,3 +29,13 @@ if (document.cookie.replace(/(?:(?:^|.*;\s*)show_welcome_modal_to_new_users\s*\=
   Views.ControlPanel.fire("show-wizard");
   document.cookie = "show_welcome_modal_to_new_users=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
+
+// Look through all the LayerInfo fields for "active_on_load"
+//     add those layers automatically to the map
+var desired_active_layer_ids = _.pluck(
+  _.filter(LayerInfo, function (layer) {
+    return layer.active_on_load;
+  }), "id");
+if (desired_active_layer_ids.length > 0) {
+  Controllers.Layers.force_layers_active(Views.ControlPanel, desired_active_layer_ids);
+}

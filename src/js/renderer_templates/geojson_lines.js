@@ -22,7 +22,7 @@ RendererTemplates.geojson_lines = function (layer_id, opts) {
                 }
               },
             });
-            Renderers.add_to_map(map, active_layer, layer);
+            Renderers.geojson_add_to_map(map, active_layer, layer);
           },
           error:   function (err) {
             if (err.status !== 200) {
@@ -45,8 +45,7 @@ RendererTemplates.geojson_lines = function (layer_id, opts) {
     _.each(layers, function (layer) {
       _.each(layer._layers, function (line) {
         line.setStyle({"opacity": opacity});
-        if (opts.each_line) { console.log(opts.each_line)
-          opts.each_line(line); }
+        if (opts.each_line) { opts.each_line(line); }
       });
     });
   }

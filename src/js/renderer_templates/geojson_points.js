@@ -44,8 +44,10 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
     var layers = Renderers.lookup_layers(map, leaflet_ids);
 
     _.each(layers, function (layer) {
+      layer.setZIndex(z_index);
       _.each(layer._layers, function (point) {
         point.setOpacity(opacity);
+        if (opts.each_point) { opts.each_point(point); }
       });
     });
   }
