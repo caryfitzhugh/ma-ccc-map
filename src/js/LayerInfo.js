@@ -406,7 +406,21 @@ var LayerInfo = [
       "download_url": "https://opendata.arcgis.com/datasets/75b9d3671f474323a22165ba5a4c2677_161.geojson",
       "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/75b9d3671f474323a22165ba5a4c2677/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
-        "opacity": 70
+        "opacity": 100
+      }
+    },
+    {
+      "id": "beach_closures",
+      "folder": "Public Health",
+      "name": "Beach Closures",
+      "description": "",
+      "source": "Vermont Open Geodata Portal",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::dams-1",
+      "sectors": "",
+      "download_url": "https://opendata.arcgis.com/datasets/75b9d3671f474323a22165ba5a4c2677_161.geojson",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/75b9d3671f474323a22165ba5a4c2677/info/metadata/metadata.xml?format=default&output=html",
+      "parameters": {
+        "opacity": 100
       }
     },
     {

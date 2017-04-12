@@ -10,9 +10,9 @@ RendererTemplates.geojson_points("dams", {
     return L.marker(latlng, {
         icon: L.icon({
             iconUrl: icon_url,
-            iconSize: [18, 21],
-            iconAnchor: [9, 21],
-            popupAnchor: [0, -19]
+            iconSize: [21, 24],
+            iconAnchor: [11, 24],
+            popupAnchor: [0, -22]
         }),
         title: feature.properties.DamName
     });
