@@ -1,6 +1,6 @@
 RendererTemplates.geojson_points("beach_closures", {
   url: CDN(GEOSERVER + "/vt/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=vt:lake_beach_closures&maxFeatures=50&outputFormat=application%2Fjson"),
-  update_legend: "./img/Beach.png",
+  update_legend: null,
   pointToLayer: function (feature, latlng) {
     var icon_url;
     if(feature.properties.status2014=='N/A') {

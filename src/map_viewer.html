@@ -2029,27 +2029,51 @@
     {{/if}}
 
     {{#if "dams" === layer_default_id}}
+       <strong>Status</strong>
        <div class='detail-block'>
         <!-- <input type='checkbox' value="{{parameters.show.a}}"> -->
-        <img src="img/Dam_Low Hazard Potential.png"/>
+        <img src="img/Dam_Low Hazard Potential.png" width="22px;"/>
         <span> Low Hazard Potential </span>
        </div>
        <div class='detail-block'>
         <!-- <input type='checkbox' value="{{parameters.show.b}}"> -->
-        <img src="img/Dam_Significant Hazard Potential.png"/>
+        <img src="img/Dam_Significant Hazard Potential.png" width="22px;"/>
         <span> Significant Hazard Potential </span>
        </div>
        <div class='detail-block'>
         <!-- <input type='checkbox' value="{{parameters.show.c}}"> -->
-        <img src="img/Dam_High Hazard Potential.png"/>
+        <img src="img/Dam_High Hazard Potential.png" width="22px;"/>
         <span> High Hazard Potential </span>
        </div>
        <div class='detail-block'>
         <!-- <input type='checkbox' value="{{parameters.show.unk}}"> -->
-        <img src="img/Dam.png"/>
+        <img src="img/Dam.png" width="22px;"/>
         <span> Unknown Hazard Potential </span>
        </div>
     {{/if "dams" === layer_default_id}}
+    {{#if "beach_closures" === layer_default_id}}
+       <strong>Status (2012-2014)</strong>
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.a}}"> -->
+        <img src="img/Beach_GOOD.png" width="22px;"/>
+        <span> Good (0-2 closures) </span>
+       </div>
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.b}}"> -->
+        <img src="img/Beach_FAIR.png" width="22px;"/>
+        <span> Fair (3-8 closures) </span>
+       </div>
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.c}}"> -->
+        <img src="img/Beach_POOR.png" width="22px;"/>
+        <span> Poor (>8 closures) </span>
+       </div>
+       <div class='detail-block'>
+        <!-- <input type='checkbox' value="{{parameters.show.unk}}"> -->
+        <img src="img/Beach.png" width="22px;"/>
+        <span> Unknown </span>
+       </div>
+    {{/if "beach_closures" === layer_default_id}}
 
     {{#if "rare_plants_and_animals" === layer_default_id}}
       <div class='detail-block show-confidence plants-and-animals'>
