@@ -190,7 +190,8 @@ Views.ControlPanel = new Ractive({
               "printing",
               "advanced_layer_controls"
       ]
-    }
+    },
+    active_layers_added_count: 0
   },
   decorators: {
       tooltip:  RactiveTooltip
@@ -210,6 +211,12 @@ LeafletMap.on("click", function (evt) {
 });
 
 Views.ControlPanel.on({
+  "remove-layer-add-notice": function (evt) {
+    evt.original.stopPropagation();
+    evt.original.preventDefault();
+    var cp = Views.ControlPanel;
+    cp.set("active_layers_added_count", cp.get("active_layers_added_count") + 1);
+  },
   // Activate this tab AND make it toggle the tray if already open
   "show-layers-control": function (evt) {
     var cp = Views.ControlPanel;

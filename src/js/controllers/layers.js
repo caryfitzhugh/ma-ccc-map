@@ -163,6 +163,7 @@ Controllers.Layers = {
       new_active_layers.unshift(new_layer);
     }
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
+    cp.set("active_layers_added_count", cp.get("active_layers_added_count") + 1);
   },
 
   force_layers_active: function (cp, desired_active_layer_ids) {

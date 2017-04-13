@@ -1312,6 +1312,11 @@
           {{#if layers.active.length > 0 }}
             <span class='label label-default label-xs'>{{layers.active.length}}</span>
           {{/if}}
+          {{#if active_layers_added_count === 1}}
+            <span class='arrow_box notice-me-banner' on-click="remove-layer-add-notice">
+              <span>After adding layers to the map, click on the Controls &amp; Legends tab to dig deeper!</span>
+            </span>
+          {{/if active_layers_added_count === 1}}
         </a>
         <a on-tap='show-search-control' class="locations-tab col-xs-3 {{layer_controls.active_tab === 'search' ? 'active': ''}} " >
           <span class='fa fa-search'></span>
