@@ -63,9 +63,42 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
     var layers = Renderers.lookup_layers(map, leaflet_ids);
 
     _.each(layers, function (layer) {
-      if (opts.setStyle) {
-        layer.setStyle(function (feature) { return opts.setStyle(opacity, feature);});
-      }
+        layer.setStyle(function (feature) {
+          if (opts.setStyle) {
+            return opts.setStyle(opacity, feature);
+          } else if (opts.color_buckets) {
+
+            var bucket = _.find(opts.color_buckets, function (v) {
+              var lookup = _.get(feature, opts.color_bucket_field);
+              if (_.isArray(v.values)) {
+                if (v.values.length == 1) {
+                  return v.values[0] == lookup;
+                } else {
+                  return v.values[0] <= lookup && v.values[1] > lookup;
+                }
+              } else if (_.isFunction(v.values)) {
+                return v.values(lookup);
+              } else {
+                console.log("Can't find this: ", feature, lookup, opts.color_buckets);
+              }
+             });
+
+
+            if (bucket) {
+              return { stroke: true, color: bucket.stroke,
+                    opacity: opacity,
+                    fillOpacity: opacity,
+                    weight: 1,
+                    fill: true,
+                    fillColor: bucket.fill,
+                    clickable: false};
+            } else {
+
+                  console.log("Can't find this: ", feature, opts.color_buckets);
+              return {opacity: opacity};
+            }
+          }
+        });
 
       _.each(layer._layers, function (line) {
         line.setStyle({"opacity": opacity});

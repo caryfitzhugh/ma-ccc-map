@@ -36,26 +36,18 @@ var vt_social_color_buckets = [
     fill: "rgba( 37, 52, 148, 255)",
     stroke: "rgba(26, 26, 26, 128)",
     label: "6 - 10",
-    values: [6,7,8,9,10],
+    values: [6,10],
   }
 ];
 
 RendererTemplates.esri_feature_layer("vt_social_vuln", {
+  url: CDN ("https://services.arcgis.com/YKJ5JtnaPQ2jDbX8/arcgis/rest/services/SVI_New/FeatureServer/0"),
+
   update_legend: function (active_layer) {
     active_layer.parameters.vt_social_color_buckets = vt_social_color_buckets;
   },
-
-  url: CDN ("https://services.arcgis.com/YKJ5JtnaPQ2jDbX8/arcgis/rest/services/SVI_New/FeatureServer/0"),
-  setStyle: function (opacity, feature) {
-    var bucket = _.find(vt_social_color_buckets, function (v) { return _.contains(v.values, feature.properties.SVI_16); });
-    return { stroke: true, color: bucket.stroke,
-            opacity: opacity,
-            fillOpacity: opacity,
-            weight: 1,
-            fill: true,
-            fillColor: bucket.fill,
-            clickable: false};
-  },
+  color_buckets: vt_social_color_buckets,
+  color_bucket_field: "properties.SVI_16",
 
   esri_opts: {
   },

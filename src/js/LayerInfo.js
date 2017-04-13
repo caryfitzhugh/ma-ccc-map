@@ -310,9 +310,9 @@ var LayerInfo = [
       }
     },
     {
-      "id": "heat_vuln",
+      "id": "vt_heat_vuln",
       "folder": "Public Health",
-      "name": "Heat Vulnerability",
+      "name": "VT Heat Vulnerability",
       "description": "Layers served from the open data portal..",
       "source": "VT ANR",
       "source_url": "http://anr.vermont.gov/",
