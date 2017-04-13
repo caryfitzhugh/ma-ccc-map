@@ -269,7 +269,8 @@
           </div>
         </div>
         {{#map_details.feature_info_responses}}
-          {{#if ("sovi" === renderer_id && xml.children.length > 0)}}
+          {{#if ("vt_social_vuln" === renderer_id )}}
+            {{ JSON.stringify(json) }}
             <div class='row'>
               <div class='col-xs-2'>
                 <label> {{name}} </label>
@@ -277,30 +278,17 @@
               <div class='col-xs-10'>
                 <table class="table">
                   <tr>
-                    <th> % Asian </th>
-                    <th> % Black </th>
-                    <th> % Hispanic </th>
-                    <th> % Native American </th>
-                    <th> Median Age </th>
-                    <th> Ppl Per Unit</th>
-                    <th> % Poverty</th>
-                    <th> Per Capita </th>
+                    <th> JSON </th>
                   </tr>
-                  {{#fields_from_sovi_response(xml)}}
+                  {{#json.features}}
                     <tr>
-                      <td>{{(QASIAN * 1.0).toFixed(2)}} </td>
-                      <td>{{(QBLACK * 1.0).toFixed(2)}} </td>
-                      <td>{{(QHISP * 1.0).toFixed(2)}} </td>
-                      <td>{{(QNATAM * 1.0).toFixed(2)}} </td>
-                      <td>{{(MEDAGE * 1.0).toFixed(2)}}</td>
-                      <td>{{(PPUNIT * 1.0).toFixed(2)}} </td>
-                      <td>{{(QPOVTY * 1.0).toFixed(2)}} </td>
-                      <td>${{(PERCAP * 1.0).toFixed(0)}} </td>
+                      <td>{{JSON.stringify(.)}}</td>
                     </tr>
                   {{/json.features}}
                 </table>
               </div>
           {{/if}}
+
           {{#if ("gap_lc" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -2427,44 +2415,46 @@
     <script src="./js/base_layers.js?__inline=true"></script>
 
     <script src="./js/renderers/utils.js?__inline=true"></script>
+    <script src="./js/renderer_templates/esri_feature_layer.js?__inline=true"></script>
     <script src="./js/renderer_templates/geojson_points.js?__inline=true"></script>
     <script src="./js/renderer_templates/geojson_lines.js?__inline=true"></script>
     <script src="./js/renderer_templates/geojson_polygons.js?__inline=true"></script>
     <script src="./js/renderer_templates/wms.js?__inline=true"></script>
     <script src="./js/renderer_templates/esri.js?__inline=true"></script>
 
+    <script src="./js/renderers/air_water.js?__inline=true"></script>
     <script src="./js/renderers/anthromes.js?__inline=true"></script>
+    <script src="./js/renderers/beach_closures.js?__inline=true"></script>
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
     <script src="./js/renderers/boundary_huc8.js?__inline=true"></script>
-    <script src="./js/renderers/culverts.js?__inline=true"></script>
+    <script src="./js/renderers/bridges.js?__inline=true"></script>
     <script src="./js/renderers/croplands.js?__inline=true"></script>
+    <script src="./js/renderers/culverts.js?__inline=true"></script>
+    <script src="./js/renderers/dams.js?__inline=true"></script>
     <script src="./js/renderers/dfirm_floodways.js?__inline=true"></script>
     <script src="./js/renderers/fema_historic.js?__inline=true"></script>
     <script src="./js/renderers/flood_hazard_areas.js?__inline=true"></script>
     <script src="./js/renderers/gap_lc.js?__inline=true"></script>
+    <script src="./js/renderers/high_priority_terrestrial.js?__inline=true"></script>
     <script src="./js/renderers/hospitals.js?__inline=true"></script>
     <script src="./js/renderers/invasives.js?__inline=true"></script>
-    <script src="./js/renderers/high_priority_terrestrial.js?__inline=true"></script>
-    <script src="./js/renderers/air_water.js?__inline=true"></script>
-    <script src="./js/renderers/dams.js?__inline=true"></script>
-    <script src="./js/renderers/beach_closures.js?__inline=true"></script>
+    <script src="./js/renderers/narccap.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_degree_days.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_precip.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_precip_days.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_temp.js?__inline=true"></script>
+    <script src="./js/renderers/narccap_temp_days.js?__inline=true"></script>
     <script src="./js/renderers/nfhl.js?__inline=true"></script>
     <script src="./js/renderers/nlcd.js?__inline=true"></script>
     <script src="./js/renderers/pastures.js?__inline=true"></script>
     <script src="./js/renderers/prism.js?__inline=true"></script>
     <script src="./js/renderers/prism_precip.js?__inline=true"></script>
     <script src="./js/renderers/prism_temp.js?__inline=true"></script>
-    <script src="./js/renderers/narccap.js?__inline=true"></script>
-    <script src="./js/renderers/narccap_precip.js?__inline=true"></script>
-    <script src="./js/renderers/narccap_temp.js?__inline=true"></script>
-    <script src="./js/renderers/narccap_degree_days.js?__inline=true"></script>
-    <script src="./js/renderers/narccap_temp_days.js?__inline=true"></script>
-    <script src="./js/renderers/narccap_precip_days.js?__inline=true"></script>
     <script src="./js/renderers/superfund.js?__inline=true"></script>
     <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/vt_boundary.js?__inline=true"></script>
     <script src="./js/renderers/vt_mask.js?__inline=true"></script>
-    <script src="./js/renderers/bridges.js?__inline=true"></script>
+    <script src="./js/renderers/vt_social_vuln.js?__inline=true"></script>
 
     <script src="./js/geometry_loader.js?__inline=true"></script>
 

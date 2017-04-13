@@ -29,6 +29,19 @@ var CDN = function (url_str) {
 
 var LayerInfo = [
     {
+      "id": "vt_social_vuln",
+      "sort_key": 0,
+      "folder": "Public Health",
+      "name": "VT Social Vulnerability",
+      "description": "",
+      "source": "",
+      "source_url": "",
+      "sectors": "",
+      "parameters": {
+        "opacity": 70,
+      }
+    },
+    {
       "id": "vt_boundary",
       "sort_key": 0,
       "folder": "Boundaries",

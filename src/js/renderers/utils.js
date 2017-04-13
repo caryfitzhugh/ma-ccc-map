@@ -2,6 +2,13 @@
 var RendererTemplates = { }
 
 var Renderers = {
+  find_geojson_polygon_by_point: function (evt, layer) {
+    var point_to_check ={ type: 'Point', coordinates: [ evt.latlng.lng, evt.latlng.lat] };
+    var match = _.find(layer._layers, function (element) {
+      return gju.pointInPolygon(point_to_check, element.feature.geometry);
+    });
+    return match;
+  },
   update_legend: function(opts) {
     return  function (active_layer) {
       if (typeof opts.update_legend === "string") {
