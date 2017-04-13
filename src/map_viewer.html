@@ -1285,19 +1285,19 @@
     <div class='tabs container-fluid'>
       <div class='row'>
         <a on-tap="show-layers-control" class="layers-tab col-xs-3 {{layer_controls.active_tab === 'layers' ? 'active': '' }}">
-          <span class='fa fa-map'></span>
+          <span class='fa fa-check-square-o'></span>
           Layers
         </a>
         <a on-tap="show-details-control" class="legend-map-controls-tab col-xs-6 {{layer_controls.active_tab === 'details' ? 'active': ''}}">
-          <span class='fa fa-globe'></span>
-          Legend &amp; Map Controls
+          <span class='fa fa-sliders'></span>
+          Controls &amp; Legends
           {{#if layers.active.length > 0 }}
             <span class='label label-default label-xs'>{{layers.active.length}}</span>
           {{/if}}
         </a>
         <a on-tap='show-search-control' class="locations-tab col-xs-3 {{layer_controls.active_tab === 'search' ? 'active': ''}} " >
           <span class='fa fa-search'></span>
-          Locations
+          Quick Zoom
         </a>
       </div>
     </div>
@@ -1963,7 +1963,7 @@
       </div>
     {{/if}}
 
-    {{#if "ny_mask" === layer_default_id}}
+    {{#if "vt_mask" === layer_default_id}}
       <div class='detail-block show-confidence'>
         <label> Mask Color: </label>
         <select value='{{parameters.color}}'>
@@ -2432,6 +2432,7 @@
     <script src="./js/renderer_templates/geojson_polygons.js?__inline=true"></script>
     <script src="./js/renderer_templates/wms.js?__inline=true"></script>
     <script src="./js/renderer_templates/esri.js?__inline=true"></script>
+    <script src="./js/renderer_templates/esri_polygons.js?__inline=true"></script>
 
     <script src="./js/renderers/anthromes.js?__inline=true"></script>
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
@@ -2464,6 +2465,7 @@
     <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/vt_boundary.js?__inline=true"></script>
     <script src="./js/renderers/vt_mask.js?__inline=true"></script>
+    <script src="./js/renderers/heat_vuln.js?__inline=true"></script>
     <script src="./js/renderers/bridges.js?__inline=true"></script>
 
     <script src="./js/geometry_loader.js?__inline=true"></script>

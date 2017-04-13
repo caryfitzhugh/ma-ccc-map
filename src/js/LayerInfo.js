@@ -296,23 +296,20 @@ var LayerInfo = [
         "display_layer": 33
       }
     },
-/*    {
-      "id": "noaa_slr",
-      "folder": "Coastal Zones",
-      "name": "Sea Level Rise (NOAA)",
-      "description": "Sea Level Rise: the maps show inland extent and relative depth of inundation from 0 to 6 feet above mean higher high water (MHHW). Areas that are hydrologically connected (according to the digital elevation model used) are shown in shades of blue. Low-lying areas, displayed in green, are considered hydrologically “unconnected” areas that may flood. The inundation maps are created by subtracting the NOAA VDATUM MHHW surface from the digital elevation model. Mapping Confidence: blue areas denote a high confidence of inundation, orange areas denote a low confidence of inundation, and unshaded areas denote a high confidence that these areas will be dry given the chosen water level.",
-      "source": "NOAA",
-      "source_url": "http:\/\/coast.noaa.gov\/slr\/",
-      "sectors": "All",
-      "legend_url": null,
+    {
+      "id": "heat_vuln",
+      "folder": "Public Health",
+      "name": "Heat Vulnerability",
+      "description": "Layers served from the open data portal..",
+      "source": "VT ANR",
+      "source_url": "http://anr.vermont.gov/",
+      "sectors": "Ecosystems,",
       "download_url": null,
-      "metadata_url": "https:\/\/coast.noaa.gov\/digitalcoast\/tools\/slr",
+      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetCapabilities&service=WMS",
       "parameters": {
-        "opacity": 70,
-        "sea_level_height": 0,
-        "display_layer" : "slr" // conf
+        "opacity": 70
       }
-    },*/
+    },
     {
       "id": "superfund",
       "folder": "Miscellaneous",

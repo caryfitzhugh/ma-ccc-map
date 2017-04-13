@@ -55,25 +55,30 @@ input[type="radio"], input[type="checkbox"] {
   padding: 8px;
   white-space: nowrap;
   background: #414c54;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   display: inline-block;
+  border-radius: 7px 7px 0 0;
+  border-top: 2px solid white;
+  border-left: 1px solid white;
   width: 22.5%;
 }
 .layer-controls .tabs a.layers-tab {
   width: 20%;
 }
 .layer-controls .tabs a.legend-map-controls-tab {
-  width: 55%;
+  width: 48%;
 }
 .layer-controls .tabs a.locations-tab {
-  width: 25%;
+  width: 32%;
 }
 
 .layer-controls .tabs a.active {
   color: #414c54;
+  font-size: 14px;
   background: white;
   border-top: 2px solid #414c54;
+  border-left: 1px solid #414c54;
 }
 
 .layer-controls .tray.show {
