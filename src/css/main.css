@@ -1,7 +1,7 @@
 /* #5690ca primary blue
 // #f6892e orange body
 // #f57b16 orange border
-// #414c54 dark blue
+// #063 dark blue
 // rgb(238, 241, 242) grey-bg
 */
 
@@ -41,6 +41,7 @@ input[type="radio"], input[type="checkbox"] {
   padding: 10px;
   text-align: center;
   display: none;
+
 }
 
 .layer-controls .tabs {
@@ -48,32 +49,38 @@ input[type="radio"], input[type="checkbox"] {
   color: white;
   font-weight: bold;
   padding-top: 0px; /*5px;*/
+  border-bottom: 1px solid black;
 }
 
 .layer-controls .tabs a {
   color: white;
   padding: 8px;
   white-space: nowrap;
-  background: #414c54;
+  background: #063;
   font-size: 14px;
   cursor: pointer;
   display: inline-block;
+  border-radius: 7px 7px 0 0;
+  border-top: 2px solid white;
+  border-left: 1px solid white;
+
   width: 22.5%;
 }
 .layer-controls .tabs a.layers-tab {
   width: 20%;
 }
 .layer-controls .tabs a.legend-map-controls-tab {
-  width: 55%;
+  width: 48%;
 }
 .layer-controls .tabs a.locations-tab {
-  width: 25%;
+  width: 32%;
 }
 
 .layer-controls .tabs a.active {
-  color: #414c54;
+  color: #063;
   background: white;
-  border-top: 2px solid #414c54;
+  border-top: 1px solid #063;
+  border-left: 1px solid #063;
 }
 
 .layer-controls .tray.show {
@@ -110,6 +117,7 @@ input[type="radio"], input[type="checkbox"] {
   right: 0;
   top: 0;
   z-index: 1;
+  border-top: 1px solid #063;
   box-shadow: 0px 1px 5px rgba(0,0,0,0.5);
 }
 .layer-controls .tray .search-header input {
@@ -118,7 +126,7 @@ input[type="radio"], input[type="checkbox"] {
   font-size: 20px;
   padding: 5px;
   padding-right: 30px;
-  border-bottom: 1px solid #414c54;
+  border-bottom: 1px solid #063;
 }
 .layer-controls .tray .search-header .fa-times-circle-o {
   position: absolute;
@@ -201,7 +209,8 @@ input[type="radio"], input[type="checkbox"] {
 }
 .layer-controls .bulk {
   text-align: right;
-  border-bottom: 1px solid #414c54;
+  border-top: 1px solid #063;
+  border-bottom: 1px solid #063;
   background: white;
   padding: 5px;
 }
@@ -298,7 +307,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .layer-controls .active-layer {
-  border-bottom: 1px solid #414c54;
+  border-bottom: 1px solid #063;
   padding: 1px 5px;
 }
 .layer-controls .active-layer {
@@ -937,7 +946,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .wizard-modal .fa-arrow-left:hover ,
 .wizard-modal .fa-arrow-right:hover {
-  background: #414c54;
+  background: #063;
   cursor: pointer;
 }
 
