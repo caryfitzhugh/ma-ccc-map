@@ -36,6 +36,18 @@
 
 <!-- VIEW TEMPLATES -->
 
+<script id='line_chart' type="text/ractive">
+ <div class='line-chart'>
+    {{#(to_chart_data(.))}}
+      <div class='bar {{(current ? "current" : "")}}' title="{{value}}">
+        <div class='color' style='height: {{height}}%;'></div>
+        <span class='label'>{{value}}</span>
+      </div>
+    {{/to_chart_data}}
+    <label>{{to_chart_label(.)}}</label>
+  </div>
+</script>
+
 <script id='control_panel_template' type="text/ractive">
   {{>map_controls_template}}
   {{>layer_controls_template}}
@@ -270,7 +282,6 @@
         </div>
         {{#map_details.feature_info_responses}}
           {{#if ("vt_social_vuln" === renderer_id )}}
-            {{ JSON.stringify(json) }}
             <div class='row'>
               <div class='col-xs-2'>
                 <label> {{name}} </label>
@@ -284,6 +295,7 @@
                     <tr>
                       <td>{{JSON.stringify(.)}}</td>
                     </tr>
+
                   {{/json.features}}
                 </table>
               </div>

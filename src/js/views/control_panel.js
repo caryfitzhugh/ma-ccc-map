@@ -14,6 +14,18 @@ Views.ControlPanel = new Ractive({
   el:  "control_panel_root",
   data: {
     u: ViewUtils,
+    to_chart_data: function (data) {
+      return [
+        {height: 1, value: 1, current: false},
+        {height: 3, value: 3, current: false},
+        {height: 1, value: 1, current: false},
+        {height: 99, value: 1, current: false},
+        {height: 80, value: 1, current: true},
+      ]
+    },
+    to_chart_label: function (d) {
+      return "Applsauce";
+    },
     sharing_url: function (token) {
       return Controllers.Sharing.sharing_url(token);
     },

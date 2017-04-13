@@ -30,7 +30,7 @@ var vt_social_color_buckets = [
     fill: "rgba(44, 127, 184, 255)",
     stroke: "rgba( 26, 26, 26, 128)",
     label: "4 - 5",
-    values: [4,5],
+    values: [4,5.1],
   },
   {
     fill: "rgba( 37, 52, 148, 255)",
