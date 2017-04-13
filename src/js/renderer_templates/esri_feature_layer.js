@@ -13,6 +13,7 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
         var layer = L.esri.featureLayer(_.merge({
           url: opts.url,
         }, opts.esri_opts))
+
         layer.addTo(map);
         active_layer.leaflet_layer_ids = [layer._leaflet_id];
 
@@ -62,6 +63,10 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
     var layers = Renderers.lookup_layers(map, leaflet_ids);
 
     _.each(layers, function (layer) {
+      if (opts.setStyle) {
+        layer.setStyle(function (feature) { return opts.setStyle(opacity, feature);});
+      }
+
       _.each(layer._layers, function (line) {
         line.setStyle({"opacity": opacity});
         if (opts.each_line) { opts.each_line(line); }
