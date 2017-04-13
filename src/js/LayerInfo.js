@@ -149,6 +149,25 @@ var LayerInfo = [
       }
     },
     {
+      "id": "narccap_precip_days",
+      "folder": "Climate Data.Precipitation",
+      "name": "Days > Threshold Projections",
+      "description": "NARCCAP projected days/year of precipitation above or below threshold values, summarized by year and county, for the years 2039 to 2069.  Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "source": "ACIS",
+      "source_url": "http:\/www.rcc-acis.org",
+      "sectors": "",
+      "download_url": null,
+      "metadata_url": "http:\/\/www.narccap.ucar.edu",
+      "parameters": {
+        "opacity": 70,
+        "area" : "county",
+        "date_step": 10,
+        "date" : 2039,
+        "prod": "pcpn_1",
+        "season" : "ANN"
+      }
+    },
+    {
       "id": "narccap_temp",
       "folder": "Climate Data.Temperature",
       "name": "Seasonal/Annual Temperature Projections",
