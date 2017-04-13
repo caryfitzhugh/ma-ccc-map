@@ -100,7 +100,7 @@ var LayerInfo = [
     {
       "id": "prism_temp",
       "folder": "Climate Data.Temperature",
-      "name": "PRISM Historical Temperatures 1980-2014",
+      "name": "Historical Temperatures 1980-2014",
       "description": "Gridded 4km resolution monthly temperature data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
       "source": "PRISM",
       "source_url": "http:\/\/www.prism.oregonstate.edu",
@@ -117,7 +117,7 @@ var LayerInfo = [
     {
       "id": "prism_precip",
       "folder": "Climate Data.Precipitation",
-      "name": "PRISM Historical Precipitation 1980-2014",
+      "name": "Historical Precipitation 1980-2014",
       "description": "Gridded 4km resolution monthly precipitation data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
       "source": "PRISM",
       "source_url": "http:\/\/www.prism.oregonstate.edu",
@@ -133,7 +133,7 @@ var LayerInfo = [
     {
       "id": "narccap_precip",
       "folder": "Climate Data.Precipitation",
-      "name": "NARCCAP Precipitation Projections",
+      "name": "Seasonal/Annual Precipitation Projections",
       "description": "NARCCAP projected changes in average precipitation summarized by year, season, watershed and county from 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
@@ -151,7 +151,7 @@ var LayerInfo = [
     {
       "id": "narccap_temp",
       "folder": "Climate Data.Temperature",
-      "name": "NARCCAP Temperature Projections",
+      "name": "Seasonal/Annual Temperature Projections",
       "description": "NARCCAP projected changes in average minimum, maximum, and average temperature summarized by year and county, for the years 2039 to 2069.Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html ",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
@@ -170,8 +170,8 @@ var LayerInfo = [
     {
       "id": "narccap_degree_days",
       "folder": "Climate Data.Temperature",
-      "name": "Degree Day Accumulations",
-      "description": "NARCCAP projected growing degree day accumulations, etc. summarized by year and county, for the years 2039 to 2069.  Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "name": "Degree-day Accumulation Projections",
+      "description": "NARCCAP projected degree-day accumulations, summarized by year and county, for the years 2039 to 2069.  Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
       "sectors": "",
@@ -183,6 +183,25 @@ var LayerInfo = [
         "date_step": 10,
         "date" : 2039,
         "prod": "gdd50",
+        "season" : "ANN"
+      }
+    },
+    {
+      "id": "narccap_temp_days",
+      "folder": "Climate Data.Temperature",
+      "name": "Days > Threshold Projections",
+      "description": "NARCCAP projected days/year of temperature above or below threshold values, summarized by year and county, for the years 2039 to 2069.  Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "source": "ACIS",
+      "source_url": "http:\/www.rcc-acis.org",
+      "sectors": "",
+      "download_url": null,
+      "metadata_url": "http:\/\/www.narccap.ucar.edu",
+      "parameters": {
+        "opacity": 70,
+        "area" : "county",
+        "date_step": 10,
+        "date" : 2039,
+        "prod": "tx90",
         "season" : "ANN"
       }
     },
