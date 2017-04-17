@@ -295,15 +295,60 @@ var LayerInfo = [
       }
     },
     {
-      "id": "air_water",
+      "id": "spa_surface_water",
       "folder": "Water Resources",
-      "name": "Open Data Layers",
-      "description": "Layers served from the open data portal..",
+      "name": "Surface Water SPA",
+      "description": "Source Protection Area (SPA) boundaries have been located on RF 24000 & RF 25000 scale USGS topographic maps by Water Supply Division (DEC) and VT Dept of Health (historical) personnel. Buffered SPAs are based on the point location of the water source(s) Refer to the SOURCE coverage documentation file for information on data sources used. This GIS layer consists of the geographic location of the Source Protection Areas for active and inactive Public Community and Non-Transient Non-Community for surface water intakes labeled by the Water System Identification Number (WSID) and source number (i.e. WL001 or IN002). The SPA generally consists of a buffer around the upstream river and tributaries and watershed boundary. The source locations are drawn from the State Drinking Water database (SDWIS). The water sources are surface water intakes on lakes or rivers that predate regulations developed in the 1970s to new sources under review now.",
       "source": "VT ANR",
-      "source_url": "http://anr.vermont.gov/",
-      "sectors": "Ecosystems,",
-      "download_url": null,
-      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::surfacewater-source-protection-areas-spas",
+      "sectors": "",
+      "download_url": "https://opendata.arcgis.com/datasets/fe35e66df2e64d31b5523812b095c868_184.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/fe35e66df2e64d31b5523812b095c868/info/metadata/metadata.xml?format=default&output=html",
+      "parameters": {
+        "opacity": 70,
+        "display_layer": 33
+      }
+    },
+    {
+      "id": "spa_ground_water",
+      "folder": "Water Resources",
+      "name": "Ground Water SPA",
+      "description": "Groundwater SPA. This GIS layer consists of the geographic location of the Source Protection Areas for active and inactive Public Community and Non-Transient Non-Community groundwater sources labeled by the Water System Identification Number (WSID) and source number (i.e. WL001 or IN002). The source locations are drawn from the State Drinking Water database (SDWIS). The water sources are wells and springs that predate regulations developed in the 1970s to new sources under review now. Source Protection Area (SPA) boundaries have been located on RF 24000 & RF 25000 scale USGS topographic maps by Water Supply Division (DEC) and VT Dept of Health (historical) personnel. Buffered SPAs are based on the point location of the water source(s). Refer to the SOURCE coverage documentation file for information on data sources used.",
+      "source": "VT ANR",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::ground-water-spa",
+      "sectors": "",
+      "download_url": "https://opendata.arcgis.com/datasets/43d5689ed7bb4473a0b318875eaaf770_187.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/43d5689ed7bb4473a0b318875eaaf770/info/metadata/metadata.xml?format=default&output=html",
+      "parameters": {
+        "opacity": 70,
+        "display_layer": 33
+      }
+    },
+    {
+      "id": "private_wells",
+      "folder": "Water Resources",
+      "name": "Private Wells",
+      "description": "Private wells in this layer come from the Department of Environmental Conservation's Water Supply Data Composite. Managed by the Water Supply Division's Well Driller and Well Location Program, the database contains private well information submitted by Vermont licensed well drillers. Licensed well drillers have been required to submit well completion reports (well logs) to the state since 1966. Well tags have been required since 1986. NOTE: the data contained here is only as accurate as what was submitted - many wells were completed, but not reported, many reports have missing information, were recorded inaccurately or poorly located geographically. If a report cannot be found but you know the driller of a particular well, you may want to contact them directly.",
+      "source": "VT ANR",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::private-wells-1",
+      "sectors": "",
+      "download_url": "https://opendata.arcgis.com/datasets/d17192903e80420394b7e8f0405b18a9_162.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/d17192903e80420394b7e8f0405b18a9/info/metadata/metadata.xml?format=default&output=html",
+      "parameters": {
+        "opacity": 70,
+        "display_layer": 33
+      }
+    },
+    {
+      "id": "public_water_sources",
+      "folder": "Water Resources",
+      "name": "Public Water Sources",
+      "description": "This GIS layer consists of the geographic location of active and inactive public (Community, non-transient non-community and transient non-community) water sources labeled by the Water System Identification Number (WSID) and source number (i.e. WL001 or IN002). The water source data and locations are drawn from the State Drinking Water database (SDWIS). The water sources are wells, springs and surface water intakes that predate regulations developed in the 1970s to the present. SDWIS is the repository for state and federal information collected from and about each public water system in Vermont, including bulk and bottled water facilities along with water production and water quality data.",
+      "source": "VT ANR",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::public-water-sources-1",
+      "sectors": "",
+      "download_url": "https://opendata.arcgis.com/datasets/4c8db80cb2d04819b4d69053cf4609ae_161.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/4c8db80cb2d04819b4d69053cf4609ae/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
         "opacity": 70,
         "display_layer": 33
