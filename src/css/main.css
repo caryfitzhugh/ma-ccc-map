@@ -463,14 +463,13 @@ input[type="radio"], input[type="checkbox"] {
   display: inline-block;
   min-width: 9.08%;
   margin: 0;
-  height: 20px;
   position: relative;
 }
 
 .active-layer .detail-block.legend .color-block svg ,
 .active-layer .detail-block.legend .color-block svg rect {
   width: 100%;
-  height: 100%;
+  height: 25px;
 }
 
 .active-layer .detail-block.legend {
