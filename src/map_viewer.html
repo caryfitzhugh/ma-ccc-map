@@ -281,6 +281,52 @@
           </div>
         </div>
         {{#map_details.feature_info_responses}}
+          {{#if ("vt_health_status" === renderer_id )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <p> % of Adults Who Self-Report Fair/Poor Health</p>
+                <table class="table">
+                  <tr>
+                    <th> County Name </th>
+                    <th> 2014-2015 </th>
+                    <th> 2013-2014 </th>
+                    <th> 2012-2013 </th>
+                    <th> 2011-2012 </th>
+                    <th> 2008-2010 </th>
+                    <th> 2007-2009 </th>
+                    <th> 2006-2008 </th>
+                    <th> 2005-2007 </th>
+                    <th> 2004-2006 </th>
+                    <th> 2003-2005 </th>
+                    <th> 2002-2004 </th>
+                    <th> 2001-2003 </th>
+                    <th> 2000-2002 </th>
+                  </tr>
+
+                  {{#json.features}}
+                    <tr>
+                      <td>{{CNTYNAME}}</td>
+                      <td>{{percent_2014_2015}}%</td>
+                      <td>{{percent_2013_2014}}%</td>
+                      <td>{{percent_2012_2013}}%</td>
+                      <td>{{percent_2011_2012}}%</td>
+                      <td>{{percent_2008_2010}}%</td>
+                      <td>{{percent_2007_2009}}%</td>
+                      <td>{{percent_2006_2008}}%</td>
+                      <td>{{percent_2005_2007}}%</td>
+                      <td>{{percent_2004_2006}}%</td>
+                      <td>{{percent_2003_2005}}%</td>
+                      <td>{{percent_2002_2004}}%</td>
+                      <td>{{percent_2001_2003}}%</td>
+                      <td>{{percent_2000_2002}}%</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
           {{#if ("vt_social_vuln" === renderer_id )}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -294,8 +340,6 @@
                   {{#json.features}}
                     <tr>
                       <td>{{JSON.stringify(.)}}</td>
-                    </tr>
-
                   {{/json.features}}
                 </table>
               </div>
@@ -1333,11 +1377,12 @@
           {{#if layers.active.length > 0 }}
             <span class='label label-default label-xs'>{{layers.active.length}}</span>
           {{/if}}
-          {{#if active_layers_added_count === 1}}
+
+          {{#wizard.adding_layers_popup}}
             <span class='arrow_box notice-me-banner' on-click="remove-layer-add-notice">
               <span>After adding layers to the map, click on the Controls &amp; Legends tab to dig deeper!</span>
             </span>
-          {{/if active_layers_added_count === 1}}
+          {{/wizard.adding_layers_popup}}
         </a>
         <a on-tap='show-search-control' class="locations-tab col-xs-3 {{layer_controls.active_tab === 'search' ? 'active': ''}} " >
           <span class='fa fa-search'></span>
@@ -1484,7 +1529,7 @@
     {{#if "vt_heat_vuln" === layer_default_id}}
       <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
         {{#parameters.vt_heat_vuln_buckets}}
-        <div class='color-block' style="width: {{100.0 / parameters.vt_heat_vuln_buckets.length}}%;">
+        <div class='color-block' style="width: {{99.0 / parameters.vt_heat_vuln_buckets.length}}%;">
           <svg width="100" height="100">
             <rect height="100" width="100" style="fill: {{fill}}; stroke: {{stroke}}; opacity:{{(0.7 * parameters.opacity / 100.0) + 0.3}}; "/>
           </svg>
@@ -1492,6 +1537,35 @@
         {{/parameters.vt_social_color_buckets}}
       </div>
     {{/if}}
+    {{#if "vt_health_status" === layer_default_id }}
+      <div class='detail-block'>
+        <label  decorator='tooltip:Use slider to select years to display'> Years: </label>
+        <input type="range"
+              min="0"
+              max="{{parameters.vt_health_status_comparison_descriptions.length - 1 }}"
+              list="vt_health_status_datalist"
+              value="{{parameters.ending_year_index}}">
+        <datalist id="vt_health_status_datalist">
+          {{#parameters.vt_health_comparison_descriptions}}
+              <option>{{.}}</option>
+          {{/parameters.vt_health_comparison_descriptions}}
+        </datalist>
+        <br/>
+        <div style='text-align: center'>
+          Adults Who Self-Report Fair/Poor Health
+          {{parameters.vt_health_status_comparison_descriptions[parseInt(parameters.ending_year_index,10)]}}
+         </div>
+      </div>
+      <div class='detail-block legend opacity {{layer_default_id}} {{legend_classname}}'>
+        {{#parameters.vt_health_status_color_buckets}}
+        <div class='color-block' style="width: {{100.0 / parameters.vt_health_status_color_buckets.length}}%;">
+          <svg width="100" height="100">
+            <rect height="100" width="100" style="fill: {{fill}}; stroke: {{stroke}}; opacity:{{(0.7 * parameters.opacity / 100.0) + 0.3}}; "/>
+          </svg>
+          <label>{{label}}</label>
+        {{/parameters.vt_health_status_color_buckets}}
+      </div>
+    {{/if "vt_health_status" === layer_default_id }}
     {{#if "noaa_slr" === layer_default_id}}
       <div class='detail-block sea-level'>
         <label decorator='tooltip:Use slider to select sea level (feet above mean higher high water)'> Sea Level: </label>
@@ -2493,18 +2567,13 @@
     <script src="./js/base_layers.js?__inline=true"></script>
 
     <script src="./js/renderers/utils.js?__inline=true"></script>
-    <script src="./js/renderer_templates/esri_feature_layer.js?__inline=true"></script>
     <script src="./js/renderer_templates/geojson_points.js?__inline=true"></script>
     <script src="./js/renderer_templates/geojson_lines.js?__inline=true"></script>
     <script src="./js/renderer_templates/geojson_polygons.js?__inline=true"></script>
     <script src="./js/renderer_templates/wms.js?__inline=true"></script>
     <script src="./js/renderer_templates/esri.js?__inline=true"></script>
-    <script src="./js/renderer_templates/esri_polygons.js?__inline=true"></script>
+    <script src="./js/renderer_templates/esri_feature_layer.js?__inline=true"></script>
 
-    <script src="./js/renderers/spa_surface_water.js?__inline=true"></script>
-    <script src="./js/renderers/spa_ground_water.js?__inline=true"></script>
-    <script src="./js/renderers/private_wells.js?__inline=true"></script>
-    <script src="./js/renderers/public_water_sources.js?__inline=true"></script>
     <script src="./js/renderers/anthromes.js?__inline=true"></script>
     <script src="./js/renderers/beach_closures.js?__inline=true"></script>
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
@@ -2513,7 +2582,6 @@
     <script src="./js/renderers/bridges.js?__inline=true"></script>
     <script src="./js/renderers/croplands.js?__inline=true"></script>
     <script src="./js/renderers/culverts.js?__inline=true"></script>
-    <script src="./js/renderers/lyme.js?__inline=true"></script>
     <script src="./js/renderers/dams.js?__inline=true"></script>
     <script src="./js/renderers/dfirm_floodways.js?__inline=true"></script>
     <script src="./js/renderers/fema_historic.js?__inline=true"></script>
@@ -2522,6 +2590,7 @@
     <script src="./js/renderers/high_priority_terrestrial.js?__inline=true"></script>
     <script src="./js/renderers/hospitals.js?__inline=true"></script>
     <script src="./js/renderers/invasives.js?__inline=true"></script>
+    <script src="./js/renderers/lyme.js?__inline=true"></script>
     <script src="./js/renderers/narccap.js?__inline=true"></script>
     <script src="./js/renderers/narccap_degree_days.js?__inline=true"></script>
     <script src="./js/renderers/narccap_precip.js?__inline=true"></script>
@@ -2534,9 +2603,14 @@
     <script src="./js/renderers/prism.js?__inline=true"></script>
     <script src="./js/renderers/prism_precip.js?__inline=true"></script>
     <script src="./js/renderers/prism_temp.js?__inline=true"></script>
+    <script src="./js/renderers/private_wells.js?__inline=true"></script>
+    <script src="./js/renderers/public_water_sources.js?__inline=true"></script>
+    <script src="./js/renderers/spa_ground_water.js?__inline=true"></script>
+    <script src="./js/renderers/spa_surface_water.js?__inline=true"></script>
     <script src="./js/renderers/superfund.js?__inline=true"></script>
     <script src="./js/renderers/taccimo.js?__inline=true"></script>
     <script src="./js/renderers/vt_boundary.js?__inline=true"></script>
+    <script src="./js/renderers/vt_health_status.js?__inline=true"></script>
     <script src="./js/renderers/vt_heat_vuln.js?__inline=true"></script>
     <script src="./js/renderers/vt_mask.js?__inline=true"></script>
     <script src="./js/renderers/vt_social_vuln.js?__inline=true"></script>

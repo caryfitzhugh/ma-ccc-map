@@ -24,7 +24,6 @@ if (params.map_state_token) {
 }
 
 // If the cookie is such that they haven't seen the welcome schpiel, then show it now!
-//
 if (document.cookie.replace(/(?:(?:^|.*;\s*)show_welcome_modal_to_new_users\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
   Views.ControlPanel.fire("show-wizard");
   document.cookie = "show_welcome_modal_to_new_users=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";

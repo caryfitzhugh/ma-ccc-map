@@ -178,6 +178,7 @@ Views.ControlPanel = new Ractive({
       open: false
     },
     wizard: {
+      adding_layers_popup: false,
       open: false,
       current_step: 0,
       steps: ["welcome",
@@ -191,7 +192,6 @@ Views.ControlPanel = new Ractive({
               "advanced_layer_controls"
       ]
     },
-    active_layers_added_count: 0
   },
   decorators: {
       tooltip:  RactiveTooltip
@@ -215,7 +215,7 @@ Views.ControlPanel.on({
     evt.original.stopPropagation();
     evt.original.preventDefault();
     var cp = Views.ControlPanel;
-    cp.set("active_layers_added_count", cp.get("active_layers_added_count") + 1);
+    cp.set("wizard.adding_layers_popup", false);
   },
   // Activate this tab AND make it toggle the tray if already open
   "show-layers-control": function (evt) {
@@ -310,6 +310,10 @@ Views.ControlPanel.on({
   "toggle-layer-active": function (evt) {
     var cp = Views.ControlPanel;
     Controllers.Layers.toggle_layer_active(cp, evt.context);
+    if (document.cookie.replace(/(?:(?:^|.*;\s*)seen_adding_layers_popup\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
+      Views.ControlPanel.set("wizard.adding_layers_popup", true);
+    }
+    document.cookie = "seen_adding_layers_popup=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   },
   "move-active-to-top": function (evt) {
     var cp = Views.ControlPanel;
@@ -470,7 +474,6 @@ Views.ControlPanel.on({
     cp.set("wizard.open", false);
   }
 });
-
 Views.ControlPanel.observe("layer_controls.search_string", function (str) {
   var cp = Views.ControlPanel;
   // Make the call to search the endpoint

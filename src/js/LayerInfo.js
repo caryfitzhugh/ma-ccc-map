@@ -29,6 +29,20 @@ var CDN = function (url_str) {
 
 var LayerInfo = [
     {
+      "id": "vt_health_status",
+      "sort_key": 0,
+      "folder": "Public Health",
+      "name": "VT Health Status",
+      "description": "Vermont tracks adult health-related risk behaviors, chronic health conditions, and use of preventive services using a telephone survey called the Behavioral Risk Factor Surveillance Survey (BRFSS). This layer shows self-reported health status data, taken from BRFSS data, and aggregated in two-year increments at the county level. In this question, Vermonters were asked to rank their health as either excellent, very good, good, fair, or poor. This layer contains data on the percent of Vermonters, by county, who reported their health as fair or poor.",
+      "source": "Vermont Behavioral Risk Factor Surveillance Survey",
+      "source_url": "https://services.arcgis.com/YKJ5JtnaPQ2jDbX8/arcgis/rest/services/Vermont_Health_Status_BRFSS/FeatureServer",
+      "sectors": "",
+      "parameters": {
+        "opacity": 70,
+        "ending_year_index": 0,
+      }
+    },
+    {
       "id": "vt_social_vuln",
       "sort_key": 0,
       "folder": "Public Health",
@@ -554,7 +568,7 @@ var LayerInfo = [
       "download_url": "https://opendata.arcgis.com/datasets/f16c1addcbbc43f59ccf89237ccc0f64_59.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
       "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/f16c1addcbbc43f59ccf89237ccc0f64/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
-        "opacity": 70
+        "opacity": 100
       }
     },
     {

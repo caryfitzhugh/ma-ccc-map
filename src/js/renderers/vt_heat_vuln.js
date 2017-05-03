@@ -28,7 +28,7 @@ var vt_heat_vuln_buckets = [
   },
   {
     values: [0.4679, 1.5059900283813477],
-    label: "> 1.5 More Vulnerable",
+    label: "> 1.5",
     fill: "rgba(166, 97, 26, 255)",
     stroke:"rgba( 26, 26, 26, 128)",
   }

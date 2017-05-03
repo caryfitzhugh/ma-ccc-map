@@ -69,7 +69,12 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
           } else if (opts.color_buckets) {
 
             var bucket = _.find(opts.color_buckets, function (v) {
-              var lookup = _.get(feature, opts.color_bucket_field);
+              var field = opts.color_bucket_field;
+              if (opts.color_bucket_field instanceof Function) {
+                field = opts.color_bucket_field(active_layer)
+              }
+
+              var lookup = _.get(feature, field);
               if (_.isArray(v.values)) {
                 if (v.values.length == 1) {
                   return v.values[0] == lookup;

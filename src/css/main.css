@@ -490,6 +490,7 @@ input[type="radio"], input[type="checkbox"] {
   text-align: center;
   width: 100%;
   font-weight: 300;
+  vertical-align: text-top;
 }
 
 .active-layer .detail-block.legend-url-text {
