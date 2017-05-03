@@ -111,6 +111,19 @@ var LayerInfo = [
       }
     },
     {
+      "id": "lyme",
+      "folder": "Public Health",
+      "name": "Lyme Disease Cases 2015",
+      "description": "2015 Incidences of Lyme's Disease by County",
+      "source": "",
+      "source_url": "",
+      "metadata_url": "",
+      "download_url": "",
+      "parameters": {
+        "opacity": 100
+      }
+    },
+    {
       "id": "prism_temp",
       "folder": "Climate Data.Temperature",
       "name": "Historical Temperatures 1980-2014",

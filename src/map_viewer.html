@@ -824,6 +824,27 @@
               </div>
             </div>
           {{/if}}
+          {{#if ("lyme" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>County</th>
+                    <th>Cases 2015</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.county}}</td>
+                      <td>{{properties.cases2015}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+            </div>
+          {{/if}}
           {{#if ("fema_historic" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -2492,6 +2513,7 @@
     <script src="./js/renderers/bridges.js?__inline=true"></script>
     <script src="./js/renderers/croplands.js?__inline=true"></script>
     <script src="./js/renderers/culverts.js?__inline=true"></script>
+    <script src="./js/renderers/lyme.js?__inline=true"></script>
     <script src="./js/renderers/dams.js?__inline=true"></script>
     <script src="./js/renderers/dfirm_floodways.js?__inline=true"></script>
     <script src="./js/renderers/fema_historic.js?__inline=true"></script>
