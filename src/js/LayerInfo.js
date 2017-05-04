@@ -459,7 +459,7 @@ var LayerInfo = [
     },
     {
       "id": "fema_historic",
-      "folder": "Water Resources",
+      "folder": "Miscellaneous",
       "name": "FEMA Historic Emergencies 1964-2014",
       "description": "This layer summarizes FEMA historic disaster declarations from 1964 through 2014, categorized by type.",
       "source": "FEMA",
