@@ -535,6 +535,10 @@ input[type="radio"], input[type="checkbox"] {
   width: 100%;
   max-width: 100%;
 }
+.active-layer .legend.private_wells img {
+  width: 74%;
+  max-width: 74%;
+}
 .active-layer .legend.sovi img {
   width: 50%;
 }
