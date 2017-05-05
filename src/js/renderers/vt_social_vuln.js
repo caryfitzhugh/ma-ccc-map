@@ -1,5 +1,12 @@
 /*global L, Renderers, GEOSERVER */
 
+var vt_social_vuln_facets = [
+  {display: "Overall Index",property: "properties.SVI_16"},
+  {display: "Socioeconomic Theme",property: "properties.SES_SVI"},
+  {display: "Demographic Theme",property: "properties.Demo_SVI"},
+  {display: "Housing/Transportation Theme",property: "properties.H_T_SVI"},
+];
+
 // Pulled from: https://ahs-vt.maps.arcgis.com/sharing/content/items/a070f5843dba4c1ea9bbdcd7d4e6c474/data?f=json
 // .operationalLayers["0"].layerDefinition.drawingInfo.renderer.classBreakInfos
 var vt_social_color_buckets = [
@@ -45,9 +52,14 @@ RendererTemplates.esri_feature_layer("vt_social_vuln", {
 
   update_legend: function (active_layer) {
     active_layer.parameters.vt_social_color_buckets = vt_social_color_buckets;
+    active_layer.parameters.vt_social_vuln_facets = vt_social_vuln_facets;
   },
   color_buckets: vt_social_color_buckets,
-  color_bucket_field: "properties.SVI_16",
+  color_bucket_field: function (active_layer) {
+    // Depending on the parameters...
+    var index = active_layer.parameters.facet_index;
+    return vt_social_vuln_facets[index].property;
+  },
 
   esri_opts: {
   },

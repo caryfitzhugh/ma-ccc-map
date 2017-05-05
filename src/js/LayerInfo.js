@@ -49,10 +49,11 @@ var LayerInfo = [
       "name": "VT Social Vulnerability",
       "description": "",
       "source": "",
-      "source_url": "",
+      "source_url": "https://ahs-vt.maps.arcgis.com/apps/MapSeries/index.html?appid=ffea40ec90e94093b009d0ddb4a8b5c8",
       "sectors": "",
       "parameters": {
         "opacity": 70,
+        "facet_index": 0,
       }
     },
     {

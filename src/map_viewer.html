@@ -335,11 +335,22 @@
               <div class='col-xs-10'>
                 <table class="table">
                   <tr>
-                    <th> JSON </th>
+                    <th> Census Tract </th>
+                    <th> County </th>
+                    <th> SVI Overall </th>
+                    <th> Socioeconomic Flags </th>
+                    <th> Demographic Flags </th>
+                    <th> Housing / Transportatation Flags </th>
                   </tr>
                   {{#json.features}}
                     <tr>
-                      <td>{{JSON.stringify(.)}}</td>
+                      <td>{{NAMELSAD10}}</td>
+                      <td>{{COUNTY1}}</td>
+                      <td>{{SVI_16}}</td>
+                      <td>{{SES_SVI}}</td>
+                      <td>{{Demo_SVI}}</td>
+                      <td>{{H_T_SVI}}</td>
+                    </tr>
                   {{/json.features}}
                 </table>
               </div>
@@ -389,7 +400,7 @@
                     <th>Owner</th>
                     <th>Date Completed</th>
                     <th>Total Depth (ft)</th>
-                    <th>Total Yield (gpm)</th>               
+                    <th>Total Yield (gpm)</th>
                     <th>More info</th>
                   </tr>
                     <tr>
@@ -413,7 +424,7 @@
                     <th>Owner</th>
                     <th>Water Type</th>
                     <th>Well Type</th>
-                    <th>Total Depth (ft)</th>            
+                    <th>Total Depth (ft)</th>
                     <th>ID</th>
                   </tr>
                     <tr>
@@ -436,7 +447,7 @@
                   <tr>
                     <th>System Name</th>
                     <th>Population</th>
-                    <th>Zone</th>        
+                    <th>Zone</th>
                     <th>ID</th>
                   </tr>
                     <tr>
@@ -1358,7 +1369,16 @@
 <script id="layer_controls_details_blocks_template" type="text/ractive">
   {{#if !copied_source}}
     {{#if "vt_social_vuln" === layer_default_id}}
+      <div class='detail-block'>
+        <label  decorator='tooltip:Use slider to select theme to display'> Theme: </label>
+        <select value='{{parameters.facet_index}}'>
+          {{#parameters.vt_social_vuln_facets:i}}
+            <option value='{{i}}'>{{display}}</option>
+          {{/parameters.vt_social_vuln_facets:i}}
+        </select>
+      </div>
       <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
+        <div style='text-align: center'>Overall Index Score (Higher is more vulnerable. See layer description.)</div>
         {{#parameters.vt_social_color_buckets}}
         <div class='color-block' style="width: {{100.0 / parameters.vt_social_color_buckets.length}}%;">
           <svg width="100" height="100">
