@@ -437,6 +437,32 @@
                 </table>
               </div>
           {{/if}}
+          {{#if ("spa_ground_water" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>System Name</th>
+                    <th>System Type</th>
+                    <th>Status</th>
+                    <th>Population</th>
+                    <th>Zone</th>
+                    <th>ID</th>
+                  </tr>
+                    <tr>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("SystemName")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("SystemType")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("STATUS")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("Population")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("ZONE")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WSID")}}"</td>
+                    </tr>
+                </table>
+              </div>
+          {{/if}}
           {{#if ("spa_surface_water" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
             <div class='row'>
               <div class='col-xs-2'>

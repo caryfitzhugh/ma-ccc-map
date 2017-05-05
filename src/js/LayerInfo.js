@@ -362,8 +362,7 @@ var LayerInfo = [
       "download_url": "https://opendata.arcgis.com/datasets/43d5689ed7bb4473a0b318875eaaf770_187.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
       "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/43d5689ed7bb4473a0b318875eaaf770/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
-        "opacity": 70,
-        "display_layer": 33
+        "opacity": 100,
       }
     },
     {
