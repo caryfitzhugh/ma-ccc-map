@@ -472,6 +472,18 @@ input[type="radio"], input[type="checkbox"] {
   height: 25px;
 }
 
+.detail-block.legend-url-text.spa_surface_water ,
+.detail-block.legend-url-text.spa_ground_water {
+  position: relative;
+}
+
+.detail-block.legend-url-text.spa_ground_water span.legend-text,
+.detail-block.legend-url-text.spa_surface_water span.legend-text {
+  position: absolute;
+  top: -34px;
+  left: 130px;
+}
+
 .active-layer .detail-block.legend {
   margin: 10px 0px;
 }
