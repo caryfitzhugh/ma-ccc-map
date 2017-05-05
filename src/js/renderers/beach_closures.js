@@ -18,10 +18,21 @@ RendererTemplates.geojson_points("beach_closures", {
     });
   },
   popupContents: function (feature) {
+
+    var beach_closures_to_key = {
+      "Coli_and_BG": "Coliform Bacteria and Cyanobacteria",
+      "N/A": "No closures",
+      "Coliform Bacteria": "Coliform Bacteria",
+      "Blue-Green Algae":"Cyanobacteria"
+    };
+
+    var index = feature.properties.reason_cls
+    //var desc = beach_closures_descriptions[index];
+    console.log(index,beach_closures_to_key[index])
     return "<strong>Name: " + feature.properties.name + "</strong></br>" +
            "Status (2014): " + feature.properties.status2014 + "<br/>"+
            "Number of closures: " + feature.properties.num_cls + "<br/>"+
-           "Reason for closure: " + feature.properties.reason_cls + "<br/>"+
+           "Reason for closure: " + beach_closures_to_key[index]+ "<br/>"+
           "</br>"+
            Renderers.utils.zoom_to_location_link( feature.geometry );
   }

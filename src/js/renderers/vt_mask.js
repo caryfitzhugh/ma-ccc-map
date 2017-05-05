@@ -1,9 +1,14 @@
-RendererTemplates.geojson_polygons('vt_mask' ,{
-  update_legend: null,
-
-  url: CDN(GEOSERVER + "/vt/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=vt:state_mask&maxFeatures=50&outputFormat=application%2Fjson"),
-
-  each_polygon: function (polygon) {
-        polygon.setStyle({"color": "#000"});
-      }
+/*global L, Renderers, GEOSERVER */
+RendererTemplates.wms("vt_mask", {
+  update_legend: CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:vt_mask&style=vt_mask_black&format=image/png"),
+  url: CDN (GEOSERVER + "/vt/wms/"),
+  wms_opts:
+        {
+          layers: 'vt:vt_mask',
+          format: 'image/png',
+          style: 'vt_mask_black',
+          transparent: true,
+          opacity: 1,
+          zIndex: 100
+        }
 });

@@ -276,7 +276,7 @@
           <div class='col-xs-12'>
             <h2>
               Location Info
-              <small>{{map_details.location.lat}},{{map_details.location.lng}}</small>
+             <!--  <small>{{map_details.location.lat}},{{map_details.location.lng}}</small> -->
             </h2>
           </div>
         </div>
@@ -378,7 +378,76 @@
                 </table>
               </div>
           {{/if}}
-
+          {{#if ("private_wells" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Owner</th>
+                    <th>Date Completed</th>
+                    <th>Total Depth (ft)</th>
+                    <th>Total Yield (gpm)</th>               
+                    <th>More info</th>
+                  </tr>
+                    <tr>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("OWNERLASTNAME")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("DATECOMPLETED")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WELLDEPTHFT")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("YIELDGPM")}}</td>
+                      <td><a target="_blank" href="{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WellReportUpdatePageURL")}}"> Link </td>
+                    </tr>
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("public_water_sources" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Owner</th>
+                    <th>Water Type</th>
+                    <th>Well Type</th>
+                    <th>Total Depth (ft)</th>            
+                    <th>ID</th>
+                  </tr>
+                    <tr>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("SYSTEMNAME")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WATERTPYE")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WELLTYPE")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WELLDEPTHFT.")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WSID")}}"</td>
+                    </tr>
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("spa_surface_water" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>System Name</th>
+                    <th>Population</th>
+                    <th>Zone</th>        
+                    <th>ID</th>
+                  </tr>
+                    <tr>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("SystemName")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("Population")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("ZONE")}}</td>
+                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("WSID")}}"</td>
+                    </tr>
+                </table>
+              </div>
+          {{/if}}
           {{#if ("gap_lc" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -387,11 +456,11 @@
               <div class='col-xs-10'>
                 <table class="table">
                   <tr>
-                    <th>NVC Class</th>
-                    <th>NVC SubClass</th>
-                    <th>NVC Formation</th>
-                    <th>NVC Division</th>
-                    <th>NVC Macrogroup</th>
+                    <th>Class</th>
+                    <th>SubClass</th>
+                    <th>Formation</th>
+                    <th>Division</th>
+                    <th>Macrogroup</th>
                   </tr>
                     <tr>
                       <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_class")}}</td>
@@ -400,30 +469,6 @@
                       <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_div")}}</td>
                       <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("nvc_macro")}}</td>
                     </tr>
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("rare_plants_and_animals" === renderer_id && json.results.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Layer Name</th>
-                    <th>Stretched value</th>
-                    <th>Pixel Value</th>
-                    <th>Count</th>
-                  </tr>
-                  {{#json.results}}
-                    <tr>
-                      <td>{{layerName}}</td>
-                      <td>{{attributes["Stretched value"]}}</td>
-                      <td>{{attributes["Pixel Value"]}}</td>
-                      <td>{{attributes["Count"]}}</td>
-                    </tr>
-                  {{/json.features}}
                 </table>
               </div>
           {{/if}}
@@ -447,7 +492,7 @@
                 </table>
               </div>
           {{/if}}
-          {{#if ("power_stations" === renderer_id && json.results.length > 0)}}
+          {{#if ("croplands" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
                 <label> {{name}} </label>
@@ -455,19 +500,29 @@
               <div class='col-xs-10'>
                 <table class="table">
                   <tr>
-                    <th>Name</th>
-                    <th>Code</th>
-                    <th>Utility</th>
-                    <th>Technology</th>
-                    <th>Total Net Summer Capacity</th>
+                    <th>Percent Active Croplands</th>
                   </tr>
-                  {{#json.results}}
+                  {{#json.features}}
                     <tr>
-                      <td>{{attributes.Plant_Name}}</td>
-                      <td><a target="_blank" href="https://www.eia.gov/beta/enerdat/#/plant/{{attributes.plant_code}}">Plant {{attributes.plant_code}}</a></td>
-                      <td>{{attributes.Utility_Name}}</td>
-                      <td>{{attributes.tech_desc}}</td>
-                      <td>{{attributes.source_desc}}</td>
+                      <td>{{properties.GRAY_INDEX}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("pastures" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Percent Active Pasturelands</th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.GRAY_INDEX}}</td>
                     </tr>
                   {{/json.features}}
                 </table>
@@ -501,50 +556,6 @@
                 </table>
               </div>
           {{/if}}
-          {{#if ("primary_aquifers" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>GID</th>
-                    <th>Source</th>
-                    <th>Shape Area</th>
-                    <th>Shape Length</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.gid}}</td>
-                      <td>{{properties.source}}</td>
-                      <td>{{properties.shape_area}}</td>
-                      <td>{{properties.shape_len}}</td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("superfund" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Name</th>
-                    <th>EPA Link</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.site_name}}</td>
-                      <td><a target="_blank" href="{{properties.SITE_PROFI}}"> Additional EPA Site Information </a></td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
           {{#if ("boundary_counties" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -566,31 +577,6 @@
                       <td>{{properties.gnis}}</td>
                       <td></td>
                       <td></td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("regulated_wells" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Name</th>
-                    <th>Company</th>
-                    <th>Well Type</th>
-                    <th>Link</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.name}}</td>
-                      <td>{{properties.company}}</td>
-                      <td>{{properties.well_type}}</td>
-                      <td><a target='_blank'
-                        href="{{properties.link}}">Online Report</a></td>
                     </tr>
                   {{/json.features}}
                 </table>
@@ -681,150 +667,7 @@
                 </table>
               </div>
           {{/if}}
-          {{#if ("boundary_climate_divisions" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Name</th>
-                    <th>Sample Queries</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.name}}</td>
-                      <td>
-                        <a href="http://www.ncdc.noaa.gov/cag/time-series/us/{{properties.clim_div_id_state}}/{{properties.clim_div_id}}/pcp/ytd/12/1895-2015?base_prd=true&firstbaseyear=1895&lastbaseyear=2015&trend=true&trend_base=10&firsttrendyear=1905&lasttrendyear=2015&filter=true&filterType=binomial" target="_blank">Annual PPT 1895-2015</a><br>
-                        <a href="http://www.ncdc.noaa.gov/cag/time-series/us/{{properties.clim_div_id_state}}/{{properties.clim_div_id}}/tmax/1/9/1950-2015?base_prd=true&firstbaseyear=1950&lastbaseyear=2015&trend=true&trend_base=10&firsttrendyear=1950&lasttrendyear=2015&filter=true&filterType=binomial" target="_blank">Sept Max Temp 1895-2015</a>
-                      </td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("railroad" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Line Name</th>
-                    <th>Track Name</th>
-                    <th>Owner</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.line_name}}</td>
-                      <td>{{properties.trk_name}}</td>
-                      <td>{{properties.owner_name}}</td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("remediation_sites" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>Name</th>
-                    <th>Program</th>
-                    <th>Site Code</th>
-                    <th>Address</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.name}}</td>
-                      <td>{{properties.program}}</td>
-                      <td>{{properties.sitecode}}</td>
-                      <td>{{properties.address}}</td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("wtrcls_line" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>ID</th>
-                    <th>Classification</th>
-                    <th>Standard</th>
-                    <th>Protected</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.partitem}}</td>
-                      <td>{{properties.classifica}}</td>
-                      <td>{{properties.standard}}</td>
-                      <td>{{properties.protected}}</td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("wtrcls_poly" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>ID</th>
-                    <th>Classification</th>
-                    <th>Standard</th>
-                    <th>Protected</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.partitem}}</td>
-                      <td>{{properties.classifica}}</td>
-                      <td>{{properties.standard}}</td>
-                      <td>{{properties.protected}}</td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("trout_streams" === renderer_id && json.features.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>ID</th>
-                    <th>Classification</th>
-                    <th>Standard</th>
-                    <th>Protected</th>
-                  </tr>
-                  {{#json.features}}
-                    <tr>
-                      <td>{{properties.partitem}}</td>
-                      <td>{{properties.classifica}}</td>
-                      <td>{{properties.standard}}</td>
-                      <td>{{properties.protected}}</td>
-                    </tr>
-                  {{/json.features}}
-                </table>
-              </div>
-          {{/if}}
+
           {{#if ("anthromes" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -1043,23 +886,6 @@
                     GRAY_INDEX: {{properties.GRAY_INDEX}}
                   </div>
                 {{/json.features}}
-              </div>
-          {{/if}}
-          {{#if ("sandysurge" === renderer_id && json.results.length > 0)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                {{#json.results}}
-                  <div>
-                    State: {{value}} <br>
-                    Status: {{attributes.Status}} <br>
-                    DEM Source: {{attributes.DEMSource}} <br>
-                    Comments: {{attributes.Comments}} <br>
-                    Source Data: {{attributes.SourceData}} <br>
-                  </div>
-                {{/json.results}}
               </div>
           {{/if}}
           {{#if ("invasive_animals" === renderer_id)}}
@@ -1561,6 +1387,14 @@
         {{/parameters.vt_social_color_buckets}}
       </div>
     {{/if}}
+    {{#if "spa_surface_water" === layer_default_id}}
+      <div class='detail-block legend '>
+
+
+          <label>SPA Area Boundaries</label>
+
+      </div>
+    {{/if}}
     {{#if "vt_health_status" === layer_default_id }}
       <div class='detail-block'>
         <label  decorator='tooltip:Use slider to select years to display'> Years: </label>
@@ -1590,77 +1424,6 @@
         {{/parameters.vt_health_status_color_buckets}}
       </div>
     {{/if "vt_health_status" === layer_default_id }}
-    {{#if "noaa_slr" === layer_default_id}}
-      <div class='detail-block sea-level'>
-        <label decorator='tooltip:Use slider to select sea level (feet above mean higher high water)'> Sea Level: </label>
-        <input type="range"
-              min="0"
-              max="6"
-              value="{{parameters.sea_level_height}}">
-        <span> {{parameters.sea_level_height}} ft. </span>
-        <div style='margin-left: 25%' >Feet above Mean Height High Water</div>
-      </div>
-
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Display modeled sea level or model confidence'> Display: </label>
-        <input type="radio" name='{{parameters.display_layer}}' value="slr"> Sea Level
-        <input type="radio" name='{{parameters.display_layer}}' value="conf"> Confidence
-      </div>
-    {{/if}}
-    {{#if "dewberry_slr" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Use slider to select sea level (inches above mean higher high water)'> Sea Level: </label>
-        <select value='{{parameters.rise}}'>
-            <option value='0'>0 inches</option>
-            <option value='1'>12 inches</option>
-            <option value='2'>18 inches</option>
-            <option value='3'>24 inches</option>
-            <option value='4'>36 inches</option>
-            <option value='5'>48 inches</option>
-            <option value='6'>60 inches</option>
-            <option value='7'>72 inches</option>
-        </select>
-      </div>
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a storm return period'> Storm Return: </label>
-        <select value='{{parameters.year}}'>
-            <option value='0'>10 year</option>
-            <option value='1'>50 year</option>
-            <option value='2'>100 year</option>
-            <option value='3'>500 year</option>
-        </select>
-      </div>
-    {{/if}}
-    {{#if "nyserda_slr" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Use slider to select sea level (inches above mean higher high water)'> Sea Level: </label>
-        <select value='{{parameters.rise}}'>
-            <option value='06'>6 inches</option>
-            <option value='12'>12 inches</option>
-            <option value='18'>18 inches</option>
-            <option value='24'>24 inches</option>
-            <option value='30'>30 inches</option>
-            <option value='36'>36 inches</option>
-            <option value='48'>48 inches</option>
-            <option value='60'>60 inches</option>
-            <option value='72'>72 inches</option>
-        </select>
-      </div>
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a storm return period'> Storm Return: </label>
-        <select value='{{parameters.year}}'>
-            <option value='0005'>5 year</option>
-            <option value='0010'>10 year</option>
-            <option value='0020'>20 year</option>
-            <option value='0050'>50 year</option>
-            <option value='0100'>100 year</option>
-            <option value='0200'>200 year</option>
-            <option value='0500'>500 year</option>
-            <option value='1000'>1000 year</option>
-        </select>
-      </div>
-    {{/if}}
-
     {{#if "taccimo" === layer_default_id}}
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose a tree species'> Species: </label>
@@ -1680,34 +1443,12 @@
             <option value='55'>Eastern Hemlock</option>
         </select>
       </div>
-      <div class='detail-block sea-level'>
-        <label decorator='tooltip:Choose an emissions scenario'> Emissions Scenario: </label>
-        <input type="range"
-              min="0"
-              max="112"
-              step="56"
-              value="{{parameters.scenario}}">
-        <span>
-          {{#if (parameters.scenario === 0) }}
-            Current
-          {{/if}}
-          {{#if (parameters.scenario === 56) }}
-            Low
-          {{/if}}
-          {{#if (parameters.scenario === 112) }}
-            High
-          {{/if}}
-        </span>
-      </div>
-    {{/if}}
-
-    {{#if "sandysurge" === layer_default_id}}
       <div class='detail-block show-confidence'>
-        <label> Resolution: </label>
-        <select style="max-width: 70%;" value='{{parameters.resolution}}'>
-          <option value='0'> Final Extent</option>
-          <option value='1'> Very High Resolution (1m)</option>
-          <option value='2'> High Resolution (3)</option>
+        <label decorator='tooltip:Choose a tree species'> Scenario: </label>
+        <select value='{{parameters.scenario}}'>
+            <option value='0'>Current</option>
+            <option value='56'>Low</option>
+            <option value='112'>High</option>
         </select>
       </div>
     {{/if}}
@@ -1819,17 +1560,6 @@
           <option value='1'> Physical Landscape Diversity Blocks </option>
           <option value='2'> Interior Forest Blocks </option>
           <option value='3'> Connectivity Blocks </option>
-        </select>
-      </div>
-    {{/if}}
-    {{#if "air_water" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose the layer to view'> Data Product: </label>
-        <select value='{{parameters.display_layer}}'>
-          <option value='10'> Surface Water SPA </option>
-          <option value='13'> Ground Water SPA </option>
-          <option value='34'> Private Wells </option>
-          <option value='33'> Public Water Sources </option>
         </select>
       </div>
     {{/if}}
@@ -2009,26 +1739,6 @@
       </div>
     {{/if}}
 
-    {{#if "carbon" === layer_default_id}}
-      <div class='detail-block show-confidence carbon'>
-        <label> Year / Scenario: </label>
-        <div class='options'>
-          <div>
-            <input  type="radio" name='{{parameters.scenario_year}}' value="a2_2010">
-            2010 - A2 (medium-high emissions)
-          </div>
-          <div>
-            <input  type="radio" name='{{parameters.scenario_year}}' value="a2_2050">
-            2050 - A2 (medium-high emissions)
-          </div>
-          <div >
-            <input type="radio" name='{{parameters.scenario_year}}' value="b1_2050">
-            2050 - B1 (lower emissions)
-          </div>
-        </div>
-      </div>
-    {{/if}}
-
     {{#if "fema_historic" === layer_default_id}}
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose an emergency type'> Summarize by: </label>
@@ -2042,27 +1752,6 @@
             <option value='7'>Snow/Ice/Freezing</option>
             <option value='8'>Tornado</option>
         </select>
-      </div>
-    {{/if}}
-
-    {{#if "soils" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Layer: </label>
-        <input type="radio" name='{{parameters.soils_layer}}' value=0> Soil Moisture
-        <input type="radio" name='{{parameters.soils_layer}}' value=1> Surface Geology
-      </div>
-      <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
-        {{#if "0" === parameters.soils_layer}}
-        <img class='soils-{{parameters.soils_layer}}' src="{{legend_base_url}}0">
-        <div>
-          Drainage class
-        </div>
-        {{ else }}
-        <img class='soils-{{parameters.soils_layer}}' src="{{legend_base_url}}1">
-        <div>
-          Parent material
-        </div>
-        {{/if}}
       </div>
     {{/if}}
 
@@ -2096,6 +1785,7 @@
         <input decorator='tooltip:Colors will encompass entire range of data within each percentile'type="radio" name='{{parameters.symbology}}' value="percentile"> Percentile
       </div>
     {{/if}}
+
     {{#if "climaid_precip" === layer_default_id}}
       <div class='detail-block sea-level'>
         <label decorator='tooltip:Use slider to select date'> Year: </label>
@@ -2134,86 +1824,6 @@
           <option value='#000'>Black </option>
           <option value='#fff'>White </option>
         </select>
-      </div>
-    {{/if}}
-
-    {{#if "gas_wells" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Well Status: </label>
-        <select value='{{parameters.status}}'>
-          <option value='All'>All </option>
-          {{#parameters.all_statii}}
-            <option value='{{.}}'>{{.}}</option>
-          {{/parameters.all_statii}}
-        </select>
-      </div>
-      <div class='detail-block show-confidence'>
-        <label> Well Sub-type: </label>
-        <select value='{{parameters.type}}'>
-          <option value='All'>All </option>
-          {{#parameters.all_types}}
-            <option value='{{.}}'>{{.}}</option>
-          {{/parameters.all_types}}
-        </select>
-      </div>
-      <div class='detail-block show-confidence'>
-        <label> Showing: </label>
-        <div style='text-align: center'>
-          <div class='gas-wells-cluster' style='display: inline-block'>
-            {{parameters.total_shown}}
-          </div>
-          <span class='legend-text'> Number of gas wells shown </span>
-        </div>
-      </div>
-    {{/if}}
-    {{#if "other_wells" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Well Status: </label>
-        <select value='{{parameters.status}}'>
-          <option value='All'>All </option>
-          {{#parameters.all_statii}}
-            <option value='{{.}}'>{{.}}</option>
-          {{/parameters.all_statii}}
-        </select>
-      </div>
-      <div class='detail-block show-confidence'>
-        <label> Well Sub-type: </label>
-        <select value='{{parameters.type}}'>
-          <option value='All'>All </option>
-          {{#parameters.all_types}}
-            <option value='{{.}}'>{{.}}</option>
-          {{/parameters.all_types}}
-        </select>
-      </div>
-      <div class='detail-block show-confidence'>
-        <label> Showing: </label>
-        <div style='text-align: center'>
-          <div class='other-wells-cluster' style='display: inline-block'>
-            {{parameters.total_shown}}
-          </div>
-        </div>
-      </div>
-    {{/if}}
-    {{#if "spdes" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Showing: </label>
-        <div style='text-align: center'>
-          <div class='spdesCluster' style='line-height: 100px; display: inline-block'>
-            {{parameters.total_shown}}
-          </div>
-          <span class='legend-text'> Number of water treatment facilities shown </span>
-        </div>
-      </div>
-    {{/if "spdes" === layer_default_id}}
-    {{#if "sewer_overflows" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Showing: </label>
-        <div style='text-align: center'>
-          <div class='sewer_overflowsCluster' style='display: inline-block'>
-            {{parameters.total_shown}}
-          </div>
-          <span class='legend-text'> Number of sewer overflows shown </span>
-        </div>
       </div>
     {{/if}}
 
@@ -2264,7 +1874,6 @@
           </span>
         </div>
       {{/if parameters.legend_data}}
-
     {{/if}}
 
     {{#if "dams" === layer_default_id}}
@@ -2290,6 +1899,7 @@
         <span> Unknown Hazard Potential </span>
        </div>
     {{/if "dams" === layer_default_id}}
+
     {{#if "beach_closures" === layer_default_id}}
        <strong>Status (2012-2014)</strong>
        <div class='detail-block'>
@@ -2313,40 +1923,6 @@
         <span> Unknown </span>
        </div>
     {{/if "beach_closures" === layer_default_id}}
-
-    {{#if "rare_plants_and_animals" === layer_default_id}}
-      <div class='detail-block show-confidence plants-and-animals'>
-        <label> Species: </label>
-        <select value='{{parameters.species_group}}'>
-        {{#parameters.species_names}}
-          <option value='{{.}}'> {{.}} </option>
-        {{/parameters.species_names}}
-        </select>
-      </div>
-      <div class='detail-block show-confidence plants-and-animals'>
-        <label> Timeframe: </label>
-        <select value='{{parameters.time}}'>
-        {{#parameters.species_timeframes[parameters.species_group]}}
-          <option value='{{.}}'> {{.}} </option>
-        {{/parameters.species_timeframes[parameters.species_group]}}
-        </select>
-      </div>
-      {{#if parameters.legend_data}}
-        <div class='detail-block show-confidence plants-and-animals esri-legend'>
-          {{#parameters.legend_data.legend}}
-            <div class='detail-block legend-block' style="width: {{98 / parameters.legend_data.legend.length}}%;">
-              <img src="data:{{contentType}};base64,{{imageData}}">
-              <span> {{label}} &nbsp; </span>
-            </div>
-          {{/parameters.legend_data.legend}}
-        </div>
-        <div class='detail-block legend-url-text {{layer_default_id}} {{legend_classname}}'>
-          <span class='legend-text'>
-            Species richness based on habitat suitability models
-          </span>
-        </div>
-      {{/if parameters.legend_data}}
-    {{/if}}
 
   {{/if !copied_source}}
 
@@ -2598,6 +2174,7 @@
     <script src="./js/renderer_templates/esri.js?__inline=true"></script>
     <script src="./js/renderer_templates/esri_feature_layer.js?__inline=true"></script>
 
+    <script src="./js/renderers/aadt.js?__inline=true"></script>
     <script src="./js/renderers/anthromes.js?__inline=true"></script>
     <script src="./js/renderers/beach_closures.js?__inline=true"></script>
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
