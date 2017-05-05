@@ -39,7 +39,7 @@ var LayerInfo = [
       "sectors": "",
       "parameters": {
         "opacity": 70,
-        "ending_year_index": 0,
+        "facet_index": 12,
       }
     },
     {
@@ -392,7 +392,8 @@ var LayerInfo = [
       "download_url": null,
       "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetCapabilities&service=WMS",
       "parameters": {
-        "opacity": 70
+        "opacity": 70,
+        "selected_facet_index": 0,
       }
     },
     {

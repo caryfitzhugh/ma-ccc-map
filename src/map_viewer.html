@@ -352,11 +352,27 @@
               <div class='col-xs-10'>
                 <table class="table">
                   <tr>
-                    <th>City/Town Name</th>
+                    <th>Town</th>
+                    <th>Pop &lt; 5yrs</th>
+                    <th>Pop &gt; 65yrs</th>
+                    <th>Poverty </th>
+                    <th>Edu &gt; HS </th>
+                    <th>Alone &gt; 65yrs</th>
+                    <th>Adults No Insurance</th>
+                    <th>Avg Days &gt; 87</th>
+                    <th>Heat-Related ED Visits<br/>(per 100k / yr)</th>
                   </tr>
                   {{#json.features}}
                     <tr>
                       <td>{{TOWNNAMEMC}}</td>
+                      <td>{{fixed_precision(Pop0_5pct,3)}}%</td>
+                      <td>{{fixed_precision(Pop65Plus,3)}}%</td>
+                      <td>{{fixed_precision(Poverty_pc,3)}}%</td>
+                      <td>{{fixed_precision(NoHS_pct,3)}}%</td>
+                      <td>{{fixed_precision(Alone65_pc,3)}}%</td>
+                      <td>{{fixed_precision(Insure_pct,3)}}%</td>
+                      <td>{{fixed_precision(Days_gt87,3)}}</td>
+                      <td>{{fixed_precision(ED_Visits, 3)}}</td>
                     </tr>
                   {{/json.features}}
                 </table>
@@ -1527,6 +1543,14 @@
       </div>
     {{/if}}
     {{#if "vt_heat_vuln" === layer_default_id}}
+      <div class='detail-block'>
+        <label  decorator='tooltip:Use slider to select years to display'> Years: </label>
+        <select value='{{parameters.selected_facet_index}}'>
+          {{#parameters.vt_heat_facets:i}}
+            <option value='{{i}}'>{{display}}</option>
+          {{/parameters.vt_heat_facets:i}}
+        </select>
+      </div>
       <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
         {{#parameters.vt_heat_vuln_buckets}}
         <div class='color-block' style="width: {{99.0 / parameters.vt_heat_vuln_buckets.length}}%;">
@@ -1542,18 +1566,18 @@
         <label  decorator='tooltip:Use slider to select years to display'> Years: </label>
         <input type="range"
               min="0"
-              max="{{parameters.vt_health_status_comparison_descriptions.length - 1 }}"
+              max="{{parameters.vt_health_status_facets.length - 1 }}"
               list="vt_health_status_datalist"
-              value="{{parameters.ending_year_index}}">
+              value="{{parameters.facet_index}}">
         <datalist id="vt_health_status_datalist">
-          {{#parameters.vt_health_comparison_descriptions}}
-              <option>{{.}}</option>
-          {{/parameters.vt_health_comparison_descriptions}}
+          {{#parameters.vt_health_status_facets}}
+            <option>{{display}}</option>
+          {{/parameters.vt_health_status_facets}}
         </datalist>
         <br/>
         <div style='text-align: center'>
           Adults Who Self-Report Fair/Poor Health
-          {{parameters.vt_health_status_comparison_descriptions[parseInt(parameters.ending_year_index,10)]}}
+          {{parameters.vt_health_status_facets[parseInt(parameters.facet_index,10)].display}}
          </div>
       </div>
       <div class='detail-block legend opacity {{layer_default_id}} {{legend_classname}}'>
