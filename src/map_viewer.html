@@ -747,7 +747,7 @@
                 <table class="table">
                   <tr>
                     <th>County</th>
-                    <th>Cases 2015</th>
+                    <th>Incidence per 100,000 Persons 2015</th>
                   </tr>
                   {{#json.features}}
                     <tr>
@@ -1962,7 +1962,7 @@
   {{/if}}
 
   {{#if parameters.legend_range }}
-    <div class='detail-block legend'>
+    <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
       {{#parameters.legend_text}}
         <div class='color-legend'>{{parameters.legend_text}}</div>
       {{/parameters.legend_text}}

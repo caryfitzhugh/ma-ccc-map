@@ -6,6 +6,7 @@ Renderers.fema_historic = {
     delete al.parameters.legend_range;
     delete al.legend_url_text;
   },
+
   clone_layer_name: function (active_layer) {
     var layer_default = _.find(LayerInfo, {id: active_layer.layer_default_id});
     var fema_historic_layer = active_layer.parameters.fema_historic_layer;
@@ -122,5 +123,5 @@ Renderers.fema_historic = {
         layer.setZIndex(-1);
       }
     });
-  }
+  },
 };

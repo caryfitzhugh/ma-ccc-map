@@ -50,10 +50,17 @@ var vt_social_color_buckets = [
 RendererTemplates.esri_feature_layer("vt_social_vuln", {
   url: CDN ("https://services.arcgis.com/YKJ5JtnaPQ2jDbX8/arcgis/rest/services/SVI_New/FeatureServer/0"),
 
+  clone_layer_name: function (active_layer) {
+     var layer_default = _.find(LayerInfo, {id: active_layer.layer_default_id});
+     var name =  layer_default.name + " " + vt_social_vuln_facets[active_layer.parameters.facet_index];
+     return name;
+  },
+
   update_legend: function (active_layer) {
     active_layer.parameters.vt_social_color_buckets = vt_social_color_buckets;
     active_layer.parameters.vt_social_vuln_facets = vt_social_vuln_facets;
   },
+
   color_buckets: vt_social_color_buckets,
   color_bucket_field: function (active_layer) {
     // Depending on the parameters...
