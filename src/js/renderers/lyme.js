@@ -1,7 +1,10 @@
 /*global L, Renderers, GEOSERVER */
 RendererTemplates.wms("lyme", {
 
-  update_legend: CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:lyme&format=image/png"),
+  update_legend: {
+    url: CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:lyme&format=image/png"),
+    text: "2015 Incidence of Lyme Disease per 100,000 Persons",
+  },
 
   url: CDN (GEOSERVER + "/vt/wms/"),
   wms_opts: {

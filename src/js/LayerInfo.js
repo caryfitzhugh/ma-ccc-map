@@ -142,10 +142,11 @@ var LayerInfo = [
     {
       "id": "lyme",
       "folder": "Public Health",
-      "name": "Lyme Disease Cases 2015",
-      "description": "2015 Incidences of Lyme's Disease by County",
-      "source": "",
-      "source_url": "",
+      "name": "Lyme Disease Incidence Per 100,000 Persons, 2015",
+      "description": "2015 Incidence of Lyme Disease per 100,000 Persons",
+      "sectors": "Public Health",
+      "source": "Vermont Department of Health",
+      "source_url": "http://www.healthvermont.gov/immunizations-infectious-disease/mosquito-tick-zoonotic-diseases/lyme-disease",
       "metadata_url": "",
       "download_url": "",
       "parameters": {
