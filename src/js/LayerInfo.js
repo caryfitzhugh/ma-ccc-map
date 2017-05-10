@@ -95,9 +95,8 @@ var LayerInfo = [
       "source_url": "https://www.census.gov/en.html",
       "sectors": "",
       "parameters": {
-        "style": "black",
+        "style": "vt_mask_black",
         "opacity": 50,
-        "color": "#000",
         "no_sorting": true
       }
     },
