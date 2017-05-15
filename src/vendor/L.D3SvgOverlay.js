@@ -240,7 +240,7 @@ L.D3SvgOverlay = (L.version < "1.0" ? L.Class : L.Layer).extend({
   find_polygon_with_click: function (evt) {
     // Using the leaflet event, it will find the first polygon in it's SVG layer
     // which the point is inside of.
-    var paths = this._svg[0][0].children[0].children;
+    var paths = this._svg[0][0].childNodes[0].childNodes;
 
     var point_to_check ={ type: 'Point', coordinates: [ evt.latlng.lng, evt.latlng.lat] };
 
