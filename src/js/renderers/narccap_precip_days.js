@@ -7,6 +7,7 @@ Renderers.narccap_precip_days = {
     delete al.parameters.legend_text;
   },
   has_standalone_wizard: true,
+
   find_geo_json: function (map, active_layer, evt) {
     var details_at_point = null;
     var active_svg_layer = Renderers.narccap_precip_days.active_leaflet_layer(map, active_layer);
@@ -21,12 +22,14 @@ Renderers.narccap_precip_days = {
     }
     return details_at_point;
   },
+
   clone_layer_name: function (active_layer) {
     var p = _.pick(active_layer.parameters, ["date", "prod", "area", "season"]);
     var layer_default = _.find(LayerInfo, {id: active_layer.layer_default_id});
     var name =  layer_default.name + " " + p.prod + " Y:" + p.date + " S:" + p.season + " by " + p.area;
     return name;
   },
+
   update_legend: function (map, active_layer) {
     var p = _.pick(active_layer.parameters, ["date", "prod", "area", "season"]);
     var active_leaflet_layer =  _.find(active_layer.leaflet_layer_ids, p);
@@ -37,7 +40,8 @@ Renderers.narccap_precip_days = {
         legend.push({v: step, c: active_leaflet_layer.color(step)});
         return legend;
       }, []);
-      //console.log('cd',cd,'legend',legend,'reduce',_.range(cd[0], cd[1], (cd[1] - cd[0]) / 8).concat([cd[1]]))
+
+      active_layer.parameters.legend_labels_as_range = true;
       active_layer.parameters.legend_range = legend;
       active_layer.parameters.legend_significant_digits = 0;
       active_layer.parameters.legend_text = "# Days/Year";
@@ -75,11 +79,11 @@ Renderers.narccap_precip_days = {
 
                 // Set different color ranges
                 if (p.prod === "pcpn_1") {
-                  color = color.range(_.cloneDeep(colorbrewer.BuGn[4]));
-                } 
+                  color = color.range(_.cloneDeep(colorbrewer.BuGn[3]));
+                }
                 else if (p.prod === 'pcpn_2') {
-                  color = color.range(_.cloneDeep(colorbrewer.BuGn[4]));
-                } 
+                  color = color.range(_.cloneDeep(colorbrewer.BuGn[3]));
+                }
 
 
                 //Caclulate the domain of color based on the range of data

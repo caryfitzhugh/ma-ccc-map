@@ -2002,19 +2002,32 @@
       {{#parameters.legend_text}}
         <div class='color-legend'>{{parameters.legend_text}}</div>
       {{/parameters.legend_text}}
-      {{#parameters.legend_range}}
-        <div class='color-block' style="width: {{100.0 / parameters.legend_range.length}}%;">
-          <svg width="100" height="100">
-            <rect height="100" width="100" style="fill: {{c}}; opacity:{{(0.7 * parameters.opacity / 100.0) + 0.3}}; "/>
-          </svg>
-          {{#if v}}
-            <label>{{fixed_precision(v, parameters.legend_significant_digits)}}</label>
-          {{/if v}}
-
-          {{#if s}}
-            <label>{{s}} </label>
-          {{/if s}}
-        </div>
+      {{#parameters.legend_range:i}}
+        {{#if parameters.legend_labels_as_range}}
+          {{#if (i < (parameters.legend_range.length - 1)) }}
+            <div class='color-block' style="width: {{100.0 / (parameters.legend_range.length - 1)}}%;">
+              <svg width="100" height="100">
+                <rect height="100" width="100" style="fill: {{c}}; opacity:{{(0.7 * parameters.opacity / 100.0) + 0.3}}; "/>
+              </svg>
+              <label>{{fixed_precision(parameters.legend_range[i].v, parameters.legend_significant_digits)}}
+                      -
+                    {{fixed_precision(parameters.legend_range[i+1].v, parameters.legend_significant_digits)}}
+              </label>
+            </div>
+          {{/if}}
+        {{else}}
+          <div class='color-block' style="width: {{100.0 / parameters.legend_range.length}}%;">
+            <svg width="100" height="100">
+              <rect height="100" width="100" style="fill: {{c}}; opacity:{{(0.7 * parameters.opacity / 100.0) + 0.3}}; "/>
+            </svg>
+            {{#if v}}
+              <label>{{fixed_precision(v, parameters.legend_significant_digits)}}</label>
+            {{/if v}}
+            {{#if s}}
+              <label>{{s}} </label>
+            {{/if s}}
+          </div>
+          {{/if}}
       {{/parameters.legend_range}}
     </div>
   {{/if}}

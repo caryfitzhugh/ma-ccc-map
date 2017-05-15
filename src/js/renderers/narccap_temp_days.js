@@ -37,7 +37,8 @@ Renderers.narccap_temp_days = {
         legend.push({v: step, c: active_leaflet_layer.color(step)});
         return legend;
       }, []);
-      //console.log('cd',cd,'legend',legend,'reduce',_.range(cd[0], cd[1], (cd[1] - cd[0]) / 8).concat([cd[1]]))
+
+      active_layer.parameters.legend_labels_as_range = true;
       active_layer.parameters.legend_range = legend;
       active_layer.parameters.legend_significant_digits = 0;
       active_layer.parameters.legend_text = "# Days/Year";
@@ -75,15 +76,15 @@ Renderers.narccap_temp_days = {
 
                 // Set different color ranges
                 if (p.prod === "tx90") {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[7]));
                 } else if (p.prod === 'tx95') {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[7]));
                 } else if (p.prod === 'tx100') {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[7]));
                 } else if (p.prod === 'tn0') {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[7]));
                 } else if (p.prod === 'tn32') {
-                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[9]));
+                  color = color.range(_.cloneDeep(colorbrewer.YlOrRd[7]));
                 }
 
                 //Caclulate the domain of color based on the range of data
