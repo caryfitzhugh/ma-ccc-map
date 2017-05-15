@@ -98,7 +98,6 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
                     fillColor: bucket.fill,
                     clickable: false};
             } else {
-
                   console.log("Can't find this: ", feature, opts.color_buckets);
               return {opacity: opacity};
             }

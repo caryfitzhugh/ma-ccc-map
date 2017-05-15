@@ -33,9 +33,11 @@ var LayerInfo = [
       "sort_key": 0,
       "folder": "Public Health",
       "name": "VT Health Status",
-      "description": "Vermont tracks adult health-related risk behaviors, chronic health conditions, and use of preventive services using a telephone survey called the Behavioral Risk Factor Surveillance Survey (BRFSS). This layer shows self-reported health status data, taken from BRFSS data, and aggregated in two-year increments at the county level. In this question, Vermonters were asked to rank their health as either excellent, very good, good, fair, or poor. This layer contains data on the percent of Vermonters, by county, who reported their health as fair or poor.",
+      "description": "Vermont tracks adult health-related risk behaviors, chronic health conditions, and use of preventive services using a telephone survey called the Behavioral Risk Factor Surveillance Survey (BRFSS). This layer shows self-reported health status data, taken from BRFSS data, and aggregated in two-year increments at the county level. In this question, Vermonters were asked to rank their health as either excellent, very good, good, fair, or poor. This layer contains data on the percent of Vermonters, by county, who reported their health as fair or poor. ",
       "source": "Vermont Behavioral Risk Factor Surveillance Survey",
-      "source_url": "https://services.arcgis.com/YKJ5JtnaPQ2jDbX8/arcgis/rest/services/Vermont_Health_Status_BRFSS/FeatureServer",
+      "source_url": "http://www.healthvermont.gov/health-statistics-vital-records/population-health-surveys-data/brfss",
+      "download_url": "https://www.arcgis.com/home/item.html?id=6cae19331d454eacadf44da496e07bd4",
+      "metadata_url": "https://services.arcgis.com/YKJ5JtnaPQ2jDbX8/arcgis/rest/services/Vermont_Health_Status_BRFSS/FeatureServer/0",
       "sectors": "",
       "parameters": {
         "opacity": 70,
@@ -47,9 +49,11 @@ var LayerInfo = [
       "sort_key": 0,
       "folder": "Public Health",
       "name": "VT Social Vulnerability",
-      "description": "",
+      "description": "Social vulnerability refers to the resilience of communities when responding to or recovering from threats to public health. The Vermont Social Vulnerability Index is a planning tool to evaluate the relative social vulnerability across the state. It can be used if there is a disease outbreak or in the event of an emergency—either natural or human-caused—to identify populations that may need more help. The Vermont Social Vulnerability Index draws together 16 different measures of vulnerability in three different themes: socioeconomic, demographic, and housing/transportation. For every measure, census tracts above the 90th percentile, or the most vulnerable 10%, are assigned a flag. The vulnerability index is created by counting the total number of flags in each census tract. The higher the count, the more vulnerable the population.",
       "source": "",
-      "source_url": "https://ahs-vt.maps.arcgis.com/apps/MapSeries/index.html?appid=ffea40ec90e94093b009d0ddb4a8b5c8",
+      "source_url": "http://geodata.vermont.gov/datasets/ea4359cfef7d4527b87a9e0a4eb8120a",
+      "download_url": "https://ahs-vt.maps.arcgis.com/sharing/rest/content/items/af020f957afa471db8b2857c9b026d3c/data",
+      "metadata_url": "https://ahs-vt.maps.arcgis.com/sharing/rest/content/items/3b7bbc5f66684cde98c92d963a53e155/data",
       "sectors": "",
       "parameters": {
         "opacity": 70,
@@ -129,11 +133,11 @@ var LayerInfo = [
       "id": "culverts",
       "folder": "Infrastructure",
       "name": "Culverts",
-      "description": "",
+      "description": "Statewide list of transportation structures, which includes town owned (maintained) culverts inventoried by Regional Planning Commissions, towns, and/or consultants. The dataset is limited to structures (bridges and culverts) maintained by municipalities, typically Town Shorts (TS) and Town Ultra-Shorts (TU).",
       "source": "US Census Bureau",
-      "source_url": "https://www.census.gov/en.html",
-      "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html",
-      "download_url": "http://www2.census.gov/geo/tiger/GENZ2013/cb_2013_us_county_500k.zip",
+      "source_url": "geodata.vermont.gov/datasets/vt-town-bridges-vobcit-extract",
+      "metadata_url": "https://opendata.arcgis.com/datasets/872f86b1f43a4077af2749a14e6b41f7_5.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
+      "download_url": "maps.vcgi.vermont.gov/gisdata/metadata/TransStructures_BCVOBCIT.htm",
       "parameters": {
         "opacity": 100
       }
@@ -142,12 +146,12 @@ var LayerInfo = [
       "id": "lyme",
       "folder": "Public Health",
       "name": "Lyme Disease Incidence Per 100,000 Persons, 2015",
-      "description": "2015 Incidence of Lyme Disease per 100,000 Persons",
+      "description": "This data layer shows county-level Lyme disease incidence for the year 2015. Incidence rates are displayed as the number of cases per 100,000 persons, per year. Lyme disease is caused by a bacterium (Borrelia burgdorferi) that is transmitted by blacklegged ticks (Ixodes scapularis). To survive and reproduce, ticks require forest cover and hosts to feed on, including mice and deer. Blacklegged ticks and their hosts also require a suitable climate. Warmer temperatures can speed the tick life cycle, and make them more likely to reproduce, and warmer winter temperatures also may make it easier for ticks and their hosts to survive through the cold season. ",
       "sectors": "Public Health",
       "source": "Vermont Department of Health",
       "source_url": "http://www.healthvermont.gov/immunizations-infectious-disease/mosquito-tick-zoonotic-diseases/lyme-disease",
-      "metadata_url": "",
-      "download_url": "",
+      "metadata_url": null,
+      "download_url": null,
       "parameters": {
         "opacity": 100
       }
@@ -156,7 +160,7 @@ var LayerInfo = [
       "id": "prism_temp",
       "folder": "Climate Data.Temperature",
       "name": "Historical Temperatures 1980-2014",
-      "description": "Gridded 4km resolution monthly temperature data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
+      "description": "Gridded 4km resolution monthly temperature data averaged over the period 1980 to 2014 for two different user-selected spatial units in Vermont: counties and HUC8 watersheds. Data are adapted from publicly-available datasets from the PRISM Climate Group at Oregon State University.",
       "source": "PRISM",
       "source_url": "http:\/\/www.prism.oregonstate.edu",
       "sectors": "All",
@@ -173,12 +177,12 @@ var LayerInfo = [
       "id": "prism_precip",
       "folder": "Climate Data.Precipitation",
       "name": "Historical Precipitation 1980-2014",
-      "description": "Gridded 4km resolution monthly precipitation data averaged over the period 1980 to 2014 for two different user-selected spatial units in New York State: counties and HUC8 watersheds.",
+      "description": "Gridded 4km resolution monthly precipitation data averaged over the period 1980 to 2014 for two different user-selected spatial units in Vermont: counties and HUC8 watersheds. Data are adapted from publicly-available datasets from the PRISM Climate Group at Oregon State University.",
       "source": "PRISM",
       "source_url": "http:\/\/www.prism.oregonstate.edu",
       "sectors": "All",
       "download_url": null,
-      "metadata_url": "http:\/\/www.prism.oregonstate.edu\/recent",
+      "metadata_url": "http:\/\/www.prism.oregonstate.edu",
       "parameters": {
         "opacity": 70,
         "area" : "county",
@@ -189,7 +193,7 @@ var LayerInfo = [
       "id": "narccap_precip",
       "folder": "Climate Data.Precipitation",
       "name": "Seasonal/Annual Precipitation Projections",
-      "description": "NARCCAP projected changes in average precipitation summarized by year, season, watershed and county from 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "description": "NARCCAP (North American Regional Climate Change Assessment Program) projected changes in average precipitation summarized by year, season, watershed and county from 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html ",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
       "sectors": "",
@@ -207,7 +211,7 @@ var LayerInfo = [
       "id": "narccap_precip_days",
       "folder": "Climate Data.Precipitation",
       "name": "Days > Threshold Projections",
-      "description": "NARCCAP projected days/year of precipitation above or below threshold values, summarized by year and county, for the years 2039 to 2069.  Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "description": "NARCCAP (North American Regional Climate Change Assessment Program) projected days/year of precipitation above or below threshold values, summarized by year and county, for the years 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html ",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
       "sectors": "",
@@ -226,7 +230,7 @@ var LayerInfo = [
       "id": "narccap_temp",
       "folder": "Climate Data.Temperature",
       "name": "Seasonal/Annual Temperature Projections",
-      "description": "NARCCAP projected changes in average minimum, maximum, and average temperature summarized by year and county, for the years 2039 to 2069.Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html ",
+      "description": "NARCCAP (North American Regional Climate Change Assessment Program) projected changes in average minimum, maximum, and average temperature summarized by year and county, for the years 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html ",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
       "sectors": "",
@@ -245,7 +249,7 @@ var LayerInfo = [
       "id": "narccap_degree_days",
       "folder": "Climate Data.Temperature",
       "name": "Degree-day Accumulation Projections",
-      "description": "NARCCAP projected degree-day accumulations, summarized by year and county, for the years 2039 to 2069.  Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "description": "NARCCAP (North American Regional Climate Change Assessment Program) projected degree-day accumulations, summarized by year and county, for the years 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
       "sectors": "",
@@ -264,7 +268,7 @@ var LayerInfo = [
       "id": "narccap_temp_days",
       "folder": "Climate Data.Temperature",
       "name": "Days > Threshold Projections",
-      "description": "NARCCAP projected days/year of temperature above or below threshold values, summarized by year and county, for the years 2039 to 2069.  Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
+      "description": "NARCCAP (North American Regional Climate Change Assessment Program) projected days/year of temperature above or below threshold values, summarized by year and county, for the years 2039 to 2069. Data shown are decadal means, i.e., average values for the year selected and the previous 9 years, relative to the 1971-2000 average for that variable. More information on NARCCAP models and data products can be found here: http://www.narccap.ucar.edu/about/index.html",
       "source": "ACIS",
       "source_url": "http:\/www.rcc-acis.org",
       "sectors": "",
@@ -297,7 +301,7 @@ var LayerInfo = [
       "id": "gap_lc",
       "folder": "Land Cover",
       "name": "GAP Land Cover Dataset",
-      "description": "GAP Land Cover 3 National Vegetation Classification-Formation Land Use for the contiguous United States. For more information about the National Vegetation Classification Standard please visit this link: http://usnvc.org/data-standard/",
+      "description": "GAP Land Cover 3 National Vegetation Classification-Formation Land Use for the contiguous United States. This dataset was created for regional terrestrial biodiversity assessment. These data are not intended to be used at scales larger than 1:100,000. For more information about the National Vegetation Classification Standard please visit this link: http://usnvc.org/data-standard/",
       "source": "USGS",
       "source_url": "https://catalog.data.gov/dataset/u-s-geological-survey-gap-analysis-program-land-cover-data-v2-2",
       "sectors": "Agriculture,Ecosystems",
@@ -311,7 +315,7 @@ var LayerInfo = [
       "id": "nlcd",
       "folder": "Land Cover",
       "name": "National Land Cover Dataset",
-      "description": "National Land Cover Dataset (NLCD). NLCD 1992, NLCD 2001, NLCD 2006, and NLCD 2011 are National Land Cover Database classification schemes based primarily on Landsat data along with ancillary data sources, such as topography, census and agricultural statistics, soil characteristics, wetlands, and other land cover maps. NLCD 1992 is a 21-class land cover classification scheme that has been applied consistently across the conterminous U.S. at a spatial resolution of 30 meters.",
+      "description": "National Land Cover Dataset (NLCD). NLCD 2011 is a National Land Cover Database classification scheme based primarily on Landsat data along with ancillary data sources, such as topography, census and agricultural statistics, soil characteristics, wetlands, and other land cover maps. NLCD is a 21-class land cover classification scheme that has been applied consistently across the conterminous U.S. at a spatial resolution of 30 meters.",
       "source": "USGS",
       "source_url": "http:\/\/www.mrlc.gov",
       "sectors": "Agriculture,Ecosystems,Buildings and Transportation",
@@ -325,12 +329,12 @@ var LayerInfo = [
       "id": "high_priority_terrestrial_diversity",
       "folder": "Ecosystems.Vermont Conservation Design",
       "name": "Physical Landscape Diversity Blocks",
-      "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
+      "description": "These layers are component layers of BioFinder, a map and database identifying Vermont's lands and waters supporting high priority ecosystems, natural communities, habitats, and species. The most comprehensive assessment of its kind in Vermont, BioFinder was developed by the Agency of Natural Resources and partners to further our collective stewardship and conservation efforts. \n\n The map layers included here identify ecosystem features that provide broad ecosystem services and as a group, maintaining or enhancing these features is likely to conserve the majority of Vermont's species and natural communities, even as the climate changes.  Physical landscapes are the parts of the landscape that resist change. They are the hills and valleys, the underlying bedrock, and the deposits left behind by glaciers or ancient lakes. They remain largely static when natural or human-induced changes in land cover and wildlife occur, as plants and animals expand or contract their ranges, and even as the climate changes. Understanding the physical landscape can help us predict habitat conditions and species presence. Physically diverse landscapes support diverse natural communities and species, and so one way to ensure that biological diversity persists on our landscape is to conserve a variety of physical landscapes. The degree to which forests are connected or separated has implications both for where wildlife will be and which wildlife are present. This concept of connectivity is particularly important in the face of climate change; maintaining connected pathways of natural vegetation across the landscape is considered a critical strategy for adapting to a changing climate, allowing animals and plants to disperse to locations that provide favorable conditions.",
       "source": "VT ANR",
-      "source_url": "http://anr.vermont.gov/",
+      "source_url": "http://biofinder.vt.gov/biofinderresults.htm",
       "sectors": "Ecosystems,",
-      "download_url": null,
-      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "download_url": "http://anrmaps.vermont.gov/websites/BioFinder2016",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/fe24a98a5e06463cb4841d5f60f21858/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
         "opacity": 70,
       }
@@ -339,12 +343,12 @@ var LayerInfo = [
       "id": "high_priority_terrestrial_forest",
       "folder": "Ecosystems.Vermont Conservation Design",
       "name": "Highest Priority Interior Forest Blocks",
-      "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
+      "description": "These layers are component layers of BioFinder, a map and database identifying Vermont's lands and waters supporting high priority ecosystems, natural communities, habitats, and species. The most comprehensive assessment of its kind in Vermont, BioFinder was developed by the Agency of Natural Resources and partners to further our collective stewardship and conservation efforts. \n\n The map layers included here identify ecosystem features that provide broad ecosystem services and as a group, maintaining or enhancing these features is likely to conserve the majority of Vermont's species and natural communities, even as the climate changes.  Physical landscapes are the parts of the landscape that resist change. They are the hills and valleys, the underlying bedrock, and the deposits left behind by glaciers or ancient lakes. They remain largely static when natural or human-induced changes in land cover and wildlife occur, as plants and animals expand or contract their ranges, and even as the climate changes. Understanding the physical landscape can help us predict habitat conditions and species presence. Physically diverse landscapes support diverse natural communities and species, and so one way to ensure that biological diversity persists on our landscape is to conserve a variety of physical landscapes. The degree to which forests are connected or separated has implications both for where wildlife will be and which wildlife are present. This concept of connectivity is particularly important in the face of climate change; maintaining connected pathways of natural vegetation across the landscape is considered a critical strategy for adapting to a changing climate, allowing animals and plants to disperse to locations that provide favorable conditions.",
       "source": "VT ANR",
-      "source_url": "http://anr.vermont.gov/",
+      "source_url": "http://biofinder.vt.gov/biofinderresults.htm",
       "sectors": "Ecosystems,",
-      "download_url": null,
-      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "download_url": "http://anrmaps.vermont.gov/websites/BioFinder2016",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/fe24a98a5e06463cb4841d5f60f21858/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
         "opacity": 70,
       }
@@ -353,12 +357,12 @@ var LayerInfo = [
       "id": "high_priority_terrestrial_connectivity",
       "folder": "Ecosystems.Vermont Conservation Design",
       "name": "Highest Priority Connectivity Blocks",
-      "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
+      "description": "These layers are component layers of BioFinder, a map and database identifying Vermont's lands and waters supporting high priority ecosystems, natural communities, habitats, and species. The most comprehensive assessment of its kind in Vermont, BioFinder was developed by the Agency of Natural Resources and partners to further our collective stewardship and conservation efforts. \n\n The map layers included here identify ecosystem features that provide broad ecosystem services and as a group, maintaining or enhancing these features is likely to conserve the majority of Vermont's species and natural communities, even as the climate changes.  Physical landscapes are the parts of the landscape that resist change. They are the hills and valleys, the underlying bedrock, and the deposits left behind by glaciers or ancient lakes. They remain largely static when natural or human-induced changes in land cover and wildlife occur, as plants and animals expand or contract their ranges, and even as the climate changes. Understanding the physical landscape can help us predict habitat conditions and species presence. Physically diverse landscapes support diverse natural communities and species, and so one way to ensure that biological diversity persists on our landscape is to conserve a variety of physical landscapes. The degree to which forests are connected or separated has implications both for where wildlife will be and which wildlife are present. This concept of connectivity is particularly important in the face of climate change; maintaining connected pathways of natural vegetation across the landscape is considered a critical strategy for adapting to a changing climate, allowing animals and plants to disperse to locations that provide favorable conditions.",
       "source": "VT ANR",
-      "source_url": "http://anr.vermont.gov/",
+      "source_url": "http://biofinder.vt.gov/biofinderresults.htm",
       "sectors": "Ecosystems,",
-      "download_url": null,
-      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "download_url": "http://anrmaps.vermont.gov/websites/BioFinder2016",
+      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/fe24a98a5e06463cb4841d5f60f21858/info/metadata/metadata.xml?format=default&output=html",
       "parameters": {
         "opacity": 70,
       }
@@ -367,7 +371,7 @@ var LayerInfo = [
       "id": "spa_surface_water",
       "folder": "Water Resources",
       "name": "Surface Water SPA",
-      "description": "Source Protection Area (SPA) boundaries have been located on RF 24000 & RF 25000 scale USGS topographic maps by Water Supply Division (DEC) and VT Dept of Health (historical) personnel. Buffered SPAs are based on the point location of the water source(s) Refer to the SOURCE coverage documentation file for information on data sources used. This GIS layer consists of the geographic location of the Source Protection Areas for active and inactive Public Community and Non-Transient Non-Community for surface water intakes labeled by the Water System Identification Number (WSID) and source number (i.e. WL001 or IN002). The SPA generally consists of a buffer around the upstream river and tributaries and watershed boundary. The source locations are drawn from the State Drinking Water database (SDWIS). The water sources are surface water intakes on lakes or rivers that predate regulations developed in the 1970s to new sources under review now.",
+      "description": "Source Protection Area (SPA) boundaries have been located on RF 24000 & RF 25000 scale USGS topographic maps by Drinking Water and Groundwater Protection Division (DEC) and VT Dept of Health (historical) personnel. Buffered SPAs are based on the point location of the water source(s) Refer to the SOURCE coverage documentation file for information on data sources used. This GIS layer consists of the geographic location of the Source Protection Areas for active and inactive Public Community and Non-Transient Non-Community for surface water intakes labeled by the Water System Identification Number (WSID) and source number (i.e. IN002). The SPA generally consists of a buffer around the upstream river and tributaries and watershed boundary. The source locations are drawn from the State Drinking Water database (SDWIS). The water sources are surface water intakes on lakes or rivers that predate regulations developed in the 1970s to new sources under review now.",
       "source": "VT ANR",
       "source_url": "http://geodata.vermont.gov/datasets/VTANR::surfacewater-source-protection-areas-spas",
       "sectors": "",
@@ -382,9 +386,9 @@ var LayerInfo = [
       "id": "spa_ground_water",
       "folder": "Water Resources",
       "name": "Ground Water SPA",
-      "description": "Groundwater SPA. This GIS layer consists of the geographic location of the Source Protection Areas for active and inactive Public Community and Non-Transient Non-Community groundwater sources labeled by the Water System Identification Number (WSID) and source number (i.e. WL001 or IN002). The source locations are drawn from the State Drinking Water database (SDWIS). The water sources are wells and springs that predate regulations developed in the 1970s to new sources under review now. Source Protection Area (SPA) boundaries have been located on RF 24000 & RF 25000 scale USGS topographic maps by Water Supply Division (DEC) and VT Dept of Health (historical) personnel. Buffered SPAs are based on the point location of the water source(s). Refer to the SOURCE coverage documentation file for information on data sources used.",
+      "description": "Groundwater SPA. This GIS layer consists of the geographic location of the Source Protection Areas for active and inactive Public Community and Non-Transient Non-Community groundwater sources labeled by the Water System Identification Number (WSID) and source number (i.e. WL001 or WL002). The source locations are drawn from the State Drinking Water database (SDWIS). The water sources are wells and springs that predate regulations developed in the 1970s to new sources under review now. Source Protection Area (SPA) boundaries have been located on RF 24000 & RF 25000 scale USGS topographic maps by Drinking Water and Groundwater Protection Division (DEC) and VT Dept of Health (historical) personnel. Buffered SPAs are based on the point location of the water source(s). Refer to the SOURCE coverage documentation file for information on data sources used.",
       "source": "VT ANR",
-      "source_url": "http://geodata.vermont.gov/datasets/VTANR::ground-water-spa",
+      "source_url": "geodata.vermont.gov/datasets/VTANR::ground-water-spa",
       "sectors": "",
       "download_url": "https://opendata.arcgis.com/datasets/43d5689ed7bb4473a0b318875eaaf770_187.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
       "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/43d5689ed7bb4473a0b318875eaaf770/info/metadata/metadata.xml?format=default&output=html",
@@ -396,7 +400,7 @@ var LayerInfo = [
       "id": "private_wells",
       "folder": "Water Resources",
       "name": "Private Wells",
-      "description": "Private wells in this layer come from the Department of Environmental Conservation's Water Supply Data Composite. Managed by the Water Supply Division's Well Driller and Well Location Program, the database contains private well information submitted by Vermont licensed well drillers. Licensed well drillers have been required to submit well completion reports (well logs) to the state since 1966. Well tags have been required since 1986. NOTE: the data contained here is only as accurate as what was submitted - many wells were completed, but not reported, many reports have missing information, were recorded inaccurately or poorly located geographically. If a report cannot be found but you know the driller of a particular well, you may want to contact them directly.",
+      "description": "Private wells in this layer come from the Department of Environmental Conservation's Water Supply Data Composite. Managed by the Drinking Water and Groundwater Protection Division's Well Driller and Well Location Program, the database contains private well information submitted by Vermont licensed well drillers. Licensed well drillers have been required to submit well completion reports (well logs) to the state since 1966. Well tags have been required since 1986. NOTE: the data contained here is only as accurate as what was submitted - many wells were completed, but not reported, many reports have missing information, were recorded inaccurately or poorly located geographically. If a report cannot be found but you know the driller of a particular well, you may want to contact them directly.",
       "source": "VT ANR",
       "source_url": "http://geodata.vermont.gov/datasets/VTANR::private-wells-1",
       "sectors": "",
@@ -426,12 +430,12 @@ var LayerInfo = [
       "id": "vt_heat_vuln",
       "folder": "Public Health",
       "name": "VT Heat Vulnerability",
-      "description": "Layers served from the open data portal..",
+      "description": "The Vermont Heat Vulnerability Index draws together 17 different measures of vulnerability in 6 different themes: population, socioeconomic, health, environmental, climate, and heat illness. These measures are combined to measure the overall vulnerability of Vermont towns to heat-related events. Darker brown colors indicate towns or cities at relatively higher risk for heat illnesses. The heat index provides a first step to identifying populations that may be more vulnerable to extreme heat, however local knowledge should always be considered when it is available.",
       "source": "VT ANR",
-      "source_url": "http://anr.vermont.gov/",
+      "source_url": "http://geodata.vermont.gov/datasets/24e578770db24055a9be1860c60031b8",
       "sectors": "Ecosystems,",
-      "download_url": null,
-      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "download_url": "http://geodata.vermont.gov/datasets/24e578770db24055a9be1860c60031b8",
+      "metadata_url": "http://www.healthvermont.gov/sites/default/files/documents/2016/12/ENV_EPHT_heat_vulnerability_in_VT_0.pdf",
       "parameters": {
         "opacity": 70,
         "selected_facet_index": 0,
@@ -445,7 +449,6 @@ var LayerInfo = [
       "source": "Center for International Earth Science Information Network (CIESIN)",
       "source_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/superfund-atsdr-hazardous-waste-site-ciesin-mod-v2",
       "sectors": "",
-      "legend_url": "http:\/\/sedac.ciesin.columbia.edu\/geoserver\/wms?request=GetLegendGraphic&LAYER=superfund:superfund-atsdr-hazardous-waste-site-ciesin-mod-v2&format=image\/png",
       "download_url": null,
       "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/superfund-atsdr-hazardous-waste-site-ciesin-mod-v2",
       "parameters": {
@@ -456,11 +459,10 @@ var LayerInfo = [
       "id": "taccimo",
       "folder": "Ecosystems",
       "name": "USFS Climate Change Atlas - Tree Species",
-      "description": "Modeled importance value (IV) of 13 New York State native tree species for three climate conditions: 1) current climate (1961-1990 average); 2) future climate (2071-2100 average) with IPCC scenario B1 (significant conservation and reduction of CO2 emissions); and 3) future climate (2071-2100 average) with IPCC scenario A1FI (high emissions, no modification in current emission trends). Importance Value measures the dominance of a tree species in a forest, based on the relative frequency, density, and basal area of the species. For more information on the models and to explore more tree species and climate scenarios, visit the US Forest Service Climate Change Atlas: http://www.fs.fed.us/nrs/atlas/",
+      "description": "Modeled importance value (IV) of 20 Vermont native tree species for three climate conditions: 1) current climate (1961-1990 average); 2) future climate (2071-2100 average) with IPCC scenario B1 (significant conservation and reduction of CO2 emissions); and 3) future climate (2071-2100 average) with IPCC scenario A1FI (high emissions, no modification in current emission trends). Importance Value measures the dominance of a tree species in a forest, based on the relative frequency, density, and basal area of the species. For more information on the models and to explore more tree species and climate scenarios, visit the US Forest Service Climate Change Atlas: http://www.fs.fed.us/nrs/atlas/",
       "source": "USDA Forest Service Northern Research Station",
       "source_url": "http:\/\/www.fs.fed.us\/nrs\/atlas\/",
       "sectors": "Ecosystems",
-      "legend_url": null,
       "download_url": null,
       "metadata_url": null,
       "parameters": {
@@ -473,13 +475,12 @@ var LayerInfo = [
       "id": "anthromes",
       "folder": "Land Cover",
       "name": "Anthropogenic Biomes",
-      "description": "The Anthropogenic Biomes of the World Version 2 data set describes anthropogenic transformations within the terrestrial biosphere caused by sustained direct human interaction with ecosystems, including agriculture and urbanization circa the year 2000. Potential natural vegetation, biomes, such as tropical rainforests or grasslands, are based on global vegetation patterns related to climate and geology. Anthropogenic transformation within each biome is approximated using population density, agricultural intensity (cropland and pasture) and urbanization. The data, as part of a time series provide global patterns of historical transformation of the terrestrial biosphere during the Industrial Revolution. This data set is distributed by the Columbia University Center for International Earth Science Information Network (CIESIN).",
+      "description": "The Anthropogenic Biomes of the World, Version 2: 2000 data set describes anthropogenic transformations within the terrestrial biosphere caused by sustained direct human interaction with ecosystems, including agriculture and urbanization c. 2000. Potential natural vegetation, biomes, such as tropical rainforests or grasslands, are based on global vegetation patterns related to climate and geology. Anthropogenic transformation within each biome is approximated using population density, agricultural intensity (cropland and pasture) and urbanization. This data set is part of a time series for the years 1700, 1800, 1900, and 2000 that provides global patterns of historical transformation of the terrestrial biosphere during the Industrial Revolution.",
       "source": "Center for International Earth Science Information Network (CIESIN)",
-      "source_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/anthromes-anthropogenic-biomes-world-v2-2000",
+      "source_url": "sedac.ciesin.columbia.edu/data/set/anthromes-anthropogenic-biomes-world-v2-2000",
       "sectors": "Ecosystems, Agriculture, Buildings",
-      "legend_url": "http:\/\/sedac.ciesin.columbia.edu\/geoserver\/wms?request=GetLegendGraphic&LAYER=anthromes:anthromes-anthropogenic-biomes-world-v2-1700&format=image\/png",
       "download_url": null,
-      "metadata_url": "http:\/\/sedac.ciesin.columbia.edu\/data\/set\/anthromes-anthropogenic-biomes-world-v2-2000",
+      "metadata_url": "sedac.ciesin.columbia.edu/data/set/anthromes-anthropogenic-biomes-world-v2-2000",
       "parameters": {
         "opacity": 70,
         "year": "2000"
@@ -519,9 +520,8 @@ var LayerInfo = [
       "name": "FEMA Historic Emergencies 1964-2014",
       "description": "This layer summarizes FEMA historic disaster declarations from 1964 through 2014, categorized by type.",
       "source": "FEMA",
-      "source_url": "https:\/\/catalog.data.gov\/dataset\/fema-historical-disaster-declarations-shp",
+      "source_url": "https://catalog.data.gov/dataset/fema-historical-disaster-declarations-shp",
       "sectors": "All Sectors",
-      "legend_url": CDN("http://52.2.5.122:8080/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:fema_historic&format=image/png"),
       "download_url": "http:\/\/gis.fema.gov\/kmz\/HistoricDeclarations.zip",
       "metadata_url": "https:\/\/www.fema.gov\/openfema-dataset-disaster-declarations-summaries-v1",
       "parameters": {
@@ -533,7 +533,7 @@ var LayerInfo = [
       "id": "bridges",
       "folder": "Infrastructure",
       "name": "Bridges",
-      "description": "BCVOBCIT is a statewide set of transportation structures, which includes town owned (maintained) bridges and culverts inventoried by Regional Planning Commissions, towns, and/or consultants. The BCVOBCIT dataset is limited to structures (bridges and culverts) maintained by municipalities, typically Town Shorts (TS) and Town Ultra-Shorts (TU).",
+      "description": "Statewide list of transportation structures, which includes town owned (maintained) bridges inventoried by Regional Planning Commissions, towns, and/or consultants. The dataset is limited to structures (bridges and culverts) maintained by municipalities, typically Town Shorts (TS) and Town Ultra-Shorts (TU).",
       "source": "Vermont Open Geodata Portal",
       "source_url": "http:\/\/geodata.vermont.gov\/datasets\/vt-town-bridges-vobcit-extract",
       "sectors": "Transportation",
@@ -547,9 +547,9 @@ var LayerInfo = [
       "id": "invasives",
       "folder": "Ecosystems",
       "name": "Invasives",
-      "description": "The Invasive Species layer is created from the ANR Invasive Species database.",
+      "description": " The Invasive Species layer is created from the ANR Invasive Species database and records sightings of species known to be non-native invasive plants. ",
       "source": "Vermont Open Geodata Portal",
-      "source_url": "http://geodata.vermont.gov/datasets/VTANR::invasive-species-1",
+      "source_url": "geodata.vermont.gov/datasets/VTANR::invasive-species-1",
       "sectors": "Ecosystems",
       "download_url": "https://opendata.arcgis.com/datasets/b1ae7b7b110447c3b452d9cacffeed36_174.geojson",
       "metadata_url": "https:\/\/www.arcgis.com\/sharing\/rest\/content\/items\/b1ae7b7b110447c3b452d9cacffeed36\/info\/metadata\/metadata.xml?format=default&output=html",
@@ -561,7 +561,7 @@ var LayerInfo = [
       "id": "dams",
       "folder": "Infrastructure",
       "name": "Dams",
-      "description": "This dataset  is generated from from the Vermont Dam Inventory (VDI). The VDI is managed by the VT DEC's Dam Safety and Hydrology Section and contains information about Vermont's dams. The Dam Safety and Hydrology Section manages programs that promote dam safety and protection of flows in Vermont's rivers and streams. The VDI supports them in this effort by tracking physical attributes, managing construction (permits) and inspection information, and reporting to the US Army Corps of Engineers.",
+      "description": "This dataset is generated from from the Vermont Dam Inventory (VDI). The VDI is managed by the VT DEC's Dam Safety and Hydrology Section and contains information about Vermont's dams. The Dam Safety and Hydrology Section manages programs that promote dam safety and protection of flows in Vermont's rivers and streams. The VDI supports them in this effort by tracking physical attributes, managing construction (permits) and inspection information, and reporting to the US Army Corps of Engineers.",
       "source": "Vermont Open Geodata Portal",
       "source_url": "http://geodata.vermont.gov/datasets/VTANR::dams-1",
       "sectors": "Ecosystems",
@@ -575,12 +575,12 @@ var LayerInfo = [
       "id": "beach_closures",
       "folder": "Public Health",
       "name": "Beach Closures",
-      "description": "",
+      "description": "This map layer provides an overview of beach closures on Lake Champlain between 2012 and 2014. When a public beach is closed for health concerns, it is typically due to either risk of exposure to coliform bacteria (e.g. E. coli) or cyanobacteria (“blue-green algae”) blooms. Data for this layer were aggregated from Vermont State Parks and municipal beaches by the Lake Champlain Basin Program (LCBP). The beach score is based on the number of closures for any purpose between 2012-2014: good, 0-2 closures; fair, 3-7 closures; poor, 8+ closures.",
       "source": "Vermont Open Geodata Portal",
-      "source_url": "http://geodata.vermont.gov/datasets/VTANR::dams-1",
+      "source_url": "http://www.lcbp.org/water-environment/human-health/swimming-concerns/beach-closures/",
       "sectors": "",
-      "download_url": "https://opendata.arcgis.com/datasets/75b9d3671f474323a22165ba5a4c2677_161.geojson",
-      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/75b9d3671f474323a22165ba5a4c2677/info/metadata/metadata.xml?format=default&output=html",
+      "download_url": "Not downloadable elsewhere, obtained by request from LCBP",
+      "metadata_url": "",
       "parameters": {
         "opacity": 100
       }
@@ -588,8 +588,8 @@ var LayerInfo = [
     {
       "id": "flood_hazard_areas",
       "folder": "Water Resources",
-      "name": "FEMA Flood Hazard Areas",
-      "description": "The entire Vermont extent of the National Flood Hazard Layer (NFHL) as acquired 12/15/15 from the FEMA Map Service Center msc.fema.gov upon publication 12/2/2015 and converted to VSP.The FEMA DFIRM NFHL database compiles all available officially-digitized Digital Flood Insurance Rate Maps. This extract from the FEMA Map Service Center includes all of such data in Vermont including counties and a few municipalities. This data includes the most recent map update for Bennington County effective 12/2/2015. DFIRM - Letter of Map Revision (LOMR) DFIRM X-Sections DFIRM Floodways Special Flood Hazard Areas (All Available)",
+      "name": "DFIRM Flood Hazard Areas",
+      "description": "Flood Hazard Areas available in a Geographic Information System format, referred to as Digital Flood Insurance Rate Maps (DFIRMs), are only available for select areas of Vermont.  For areas where DFIRMs are not available, users may view and download scans of paper FIRMs at FEMA’s Map Service Center: https://msc.fema.gov/portal",
       "source": "Vermont Open Geodata Portal",
       "source_url": "http://geodata.vermont.gov/datasets/b40ccd85e9ca41989e7a803f48cf5bcb_57",
       "sectors": "Ecosystems",
@@ -619,10 +619,10 @@ var LayerInfo = [
       "name": "Hospitals",
       "description": "This data layer contains point locations of all major community, regional, comprehensive health, and healthcare provider hospitals in the state of Vermont. The listing of current hospitals was obtained from the 1998/1999 & 2000/2001 Vermont Manufacturers' Directory, published annually by the Vermont Business Magazine. Included within the attributes of the database are Annual Sales Ranges, Employment numbers, and hospital contact information. This data layer does not include Psychiatric or Specialty hospitals. Many of the point locations of hospital sites were obtained from EmergencyE911_ESITE data layers and verified with checking USGS topographic quadrangle maps, while other point locations were captured from orthophotos or USGS topographic quadrangle maps directly.",
       "source": "Vermont Open Geodata Portal",
-      "source_url": "http://geodata.vermont.gov/datasets/vt-hospital-site-locations",
+      "source_url": "geodata.vermont.gov/datasets/vt-hospital-site-locations",
       "sectors": "Public Health",
       "download_url": "https://opendata.arcgis.com/datasets/128c419772234581ac4209e4e429f882_5.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
-      "metadata_url": "http://maps.vcgi.vermont.gov/gisdata/metadata/FacilitiesHospitals_HOSPITAL.htm",
+      "metadata_url": "maps.vcgi.vermont.gov/gisdata/metadata/FacilitiesHospitals_HOSPITAL.htm",
       "parameters": {
         "opacity": 70
       }
@@ -655,20 +655,6 @@ var LayerInfo = [
       }
     },
     {
-      "id": "gap_lc",
-      "folder": "Land Cover",
-      "name": "GAP Land Cover Dataset",
-      "description": "GAP Land Cover 3 National Vegetation Classification-Formation Land Use for the contiguous United States. For more information about the National Vegetation Classification Standard please visit this link: http://usnvc.org/data-standard/",
-      "source": "USGS",
-      "source_url": "https://catalog.data.gov/dataset/u-s-geological-survey-gap-analysis-program-land-cover-data-v2-2",
-      "sectors": "Agriculture,Ecosystems",
-      "download_url": null,
-      "metadata_url": "https://gis1.usgs.gov/arcgis/rest/services/gap/GAP_Land_Cover_NVC_Class_Landuse/MapServer",
-      "parameters": {
-        "opacity": 70
-      }
-    },
-    {
       "id": "sandysurge",
       "folder": "Coastal Zones",
       "name": "Hurricane Sandy Surge Extent",
@@ -691,7 +677,6 @@ var LayerInfo = [
       "source": "NYSERDA",
       "source_url": "http:\/\/services.nyserda.ny.gov\/SLR_Viewer\/About",
       "sectors": "All",
-      "legend_url": "./img\/dewberry_slr.png",
       "download_url": null,
       "metadata_url": "http:\/\/appealsserver.cloudapp.net\/arcgis\/rest\/services\/NYSERDA\/NYSERDA_SLR_Service\/MapServer",
       "parameters": {
@@ -708,7 +693,6 @@ var LayerInfo = [
       "source": "NOAA",
       "source_url": "http:\/\/coast.noaa.gov\/slr\/",
       "sectors": "All",
-      "legend_url": null,
       "download_url": null,
       "metadata_url": "https:\/\/coast.noaa.gov\/digitalcoast\/tools\/slr",
       "parameters": {
@@ -725,7 +709,6 @@ var LayerInfo = [
       "source": "Stevens Institute of Technology/Columbia University/NYSERDA",
       "source_url": "http:\/\/ciesin.columbia.edu\/geoserver\/ows?service=wms&version=1.3.0&request=GetCapabilities",
       "sectors": "Coastal Zones",
-      "legend_url": null,
       "download_url": "http://www.ciesin.columbia.edu/hudson-river-flood-map/",
       "metadata_url": "https:\/\/github.com\/matthiasmengel\/sealevel",
       "parameters": {
@@ -744,7 +727,6 @@ var LayerInfo = [
       "source": "CLIMAID",
       "source_url": "http:\/\/www.nyserda.ny.gov\/climaid",
       "sectors": "",
-      "legend_url": CDN("http://52.2.5.122:8080/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:climaid_temp_deltas&format=image/png"),
       "download_url": null,
       "metadata_url": "",
       "parameters": {
@@ -763,7 +745,6 @@ var LayerInfo = [
       "source": "CLIMAID",
       "source_url": "http:\/\/www.nyserda.ny.gov\/climaid",
       "sectors": "",
-      "legend_url": CDN("http://52.2.5.122:8080/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:climaid_temp_deltas&format=image/png"),
       "download_url": null,
       "metadata_url": "",
       "parameters": {
@@ -831,7 +812,6 @@ var LayerInfo = [
       "source": "landcarbon.org",
       "source_url": "http:\/\/landcarbon.org\/categories\/biomass-c\/download\/",
       "sectors": "Ecosystems",
-      "legend_url": CDN("http://52.2.5.122:8080/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:biomass_a2_2010&format=image/png"),
       "download_url": null,
       "metadata_url": null,
       "parameters": {
@@ -847,7 +827,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "https://gis.ny.gov/gisdata/inventories/details.cfm?DSID=1118",
       "sectors": "Ecosystems",
-      "legend_url": CDN("http://52.2.5.122:8080/geoserver/wms?request=GetLegendGraphic&LAYER=nyccsc:trout_streams&format=image/png"),
       "download_url": null,
       "metadata_url": null,
       "parameters": {
@@ -862,7 +841,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "http:\/\/gis.ny.gov/gisdata\/inventories\/details.cfm?DSID=1118",
       "sectors": "Ecosystems,Water Resources",
-      "legend_url": CDN("http:\/\/52.2.5.122:8080\/geoserver\/wms?request=GetLegendGraphic&LAYER=nyccsc:wtrcls_line&format=image\/png"),
       "download_url": "http:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1118&file=nysdec_wtrcls.zip",
       "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.wtrcls.xml",
       "parameters": {
@@ -877,7 +855,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "http:\/\/gis.ny.gov/gisdata\/inventories\/details.cfm?DSID=1118",
       "sectors": "Ecosystems,Water Resources",
-      "legend_url": CDN("http:\/\/52.2.5.122:8080\/geoserver\/wms?request=GetLegendGraphic&LAYER=nyccsc:wtrcls_poly&format=image\/png"),
       "download_url": "http:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1118&file=nysdec_wtrcls.zip",
       "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.wtrcls.xml",
       "parameters": {
@@ -892,7 +869,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "http:\/\/gis.ny.gov/gisdata\/inventories\/details.cfm?DSID=1141",
       "sectors": "Ecosystems,Water Resources",
-      "legend_url": CDN("http:\/\/52.2.5.122:8080\/geoserver\/wms?request=GetLegendGraphic&LAYER=nyccsc:dow_uncon_aqui_main&format=image\/png"),
       "download_url": "http:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1141&file=dow_uncon_aqui.zip",
       "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.uncon_aqui.html",
       "parameters": {
@@ -907,7 +883,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "http:\/\/gis.ny.gov/gisdata\/inventories\/details.cfm?DSID=1232",
       "sectors": "Ecosystems,Water Resources",
-      "legend_url": CDN("http:\/\/52.2.5.122:8080\/geoserver\/wms?request=GetLegendGraphic&LAYER=nyccsc:primary_aquifers&format=image\/png"),
       "download_url": "http:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1232&file=primaryaquifers.zip",
       "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.primary.aquifers.shp.xml",
       "parameters": {
@@ -922,7 +897,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "http:\/\/maps.naturalresourcenavigator.org",
       "sectors": "Ecosystems,Water Resources",
-      "legend_url": null,
       "download_url": null,
       "metadata_url": "http:\/\/services.coastalresilience.org\/arcgis\/rest\/services\/New_York\/NY_CLIMAD_toolkit\/MapServer/136",
       "parameters": {
@@ -937,7 +911,6 @@ var LayerInfo = [
       "source": "NYS",
       "source_url": "http:\/\/maps.naturalresourcenavigator.org",
       "sectors": "Ecosystems",
-      "legend_url": null,
       "download_url": null,
       "metadata_url": "http:\/\/services.coastalresilience.org\/arcgis\/rest\/services\/New_York\/NY_CLIMAD_toolkit\/MapServer/209",
       "parameters": {
@@ -952,7 +925,6 @@ var LayerInfo = [
       "source": "NYS",
       "source_url": "http:\/\/maps.naturalresourcenavigator.org",
       "sectors": "Ecosystems",
-      "legend_url": null,
       "download_url": null,
       "metadata_url": "http:\/\/services.coastalresilience.org\/arcgis\/rest\/services\/New_York\/NY_CLIMAD_toolkit\/MapServer/208",
       "parameters": {
@@ -981,7 +953,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "https:\/\/gis.ny.gov\/gisdata\/inventories\/details.cfm?DSID=1010",
       "sectors": "Water Resources,Public Health",
-      "legend_url": "./img\/spdes.png",
       "download_url": "https:\/\/gis.ny.gov\/gisdata\/fileserver\/?DSID=1010&file=spdes.zip",
       "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.spdes.xml",
       "parameters": {
@@ -998,7 +969,6 @@ var LayerInfo = [
       "source": "NYS DEC",
       "source_url": "http://gis.ny.gov/gisdata/inventories/details.cfm?DSID=1097",
       "sectors": "Public Health",
-      "legend_url": CDN("http:\/\/52.2.5.122:8080\/geoserver\/wms?request=GetLegendGraphic&LAYER=nyccsc:remediation_sites&format=image/png"),
       "download_url": "ftp:\/\/ftp.dec.state.ny.us\/der\/FOIL\/RemedialGIS.zip",
       "metadata_url": "http:\/\/gis.ny.gov\/gisdata\/metadata\/nysdec.remedsite_borders_export.html",
       "parameters": {
@@ -1013,7 +983,6 @@ var LayerInfo = [
       "source": "NYS Office of Information Technology Services",
       "source_url": "https:\/\/data.ny.gov\/Energy-Environment\/Combined-Sewer-Overflows-CSOs-Map\/i8hd-rmbi",
       "sectors": "Water Resources,Public Health",
-      "legend_url": "./img\/sewer-overflows.png",
       "download_url": "https:\/\/data.ny.gov\/resource\/5d4q-pk7d.geojson",
       "metadata_url": "https:\/\/data.ny.gov\/Energy-Environment\/Combined-Sewer-Overflows-CSOs-Map\/i8hd-rmbi",
       "parameters": {
@@ -1139,54 +1108,6 @@ var LayerInfo = [
       "sectors": "",
       "parameters": {
         "opacity": 100
-      }
-    },
-    {
-      "id": "invasive_plants",
-      "folder": "Ecosystems",
-      "name": "Invasive Plant Species",
-      "description": "Summary of observations of mapped locations of invasive plants by county for New York State, provided by iMapInvasives NY -- New York's Online Invasive Species Database and Mapping System (http://imapinvasives.org) © 2016 NatureServe",
-      "source": "iMapInvasives",
-      "source_url": "http://imapinvasives.org",
-      "metadata_url": "http://www.imapinvasives.org/new-yorklogin",
-      "download_url": "http://52.2.5.122:8080/geoserver/www/invasive_plants.json",
-      "sectors": "Ecosystems, Transportation, Coastal Zones",
-      "parameters": {
-        "opacity": 70,
-        "species": "All Plants",
-        "area" : "county"
-      }
-    },
-    {
-      "id": "invasive_animals",
-      "folder": "Ecosystems",
-      "name": "Invasive Animal Species",
-      "description": "Summary of observations of mapped occurrence of invasive animals, including mammals, fish and bivalves, by county for New York State, provided by iMapInvasives NY -- New York's Online Invasive Species Database and Mapping System (http://imapinvasives.org) © 2016 NatureServe",
-      "source": "iMapInvasives",
-      "source_url": "http://imapinvasives.org",
-      "metadata_url": "http://www.imapinvasives.org/new-yorklogin",
-      "download_url": "http://52.2.5.122:8080/geoserver/www/invasive_animals.json",
-      "sectors": "Ecosystems, Transportation, Coastal Zones",
-      "parameters": {
-        "opacity": 70,
-        "species": "All Animals",
-        "area" : "county"
-      }
-    },
-    {
-      "id": "invasive_insects",
-      "folder": "Ecosystems",
-      "name": "Invasive Insect Species",
-      "description": "Summary of observations of mapped occurrence of invasive or exotic insect pests by county for New York State, provided by iMapInvasives NY -- New York's Online Invasive Species Database and Mapping System (http://imapinvasives.org) © 2016 NatureServe",
-      "source": "iMapInvasives",
-      "source_url": "http://imapinvasives.org",
-      "metadata_url": "http://www.imapinvasives.org/new-yorklogin",
-      "download_url": "http://52.2.5.122:8080/geoserver/www/invasive_insects.json",
-      "sectors": "Ecosystems, Transportation, Coastal Zones",
-      "parameters": {
-        "opacity": 70,
-        "species": "All Insects",
-        "area" : "county"
       }
     },
     {
