@@ -322,9 +322,9 @@ var LayerInfo = [
       }
     },
     {
-      "id": "high_priority_terrestrial",
-      "folder": "Ecosystems",
-      "name": "Highest Priority Terrestrial Areas",
+      "id": "high_priority_terrestrial_diversity",
+      "folder": "Ecosystems.Vermont Conservation Design",
+      "name": "Physical Landscape Diversity Blocks",
       "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
       "source": "VT ANR",
       "source_url": "http://anr.vermont.gov/",
@@ -333,7 +333,34 @@ var LayerInfo = [
       "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?request=GetCapabilities&service=WMS",
       "parameters": {
         "opacity": 70,
-        "display_layer": 1
+      }
+    },
+    {
+      "id": "high_priority_terrestrial_forest",
+      "folder": "Ecosystems.Vermont Conservation Design",
+      "name": "Highest Priority Interior Forest Blocks",
+      "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
+      "source": "VT ANR",
+      "source_url": "http://anr.vermont.gov/",
+      "sectors": "Ecosystems,",
+      "download_url": null,
+      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "parameters": {
+        "opacity": 70,
+      }
+    },
+    {
+      "id": "high_priority_terrestrial_connectivity",
+      "folder": "Ecosystems.Vermont Conservation Design",
+      "name": "Highest Priority Connectivity Blocks",
+      "description": "Act 174 requires plans to identify potential areas for the development and siting of renewable energy resources and areas that are unsuitable for siting those resources or particular categories or sizes of those resources. It furthermore requires that the standards address the potential generation from the potential siting areas. Lastly, it requires that – in order to receive an affirmative determination – regional plans allow for the siting in the region of all types of renewable generation technologies.",
+      "source": "VT ANR",
+      "source_url": "http://anr.vermont.gov/",
+      "sectors": "Ecosystems,",
+      "download_url": null,
+      "metadata_url": "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "parameters": {
+        "opacity": 70,
       }
     },
     {

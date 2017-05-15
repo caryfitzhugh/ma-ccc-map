@@ -705,6 +705,68 @@
               </div>
           {{/if}}
 
+          {{#if ("high_priority_terrestrial_diversity" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Category</th>
+                  </tr>
+                  <tr>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("CATEGORY")}}</td>
+                  </tr>
+                </table>
+              </div>
+          {{/if}}
+
+          {{#if ("high_priority_terrestrial_forest" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Summary</th>
+                    <th>Acres</th>
+                    <th>Biophysical Region</th>
+                    <th>Priority</th>
+                  </tr>
+                  <tr>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("ELU_Gr_Sum")}}</td>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("Acres")}}</td>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("BiophysicalRegion")}}{{xml.getElementsByTagName("FIELDS")[0].getAttribute("BioPhysicalRegion")}}</td>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("PRIORITY")}}</td>
+                  </tr>
+                </table>
+              </div>
+          {{/if}}
+          {{#if ("high_priority_terrestrial_connectivity" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Summary</th>
+                    <th>Acres</th>
+                    <th>Biophysical Region</th>
+                    <th>Priority</th>
+                  </tr>
+                  <tr>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("ELU_Gr_Sum")}}</td>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("Acres")}}</td>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("BiophysicalRegion")}}{{xml.getElementsByTagName("FIELDS")[0].getAttribute("BioPhysicalRegion")}}</td>
+                    <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("PRIORITY")}}</td>
+                  </tr>
+                </table>
+              </div>
+          {{/if}}
+
           {{#if ("anthromes" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -1599,16 +1661,6 @@
         </select>
       </div>
     {{/if}}
-    {{#if "high_priority_terrestrial" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose the layer to view'> Data Product: </label>
-        <select value='{{parameters.display_layer}}'>
-          <option value='1'> Physical Landscape Diversity Blocks </option>
-          <option value='2'> Interior Forest Blocks </option>
-          <option value='3'> Connectivity Blocks </option>
-        </select>
-      </div>
-    {{/if}}
     {{#if "narccap_temp" === layer_default_id}}
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose the variable to summarize'> Data Product: </label>
@@ -2235,6 +2287,9 @@
     <script src="./js/renderers/flood_hazard_areas.js?__inline=true"></script>
     <script src="./js/renderers/gap_lc.js?__inline=true"></script>
     <script src="./js/renderers/high_priority_terrestrial.js?__inline=true"></script>
+    <script src="./js/renderers/high_priority_terrestrial_diversity.js?__inline=true"></script>
+    <script src="./js/renderers/high_priority_terrestrial_forest.js?__inline=true"></script>
+    <script src="./js/renderers/high_priority_terrestrial_connectivity.js?__inline=true"></script>
     <script src="./js/renderers/hospitals.js?__inline=true"></script>
     <script src="./js/renderers/invasives.js?__inline=true"></script>
     <script src="./js/renderers/lyme.js?__inline=true"></script>
