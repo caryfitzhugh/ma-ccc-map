@@ -586,34 +586,6 @@ var LayerInfo = [
       }
     },
     {
-      "id": "flood_hazard_areas",
-      "folder": "Water Resources",
-      "name": "DFIRM Flood Hazard Areas",
-      "description": "Flood Hazard Areas available in a Geographic Information System format, referred to as Digital Flood Insurance Rate Maps (DFIRMs), are only available for select areas of Vermont.  For areas where DFIRMs are not available, users may view and download scans of paper FIRMs at FEMA’s Map Service Center: https://msc.fema.gov/portal",
-      "source": "Vermont Open Geodata Portal",
-      "source_url": "http://geodata.vermont.gov/datasets/b40ccd85e9ca41989e7a803f48cf5bcb_57",
-      "sectors": "Ecosystems",
-      "download_url": "https://opendata.arcgis.com/datasets/b40ccd85e9ca41989e7a803f48cf5bcb_57.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
-      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/b40ccd85e9ca41989e7a803f48cf5bcb/info/metadata/metadata.xml?format=default&output=html",
-      "parameters": {
-        "opacity": 70
-      }
-    },
-    {
-      "id": "dfirm_floodways",
-      "folder": "Water Resources",
-      "name": "DFIRM Floodways",
-      "description": "The entire Vermont extent of the National Flood Hazard Layer (NFHL) as acquired 12/15/15 from the FEMA Map Service Center msc.fema.gov upon publication 12/2/2015 and converted to VSP.The FEMA DFIRM NFHL database compiles all available officially-digitized Digital Flood Insurance Rate Maps. This extract from the FEMA Map Service Center includes all of such data in Vermont including counties and a few municipalities. This data includes the most recent map update for Bennington County effective 12/2/2015. DFIRM - Letter of Map Revision (LOMR) DFIRM X-Sections DFIRM Floodways Special Flood Hazard Areas (All Available)",
-      "source": "Vermont Open Geodata Portal",
-      "source_url": "http://geodata.vermont.gov/datasets/f16c1addcbbc43f59ccf89237ccc0f64_59",
-      "sectors": "Ecosystems",
-      "download_url": "https://opendata.arcgis.com/datasets/f16c1addcbbc43f59ccf89237ccc0f64_59.zip?outSR=%7B%22wkid%22%3A32145%2C%22latestWkid%22%3A32145%7D",
-      "metadata_url": "https://www.arcgis.com/sharing/rest/content/items/f16c1addcbbc43f59ccf89237ccc0f64/info/metadata/metadata.xml?format=default&output=html",
-      "parameters": {
-        "opacity": 100
-      }
-    },
-    {
       "id": "hospitals",
       "folder": "Public Health",
       "name": "Hospitals",

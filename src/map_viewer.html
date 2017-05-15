@@ -663,48 +663,6 @@
                 </table>
               </div>
           {{/if}}
-          {{#if ("flood_hazard_areas" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>FLOODZONE</th>
-                    <th>SFHA_TF</th>
-                    <th>STATIC_BFE</th>
-                  </tr>
-                    <tr>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("FLOODZONE")}}</td>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("SFHA_TF")}}</td>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("STATIC_BFE")}}</td>
-                    </tr>
-                </table>
-              </div>
-          {{/if}}
-          {{#if ("dfirm_floodways" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
-
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <table class="table">
-                  <tr>
-                    <th>FLOODZONE</th>
-                    <th>DFIRMID</th>
-                    <th>FLD_AR_ID</th>
-                  </tr>
-                    <tr>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("FLOODZONE")}}</td>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("DFIRMID")}}</td>
-                      <td>{{xml.getElementsByTagName("FIELDS")[0].getAttribute("FLD_AR_ID")}}</td>
-                    </tr>
-                </table>
-              </div>
-          {{/if}}
-
           {{#if ("high_priority_terrestrial_diversity" === renderer_id && xml.getElementsByTagName("FeatureInfoResponse")[0].children.length > 0 )}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -2282,9 +2240,7 @@
     <script src="./js/renderers/croplands.js?__inline=true"></script>
     <script src="./js/renderers/culverts.js?__inline=true"></script>
     <script src="./js/renderers/dams.js?__inline=true"></script>
-    <script src="./js/renderers/dfirm_floodways.js?__inline=true"></script>
     <script src="./js/renderers/fema_historic.js?__inline=true"></script>
-    <script src="./js/renderers/flood_hazard_areas.js?__inline=true"></script>
     <script src="./js/renderers/gap_lc.js?__inline=true"></script>
     <script src="./js/renderers/high_priority_terrestrial.js?__inline=true"></script>
     <script src="./js/renderers/high_priority_terrestrial_diversity.js?__inline=true"></script>
