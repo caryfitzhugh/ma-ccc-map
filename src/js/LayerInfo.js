@@ -40,6 +40,18 @@ var LayerInfo = [
       }
     },
     {
+      "id": "vt_groundwater_withdrawls",
+      "sort_key": 0,
+      "folder": "Water Resources",
+      "name": "VT Groundwater Withdrawls",
+      "description": "This class of permits and reporting requirements are for groundwater withdrawals that do not meet the exemption criteria listed in Act 199 as follows: withdrawals used exclusively for fire suppression, or other public emergencies; domestic, residential use; farming; dairy processing and milk handlers licensed in accordance with 6 V.S.A. subsection 2721; closed loop, standing column, or similar non-extractive geothermal heat pumps; public transient and non-transient, non-community water systems not withdrawing more than 57,600 GPD for commercial, industrial, purposes; for the investigation or remediation of a release of a hazardous material that is being supervised by the Secretary under 10 V.S.A., Section 6615b or 10 V.S.A., Chapter 159, subchapter 3; and public community water systems as defined in 10 V.S.A. subsection 1671.<br/>Bulk and bottled water suppliers of any size are required to obtain a Source Water Permit pursuant to the Environmental Protection Rules (EPR), using Chapter 21, the Water Supply Rule and the requirements of Chapter 24, the Groundwater Withdrawal Reporting and Permitting Rule.",
+      "source": "VT ANR Open Data",
+      "source_url": "http://dec.vermont.gov/water/groundwater-large-withdrawal",
+      "parameters": {
+        "opacity": 70,
+      }
+    },
+    {
       "id": "vt_groundwater",
       "sort_key": 0,
       "folder": "Water Resources",
