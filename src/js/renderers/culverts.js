@@ -1,7 +1,7 @@
 /*global L, Renderers, GEOSERVER */
 RendererTemplates.wms("culverts", {
 
-  update_legend: CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:townculverts&format=image/png"),
+  update_legend: CDN(GEOSERVER + "/wms?request=GetLegendGraphic&LAYER=vt:townculverts"),
 
   url: CDN (GEOSERVER + "/vt/wms/"),
   wms_opts: {

@@ -29,12 +29,23 @@ var CDN = function (url_str) {
 
 var LayerInfo = [
     {
+      "id": "vt_river_corridors",
+      "folder": "Water Resources",
+      "name": "VT River Corridors",
+      "description": 'River corridors are delineated to provide for the least erosive meandering and floodplain geometry toward which a river will evolve over time. River corridor maps guide State actions to protect, restore, and maintain naturally stable meanders and riparian areas to minimize erosion hazards. Land within and immediately abutting a river corridor may be at higher risk to fluvial erosion during floods. For a thorough discussion of the purpose, design and management of the Vermont River Corridors dataset, please see the "Vermont DEC Flood Hazard Area and River Corridor Protection Procedures December 5, 2014" http://www.vtwaterquality.org/rivers/docs/FHARCP_12.5.14.pdf ',
+      "source": "VT ANR Open Data",
+      "source_url": "http://geodata.vermont.gov/datasets/VTANR::river-corridors-jan-2-2015",
+      "parameters": {
+        "opacity": 70,
+      }
+    },
+    {
       "id": "vt_groundwater",
       "sort_key": 0,
       "folder": "Water Resources",
       "name": "VT Groundwater",
       "description": "",
-      "source": "",
+      "source": "VT ANR Open Data",
       "parameters": {
         "opacity": 70,
       }
