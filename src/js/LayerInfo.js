@@ -29,6 +29,17 @@ var CDN = function (url_str) {
 
 var LayerInfo = [
     {
+      "id": "vt_groundwater",
+      "sort_key": 0,
+      "folder": "Water Resources",
+      "name": "VT Groundwater",
+      "description": "",
+      "source": "",
+      "parameters": {
+        "opacity": 70,
+      }
+    },
+    {
       "id": "vt_health_status",
       "sort_key": 0,
       "folder": "Public Health",
