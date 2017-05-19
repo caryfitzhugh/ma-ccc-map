@@ -94,7 +94,6 @@ var API_Handler = {
     if (active_but_not_available_layers.length > 0) {
       result["available-layers"] = _.union(result["available-layers"], active_but_not_available_layers);
     }
-
     return result;
   },
 

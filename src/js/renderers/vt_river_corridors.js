@@ -1,5 +1,5 @@
 RendererTemplates.wms('vt_river_corridors' ,{
-  update_legend: CDN("http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetLegendGraphic&LAYER=20"),
+  update_legend: CDN("http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetLegendGraphic&LAYER=20&format=image/png&version=1.1"),
   url: CDN("http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer"),
   wms_opts: {
     layers: 20,

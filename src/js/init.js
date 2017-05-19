@@ -35,8 +35,10 @@ var desired_active_layer_ids = _.pluck(
   _.filter(LayerInfo, function (layer) {
     return layer.active_on_load;
   }), "id");
+
 if (desired_active_layer_ids.length > 0) {
-  Controllers.Layers.force_layers_active(Views.ControlPanel, desired_active_layer_ids);
+  var already_active_layers = _.pluck(Views.ControlPanel.get("layers.active"), "layer_default_id");
+  Controllers.Layers.force_layers_active(Views.ControlPanel, already_active_layers.concat(desired_active_layer_ids));
 }
 
 function stringify(obj) {
