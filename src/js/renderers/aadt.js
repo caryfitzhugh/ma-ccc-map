@@ -1,73 +1,65 @@
 /*global L, Renderers, GEOSERVER */
-var aadt_desc_to_key = {
-"Comparison to State 2000-2002": "Comparison_to_State_2000_2002",
-"Comparison to State 2001-2003": "Comparison_to_State_2001_2003",
-"Comparison to State 2002-2004": "Comparison_to_State_2002_2004",
-"Comparison to State 2003-2005": "Comparison_to_State_2003_2005",
-"Comparison to State 2004-2006": "Comparison_to_State_2004_2006",
-"Comparison to State 2005-2007": "Comparison_to_State_2005_2007",
-"Comparison to State 2006-2008": "Comparison_to_State_2006_2008",
-"Comparison to State 2007-2009": "Comparison_to_State_2007_2009",
-"Comparison to State 2008-2010": "Comparison_to_State_2008_2010",
-"Comparison to State 2011-2012": "Comparison_to_State_2011_2012",
-"Comparison to State 2012-2013": "Comparison_to_State_2012_2013",
-"Comparison to State 2013-2014": "Comparison_to_State_2013_2014",
-"Comparison to State 2014-2015": "Comparison_to_State_2014_2015",
-};
-
-var aadt_comparison_descriptions = [
-    "Comparison to State 2014-2015",
-    "Comparison to State 2013-2014",
-    "Comparison to State 2012-2013",
-    "Comparison to State 2011-2012",
-    "Comparison to State 2008-2010",
-    "Comparison to State 2007-2009",
-    "Comparison to State 2006-2008",
-    "Comparison to State 2005-2007",
-    "Comparison to State 2004-2006",
-    "Comparison to State 2003-2005",
-    "Comparison to State 2002-2004",
-    "Comparison to State 2001-2003",
-    "Comparison to State 2000-2002",
-    ];
-
 var aadt_color_buckets = [
   {
-    fill: "rgba(168, 242, 61, 200)",
-    stroke: "rgba(168, 242, 61, 255)",
-    label: "Better",
-    values: ["Better"],
+    fill: "rgba(0,0,0,0)",
+    stroke: "rgba(115, 38, 0, 255)",
+    label: "20001 - 60000",
+    values: [20000, 60001],
+    weight: 7,
   },
   {
-    fill: "rgba( 255, 255, 190, 200)",
-    stroke: "rgba( 255, 255, 190, 255)",
-    label: "Same",
-    values: ["Same"],
+    fill: "rgba(0,0,0,0)",
+    stroke: "rgba( 168, 56, 0, 255)",
+    label: "16001 - 20000",
+    values: [16000, 20001],
+    weight: 6,
   },
-  { fill: "rgba(0, 77, 168, 200)",
-    stroke: "rgba( 0, 77, 168, 255)",
-    label: "Worse",
-    values: ["Worse"],
+  {
+    fill: "rgba(0,0,0,0)",
+    stroke: "rgba( 168, 112, 0, 255)",
+    label: "12001 - 16000",
+    values: [12000, 16001],
+    weight: 5,
+  },
+  {
+    fill: "rgba(0,0,0,0)",
+    stroke: "rgba( 255, 170, 0, 255)",
+    label: "8001 - 12000",
+    values: [8000, 12001],
+    weight: 4,
+  },
+  {
+    fill: "rgba(0,0,0,0)",
+    stroke: "rgba( 255, 235, 175, 255)",
+    label: "4001 - 8000",
+    values: [4000, 8001],
+    weight: 3,
+  },
+  {
+    fill: "rgba(0,0,0,0)",
+    stroke: "rgba( 255, 255, 115, 255)",
+    label: "870 - 4000",
+    values: [870, 4001],
+    weight: 2,
+  },
+  {
+    fill: "rgba(0,0,0,0)",
+    stroke: "rgba( 0, 0, 0, 128)",
+    label: "0 - 870",
+    values: [0, 871],
+    weight: 1,
   }
-];
+].reverse();
 
 RendererTemplates.esri_feature_layer("aadt", {
   url: CDN("http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Layers/AADT/FeatureServer/0"),
   update_legend: function (active_layer) {
     active_layer.parameters.aadt_color_buckets = aadt_color_buckets;
-    active_layer.parameters.aadt_comparison_descriptions = aadt_comparison_descriptions;
+    active_layer
   },
   color_buckets: aadt_color_buckets,
-  color_bucket_field: function (active_layer) {
-    // Depending on the parameters...
-    var index = active_layer.parameters.ending_year_index;
-    var desc = aadt_comparison_descriptions[index];
-    return "properties." + aadt_desc_to_key[desc];
-  },
-
-  esri_opts: {
-
-  },
+  color_bucket_field: "properties.AADT",
+  esri_opts: { },
   find_geojson_match: function (active_layer, match) {
     // Just return the properties..
     return match.feature.properties;

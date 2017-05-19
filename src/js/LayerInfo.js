@@ -99,9 +99,9 @@ var LayerInfo = [
       "sort_key": 0,
       "folder": "Infrastructure",
       "name": "Traffic",
-      "description": "",
-      "source": "",
-      "source_url": "",
+      "description": "The current Annual Average Daily Traffic (AADT) for the Vermont highway system. This is the data collected/calculated for the prior year. Due to the manual processing involved, this data is updated in the late spring/early summer timeframe (April-May). <br/><br/> Annual average daily traffic, abbreviated AADT, is a measure used primarily in transportation planning and transportation engineering. Traditionally, it is the total volume of vehicle traffic of a highway or road for a year divided by 365 days.",
+      "source": "VT State Transportation",
+      "source_url": "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Layers/AADT/FeatureServer",
       "sectors": "",
       "parameters": {
         "opacity": 70,

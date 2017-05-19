@@ -78,8 +78,10 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
               if (_.isArray(v.values)) {
                 if (v.values.length == 1) {
                   return v.values[0] == lookup;
-                } else {
+                } else if (v.values.length == 2) {
                   return v.values[0] <= lookup && v.values[1] > lookup;
+                } else {
+                  return _.contains(v_.values, lookup );
                 }
               } else if (_.isFunction(v.values)) {
                 return v.values(lookup);
@@ -93,7 +95,7 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
               return { stroke: true, color: bucket.stroke,
                     opacity: opacity,
                     fillOpacity: opacity,
-                    weight: 1,
+                    weight: bucket.weight || 1,
                     fill: true,
                     fillColor: bucket.fill,
                     clickable: false};
