@@ -6,6 +6,7 @@ RendererTemplates.geojson_lines = function (layer_id, opts) {
     },
 
     update_legend: Renderers.update_legend(opts),
+
     create_leaflet_layers: function (map, active_layer) {
       if (_.isEmpty(active_layer.leaflet_layer_ids)) {
         active_layer.leaflet_layer_ids = ['loading-so-we-avoid-race-conditions'];
@@ -31,7 +32,7 @@ RendererTemplates.geojson_lines = function (layer_id, opts) {
           }
         });
       }
-    }
+    },
   };
 
   renderer.render = function (map, active_layer, z_index) {
@@ -49,6 +50,5 @@ RendererTemplates.geojson_lines = function (layer_id, opts) {
       });
     });
   }
-
   Renderers[layer_id] = renderer;
 }

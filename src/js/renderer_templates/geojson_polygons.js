@@ -31,6 +31,29 @@ RendererTemplates.geojson_polygons = function (layer_id, opts) {
           }
         });
       }
+    },
+    find_geo_json: function (map, active_layer, evt) {
+      var details_at_point = [];
+      var leaflet_ids = active_layer.leaflet_layer_ids;
+      var layers = Renderers.lookup_layers(map, leaflet_ids);
+
+      _.each(layers, function (layer) {
+        var match = Renderers.find_geojson_polygon_by_point(evt, layer);
+
+        if (match) {
+          if (opts.find_geojson_match) {
+            var data = opts.find_geojson_match(active_layer, match)
+            if (data) {
+              details_at_point.push(data);
+            }
+          }
+        }
+      });
+
+      return {
+        features: details_at_point,
+        geojson: details_at_point.length > 0,
+      }
     }
   };
 
