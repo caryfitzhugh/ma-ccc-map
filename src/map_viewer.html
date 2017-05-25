@@ -619,6 +619,32 @@
                 </table>
               </div>
           {{/if}}
+          {{#if ("vt_groundwater_withdrawls" === renderer_id && json.features.length > 0)}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <table class="table">
+                  <tr>
+                    <th>Tract</th>
+                    <th>Block</th>
+                    <th>Pop. 2000</th>
+                    <th>Sum of Water</th>
+                    <th></th>
+                  </tr>
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.tract}}</td>
+                      <td>{{properties.block}}</td>
+                      <td>{{properties.pop2000}}</td>
+                      <td>{{properties.sum_of_wat}}</td>
+                      <td></td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
           {{#if ("water_wells" === renderer_id && json.features.length > 0)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -945,45 +971,6 @@
                 {{/json.features}}
               </div>
           {{/if}}
-          {{#if ("invasive_animals" === renderer_id)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <div>
-                  County: {{json.county}} <br>
-                  Species: {{json.species}} <br>
-                  Number reported: {{json.count}} <br>
-                </div>
-              </div>
-          {{/if}}
-          {{#if ("invasive_insects" === renderer_id)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <div>
-                  County: {{json.county}} <br>
-                  Species: {{json.species}} <br>
-                  Number reported: {{json.count}} <br>
-                </div>
-              </div>
-          {{/if}}
-          {{#if ("invasive_plants" === renderer_id)}}
-            <div class='row'>
-              <div class='col-xs-2'>
-                <label> {{name}} </label>
-              </div>
-              <div class='col-xs-10'>
-                <div>
-                  County: {{json.county}} <br>
-                  Species: {{json.species}} <br>
-                  Number reported: {{json.count}} <br>
-                </div>
-              </div>
-          {{/if}}
           {{#if ("prism_temp" === renderer_id)}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -1035,7 +1022,7 @@
               </div>
               <div class='col-xs-10'>
                 <div>
-                  Degree-Day Accumulation: {{fixed_precision(json.count, 3)}} degree-days <br>
+                  Changes in Degree-Day Accumulation: {{fixed_precision(json.count, 3)}} <br>
                 </div>
               </div>
           {{/if}}
@@ -1046,7 +1033,7 @@
               </div>
               <div class='col-xs-10'>
                 <div>
-                  # Days: {{fixed_precision(json.count, 3)}}/year<br>
+                  Change in # days from baseline: {{fixed_precision(json.count, 3)}}<br>
                 </div>
               </div>
           {{/if}}
@@ -1057,7 +1044,7 @@
               </div>
               <div class='col-xs-10'>
                 <div>
-                  # Days: {{fixed_precision(json.count, 3)}}/year<br>
+                  Change in # days from baseline: {{fixed_precision(json.count, 3)}}<br>
                 </div>
               </div>
           {{/if}}
@@ -1468,6 +1455,9 @@
         </select>
       </div>
       <div class='detail-block legend {{layer_default_id}} {{legend_classname}}'>
+        <span class="pull-left">Less vulnerable</span>
+        <span class="pull-right">More vulnerable</span>
+        <br>
         {{#parameters.vt_heat_vuln_buckets}}
         <div class='color-block' style="width: {{99.0 / parameters.vt_heat_vuln_buckets.length}}%;">
           <svg width="100" height="20px">
@@ -1539,36 +1529,6 @@
             <option value='0'>Current</option>
             <option value='56'>Low</option>
             <option value='112'>High</option>
-        </select>
-      </div>
-    {{/if}}
-    {{#if "invasive_animals" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Species: </label>
-        <select style="max-width: 70%;" value='{{parameters.species}}'>
-          {{#parameters.all_species}}
-            <option value='{{this}}'> {{this}} </option>
-          {{/parameters.all_species}}
-        </select>
-      </div>
-    {{/if}}
-    {{#if "invasive_insects" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Species: </label>
-        <select style="max-width: 70%;" value='{{parameters.species}}'>
-          {{#parameters.all_species}}
-            <option value='{{this}}'> {{this}} </option>
-          {{/parameters.all_species}}
-        </select>
-      </div>
-    {{/if}}
-    {{#if "invasive_plants" === layer_default_id}}
-      <div class='detail-block show-confidence'>
-        <label> Species: </label>
-        <select style="max-width: 70%;" value='{{parameters.species}}'>
-          {{#parameters.all_species}}
-            <option value='{{this}}'> {{this}} </option>
-          {{/parameters.all_species}}
         </select>
       </div>
     {{/if}}
@@ -1955,6 +1915,10 @@
         </div>
       {{/if parameters.legend_data}}
     {{/if}}
+
+    {{#if "invasives" === layer_default_id}}
+       <strong>Invasive Observed</strong>
+    {{/if "dams" === layer_default_id}}
 
     {{#if "dams" === layer_default_id}}
        <strong>Status</strong>

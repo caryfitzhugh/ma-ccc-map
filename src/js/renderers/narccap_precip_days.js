@@ -44,7 +44,7 @@ Renderers.narccap_precip_days = {
       active_layer.parameters.legend_labels_as_range = true;
       active_layer.parameters.legend_range = legend;
       active_layer.parameters.legend_significant_digits = 0;
-      active_layer.parameters.legend_text = "# Days/Year";
+      active_layer.parameters.legend_text = "Change in # Days/Year";
     }
   },
 

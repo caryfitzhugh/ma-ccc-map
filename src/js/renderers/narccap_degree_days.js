@@ -39,7 +39,7 @@ Renderers.narccap_degree_days = {
       }, []);
       active_layer.parameters.legend_range = legend;
       active_layer.parameters.legend_significant_digits = 0;
-      active_layer.parameters.legend_text = "Degree-Day Accumulation";
+      active_layer.parameters.legend_text = "Change in Degree-Day Accumulation";
     }
   },
 

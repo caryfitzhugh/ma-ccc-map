@@ -1,6 +1,6 @@
 RendererTemplates.geojson_points("invasives", {
   url: CDN("https://opendata.arcgis.com/datasets/b1ae7b7b110447c3b452d9cacffeed36_174.geojson"),
-  update_legend: "./img/hospital.png",
+  update_legend: "./img/Invasive.png",
   pointToLayer: function (feature, latlng) {
       return L.marker(latlng, {
           icon: L.icon({
