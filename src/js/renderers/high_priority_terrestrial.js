@@ -1,11 +1,11 @@
 /*global LayerInfo, Renderers, _ */
-Renderers.high_priority_terrestrial = function (name, display_layer) {
+Renderers.high_priority_terrestrial = function (name, display_layer, legend_text) {
   return RendererTemplates.wms(name, {
     update_legend: {
       url: CDN("http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&EXCEPTIONS=application%2Fvnd.ogc.se_xml&" +
               "LAYER=" + display_layer  +
               "&FORMAT=image/gif&SCALE=55467893.20400156"),
-      text: "Diversity Blocks",
+      text: legend_text,
     },
     url: CDN("http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/WMSServer?"),
     wms_opts: {
