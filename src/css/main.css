@@ -40,8 +40,7 @@ input[type="radio"], input[type="checkbox"] {
 .layer-controls .header {
   padding: 10px;
   text-align: center;
-  display: none;
-
+  background: white;
 }
 
 .layer-controls .tabs {
@@ -135,7 +134,7 @@ input[type="radio"], input[type="checkbox"] {
 .layer-controls .tray {
   background: white;
   position: fixed;
-  top: 37px; /*111px;*/
+  top: 108px; /*111px;*/
   left: 0;
   width: 400px;
   overflow:hidden;
@@ -903,7 +902,9 @@ input[type="radio"], input[type="checkbox"] {
   display: none;
 }
 @media print {
-
+  .hide-printing {
+    display: none;
+  }
   #control_panel_root > div {
     display: none;
   }

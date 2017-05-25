@@ -1,6 +1,9 @@
 RendererTemplates.geojson_points("hospitals", {
   url: CDN("https://opendata.arcgis.com/datasets/128c419772234581ac4209e4e429f882_5.geojson"),
-  update_legend: "./img/hospital.png",
+  update_legend: {
+      url: "./img/hospital.png",
+     text: "Hospital",
+  },
   pointToLayer: function (feature, latlng) {
       return L.marker(latlng, {
           icon: L.icon({

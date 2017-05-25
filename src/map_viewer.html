@@ -19,7 +19,9 @@
 
   <body>
     <div class="print-header visible-print">
-      <img height="50px;" src="img/vt_logo.png"></img>
+      <img height="50px;" src="img/vt-logo.png"></img>
+    </div>
+    <div class='main-header hide-printing'>
     </div>
     <div id="container">
       <div id='ractive_root'>
@@ -1256,23 +1258,6 @@
             </span>
           </div>
         {{/if}}
-
-        <!--
-        {{#if get_layer_defaults(layers.defaults, layer_controls.current_layer_info).legend_url }}
-          <div class='row'>
-            <div class='col-xs-4'>
-              <label> Legend</label>
-            </div>
-            <span class='col-xs-8'>
-              <a href="{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).legend_url}}" target="_blank">
-                <img class='legend-img' src="{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).legend_url}}">
-              </a>
-            </span>
-          </div>
-        {{/if}}
-        -->
-
-
       </div>
     </div>
   </div>
@@ -1293,8 +1278,7 @@
 <script id="layer_controls_template" type="text/ractive">
   <div class='layer-controls noselect'>
     <div class='header'>
-      <img height="50px;" src="img/nyccsc_logo.png">
-      <img height="50px;" src="img/nyccsc_title.png">
+      <img height="50px;" src="img/vt-logo.png"/>
     </div>
     <div class='tabs container-fluid'>
       <div class='row'>
