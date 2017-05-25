@@ -364,24 +364,16 @@
                 <table class="table">
                   <tr>
                     <th>Town</th>
-                    <th>Pop &lt; 5yrs</th>
                     <th>Pop &gt; 65yrs</th>
                     <th>Poverty </th>
-                    <th>Edu &gt; HS </th>
-                    <th>Alone &gt; 65yrs</th>
-                    <th>Adults No Insurance</th>
                     <th>Avg Days &gt; 87</th>
-                    <th>Heat-Related ED Visits<br/>(per 100k / yr)</th>
+                    <th>ED Visits<br/>(per 100k/yr)</th>
                   </tr>
                   {{#json.features}}
                     <tr>
                       <td>{{TOWNNAMEMC}}</td>
-                      <td>{{fixed_precision(Pop0_5pct,3)}}%</td>
                       <td>{{fixed_precision(Pop65Plus,3)}}%</td>
                       <td>{{fixed_precision(Poverty_pc,3)}}%</td>
-                      <td>{{fixed_precision(NoHS_pct,3)}}%</td>
-                      <td>{{fixed_precision(Alone65_pc,3)}}%</td>
-                      <td>{{fixed_precision(Insure_pct,3)}}%</td>
                       <td>{{fixed_precision(Days_gt87,3)}}</td>
                       <td>{{fixed_precision(ED_Visits, 3)}}</td>
                     </tr>
@@ -1447,7 +1439,7 @@
     {{/if}}
     {{#if "vt_heat_vuln" === layer_default_id}}
       <div class='detail-block'>
-        <label  decorator='tooltip:Use slider to select years to display'> Years: </label>
+        <label  decorator='tooltip:Use slider to select years to display'> Parameter: </label>
         <select value='{{parameters.selected_facet_index}}'>
           {{#parameters.vt_heat_facets:i}}
             <option value='{{i}}'>{{display}}</option>
