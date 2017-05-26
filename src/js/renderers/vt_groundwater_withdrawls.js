@@ -7,7 +7,6 @@ RendererTemplates.wms("vt_groundwater_withdrawls", {
           layers: 'vt:groundwater_withdrawls',
           format: 'image/png',
           transparent: true,
-          opacity: 0.8,
           zIndex: 100
         },
 
@@ -28,3 +27,6 @@ RendererTemplates.wms("vt_groundwater_withdrawls", {
               "X=<%= x %>&Y=<%= y %>");
   }
 });
+
+//https://d3dfsz5phlpu8l.cloudfront.net/geoserver/vt/wms?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&FORMAT=image%2Fpng&TRANSPARENT=true&STYLES=&LAYERS=vt%3Agroundwater_withdrawls&HEIGHT=256&WIDTH=256&BBOX=-7827151.696402048,5165920.119625353,-7670608.662474006,5322463.153553393
+//https://d3dfsz5phlpu8l.cloudfront.net/geoserver/vt/wms?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&FORMAT=image%2Fpng&TRANSPARENT=true&STYLES=&LAYERS=vt%3Agroundwater_withdrawls&WIDTH=661&HEIGHT=768&BBOX=-74.26483154296875%2C41.7645263671875%2C-70.63385009765625%2C45.9832763671875
