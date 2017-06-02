@@ -29,6 +29,36 @@ var CDN = function (url_str) {
 
 var LayerInfo = [
     {
+      "id": "vt_cyanobacteria",
+      "sort_key": 0,
+      "folder": "Public Health",
+      "name": "VT Cyanobacteria Routine Monitoring Summary ",
+      "description": "This data layer contains annual summary data for Vermont cyanobacteria monitoring visits among sites that had routine monitoring (either weekly or every other week) with 5 or more total visits. Routine monitoring is conducted by volunteer monitors, as well as staff from Vermont Department of Health and Department of Environmental Conservation, and the Lake Champlain Committee. Symbology corresponds to the percent of visits in a given year with either low or high alert status given. Low alerts indicate when shoreline areas have cyanobacteria at levels below bloom conditions. These areas are open for recreation, but caution is advised in any areas where dense accumulations or scums are seen. High alerts indicate shorelines with cyanobacteria in dense scums at least in some areas, where the water is not safe for recreational use.",
+      "source_url": "http://www.healthvermont.gov/tracking/cyanobacteria-tracker",
+      "download_url": "http://www.arcgis.com/home/item.html?id=f1a9bc96c7134ca5a12b65f10f058aab",
+      "metadata_url": "https://services.arcgis.com/YKJ5JtnaPQ2jDbX8/arcgis/rest/services/Cyanobacteria_2013_to_Present_Summary/FeatureServer/0",
+      "sectors": "Public Health",
+      "parameters": {
+        "opacity": 70,
+      }
+    },
+    {
+      "id": "vt_heat_illness",
+      "sort_key": 0,
+      "folder": "Public Health",
+      "name": "VT Heat Illness",
+      "description": "This data layer contains heat stress emergency department (ED) visits for heat-related illnesses from the Vermont Environmental Public Health Tracking Program. An admission for heat stress is defined as having a principal diagnosis, injury cause or other diagnosis related to heat stress (ICD-9-CM 992.x, E900.0 or E900.9 excluding any which also include E900.1) during May through September. Rates are age-adjusted, using the direct method to the Year 2000 U.S. Standard Population. ",
+      "source": "Vermont Environmental Public Health Tracking Program",
+      "source_url": "http://www.healthvermont.gov/tracking",
+      "download_url": "https://apps.health.vermont.gov/ias/querytool?topic=EPHT&geo=17&date=2013&theme1=ClimateandHealth&theme2=HeatStress&theme3=HeatStressEmergencyDepartmentVisits&theme4=HeatStressCrudeRateOfEDVisits&tab=DataViewDynamicReport&go=1",
+      "metadata_url": "https://apps.health.vermont.gov/IAS/DynamicReports/HospitalizationsHeatStressCrudeRateHTML5/notes.htm",
+      "sectors": "Public Health",
+      "parameters": {
+        "opacity": 70,
+        "time": 2012,
+      }
+    },
+    {
       "id": "vt_river_corridors",
       "folder": "Water Resources",
       "name": "VT River Corridors",
