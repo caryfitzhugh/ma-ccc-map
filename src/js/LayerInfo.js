@@ -55,7 +55,9 @@ var LayerInfo = [
       "sectors": "Public Health",
       "parameters": {
         "opacity": 70,
-        "time": 2012,
+        "year_start": 2003,
+        "year_end": 2013,
+        "year": 2013,
       }
     },
     {

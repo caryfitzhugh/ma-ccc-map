@@ -435,6 +435,23 @@ input[type="radio"], input[type="checkbox"] {
 .active-layer .detail-block {
   line-height: 25px;
 }
+.active-layer .detail-block .labelled-range {
+  position: relative;
+  padding-bottom: 15px;
+}
+.active-layer .detail-block .labelled-range span {
+  position: absolute;
+  top: 15px;
+}
+.active-layer .detail-block .labelled-range span:first-child {
+  left: 5px;
+}
+.active-layer .detail-block .labelled-range span:last-child {
+  right: 5px;
+}
+
+.active-layer .detail-block .labelled-range input {
+}
 
 .active-layer .detail-block.power_stations img {
   width: 30px;

@@ -336,6 +336,32 @@
           </div>
         </div>
         {{#map_details.feature_info_responses}}
+          {{#if ("vt_heat_illness" === renderer_id )}}
+            <div class='row'>
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <p> Heat stress emergency department (ED) visits for heat-related illnesses</p>
+                <table class="table">
+                  <tr>
+                    <th> County Name </th>
+                    <th> Year </th>
+                    <th> Number </th>
+                    <th> Crude Rate </th>
+                  </tr>
+
+                  {{#json.features}}
+                    <tr>
+                      <td>{{properties.name}}</td>
+                      <td>{{properties.year}}</td>
+                      <td>{{properties.cruderate_mf}}</td>
+                      <td>{{properties.cruderate}}</td>
+                    </tr>
+                  {{/json.features}}
+                </table>
+              </div>
+          {{/if}}
           {{#if ("vt_health_status" === renderer_id )}}
             <div class='row'>
               <div class='col-xs-2'>
@@ -1504,6 +1530,26 @@
 
       </div>
     {{/if}}
+    {{#if "vt_heat_illness" === layer_default_id }}
+      <div class='detail-block'>
+        <label  decorator='tooltip:Use slider to select year to display'> Year: </label>
+        <div class='labelled-range'>
+          <span>{{parameters.year_start}}</span>
+          <input type="range"
+                min="{{parameters.year_start}}"
+                max="{{parameters.year_end}}"
+                step="1"
+                value="{{parameters.year}}">
+          <span>{{parameters.year_end}}</span>
+        </div>
+        <br/>
+        <div style='text-align: center'>
+          {{parameters.year}} Heat Stress Emergency Department Visits Crude Rate
+          <br/>
+          <small>All Ages, Male and Female</small>
+         </div>
+      </div>
+    {{/if "vt_heat_illness" === layer_default_id }}
     {{#if "vt_health_status" === layer_default_id }}
       <div class='detail-block'>
         <label  decorator='tooltip:Use slider to select years to display'> Years: </label>
