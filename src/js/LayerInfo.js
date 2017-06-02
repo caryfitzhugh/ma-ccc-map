@@ -40,6 +40,7 @@ var LayerInfo = [
       "sectors": "Public Health",
       "parameters": {
         "opacity": 70,
+        "no_sorting": true
       }
     },
     {
@@ -648,7 +649,8 @@ var LayerInfo = [
       "download_url": "Not downloadable elsewhere, obtained by request from LCBP",
       "metadata_url": "",
       "parameters": {
-        "opacity": 100
+        "opacity": 100,
+        "no_sorting": true
       }
     },
     {

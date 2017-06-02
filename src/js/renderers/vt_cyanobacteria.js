@@ -34,7 +34,7 @@ var vt_cyanobacteria_color_buckets = [
     fill:   "rgba(255,0,0, 200)",
     stroke: "rgba(255,0,0, 255)",
     label: "76% - 100%",
-    values: [0.75, 1.00]
+    values: [0.75, 2]
   },
 ];
 

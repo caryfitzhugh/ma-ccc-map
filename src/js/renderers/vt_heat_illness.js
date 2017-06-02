@@ -12,7 +12,6 @@ RendererTemplates.wms("vt_heat_illness", {
         time: active_layer.parameters.year,
         format: 'image/png',
         transparent: true,
-        zIndex: 100
       }
   },
   get_feature_info_url: function (active_layer) {
