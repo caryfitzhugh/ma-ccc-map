@@ -71,7 +71,9 @@ Controllers.FeatureInfo = {
             $.getJSON(url, {}, function (resp) {
               if (cp.get("map_details.location") === evt.latlng) {
                 var current = _.cloneDeep(cp.get("map_details.feature_info_responses"));
-                current.push({name: active_layer.name, renderer_id: active_layer.renderer_id, json: resp});
+                current.push({name: active_layer.name,
+                              active_layer: active_layer,
+                              json: resp});
                 cp.set("map_details.feature_info_responses", _.sortBy(current, "name"));
               }
             });
