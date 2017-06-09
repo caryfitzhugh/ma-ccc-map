@@ -1,4 +1,12 @@
 var ViewUtils = {
+  to_sorted_values_from_hash(hsh) {
+    var vals = _.reduce(hsh, (memo, v, k) => {
+          memo.push([k,v])
+              return memo;
+    }, []);
+    return _.map(_.sortBy(vals, (v) => { return v[1]; }),
+                 (v) => { return {key: v[0], value: v[1]};});
+  },
   to_month_name: function (v) {
     var months =  {
      1: "January",

@@ -1,86 +1,73 @@
 /*global _, Renderers, L */
-Renderers.taccimo = {
-  pickle: function (al) {
-    delete al.legend_url;
-    delete al.legend_url_text;
-    al.leaflet_layer_ids = [];
+RendererTemplates.esri("taccimo", {
+  parameters: {
+    options: {
+      species: {
+        '4': "Red Maple",
+        '5': "Sugar Maple",
+        '7': "Yellow Birch",
+        '10': "Pignut Hickory",
+        '14': "American Beech",
+        '15': "White Ash",
+        '28': "Red Spruce",
+        '35': "Eastern White Pine",
+        '40': "Quaking Aspen",
+        '41': "Black Cherry",
+        '42': "White Oak",
+        '49': "Northern Red Oak",
+        '55': "Eastern Hemlock"
+      },
+      scenarios: {
+        '0': "Current",
+        '56': "Low",
+        '112': "High",
+      }
+    }
   },
+  legend_template: `
+    <div class='detail-block show-confidence'>
+      <label decorator='tooltip:Choose a tree species'> Species: </label>
+
+      <select value='{{parameters.species}}'>
+        {{#u.to_sorted_values_from_hash(parameters.options.species)}}
+          <option value='{{key}}'>{{value}}</option>
+        {{/u.to_sorted_values_from_hash(parameters.options.species)}}
+      </select>
+    </div>
+    <div class='detail-block show-confidence'>
+      <label decorator='tooltip:Choose a tree species'> Scenario: </label>
+      <select value='{{parameters.scenario}}'>
+        {{#u.to_sorted_values_from_hash(parameters.options.scenarios)}}
+          <option value='{{key}}'>{{value}}</option>
+        {{/u.to_sorted_values_from_hash(parameters.options.scenarios)}}
+      </select>
+    </div>
+
+    <div class='detail-block legend taccimo '>
+      <label> Legend </label>
+      <img  src="img/taccimo.jpg">
+    </div>
+  `,
+  //info_template: `
+  //  <h1> INFO </h1>
+  //`,
+  //wizard_template: `
+  //  <h1> HI! </h1>
+  //`,
   clone_layer_name: function (active_layer) {
-    var layer_default = _.find(LayerInfo, {id: active_layer.layer_default_id});
+    var p = active_layer.parameters;
+    var scenario = p.options.scenarios[p.scenario];
+    var species = p.options.species[p.species];
 
+    return active_layer.name + " " + species + " : " + scenario;
+  },
+  esri_layers: (active_layer) => {
     var scenario = active_layer.parameters.scenario;
     var species = active_layer.parameters.species;
-
-    var name =  layer_default.name;
-    return name;
+    return [Number(scenario)+Number(species)];
   },
-  update_legend_url: function (active_layer) {
-    active_layer.legend_url = "./img/taccimo.jpg";
-    active_layer.legend_url_text = "Modeled species importance";
+  esri_opts: {
+    url: CDN("http://wassimap.sgcp.ncsu.edu:8399/arcgis/rest/services/taccimo/treeatlas_high/MapServer"),
+    attribution: 'USFS'
   },
-  active_leaflet_layer: function (map, active_layer) {
-    var scenario = active_layer.parameters.scenario;
-    var species = active_layer.parameters.species;
-
-    var active_leaflet_layer_id =  _.find(active_layer.leaflet_layer_ids, {"scenario": scenario, "species": species});
-    var result;
-    if (active_leaflet_layer_id) {
-      result = Renderers.lookup_layers(map, [active_leaflet_layer_id.leaflet_id])[0];
-    }
-    return result;
-  },
-  create_leaflet_layers: function (map, active_layer) {
-    var scenario = active_layer.parameters.scenario;
-    var species = active_layer.parameters.species;
-    var layer=Number(scenario)+Number(species);
-    var active_leaflet_layer = Renderers.taccimo.active_leaflet_layer(map, active_layer);
-
-    if (!active_leaflet_layer) {
-         var new_layer = new L.esri.dynamicMapLayer({
-                    url: CDN("http://wassimap.sgcp.ncsu.edu:8399/arcgis/rest/services/taccimo/treeatlas_high/MapServer"),
-                    layers: [layer],
-                    // No longer defaults to image, but JSON
-                    f:"image",
-                    opacity: 0,
-                    zIndex: -1,
-                    attribution: 'USFS'})
-
-        new_layer.on("nyccsc-loaded", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-        new_layer.on("nyccsc-error", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
-
-        new_layer.addTo(map);
-        active_layer.leaflet_layer_ids.push({species: species, scenario: scenario, leaflet_id: new_layer._leaflet_id});
-    }
-  },
-  remove: function (map, active_layer) {
-    var leaflet_ids = _.pluck(active_layer.leaflet_layer_ids, "leaflet_id");
-    var layers = Renderers.lookup_layers(map, leaflet_ids);
-    _.each(layers, function (ll) {
-      if (map.hasLayer(ll)) {
-        map.removeLayer(ll);
-      }
-    });
-  },
-  render: function (map, active_layer, z_index) {
-    // Make sure the right layers are created!
-    Renderers.taccimo.create_leaflet_layers(map, active_layer);
-    Renderers.taccimo.update_legend_url(active_layer);
-
-    var leaflet_ids = _.pluck(active_layer.leaflet_layer_ids, "leaflet_id");
-    var layers = Renderers.lookup_layers(map, leaflet_ids);
-
-    var active_leaflet_layer = Renderers.taccimo.active_leaflet_layer(map, active_layer);
-
-    _.each(layers, function (layer) {
-      var opacity = active_layer.is_hidden ? 0 :
-                    active_layer.parameters.opacity;
-      if (layer._leaflet_id === active_leaflet_layer._leaflet_id) {
-        layer.setOpacity(opacity / 100.0);
-        layer.setZIndex(z_index);
-      } else {
-        layer.setOpacity(0);
-        layer.setZIndex(-1);
-      }
-    });
-  }
-};
+});

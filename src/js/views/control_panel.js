@@ -14,18 +14,6 @@ Views.ControlPanel = new Ractive({
   el:  "control_panel_root",
   data: {
     u: ViewUtils,
-    to_chart_data: function (data) {
-      return [
-        {height: 1, value: 1, current: false},
-        {height: 3, value: 3, current: false},
-        {height: 1, value: 1, current: false},
-        {height: 99, value: 1, current: false},
-        {height: 80, value: 1, current: true},
-      ]
-    },
-    to_chart_label: function (d) {
-      return "Applsauce";
-    },
     sharing_url: function (token) {
       return Controllers.Sharing.sharing_url(token);
     },
@@ -98,7 +86,7 @@ Views.ControlPanel = new Ractive({
     },
     layer_has_standalone_wizard: function (active_layer ) {
       if (active_layer) {
-        return !!(Renderers[active_layer.renderer_id].has_standalone_wizard);
+        return !!active_layer.templates.wizard
       } else {
         return false;
       }
@@ -197,6 +185,7 @@ Views.ControlPanel = new Ractive({
       tooltip:  RactiveTooltip
   },
 });
+
 // Connect callbacks to the Map to update our data
 LeafletMap.on("zoomend", function (evt) {
   Views.ControlPanel.set("map_state.zoom", LeafletMap.getZoom());
@@ -464,7 +453,7 @@ Views.ControlPanel.on({
     cp.set("wizard.current_step", next);
   },
   "show-standalone-wizard": function (evt) {
-    Views.ControlPanel.set("wizard.standalone", evt.context.renderer_id);
+    Views.ControlPanel.set("wizard.standalone", evt.context);
   },
   "close-standalone-wizard": function (evt) {
     Views.ControlPanel.set('wizard.standalone', null);

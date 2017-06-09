@@ -1,4 +1,12 @@
 RendererTemplates.esri_feature_layer = function (layer_id, opts) {
+  if (opts.legend_template) {
+    Ractive.partials[layer_id + "_legend"] = opts.legend_template;
+  }
+  if (opts.info_template) {
+    Ractive.partials[layer_id + "_info"] = opts.info_template;
+  }
+
+
   var renderer = {
     pickle: function (al) {
       delete al.legend_url;
@@ -61,6 +69,10 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
   };
 
   renderer.render = function (map, active_layer, z_index) {
+    active_layer.templates = {}
+    if (opts.info_template) { active_layer.templates.info =  layer_id + "_info"; }
+    if (opts.legend_template) { active_layer.templates.legend =  layer_id + "_legend"; }
+
     renderer.update_legend(active_layer);
     renderer.create_leaflet_layers(map, active_layer);
 

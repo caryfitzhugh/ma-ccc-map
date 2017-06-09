@@ -53,9 +53,13 @@ Controllers.Layers = {
     var renderer = Renderers[layer_default.renderer_id || layer_default.id];
     Controllers.Layers.counter = Controllers.Layers.counter + 1;
 
+    var parameters = Object.assign({},
+                                   renderer.parameters || {},
+                                   layer_default.parameters);
+
     var active_layer = { id: "layer:" + Controllers.Layers.counter,
              layer_default_id: layer_default.id,
-             parameters: _.cloneDeep(layer_default.parameters),
+             parameters: parameters,
              renderer_id: layer_default.id,
              leaflet_layer_ids: [],
              is_collapsed: false,
