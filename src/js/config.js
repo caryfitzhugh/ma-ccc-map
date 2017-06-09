@@ -13,8 +13,8 @@ var getParameterByName = function(name) {
 
 var Config = {
   defaults: {
-    // https://www.maptechnica.com/state-map/VT (only via google results though! haha)
-    "bounding-box": [-73.437905, 45.016659, -71.465047, 42.726933]
+   // https://www.maptechnica.com/state-map/MA (only via google results though! haha)
+   "bounding-box": [-73.50821,42.886778,  -69.858861, 41.187053],
   },
   // If you want to SKIP the CDN, add this query parameter.
   skip_cdn: getParameterByName("cdn") === "disable"
