@@ -48,7 +48,6 @@ input[type="radio"], input[type="checkbox"] {
   color: white;
   font-weight: bold;
   padding-top: 0px; /*5px;*/
-  border-bottom: 1px solid black;
 }
 
 .layer-controls .tabs a .notice-me-banner {
@@ -101,8 +100,7 @@ input[type="radio"], input[type="checkbox"] {
   font-size: 14px;
   cursor: pointer;
   display: inline-block;
-  border-radius: 7px 7px 0 0;
-  border-top: 2px solid white;
+  border-top: 2px solid #063;
   border-left: 1px solid white;
 
   width: 22.5%;
