@@ -7,12 +7,9 @@ RendererTemplates.esri = function (layer_id, opts) {
     return esri_opts;
   }
 
-  var renderer = Object.assign({},
-    RendererTemplates.base(layer_id, opts),
+  var renderer = RendererTemplates.base(layer_id, opts,
     {
       render: function (map, active_layer, z_index) {
-        Renderers.update_templates(active_layer, opts);
-
         Renderers.create_leaflet_layer(
           map,
           active_layer,
@@ -40,8 +37,7 @@ RendererTemplates.esri = function (layer_id, opts) {
         });
       },
       remove: function (map, active_layer) {
-        var leaflet_ids = _.pluck(active_layer.leaflet_layer_ids, "leaflet_id");
-        var layers = Renderers.lookup_layers(map, leaflet_ids);
+        var layers = Renderers.get_all_leaflet_layers(map,active_layer);
         _.each(layers, function (ll) {
           if (map.hasLayer(ll)) {
             map.removeLayer(ll);

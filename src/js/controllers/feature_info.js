@@ -85,7 +85,9 @@ Controllers.FeatureInfo = {
               success: function (resp) {
                 if (cp.get("map_details.location") === evt.latlng) {
                   var current = _.cloneDeep(cp.get("map_details.feature_info_responses"));
-                  current.push({name: active_layer.name, renderer_id: active_layer.renderer_id, xml: resp});
+                  current.push({name: active_layer.name,
+                                active_layer: active_layer,
+                                xml: resp});
                   cp.set("map_details.feature_info_responses", _.sortBy(current, "name"));
                 }
               }
@@ -94,7 +96,9 @@ Controllers.FeatureInfo = {
             var response = renderer.find_geo_json(map, active_layer, evt);
             if (response) {
               var current = _.cloneDeep(cp.get("map_details.feature_info_responses"));
-              current.push({name: active_layer.name, renderer_id: active_layer.renderer_id, json: response});
+              current.push({name: active_layer.name,
+                            active_layer: active_layer,
+                            geojson: response});
               cp.set("map_details.feature_info_responses", _.sortBy(current, "name"));
             }
           }

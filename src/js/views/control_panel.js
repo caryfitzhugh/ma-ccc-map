@@ -49,7 +49,7 @@ Views.ControlPanel = new Ractive({
         if (_.filter(responses, function (resp) {
               return (resp.json && resp.json.features && resp.json.features.length > 0 ) ||
                       ///  This second one is for GEOJSON responses
-                     ( resp.json && resp.json.geojson)  ||
+                     ( resp.geojson)  ||
                      ( resp.xml ) ||
                      ( resp.json.results && resp.json.results.length > 0) ;
             } ).length > 0) {

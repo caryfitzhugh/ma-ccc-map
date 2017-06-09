@@ -1,4 +1,4 @@
-RendererTemplates.wms("anthromes", {
+RendererTemplates.wms("example_wms_layer", {
   parameters: {
     opacity: 70,
     year: 2000,

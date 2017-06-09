@@ -55,7 +55,7 @@ Controllers.Layers = {
 
     var parameters = Object.assign({},
                                    renderer.parameters || {},
-                                   layer_default.parameters);
+                                   layer_default.parameters || {});
 
     var active_layer = { id: "layer:" + Controllers.Layers.counter,
              layer_default_id: layer_default.id,

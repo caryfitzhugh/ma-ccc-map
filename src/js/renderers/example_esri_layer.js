@@ -1,5 +1,5 @@
 /*global _, Renderers, L */
-RendererTemplates.esri("taccimo", {
+RendererTemplates.esri("example_esri_layer", {
   parameters: {
     opacity: 70,
     species: 5,
