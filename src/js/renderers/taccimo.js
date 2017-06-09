@@ -1,6 +1,9 @@
 /*global _, Renderers, L */
 RendererTemplates.esri("taccimo", {
   parameters: {
+    opacity: 70,
+    species: 5,
+    scenario: 0,
     options: {
       species: {
         '4': "Red Maple",
@@ -48,12 +51,6 @@ RendererTemplates.esri("taccimo", {
       <img  src="img/taccimo.jpg">
     </div>
   `,
-  //info_template: `
-  //  <h1> INFO </h1>
-  //`,
-  //wizard_template: `
-  //  <h1> HI! </h1>
-  //`,
   clone_layer_name: function (active_layer) {
     var p = active_layer.parameters;
     var scenario = p.options.scenarios[p.scenario];
@@ -61,13 +58,16 @@ RendererTemplates.esri("taccimo", {
 
     return active_layer.name + " " + species + " : " + scenario;
   },
-  esri_layers: (active_layer) => {
+  esri_opts: function (active_layer) {
     var scenario = active_layer.parameters.scenario;
     var species = active_layer.parameters.species;
-    return [Number(scenario)+Number(species)];
-  },
-  esri_opts: {
-    url: CDN("http://wassimap.sgcp.ncsu.edu:8399/arcgis/rest/services/taccimo/treeatlas_high/MapServer"),
-    attribution: 'USFS'
+
+    return {
+      layers: [Number(scenario)+Number(species)],
+      url: CDN("http://wassimap.sgcp.ncsu.edu:8399/arcgis/rest/services/taccimo/treeatlas_high/MapServer"),
+      attribution: 'USFS',
+      f:"image",
+      clickable: false
+    };
   },
 });

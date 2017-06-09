@@ -14,6 +14,7 @@ Views.ControlPanel = new Ractive({
   el:  "control_panel_root",
   data: {
     u: ViewUtils,
+    CDN: CDN,
     sharing_url: function (token) {
       return Controllers.Sharing.sharing_url(token);
     },

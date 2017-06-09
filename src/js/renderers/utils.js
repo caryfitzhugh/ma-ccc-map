@@ -63,13 +63,14 @@ var Renderers = {
   create_leaflet_layer: (map, active_layer, attributes, callback) => {
     if (!Renderers.get_leaflet_layer(map, active_layer, attributes)) {
       var layer = callback();
+      layer.addTo(map);
       Renderers.save_leaflet_layer(active_layer, layer._leaflet_id, attributes);
     }
   },
   save_leaflet_layer: (active_layer, layer_id, attrs) => {
     active_layer.leaflet_layer_ids.push(
       Object.assign({},
-                    attrs,
+                    {id: stringify(attrs)},
                     {leaflet_id: layer_id}));
   },
   get_all_leaflet_layers: function(map, active_layer) {
@@ -77,7 +78,7 @@ var Renderers = {
     return Renderers.lookup_layers(map, leaflet_ids);
   },
   get_leaflet_layer: function (map, active_layer, attrs)  {
-    var active_leaflet_layer_id =  _.find(active_layer.leaflet_layer_ids, attrs);
+    var active_leaflet_layer_id =  _.find(active_layer.leaflet_layer_ids, {id:stringify(attrs)});
     var result;
     if (active_leaflet_layer_id) {
       result = Renderers.lookup_layers(map, [active_leaflet_layer_id.leaflet_id])[0];
