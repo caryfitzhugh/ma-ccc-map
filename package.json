@@ -7,7 +7,10 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-banner": "^0.5.0",
-    "grunt-contrib-copy": "^0.8.1",
-    "grunt-inline": "^0.3.6"
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-inline": "^0.3.9"
+  },
+  "dependencies": {
+    "grunt-inline": "github:caryfitzhugh/grunt-inline"
   }
 }

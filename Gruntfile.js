@@ -13,19 +13,11 @@ module.exports = function (grunt) {
         src: "src/map_viewer.html",
         dest: "dist/map_viewer.html"
       },
-      stub: {
-        src: "src/stub.html",
-        dest: "dist/stub.html"
-      }
     },
     copy: {
       zeroClipboardSWF: {
         src: "src/vendor/zero-clipboard/ZeroClipboard.swf",
         dest: "dist/ZeroClipboard.swf"
-      },
-      harness: {
-        src: "src/harness.html",
-        dest: "dist/harness.html"
       },
       images: {
         expand: true,
@@ -44,12 +36,12 @@ module.exports = function (grunt) {
 
       },
       meta_data: {
-        src: "src/js/LayerInfo.js",
+        src: "src/js/layer_info.js",
         dest: "dist/meta_data.json",
         options: {
           process: function (js) {
             // The map_layers are what the var is called
-            var LayerInfo;
+            var available_layers;
             // Eval it - leaving MetaData defined
             try {
               var Config = {skip_cdn: true};
@@ -58,10 +50,10 @@ module.exports = function (grunt) {
 
               var output = [];
 
-              console.log("Formatting the LayerInfo now... ", LayerInfo.length , "Layers");
+              console.log("Formatting the LayerInfo now... ", available_layers.length , "Layers");
 
-              for (var i = 0; i < LayerInfo.length; i++ ) {
-                var l = LayerInfo[i];
+              for (var i = 0; i < available_layers.length; i++ ) {
+                var l = available_layers[i];
                 output.push({
                    id: l.id,
                    folder: l.folder,
@@ -92,5 +84,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['inline:map_viewer', "inline:stub", "copy:meta_data", "copy:harness", "copy:images", "copy:data", "copy:zeroClipboardSWF"]);
+  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF"]);
 }
