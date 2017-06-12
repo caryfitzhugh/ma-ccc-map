@@ -36,10 +36,11 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
   };
 
   renderer.render = function (map, active_layer, z_index) {
+    alert("This is not converted");
     renderer.update_legend(active_layer);
     renderer.create_leaflet_layers(map, active_layer);
 
-    var opacity = (active_layer.is_hidden ? 0 : active_layer.parameters.opacity) / 100.0;
+    var opacity = Renderers.opacity(active_layer);
     var leaflet_ids = active_layer.leaflet_layer_ids;
     var layers = Renderers.lookup_layers(map, leaflet_ids);
 

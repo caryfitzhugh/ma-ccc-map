@@ -21,7 +21,7 @@ RendererTemplates.esri = function (layer_id, opts) {
             return layer;
           });
 
-        var opacity = (active_layer.is_hidden ? 0 : active_layer.parameters.opacity) / 100.0;
+        var opacity = Renderers.opacity(active_layer);
         var layers = Renderers.get_all_leaflet_layers(map,active_layer);
         var active_leaflet_layer = Renderers.get_leaflet_layer(map, active_layer, get_esri_opts(active_layer))
 

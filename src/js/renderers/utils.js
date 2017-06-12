@@ -2,6 +2,15 @@
 var RendererTemplates = { }
 
 var Renderers = {
+  opacity: function (active_layer) {
+    if (active_layer.parameters.opacity === false) {
+      return 100.0;
+    } else if (active_layer.is_hidden) {
+      return 0;
+    } else {
+      return active_layer.parameters.opacity / 100.0;
+    }
+  },
   find_geojson_polygon_by_point: function (evt, layer) {
     var point_to_check ={ type: 'Point', coordinates: [ evt.latlng.lng, evt.latlng.lat] };
     var match = _.find(layer._layers, function (element) {
@@ -127,9 +136,10 @@ var Renderers = {
     var pane = map.getPane(pane_name);
     if (!pane) {
       pane = map.createPane(pane_name);
+      pane.style.pointerEvents = 'none';
     }
     pane.style.zIndex = z_index;
-    var opacity = (active_layer.is_hidden ? 0 : active_layer.parameters.opacity) / 100.0;
+    var opacity = Renderers.opacity(active_layer);
     pane.style.opacity = opacity;
 
     renderer.render(map, active_layer, pane);
