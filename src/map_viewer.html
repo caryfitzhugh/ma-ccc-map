@@ -2,19 +2,17 @@
 <html lang="">
   <!-- MA CCSC Map Viewer -->
   <!-- Copyright 2016 NESCAUM / NYSERDA -->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>MA CCSC Map Viewer</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" media="all">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
-        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-        <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
-        <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css">
-        <link rel="stylesheet" href="./css/main.css?__inline=true" media='all'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MA CCSC Map Viewer</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" media="all">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./css/main.css?__inline=true" media='all'>
+    <link rel='./vendor/leaflet-1.0.3/leaflet.css'></script>
   </head>
 
   <body>
@@ -761,17 +759,11 @@
 </script>
 
 <!-- VIEW TEMPLATES -->
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src='./vendor/leaflet-1.0.3/leaflet.js'></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-    <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
-    <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
-    <script src="./vendor/esri-leaflet-1.0.0/esri-leaflet-src.js?__inline=true"></script>
-    <script src="./vendor/TileLayer.EsriRest.js?__inline=true"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js">
+    <script src="./vendor/esri-leaflet-1.0.5/dist/esri-leaflet-src.js?__inline=true"></script>
     <script type="text/javascript" src="./vendor/topojson-master/topojson.js?__inline=true"></script>
-    <script type="text/javascript" src="./vendor/L.D3SvgOverlay.js?__inline=true"></script>
     <script type="text/javascript" src="./vendor/topojsonHelper.js?__inline=true"></script>
 
 
@@ -787,11 +779,11 @@
     <script src="./vendor/uri.js?__inline=true"></script>
     <script src="./vendor/colorbrewer.js?__inline=true"></script>
     <script src="./vendor/queue.js?__inline=true"></script>
-    <script src="./js/ractive.js?__inline=true"></script>
-    <script src="./js/ractive-decorators-sortable.js?__inline=true"></script>
-    <script src="./js/ractive-events-tap.js?__inline=true"></script>
-    <script src="./js/leaflet-sidebar.js?__inline=true"></script>
-    <script src="./js/leaflet-pip.js?__inline=true"></script>
+    <script src="./vendor/ractive.js?__inline=true"></script>
+    <script src="./vendor/ractive-decorators-sortable.js?__inline=true"></script>
+    <script src="./vendor/ractive-events-tap.js?__inline=true"></script>
+    <script src="./vendor/leaflet-sidebar.js?__inline=true"></script>
+    <script src="./vendor/leaflet-pip.js?__inline=true"></script>
     <script src="./vendor/topojson.js?__inline=true"></script>
     <script src='./vendor/ractive-tooltip.min.js?__inline=true'></script>
     <script src='./vendor/path-data-polyfill.js?__inline=true'></script>
@@ -801,8 +793,8 @@
     <script src="./js/layer_info.js?__inline=true"></script>
 
     <!-- Add all the javascript libs here -->
-    <script src="./js/lodash.min.js?__inline=true"></script>
-    <script src="./js/hoops.min.js?__inline=true"></script>
+    <script src="./vendor/lodash.min.js?__inline=true"></script>
+    <script src="./vendor/hoops.min.js?__inline=true"></script>
     <script src="./js/api_handler.js?__inline=true"></script>
     <script src="./js/base_layers.js?__inline=true"></script>
 
@@ -832,6 +824,7 @@
     <!-- Add all the view controllers here -->
     <script src="./js/views/utils.js?__inline=true"></script>
     <script src="./js/views/control_panel.js?__inline=true"></script>
+    <script src="./js/views/map.js?__inline=true"></script>
 
     <script src="./js/init.js?__inline=true"></script>
   </body>

@@ -1,14 +1,4 @@
 /*global L , Views, Ractive, console, _, Controllers.Layers */
-var LeafletMap = L.map("map", {zoomControl: false});
-
-var z_indexes = {
-  base: 0,
-  layers: 1000
-};
-
-// Add default scale control to LeafletMap
-L.control.scale().addTo(LeafletMap);
-
 Views.ControlPanel = new Ractive({
   template: "#control_panel_template",
   el:  "control_panel_root",
@@ -129,7 +119,7 @@ Views.ControlPanel = new Ractive({
       tree: []
     },
 
-    map: LeafletMap,
+    map: null,
     has_geolocation: !!navigator.geolocation,
     layer_controls: {
       current_layer_info: null,
@@ -185,19 +175,6 @@ Views.ControlPanel = new Ractive({
   decorators: {
       tooltip:  RactiveTooltip
   },
-});
-
-// Connect callbacks to the Map to update our data
-LeafletMap.on("zoomend", function (evt) {
-  Views.ControlPanel.set("map_state.zoom", LeafletMap.getZoom());
-});
-
-LeafletMap.on("moveend", function (evt) {
-  Views.ControlPanel.set("map_state.center", LeafletMap.getCenter());
-});
-
-LeafletMap.on("click", function (evt) {
-  Controllers.FeatureInfo.get_details(Views.ControlPanel, evt);
 });
 
 Views.ControlPanel.on({
@@ -602,5 +579,6 @@ Views.ControlPanel.observe("base_layers", function (base_layers) {
 
 Views.ControlPanel.observe("layer_controls.tray.open", function (open) {
   $("#map").toggleClass("tray-open", open);
-  LeafletMap.invalidateSize();
+  var map = Views.ControlPanel.get('map');
+  if (map) { map.invalidateSize(); }
 });

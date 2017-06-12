@@ -1,4 +1,3 @@
-/*global _ , L  */
 var getParameterByName = function(name) {
   // This test is for the meta_data pre_processing
   if (typeof window !== "undefined") {
@@ -10,6 +9,21 @@ var getParameterByName = function(name) {
     return null;
   }
 };
+
+function stringify(obj) {
+  function flatten(obj) {
+    if (_.isObject(obj)) {
+      return _.sortBy(_.map(
+          _.pairs(obj),
+          function(p) { return [p[0], flatten(p[1])]; }
+        ),
+        function(p) { return p[0]; }
+      );
+    }
+    return obj;
+  }
+  return JSON.stringify(flatten(obj));
+}
 
 var Config = {
   defaults: {

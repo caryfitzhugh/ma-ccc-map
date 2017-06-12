@@ -1,5 +1,4 @@
 /*global API_Handler, LayerInfo, _ , L , Views, BaseLayers */
-
 // We have the views already created and waiting.
 // The map has been attached to #map
 
@@ -34,19 +33,4 @@ if (document.cookie.replace(/(?:(?:^|.*;\s*)show_welcome_modal_to_new_users\s*\=
 if (desired_active_on_load.length > 0) {
   var already_active_layers = _.pluck(Views.ControlPanel.get("layers.active"), "layer_default_id");
   Controllers.Layers.force_layers_active(Views.ControlPanel, already_active_layers.concat(desired_active_layer_ids));
-}
-
-function stringify(obj) {
-  function flatten(obj) {
-    if (_.isObject(obj)) {
-      return _.sortBy(_.map(
-          _.pairs(obj),
-          function(p) { return [p[0], flatten(p[1])]; }
-        ),
-        function(p) { return p[0]; }
-      );
-    }
-    return obj;
-  }
-  return JSON.stringify(flatten(obj));
 }
