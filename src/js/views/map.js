@@ -1,8 +1,6 @@
 /*global L , Views, Ractive, console, _, Controllers.Layers */
 var LeafletMap = L.map("map", {zoomControl: false});
 
-Views.ControlPanel.set("map", LeafletMap);
-
 var z_indexes = {
   base: 0,
   layers: 1000
@@ -23,7 +21,6 @@ LeafletMap.on("moveend", function (evt) {
 LeafletMap.on("click", function (evt) {
   Controllers.FeatureInfo.get_details(Views.ControlPanel, evt);
 });
-
 
 // Create the baselayer PANE
 LeafletMap.createPane(BASELAYER_PANE);

@@ -22,17 +22,6 @@ Views.ControlPanel = new Ractive({
         return v;
       }
     },
-    fields_from_sovi_response: function (xml) {
-      var output = [];
-      _.each( $(xml).find("FIELDS"), function (field) {
-        var fields = {};
-        _.each(field.attributes, function (attr) {
-          fields[attr.nodeName] = attr.nodeValue;
-        });
-        output.push(fields);
-      });
-      return output;
-    },
     has_feature_info_responses: function (responses) {
       var has = false;
       if (responses.length > 0) {
@@ -119,7 +108,7 @@ Views.ControlPanel = new Ractive({
       tree: []
     },
 
-    map: null,
+    map: LeafletMap,
     has_geolocation: !!navigator.geolocation,
     layer_controls: {
       current_layer_info: null,
@@ -136,8 +125,8 @@ Views.ControlPanel = new Ractive({
     map_state: {
       zoom: null,
       center: null,
-      zoom_max: 16
     },
+    zoom_max: 16,
     parameters: {},
     base_layers: [],
     active_base_layer: null,
