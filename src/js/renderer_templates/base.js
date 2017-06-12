@@ -2,7 +2,6 @@ RendererTemplates.base = function (layer_id, opts, impl) {
   var renderer = Object.assign({},
     {
       pickle: function (al) {
-        delete al.legend_url;
         al.leaflet_layer_ids = [];
       },
       clone_layer_name: opts.clone_layer_name,
@@ -13,9 +12,9 @@ RendererTemplates.base = function (layer_id, opts, impl) {
     opts,
     impl);
 
-  renderer.render = (map, active_layer, z_index) => {
+  renderer.render = (map, active_layer, pane) => {
     Renderers.update_templates(active_layer, opts);
-    impl.render(map, active_layer, z_index);
+    impl.render(map, active_layer, pane);
   }
   return renderer;
 }

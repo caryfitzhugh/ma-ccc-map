@@ -42,6 +42,22 @@ Controllers.FeatureInfo = {
       return renderer.get_feature_info_url;
     }).length > 0;
   },
+  layer_has_click_info: (active_layer) => {
+      return
+        // Active layer?
+        active_layer &&
+
+        // Renderer exists?
+        Renderers[active_layer.renderer_id] &&
+
+        // There is some renderer.
+        (
+          Renderers[active_layer.renderer_id].find_geo_json ||
+          Renderers[active_layer.renderer_id].get_feature_info_xml_url ||
+          Renderers[active_layer.renderer_id].get_feature_info_url
+        );
+
+  },
   get_details: function (cp, evt) {
     // We want to look up these locations.
     // Find the active layers.
@@ -49,11 +65,8 @@ Controllers.FeatureInfo = {
     var map = cp.get("map");
 
     var layers_with_gfi = _.filter(active_layers, function (layer) {
-        var renderer = Renderers[layer.renderer_id];
         // Don't return GFI queries if the layer is hidden
-        return !layer.is_hidden &&
-          (renderer.get_feature_info_url || renderer.find_geo_json ||
-            renderer.get_feature_info_xml_url);
+        return !layer.is_hidden && Controllers.FeatureInfo.layer_has_click_info(layer);
       });
 
     if (layers_with_gfi.length > 0) {

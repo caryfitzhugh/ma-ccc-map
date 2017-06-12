@@ -8,13 +8,14 @@ RendererTemplates.wms = function (layer_id, opts) {
   }
 
   var renderer = RendererTemplates.base(layer_id, opts, {
-    render: function (map, active_layer, z_index) {
+    render: function (map, active_layer, pane) {
       Renderers.create_leaflet_layer(
         map,
         active_layer,
         get_wms_opts(active_layer),
         () => {
-          var layer = new L.TileLayer.WMS(opts.url, get_wms_opts(active_layer));
+          var layer = new L.TileLayer.WMS(opts.url,
+            _.merge({pane: pane}, get_wms_opts(active_layer)));
           layer.on("tileload", function (loaded) {
             Views.ControlPanel.fire("tile-layer-loaded", active_layer);
           });
@@ -32,18 +33,8 @@ RendererTemplates.wms = function (layer_id, opts) {
         // Hide the ones which aren't active
         if (active_leaflet_layer._leaflet_id === layer._leaflet_id) {
           layer.setOpacity(opacity);
-          layer.setZIndex(z_index);
         } else {
           layer.setOpacity(0);
-          layer.setZIndex(-1);
-        }
-      });
-    },
-    remove: function (map, active_layer) {
-      var layers = Renderers.get_all_leaflet_layers(map,active_layer);
-      _.each(layers, function (ll) {
-        if (map.hasLayer(ll)) {
-          map.removeLayer(ll);
         }
       });
     }

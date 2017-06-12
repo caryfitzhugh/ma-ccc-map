@@ -73,21 +73,8 @@ Views.ControlPanel = new Ractive({
     },
 
     layer_has_click_info: function (active_layer) {
-      return
-        // Active layer?
-        active_layer &&
-
-        // Renderer exists?
-        Renderers[active_layer.renderer_id] &&
-
-        // There is some renderer.
-        (
-          Renderers[active_layer.renderer_id].find_geo_json ||
-          Renderers[active_layer.renderer_id].get_feature_info_xml_url ||
-          Renderers[active_layer.renderer_id].get_feature_info_url
-        );
+      return Controllers.FeatureInfo.layer_has_click_info(active_layer);
     },
-
     get_layer_defaults: function (default_layers, layer_default_id) {
       return _.find(default_layers, "id", layer_default_id) || {};
     },
@@ -524,6 +511,7 @@ Views.ControlPanel.observe("layers.active", function (new_active_layers, old_act
     var z_index = z_indexes.layers + active_layer_indx;
     Renderers.render(map, new_active_layer, z_index);
   });
+
   // Sometimes things add new layers or whatnot.
   // So update, check for dirty.
   cp.update("layers.active");

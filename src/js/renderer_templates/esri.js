@@ -9,15 +9,15 @@ RendererTemplates.esri = function (layer_id, opts) {
 
   var renderer = RendererTemplates.base(layer_id, opts,
     {
-      render: function (map, active_layer, z_index) {
+      render: function (map, active_layer, pane) {
         Renderers.create_leaflet_layer(
           map,
           active_layer,
           get_esri_opts(active_layer),
           () => {
-            var layer = new L.esri.dynamicMapLayer(get_esri_opts(active_layer));
-            layer.on("nyccsc-loaded", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
-            layer.on("nyccsc-error", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
+            var layer = L.esri.dynamicMapLayer(_.merge({useCors: false, pane: pane}, get_esri_opts(active_layer)));
+            layer.on("load", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
+            layer.on("error", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
             return layer;
           });
 
@@ -29,18 +29,8 @@ RendererTemplates.esri = function (layer_id, opts) {
           // Hide the ones which aren't active
           if (active_leaflet_layer._leaflet_id === layer._leaflet_id) {
             layer.setOpacity(opacity);
-            layer.setZIndex(z_index);
           } else {
             layer.setOpacity(0);
-            layer.setZIndex(-1);
-          }
-        });
-      },
-      remove: function (map, active_layer) {
-        var layers = Renderers.get_all_leaflet_layers(map,active_layer);
-        _.each(layers, function (ll) {
-          if (map.hasLayer(ll)) {
-            map.removeLayer(ll);
           }
         });
       }

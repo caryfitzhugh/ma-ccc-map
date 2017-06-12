@@ -55,16 +55,16 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
         // Just return the properties..
         return match.feature.properties;
       },
-      render: function (map, active_layer, z_index) {
-
+      render: function (map, active_layer, pane) {
         Renderers.create_leaflet_layer(
           map,
           active_layer,
           get_esri_opts(active_layer),
           () => {
-            var layer = new L.esri.featureLayer(get_esri_opts(active_layer));
+            var layer = L.esri.featureLayer(_.merge({useCors: false, pane: pane}, get_esri_opts(active_layer)));
             layer.on("load", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
             layer.on("requesterror", function (err) { Renderers.add_layer_error(active_layer);});
+            layer.on("error", function (err) { Renderers.add_layer_error(active_layer);});
 
             // Proxy the click event through to the map!
             if (!get_esri_opts(active_layer).pointToLayer) {

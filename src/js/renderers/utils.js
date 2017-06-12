@@ -105,49 +105,34 @@ var Renderers = {
     });
     return leaflet_layers;
   },
+  layer_to_pane_name: (active_layer) => {
+    return active_layer.id.replace(/\W/,'.');
+  },
   remove: function (map, active_layer) {
-    var renderer = Renderers[active_layer.renderer_id];
-    if (renderer && renderer.remove) {
-      renderer.remove(map, active_layer);
-    } else {
-      var leaflet_layers = [];
-      map.eachLayer(function (layer) {
-        if (_.contains(active_layer.leaflet_layer_ids, layer._leaflet_id)) {
-          leaflet_layers.push(layer);
-        }
-      });
+    var layers = Renderers.get_all_leaflet_layers(map,active_layer);
+    _.each(layers, function (ll) {
+      if (map.hasLayer(ll)) {
+        map.removeLayer(ll);
+      }
+    });
 
-      _.each(leaflet_layers, function (leaflet_layer) {
-        if (map.hasLayer(leaflet_layer)) {
-          map.removeLayer(leaflet_layer);
-        }
-      });
-    }
+    // Don't worry about deleting the pane.
+    //  Leaflet doesn't support it correctly, and even a few hundred empty DIVs won't be a big deal.
   },
   render: function (map, active_layer, z_index) {
     var renderer = Renderers[active_layer.renderer_id];
+    // Create the pane if not created
+    var pane_name = Renderers.layer_to_pane_name(active_layer);
 
-    if (renderer && renderer.render) {
-      renderer.render(map, active_layer, z_index);
-    } else {
-      // This should add any needed leaflet leayers
-      // and set the legend_url
-      renderer.create_leaflet_layers(map, active_layer);
-      renderer.update_legend_url(active_layer);
-
-      var leaflet_layers = [];
-      map.eachLayer(function (layer) {
-        if (_.contains(active_layer.leaflet_layer_ids, layer._leaflet_id)) {
-          leaflet_layers.push(layer);
-        }
-      });
-
-      var opacity = active_layer.is_hidden ? 0 : active_layer.parameters.opacity;
-      _.each(leaflet_layers, function (leaflet_layer) {
-        leaflet_layer.setOpacity(opacity / 100.0);
-        leaflet_layer.setZIndex(z_index);
-      });
+    var pane = map.getPane(pane_name);
+    if (!pane) {
+      pane = map.createPane(pane_name);
     }
+    pane.style.zIndex = z_index;
+    var opacity = (active_layer.is_hidden ? 0 : active_layer.parameters.opacity) / 100.0;
+    pane.style.opacity = opacity;
+
+    renderer.render(map, active_layer, pane);
   },
   // This is used by map layer dialogs to "Zoom to " something
   zoom_to: function (center, zoom) {
