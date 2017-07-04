@@ -7,7 +7,8 @@ module.exports = function (grunt) {
       options: {
         cssmin: true,
         tag: '__inline',
-        uglify: true
+        uglify: true,
+        babelify: ['transform-es2015-template-literals']
       },
       map_viewer: {
         src: "src/map_viewer.html",
