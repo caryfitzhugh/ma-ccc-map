@@ -7,7 +7,7 @@ module.exports = function (grunt) {
       options: {
         cssmin: true,
         tag: '__inline',
-        uglify: false,
+        uglify: true,
         babel: {
           presets: ["es2015"]
         }
