@@ -9,6 +9,7 @@ module.exports = function (grunt) {
         tag: '__inline',
         uglify: true,
         babel: {
+          plugins: ["transform-es2015-arrow-functions"],
           presets: ["es2015"]
         }
       },
@@ -94,5 +95,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF", "copy:vendor"]);
+  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF"]);//, "copy:vendor"]);
 }
