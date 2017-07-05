@@ -9,7 +9,7 @@ module.exports = function (grunt) {
         tag: '__inline',
         uglify: true,
         babel: {
-          presets: [ "env" ]
+          presets: [["es2015", {modules: false}]] //[ "env" ]
         }
       },
       map_viewer: {
@@ -23,11 +23,8 @@ module.exports = function (grunt) {
         dest: "dist/ZeroClipboard.swf"
       },
       vendor: {
-        expand: true,
-        src: "vendor/**",
-        cwd: "src",
-        dest: "dist/",
-        filter: "isFile"
+        src: "src/vendor/leaflet-1.0.3/dist/leaflet.css",
+        dest: "dist/vendor/leaflet-1.0.3/dist/leaflet.css",
       },
       images: {
         expand: true,
@@ -94,5 +91,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF"]);//, "copy:vendor"]);
+  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF", "copy:vendor"]);
 }
