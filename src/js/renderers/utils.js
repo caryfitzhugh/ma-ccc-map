@@ -3,10 +3,10 @@ var RendererTemplates = { }
 
 var Renderers = {
   opacity: function (active_layer) {
-    if (active_layer.parameters.opacity === false) {
-      return 100.0;
-    } else if (active_layer.is_hidden) {
+    if (active_layer.is_hidden) {
       return 0;
+    } else if (active_layer.parameters.opacity === false) {
+      return 100.0;
     } else {
       return active_layer.parameters.opacity / 100.0;
     }
