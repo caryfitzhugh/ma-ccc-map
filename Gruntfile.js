@@ -7,8 +7,10 @@ module.exports = function (grunt) {
       options: {
         cssmin: true,
         tag: '__inline',
-        uglify: true,
-        babelify: ['transform-es2015-template-literals']
+        uglify: false,
+        babel: {
+          presets: ["es2015"]
+        }
       },
       map_viewer: {
         src: "src/map_viewer.html",
@@ -19,6 +21,13 @@ module.exports = function (grunt) {
       zeroClipboardSWF: {
         src: "src/vendor/zero-clipboard/ZeroClipboard.swf",
         dest: "dist/ZeroClipboard.swf"
+      },
+      vendor: {
+        expand: true,
+        src: "vendor/**",
+        cwd: "src",
+        dest: "dist/",
+        filter: "isFile"
       },
       images: {
         expand: true,
@@ -85,5 +94,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF"]);
+  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF", "copy:vendor"]);
 }
