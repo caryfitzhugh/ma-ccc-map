@@ -1,4 +1,4 @@
-RendererTemplates.wms("coastal_zones", {
+RendererTemplates.wms("barrier_beaches", {
   parameters: {
     opacity: 70,
     options: {
@@ -12,7 +12,7 @@ RendererTemplates.wms("coastal_zones", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.CSTZONE_POLY',
+      layers: 'massgis:GISDATA.BARRIERB_POLY',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -24,9 +24,9 @@ RendererTemplates.wms("coastal_zones", {
 
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.CSTZONE_POLY&"+
-          "QUERY_LAYERS=massgis:GISDATA.CSTZONE_POLY"+
-          "STYLES=GISDATA.CSTZONE_POLY&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.BARRIERB_POLY&"+
+          "QUERY_LAYERS=massgis:GISDATA.BARRIERB_POLY&"+
+          "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
           "HEIGHT=<%= height %>&"+
@@ -39,7 +39,7 @@ RendererTemplates.wms("coastal_zones", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        Coastal Zones <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.CSTZONE_POLY&format=image/png")}}'/>
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.BARRIERB_POLY&format=image/png")}}'/> Barrier Beaches
       </div>
   `,
   info_template: `
@@ -49,7 +49,7 @@ RendererTemplates.wms("coastal_zones", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Value: {{properties.GRAY_INDEX}}
+            Barrier Beach ID: {{properties.BBNAME}}
           </div>
         {{/json.features}}
       </div>

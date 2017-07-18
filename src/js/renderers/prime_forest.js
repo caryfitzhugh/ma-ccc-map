@@ -1,4 +1,4 @@
-RendererTemplates.wms("boundary_counties", {
+RendererTemplates.wms("prime_forest", {
   parameters: {
     opacity: 70,
     options: {
@@ -8,11 +8,11 @@ RendererTemplates.wms("boundary_counties", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: CDN(GEOSERVER + "/ma/wms/"),
+  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'ma:county_boundary',
+      layers: 'massgis:GISDATA.PRIMEFOREST_POLY',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -21,11 +21,10 @@ RendererTemplates.wms("boundary_counties", {
   },
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
-
-    return CDN(GEOSERVER + "/ma/wms/") +
+    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=ma:county_boundary&"+
-          "QUERY_LAYERS=ma:county_boundary&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.PRIMEFOREST_POLY&"+
+          "QUERY_LAYERS=massgis:GISDATA.PRIMEFOREST_POLY&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -39,7 +38,7 @@ RendererTemplates.wms("boundary_counties", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:county_boundary&format=image/png'/> County Boundary
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.PRIMEFOREST_POLY&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -49,7 +48,7 @@ RendererTemplates.wms("boundary_counties", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.name}} County
+            Forest Type: {{properties.PRIME}}
           </div>
         {{/json.features}}
       </div>
