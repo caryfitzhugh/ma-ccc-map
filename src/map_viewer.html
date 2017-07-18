@@ -53,7 +53,9 @@
     <div class='modal-content wizard-modal'>
       <div class='container-fluid'>
         <span class='show-cursor fa fa-close' on-tap="close-standalone-wizard"></span>
-        {{> wizard.standalone.templates.wizard }}
+        {{#wizard.standalone.templates.wizard }}
+          {{> . }}
+        {{/wizard.standalone.templates.wizard }}
       </div>
     </div>
   </div>
