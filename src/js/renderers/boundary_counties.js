@@ -39,7 +39,7 @@ RendererTemplates.wms("boundary_counties", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        Counties <img src='{{CDN(GEOSERVER + "/ma/wms?request=GetLegendGraphic&LAYER=ma:county_boundary&format=image/png")}}'/>
+        Counties <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:county_boundary&format=image/png'/>
       </div>
   `,
   info_template: `
