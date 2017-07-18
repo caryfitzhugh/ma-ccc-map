@@ -43,20 +43,17 @@ Controllers.FeatureInfo = {
     }).length > 0;
   },
   layer_has_click_info: (active_layer) => {
-      return
-        // Active layer?
-        active_layer &&
-
-        // Renderer exists?
-        Renderers[active_layer.renderer_id] &&
-
-        // There is some renderer.
-        (
+    if (active_layer) {
+      let renderer = Renderers[active_layer.renderer_id];
+      if (renderer) {
+        return !!(
           Renderers[active_layer.renderer_id].find_geo_json ||
           Renderers[active_layer.renderer_id].get_feature_info_xml_url ||
           Renderers[active_layer.renderer_id].get_feature_info_url
         );
-
+      }
+    }
+    return false;
   },
   get_details: function (cp, evt) {
     // We want to look up these locations.
