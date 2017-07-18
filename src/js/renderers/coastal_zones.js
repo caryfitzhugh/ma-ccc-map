@@ -38,8 +38,8 @@ RendererTemplates.wms("coastal_zones", {
   },
   legend_template: `
       <div class='detail-block show-confidence'>
-        <label> Legend </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.CSTZONE_POLY&format=image/png")}}'/>
+        <label> Legend: </label>
+        Coastal Zones <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.CSTZONE_POLY&format=image/png")}}'/>
       </div>
   `,
   info_template: `
