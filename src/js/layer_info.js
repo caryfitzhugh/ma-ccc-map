@@ -42,6 +42,11 @@ var available_layers = [
     "id": "example_esri_feature_layer",
     "folder": "DEV Examples",
     "name": "Esri Feature Layer",
+  },
+  {
+    "id": "coastal_zones",
+    "folder": "Coastal",
+    "name": "Coastal Zones",
   }
 
 ];
