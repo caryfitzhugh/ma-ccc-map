@@ -44,6 +44,16 @@ var available_layers = [
     "name": "Esri Feature Layer",
   },
   {
+    "id": "boundary_counties",
+    "folder": "Boundaries",
+    "name": "Counties",
+  },
+  {
+    "id": "boundary_huc8",
+    "folder": "Boundaries",
+    "name": "Watersheds",
+  },
+  {
     "id": "coastal_zones",
     "folder": "Coastal",
     "name": "Coastal Zones",
