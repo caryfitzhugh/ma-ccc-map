@@ -39,7 +39,7 @@ RendererTemplates.wms("boundary_huc8", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        Watershed <img src='**** dont know what to put here to point to geoserver cdn!!!*****?request=GetLegendGraphic&LAYER=ma:huc8&format=image/png)'/>
+        Watershed <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:huc8&format=image/png'/>
       </div>
   `,
   info_template: `
