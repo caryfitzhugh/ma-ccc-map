@@ -260,7 +260,7 @@
 </script>
 
 <script id='map_details_modal_template' type="text/ractive">
-  <div class='modal-wrapper {{(map_details.location && has_feature_info_responses(map_details.feature_info_responses)) ? "open" : "closed"}}' >
+  <div class='modal-wrapper {{(map_details.location && map_details.feature_info_requests.length > 0) ? "open" : "closed"}}' >
     <div class='modal-bg' on-tap="hide-feature-info-modal"></div>
     <div class='modal-content feature-info-modal'>
       <div class='container-fluid'>
@@ -273,9 +273,36 @@
             </h2>
           </div>
         </div>
-        {{#map_details.feature_info_responses}}
-          <div class='row'>
-            {{> active_layer.templates.info}}
+        {{#map_details.feature_info_requests}}
+          <div class='row response'>
+            {{#map_details.feature_info_responses[response_id]}}
+              {{#error}}
+                <div class='col-xs-2'>
+                  <label> {{name}} </label>
+                </div>
+                <div class='col-xs-10'>
+                  <span class='error'> Error Loading </span>
+                  {{#if (show_error_details)}}
+                    <a on-click='toggle-show-feature-info-response-details'> Hide Details. </a>
+                    <pre>{{error}}</pre>
+                  {{else}}
+                    <a on-click='toggle-show-feature-info-response-details'> Show Details. </a>
+                  {{/if (show_error_details)}}
+                </div>
+              {{else}}
+                {{> active_layer.templates.info}}
+              {{/error}}
+
+            {{else}}
+              <div class='col-xs-2'>
+                <label> {{name}} </label>
+              </div>
+              <div class='col-xs-10'>
+                <span> loading ...
+                  <span class='fa fa-spinner fa-spin-custom'></span>
+                </span>
+              </div>
+            {{/if}}
           </div>
         {{/map_details.feature_info_requests}}
       </div>

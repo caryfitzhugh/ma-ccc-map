@@ -50,6 +50,8 @@ RendererTemplates.wms("prime_forest", {
           <div>
             Forest Type: {{properties.PRIME}}
           </div>
+        {{ else }}
+          Unknown / No Response
         {{/json.features}}
       </div>
   `

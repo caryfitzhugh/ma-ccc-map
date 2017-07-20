@@ -264,6 +264,15 @@ input[type="radio"], input[type="checkbox"] {
 .active-layer .name .info {
   padding: 0px 5px;
 }
+.modal-wrapper .response .error {
+  padding: 5px 10px;
+}
+
+
+.modal-wrapper .response a {
+  cursor: pointer;
+}
+.modal-wrapper .response .error,
 .active-layer .info.danger,
 .layer-controls .layer-group .info.danger {
   color: #FFF;

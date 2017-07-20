@@ -22,21 +22,6 @@ Views.ControlPanel = new Ractive({
         return v;
       }
     },
-    has_feature_info_responses: function (responses) {
-      var has = false;
-      if (responses.length > 0) {
-        if (_.filter(responses, function (resp) {
-              return (resp.json && resp.json.features && resp.json.features.length > 0 ) ||
-                      ///  This second one is for GEOJSON responses
-                     ( resp.geojson)  ||
-                     ( resp.xml ) ||
-                     ( resp.json.results && resp.json.results.length > 0) ;
-            } ).length > 0) {
-              has = true
-            }
-      }
-      return has;
-    },
     layer_load_state: function (layers_loading_states, layer_default_id) {
       var state = "";
       var errors = layers_loading_states[layer_default_id] ? layers_loading_states[layer_default_id].errors : 0;
@@ -414,6 +399,11 @@ Views.ControlPanel.on({
   "close-wizard": function (evt) {
     var cp = Views.ControlPanel;
     cp.set("wizard.open", false);
+  },
+  "toggle-show-feature-info-response-details": function (evt) {
+    var cp = Views.ControlPanel;
+    evt.context.show_error_details = !evt.context.show_error_details;
+    cp.update(evt.keypath);
   }
 });
 Views.ControlPanel.observe("layer_controls.search_string", function (str) {

@@ -67,26 +67,43 @@ Controllers.FeatureInfo = {
       });
 
     if (layers_with_gfi.length > 0) {
-      cp.set("map_details.feature_info_responses", []);
+      cp.set("map_details.feature_info_responses", {})
+      cp.set("map_details.feature_info_requests", []);
       cp.set("map_details.location", evt.latlng);
 
       _.each(layers_with_gfi,
         function (active_layer) {
           var renderer = Renderers[active_layer.renderer_id];
+          var current = _.cloneDeep(cp.get("map_details.feature_info_requests"));
+          var response_id = active_layer.id + "-" + Date.now();
+
+          current.push({name: active_layer.name,
+                        active_layer: active_layer,
+                        response_id: response_id})
+          cp.set("map_details.feature_info_requests", _.sortBy(current, "name"));
 
           if (renderer.get_feature_info_url) {
             var url_template = renderer.get_feature_info_url(active_layer);
             var url = Controllers.FeatureInfo.get_gfi_url(url_template, evt, map);
 
-            $.getJSON(url, {}, function (resp) {
-              if (cp.get("map_details.location") === evt.latlng) {
-                var current = _.cloneDeep(cp.get("map_details.feature_info_responses"));
-                current.push({name: active_layer.name,
-                              active_layer: active_layer,
-                              json: resp});
-                cp.set("map_details.feature_info_responses", _.sortBy(current, "name"));
-              }
-            });
+            $.ajax(url, {
+                dataType: 'json',
+                success: function (resp) {
+                  if (cp.get("map_details.location") === evt.latlng) {
+                    cp.set("map_details.feature_info_responses."+response_id, {
+                      active_layer: active_layer,
+                      json: resp});
+                  }
+                },
+                error: function (error) {
+                  if (cp.get("map_details.location") === evt.latlng) {
+                    cp.set("map_details.feature_info_responses."+response_id, {
+                      active_layer: active_layer,
+                      error: error.responseText});
+                  }
+                }
+              });
+
           } else if (renderer.get_feature_info_xml_url) {
             var url_template = renderer.get_feature_info_xml_url(active_layer);
             var url = Controllers.FeatureInfo.get_gfi_url(url_template, evt, map);
@@ -94,23 +111,24 @@ Controllers.FeatureInfo = {
               dataType: "xml",
               success: function (resp) {
                 if (cp.get("map_details.location") === evt.latlng) {
-                  var current = _.cloneDeep(cp.get("map_details.feature_info_responses"));
-                  current.push({name: active_layer.name,
-                                active_layer: active_layer,
-                                xml: resp});
-                  cp.set("map_details.feature_info_responses", _.sortBy(current, "name"));
+                  cp.set("map_details.feature_info_responses."+response_id, {
+                    active_layer: active_layer,
+                    xml: resp});
+                }
+              },
+              error: function (error) {
+                if (cp.get("map_details.location") === evt.latlng) {
+                  cp.set("map_details.feature_info_responses."+response_id, {
+                    active_layer: active_layer,
+                    error: error.responseText});
                 }
               }
             });
           } else if (renderer.find_geo_json) {
-            var response = renderer.find_geo_json(map, active_layer, evt);
-            if (response) {
-              var current = _.cloneDeep(cp.get("map_details.feature_info_responses"));
-              current.push({name: active_layer.name,
-                            active_layer: active_layer,
-                            geojson: response});
-              cp.set("map_details.feature_info_responses", _.sortBy(current, "name"));
-            }
+            var resp = renderer.find_geo_json(map, active_layer, evt);
+              cp.set("map_details.feature_info_responses."+response_id, {
+              active_layer: active_layer,
+              geojson: resp});
           }
         });
     }

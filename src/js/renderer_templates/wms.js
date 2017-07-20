@@ -20,6 +20,7 @@ RendererTemplates.wms = function (layer_id, opts) {
             Views.ControlPanel.fire("tile-layer-loaded", active_layer);
           });
           layer.on("tileerror", function (err) {
+            console.warn("layer_id", "WMS Renderer",  err);
             Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
           });
           return layer;
