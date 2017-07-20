@@ -268,10 +268,10 @@ input[type="radio"], input[type="checkbox"] {
   padding: 5px 10px;
 }
 
-
 .modal-wrapper .response a {
   cursor: pointer;
 }
+
 .modal-wrapper .response .error,
 .active-layer .info.danger,
 .layer-controls .layer-group .info.danger {
@@ -891,6 +891,24 @@ input[type="radio"], input[type="checkbox"] {
     text-align: left;
     text-indent: 4px;
     font-size: 1.2em;
+}
+
+.out-of-zoom-alerts {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 100001;
+}
+.out-of-zoom-alerts .alert {
+  width: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-radius: 0;
 }
 
 /* Hacking

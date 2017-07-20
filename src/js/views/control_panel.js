@@ -8,6 +8,14 @@ Views.ControlPanel = new Ractive({
     sharing_url: function (token) {
       return Controllers.Sharing.sharing_url(token);
     },
+    out_of_view_layers: function (active_layers, zoom) {
+      var oov = _.select(active_layers, function (al) {
+        var zoom_min = al.parameters.min_zoom || -1;
+        var zoom_max = al.parameters.max_zoom || 100;
+        return zoom < zoom_min || zoom > zoom_max;
+      });
+      return oov;
+    },
     all_active_hidden: function (active_layers) {
       return true === _.uniq(_.pluck(active_layers, "is_hidden"))[0];
     },
@@ -310,11 +318,6 @@ Views.ControlPanel.on({
   },
   "zoom-to-search-result": function (evt) {
     var map = Views.ControlPanel.get('map');
-    /*var bbox = evt.context.properties.bbox.split(",")
-    if (bbox) {
-      map.fitBounds(new L.LatLngBounds(new L.LatLng(bbox[1], bbox[0]),
-                                       new L.LatLng(bbox[3], bbox[2])));
-    }*/
     map.setView([evt.context.lat,evt.context.lng],16);
   },
   "print-map": function (evt) {
@@ -404,8 +407,23 @@ Views.ControlPanel.on({
     var cp = Views.ControlPanel;
     evt.context.show_error_details = !evt.context.show_error_details;
     cp.update(evt.keypath);
+  },
+  "zoom-to-view-layer": function (evt) {
+    var cp = Views.ControlPanel;
+    var map = Views.ControlPanel.get('map');
+    var zoom = cp.get('map_state.zoom');
+    // What zoom level should we go to?
+    var min_zoom = evt.context.parameters.min_zoom;
+    var max_zoom = evt.context.parameters.max_zoom;
+
+    if (min_zoom && zoom < min_zoom) {
+      map.setZoom(min_zoom);
+    } else if (max_zoom && zoom > max_zoom) {
+      map.setZoom(max_zoom);
+    }
   }
 });
+
 Views.ControlPanel.observe("layer_controls.search_string", function (str) {
   var cp = Views.ControlPanel;
   // Make the call to search the endpoint

@@ -1,5 +1,8 @@
 RendererTemplates.wms("barrier_beaches", {
+
   parameters: {
+    //min_zoom: 10,
+    //max_zoom: 20,
     opacity: 100,
     options: {
 

@@ -1,9 +1,11 @@
 /*global _, Renderers, L */
 RendererTemplates.esri("hurricane_surge", {
   parameters: {
+    //min_zoom: 10,
+    //max_zoom: 20,
     opacity: 85,
     options: {
-      
+
     }
   },
   legend_template: `
@@ -21,7 +23,7 @@ RendererTemplates.esri("hurricane_surge", {
 
     return {
       url: CDN("http://tiles3.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/Hurr_Surge_Inun_Zones/MapServer"),
-      layers: [ 0 ], 
+      layers: [ 0 ],
       attribution: 'unkn',
       f:"image",
       clickable: false

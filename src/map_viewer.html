@@ -41,6 +41,21 @@
   {{>printing_legends_template}}
   {{>wizard_template}}
   {{>wizard_standalone_template}}
+  {{>map_out_of_view_layers_template}}
+</script>
+
+<script id='map_out_of_view_layers_template' type='text/ractive'>
+  {{#if (out_of_view_layers(layers.active, map_state.zoom)).length > 0}}
+    <div class='out-of-zoom-alerts'>
+      {{#(out_of_view_layers(layers.active, map_state.zoom))}}
+        <div class='alert alert-warning'>
+          <label>{{name}} </label>
+          is not visible at this zoom level.
+          <a class='btn btn-sm btn-primary' on-click='zoom-to-view-layer'> Zoom to Layer </a>
+        </div>
+      {{/(out_of_view_layers(layers.active, map_state.zoom))}}
+    </div>
+  {{/if (out_of_view_layers(layers.active, map_state.zoom)).length > 0}}
 </script>
 
 <script id='wizard_link_template' type='text/ractive'>
