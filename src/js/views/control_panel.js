@@ -12,7 +12,9 @@ Views.ControlPanel = new Ractive({
       var oov = _.select(active_layers, function (al) {
         var zoom_min = al.parameters.min_zoom || -1;
         var zoom_max = al.parameters.max_zoom || 100;
-        return zoom < zoom_min || zoom > zoom_max;
+        var hidden = al.is_hidden;
+
+        return !hidden && (zoom < zoom_min || zoom > zoom_max);
       });
       return oov;
     },
