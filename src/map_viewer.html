@@ -655,6 +655,14 @@
 
   {{#each layers.active}}
     <div decorator='{{parameters.no_sorting ? "" : "sortable"}}' class='active-layer'>
+      {{#if "" === layer_load_state(layers_loading_states, layer_default_id)}}
+        <div class='disable-active-layer-overlay'>
+          <label> Loading {{name}}...
+            <span class='fa fa-spinner fa-spin-custom'></span>
+          </label>
+        </div>
+      {{/if "" !== layer_load_state(layers_loading_states, layer_default_id)}}
+
       <label class='name' on-tap="toggle-active-collapsed">
         <span class='show-cursor'>
           {{#if is_collapsed}}

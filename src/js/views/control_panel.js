@@ -50,7 +50,6 @@ Views.ControlPanel = new Ractive({
       } else if (errors === 0 && loaded > 0) {
         state = "success"
       }
-
       return state;
     },
     all_active_collapsed: function (active_layers) {

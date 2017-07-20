@@ -223,6 +223,29 @@ input[type="radio"], input[type="checkbox"] {
   display:inline-block;
 }
 
+#control_panel_root .active-layer  {
+  position: relative;
+}
+
+#control_panel_root .active-layer .disable-active-layer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+#control_panel_root .active-layer .disable-active-layer-overlay {
+  padding-top: 40px;
+  text-align: center;
+}
+#control_panel_root .active-layer .disable-active-layer-overlay > label {
+  display: inline;
+  background: white;
+  box-shadow: 0 0 5px black;
+  padding: 10px 20px;
+}
 .layer-controls .layer-group:first-child {
   padding: 5px;
 }
@@ -935,6 +958,7 @@ input[type="radio"], input[type="checkbox"] {
   }
   #control_panel_root > div.printing-legends  .columns  .active-layer {
     display: inline-block;
+    position: relative;
     width: 100%;
     margin: 0 0 1em;
   }

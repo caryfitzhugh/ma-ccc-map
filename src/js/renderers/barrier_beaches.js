@@ -1,6 +1,6 @@
 RendererTemplates.wms("barrier_beaches", {
   parameters: {
-    opacity: 70,
+    opacity: 100,
     options: {
 
     }
@@ -15,7 +15,7 @@ RendererTemplates.wms("barrier_beaches", {
       layers: 'massgis:GISDATA.BARRIERB_POLY',
       format: "image/png",
       opacity: 0,
-      zIndex: -1,
+      //zIndex: 1,
       transparent: true,
     };
   },
