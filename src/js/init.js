@@ -16,10 +16,12 @@ Views.ControlPanel.set({"parameters": parameters});
 
 // If the URL has a token on it....
 var params = URI.parseQuery(window.location.search);
-var loaded_state = false;
 if (params.map_state_token) {
-  loaded_state = true;
   Controllers.Sharing.load_state(params.map_state_token, Views.ControlPanel, LeafletMap);
+}
+
+if (params.sectors) {
+  Views.ControlPanel.set('sectors.selected', params.sectors.split(","));
 }
 
 // If the cookie is such that they haven't seen the welcome schpiel, then show it now!
