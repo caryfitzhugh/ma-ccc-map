@@ -56,7 +56,7 @@ var available_layers = [
     "id": "boundary_huc8",
     "folder": "Boundaries",
     "name": "Watersheds",
-    "sectors": ["Ecology", "Spartan", "Mussel-watch", "Lobster-ville","Chicken-pie"]
+    "sectors": [],
   },
   {
     "id": "nfhl",
