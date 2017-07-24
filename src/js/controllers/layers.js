@@ -237,22 +237,27 @@ Controllers.Layers = {
     var avail_layer_ids = cp.get("layers.available_ids");
     var layer_defaults  = cp.get("layers.defaults");
     var search_string   = cp.get("layers.search_string").toLowerCase();
+    var current_sectors = cp.get('sectors.selected');
 
     _.each(avail_layer_ids, function (id) {
       var layer = _.find(layer_defaults, "id", id);
       if (layer) {
         var add_layer = null;
         var force_expanded = false;
+
         if (_.isEmpty(search_string)) {
           add_layer = true;
         } else {
           add_layer =
             _.includes((layer.name || "").toLowerCase(), search_string) ||
             _.includes((layer.description || "").toLowerCase(), search_string) ||
-            _.includes((layer.sectors || "").toLowerCase(), search_string) ||
             (layer.id.toLowerCase() === search_string);
 
           force_expanded = add_layer;
+        }
+
+        if (add_layer && current_sectors.length > 0) {
+          add_layer = _.intersection(layer.sectors, current_sectors).length > 0;
         }
 
         if (add_layer) {

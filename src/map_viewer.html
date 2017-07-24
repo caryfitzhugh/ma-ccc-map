@@ -633,13 +633,46 @@
 
 <script id="layer_controls_layers_template" type="text/ractive">
   <div class='contents'>
-    <div class='search-header'>
-      <input id="layers_search_input" placeholder="Search for layers..." value="{{layers.search_string}}">
-      {{#if layers.search_string.length > 0 }}
-        <a>
-          <span class='fa fa-times-circle-o show-cursor' on-tap="clear-layers-search-query"></span>
-        </a>
-      {{/if}}
+    <div class='search-header col-md-12'>
+      <div class='row'>
+        <input id="layers_search_input" placeholder="Search for layers..." value="{{layers.search_string}}">
+        {{#if layers.search_string.length > 0 }}
+          <a>
+            <span class='fa fa-times-circle-o show-cursor' on-tap="clear-layers-search-query"></span>
+          </a>
+        {{/if}}
+      </div>
+      <div class='row'>
+        <div class='sector-select'>
+          <label> Sectors: </label>
+          <div class='selected-text-container' on-click='toggle-sector-dropdown'>
+            <span class='selected'>{{selected_sectors_text(sectors.selected)}}</span>
+          </div>
+          <span on-click='toggle-sector-dropdown'
+           class='fa fa-caret-down'></span>
+          {{#if sectors.show_dropdown}}
+            <div class='sector-selection-dropdown'>
+              {{#sectors.all}}
+                <div on-click='toggle-sector-selection'>
+                  {{#if is_sector_selected(sectors.selected, .)}}
+                    <span class='fa fa-check-square-o'></span>
+                  {{else}}
+                    <span class='fa fa-square-o'></span>
+                  {{/if is_sector_selected(sectors.selected, .)}}
+                  <span class='sector-name'>{{.}}</span>
+                </div>
+              {{/sectors.all}}
+              <hr/>
+              <span class='btn btn-block btn-primary' on-click='toggle-sector-dropdown'>
+                Done
+              </span>
+              <span class='btn btn-sm btn-block btn-secondary' on-click='clear-sector-dropdown'>
+                Clear All
+              </span>
+            </div>
+          {{/if sectors.show_dropdown}}
+        </div>
+      </div>
     </div>
     <div class='search-results'>
       <ul class='layer-group'>

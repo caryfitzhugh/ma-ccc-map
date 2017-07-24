@@ -139,9 +139,6 @@ input[type="radio"], input[type="checkbox"] {
   max-height: 0;
   border-right: 1px solid #aaa;
 }
-.layer-controls .tray .tray-container {
-  overflow: hidden;
-}
 
 .layer-controls .tray .contents {
   /*white-space: nowrap;*/
@@ -158,14 +155,69 @@ input[type="radio"], input[type="checkbox"] {
   z-index: 1;
   border-top: 1px solid #063;
   box-shadow: 0px 1px 5px rgba(0,0,0,0.5);
+  border-bottom: 1px solid #063;
 }
+.layer-controls .tray .search-header > .row {
+  border-bottom: 1px solid #063;
+}
+
+.layer-controls .search-header .sector-select {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  white-space: nowrap;
+  color: #063;
+  background: white;
+  cursor: pointer;
+  align-items:  baseline;
+  border: 0;
+  width: 100%;
+  font-size: 16px;
+  padding: 5px;
+  padding-bottom: 0;
+}
+
+.layer-controls .search-header .sector-select .sector-selection-dropdown .btn-primary {
+  background: #063;
+  color: white;
+  border-radius: 0;
+  border: 1px solid #063;
+}
+.layer-controls .search-header .sector-select .sector-selection-dropdown {
+  position: absolute;
+  top: 72px;
+  right: 5px;
+  background: white;
+  border: 1px solid black;
+  padding:1em;
+}
+
+.layer-controls .search-header .sector-select .selected-text-container {
+  overflow: hidden;
+  max-width: 265px;
+  text-overflow: ellipsis;
+}
+
+.layer-controls .search-header .sector-select .selected {
+  font-size: 80%;
+}
+.layer-controls .search-header .sector-select label {
+  display: inline-block;
+  border: 0;
+  font-weight: bold;
+}
+
+.layer-controls .search-header .sector-select label:hover {
+  cursor: default;
+  color: #063;
+}
+
 .layer-controls .tray .search-header input {
   border: 0;
   width: 100%;
   font-size: 20px;
   padding: 5px;
   padding-right: 30px;
-  border-bottom: 1px solid #063;
 }
 .layer-controls .tray .search-header .fa-times-circle-o {
   position: absolute;
@@ -177,11 +229,12 @@ input[type="radio"], input[type="checkbox"] {
 
 .layer-controls .tray .search-results {
   position:absolute;
-  top: 40px;
+  top: 68px;
   left: 0;
   right:0;
   bottom:0;
   overflow-y: auto;
+  position: relative;
 }
 .layer-controls .tray .search-results .result {
   padding: 5px;

@@ -75,6 +75,20 @@ Views.ControlPanel = new Ractive({
     is_active_layer: function (active_layers, layer_default_id) {
       return Controllers.Layers.is_active_layer(active_layers, layer_default_id);
     },
+    is_sector_selected: function (selected, sector) {
+      return _.contains(selected, sector);
+    },
+    selected_sectors_text: function (selected) {
+      if  (selected.length === 0) {
+        return "All Sectors";
+      } else {
+        return selected.join(", ");
+      }
+    },
+    sectors: {
+      all: [],
+      selected: []
+    },
     layers: {
       // These are all the layers in the entire system (all we know about)
       defaults: [],
@@ -423,6 +437,29 @@ Views.ControlPanel.on({
     } else if (max_zoom && zoom > max_zoom) {
       map.setZoom(max_zoom);
     }
+  },
+  'toggle-sector-dropdown': function (evt) {
+    var cp = Views.ControlPanel;
+    var keypath = 'sectors.show_dropdown';
+    cp.set(keypath, !cp.get(keypath));
+  },
+  'toggle-sector-selection': function (evt) {
+    var cp = Views.ControlPanel;
+    var keypath = 'sectors.selected';
+    var selected = cp.get(keypath);
+
+    if (_.contains(selected, evt.context)) {
+      cp.set(keypath, _.without(selected, evt.context));
+    } else {
+      cp.set(keypath, selected.concat(evt.context));
+    }
+  },
+  'clear-sector-dropdown': function (evt) {
+    var cp = Views.ControlPanel;
+    var keypath = 'sectors.selected';
+    var selected = cp.get(keypath);
+    cp.set('sectors.selected', []);
+    cp.set('sectors.show_dropdown', false);
   }
 });
 
@@ -490,12 +527,24 @@ Views.ControlPanel.observe("map_controls.active_base_layer", function (base_laye
   }
 });
 
+Views.ControlPanel.observe("layers.defaults", function (layer_infos) {
+  if (layer_infos) {
+    var cp = Views.ControlPanel;
+  }
+  cp.set('sectors.all',_.uniq(_.compact(_.flatten(_.pluck(layer_infos, 'sectors')))).sort())
+});
+
 Views.ControlPanel.observe("layers.available_ids", function (available_ids) {
   if (available_ids) {
     var cp = Views.ControlPanel;
     Controllers.Layers.ensure_active_are_available(cp);
     Controllers.Layers.update_layer_tree(cp);
   }
+});
+
+Views.ControlPanel.observe("sectors.selected", function (search_string) {
+  var cp = Views.ControlPanel;
+  Controllers.Layers.update_layer_tree(cp);
 });
 
 Views.ControlPanel.observe("layers.search_string", function (search_string) {
