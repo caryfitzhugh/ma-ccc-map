@@ -11,11 +11,11 @@ RendererTemplates.wms("barrier_beaches", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms/",
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.BARRIERB_POLY',
+      layers: 'ma:GISDATA.BARRIERB_POLY',
       format: "image/png",
       opacity: 0,
       //zIndex: 1,
@@ -25,10 +25,10 @@ RendererTemplates.wms("barrier_beaches", {
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
 
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms/" +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.BARRIERB_POLY&"+
-          "QUERY_LAYERS=massgis:GISDATA.BARRIERB_POLY&"+
+          "REQUEST=GetFeatureInfo&LAYERS=ma:GISDATA.BARRIERB_POLY&"+
+          "QUERY_LAYERS=ma:GISDATA.BARRIERB_POLY&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

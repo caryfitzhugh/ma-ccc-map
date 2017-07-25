@@ -1,5 +1,7 @@
 RendererTemplates.wms("prime_forest", {
   parameters: {
+    min_zoom: 12,
+    max_zoom: 20,
     opacity: 70,
     options: {
 
