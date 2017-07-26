@@ -60,8 +60,8 @@ var available_layers = [
   }, 
   {
     "id": "nfhl",
-    "folder": "Public Safety",
-    "name": "Flood Hazard",
+    "folder": "Public safety/emergency response",
+    "name": "National Flood Hazard Layer",
     "description": "FEMA National Flood Hazard Layer",
     "source": "FEMA",
     "source_url": "http:\/\/www.fema.gov\/",
@@ -90,6 +90,17 @@ var available_layers = [
     "sectors": ["Ecosystems"],
     "download_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/l3parcels.html",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/l3parcels.html",
+  },
+  {
+    "id": "flood_zones",
+    "folder": "Public safety/emergency response",
+    "name": "Flood Zones",
+    "description": "These data represent a subset of the data available on the paper Flood Insurance Rate Maps (FIRM) as provided by the Federal Emergency Management Agency (FEMA). The Q3 flood data were developed to support floodplain management and planning activities but do not replace the official paper FIRMs. These data are not suitable for engineering applications or site work nor can the data be used to determine absolute delineation of flood boundaries. Instead the data should be used to portray zones of uncertainty and possible risks associated with flooding. All counties except Franklin are available for Massachusetts.",
+    "source": "FEMA",
+    "source_url": "http://www.fema.gov/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/FEMA_Q3_Flood.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/q3.html",
   },
   {
     "id": "env_justice",
