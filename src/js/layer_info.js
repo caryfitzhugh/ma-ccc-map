@@ -59,6 +59,12 @@ var available_layers = [
     "sectors": [],
   },
   {
+    "id": "soils",
+    "folder": "Land Cover",
+    "name": "Soils",
+    "sectors": [],
+  },
+  {
     "id": "nfhl",
     "folder": "Public Safety",
     "name": "Flood Hazard",

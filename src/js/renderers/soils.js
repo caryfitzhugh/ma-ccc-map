@@ -1,9 +1,6 @@
-RendererTemplates.wms("barrier_beaches", {
-
+RendererTemplates.wms("soils", {
   parameters: {
-    //min_zoom: 10,
-    //max_zoom: 20,
-    opacity: 100,
+    opacity: 70,
     options: {
 
     }
@@ -11,24 +8,23 @@ RendererTemplates.wms("barrier_beaches", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms/",
+  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'ma:GISDATA.BARRIERB_POLY',
+      layers: 'massgis:GISDATA.SOILS_POLY_SV_MUNAME',
       format: "image/png",
       opacity: 0,
-      //zIndex: 1,
+      zIndex: -1,
       transparent: true,
     };
   },
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
-
-    return "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms/" +
+    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=ma:GISDATA.BARRIERB_POLY&"+
-          "QUERY_LAYERS=ma:GISDATA.BARRIERB_POLY&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.SOILS_POLY_SV_MUNAME&"+
+          "QUERY_LAYERS=massgis:GISDATA.SOILS_POLY_SV_MUNAME&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -42,7 +38,7 @@ RendererTemplates.wms("barrier_beaches", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.BARRIERB_POLY&format=image/png")}}'/> Barrier Beaches
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.SOILS_POLY_SV_MUNAME&format=image/png")}}'/> Soil Polygon
       </div>
   `,
   info_template: `
@@ -52,8 +48,10 @@ RendererTemplates.wms("barrier_beaches", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Barrier Beach ID: {{properties.BBNAME}}
+            Map Unit: {{properties.MAPUNIT_NAME}}
           </div>
+        {{ else }}
+          Unknown / No Response
         {{/json.features}}
       </div>
   `
