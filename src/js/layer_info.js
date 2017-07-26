@@ -58,7 +58,7 @@ var available_layers = [
     "name": "Watersheds",
     "sectors": [],
   }, 
-  {
+/*  {
     "id": "nfhl",
     "folder": "Public safety/emergency response",
     "name": "National Flood Hazard Layer",
@@ -68,7 +68,7 @@ var available_layers = [
     "sectors": ["Water Resources"],
     "download_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
     "metadata_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
-  },
+  },*/
   {
     "id": "barrier_beaches",
     "folder": "Coastal Zones",
@@ -79,6 +79,17 @@ var available_layers = [
     "sectors": ["Ecosystems"],
     "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/barrb.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/state-designated-barrier-beaches-.html",
+  },
+  {
+    "id": "transmission_lines",
+    "folder": "Energy",
+    "name": "Transmission Lines",
+    "description": "The U.S. Geological Survey (USGS) distributes Digital Line Graphs (DLG) from its 1:100,000-scale maps showing pipelines, transmission lines, and other miscellaneous transportation features. MassGIS assembled these data into a statewide layer consisting of all the transportation features identified by USGS other than railroads and vehicle roadways and which appear on the 1:100,000 USGS quadrangle sheets.  Although the pipelines and transmission lines appear on maps, they are not necessarily in active use. The linework is generally excellent, although MassGIS has noted that some lines are discontinuous (not perfectly edgematched) at USGS 1:100,000 quadrangle boundaries. Railroad transportation features are included in the Trains layer.",
+    "source": "U.S. Geological Survey",
+    "source_url": "https://www.usgs.gov/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/order-restricted-data.html",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/trnslns.html",
   },
   {
     "id": "tax_parcels",

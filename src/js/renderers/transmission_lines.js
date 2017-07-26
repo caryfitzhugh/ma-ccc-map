@@ -1,4 +1,4 @@
-RendererTemplates.wms("flood_zones", {
+RendererTemplates.wms("transmission_lines", {
   parameters: {
     opacity: 70,
     min_zoom: 11,
@@ -14,7 +14,7 @@ RendererTemplates.wms("flood_zones", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.FEMA_NFHL_POLY',
+      layers: 'massgis:GISDATA.TRANSLINES_ARC',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -25,8 +25,8 @@ RendererTemplates.wms("flood_zones", {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
-          "QUERY_LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.TRANSLINES_ARC&"+
+          "QUERY_LAYERS=massgis:GISDATA.TRANSLINES_ARC&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -40,7 +40,7 @@ RendererTemplates.wms("flood_zones", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.FEMA_NFHL_POLY&format=image/png")}}'/>
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.TRANSLINES_ARC&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -50,7 +50,7 @@ RendererTemplates.wms("flood_zones", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Zone: {{properties.ZONE}}
+            No additional information for this layer.
           </div>
         {{ else }}
           Unknown / No Response
