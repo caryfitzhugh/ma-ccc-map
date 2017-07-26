@@ -114,6 +114,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/lus2005.html",
   },
   {
+    "id": "biomap_core",
+    "folder": "Natural Resources/Habitats",
+    "name": "BioMAP2",
+    "description": "The Impervious Surface raster layer represents impervious surfaces covering the Commonwealth of Massachusetts. The surfaces were extracted using semi-automated techniques by Sanborn Map Company from 50-cm Vexcel UltraCam near infrared orthoimagery that was acquired in April 2005 as part of the Color Ortho Imagery project. The pixel size for the impervious surface data is 1-meter.",
+    "source": "MassGIS",
+    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/ftplus2005.html",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/lus2005.html",
+  },
+  {
     "id": "tax_parcels",
     "folder": "Boundaries",
     "name": "Tax Parcels",
