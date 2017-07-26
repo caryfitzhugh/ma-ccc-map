@@ -96,6 +96,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/impervioussurface.html",
   },
   {
+    "id": "fire_stations",
+    "folder": "Public Safety/Emergency Response",
+    "name": "Fire Stations",
+    "description": "The Fire Stations layer shows the point locations of 789 Fire stations in the Commonwealth of Massachusetts. The Massachusetts Emergency Management Agency (MEMA) GIS Program in cooperation with the Regional Planning Agencies and participating communities created the data as part of the development of Homeland Security Data Layers.",
+    "source": "MassGIS",
+    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/firestations_pt.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/fire-stations-.html",
+  },
+  {
     "id": "land_use",
     "folder": "Land Cover",
     "name": "Land Use 2005",
@@ -130,7 +141,7 @@ var available_layers = [
   },
   {
     "id": "flood_zones",
-    "folder": "Public safety/emergency response",
+    "folder": "Public Safety/Emergency Response",
     "name": "Flood Zones",
     "description": "These data represent a subset of the data available on the paper Flood Insurance Rate Maps (FIRM) as provided by the Federal Emergency Management Agency (FEMA). The Q3 flood data were developed to support floodplain management and planning activities but do not replace the official paper FIRMs. These data are not suitable for engineering applications or site work nor can the data be used to determine absolute delineation of flood boundaries. Instead the data should be used to portray zones of uncertainty and possible risks associated with flooding. All counties except Franklin are available for Massachusetts.",
     "source": "FEMA",
