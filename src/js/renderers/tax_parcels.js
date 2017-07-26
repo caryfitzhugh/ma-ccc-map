@@ -1,6 +1,8 @@
 RendererTemplates.wms("tax_parcels", {
   parameters: {
     opacity: 70,
+    min_zoom: 15,
+    max_zoom: 20,
     options: {
 
     }
@@ -38,7 +40,7 @@ RendererTemplates.wms("tax_parcels", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.L3_TAXPAR_POLY_ASSESS&format=image/png")}}'/> Environmental Justice Population
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.L3_TAXPAR_POLY_ASSESS&format=image/png")}}'/> Tax Parcel Boundary
       </div>
   `,
   info_template: `
