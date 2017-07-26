@@ -129,6 +129,28 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/lus2005.html",
   },
   {
+    "id": "openspace_owner",
+    "folder": "Recreation",
+    "name": "Open Space by Owner",
+    "description": "The protected and recreational open space datalayer contains the boundaries of conservation lands and outdoor recreational facilities in Massachusetts. The associated database contains relevant information about each parcel, including ownership, level of protection, public accessibility, assessor’s map and lot numbers, and related legal interests held on the land, including conservation restrictions. Conservation and outdoor recreational facilities owned by federal, state, county, municipal, and nonprofit enterprises are included in this datalayer. Not all lands in this layer are protected in perpetuity, though nearly all have at least some level of protection.",
+    "source": "Executive Office of Energy and Environmental Affairs",
+    "source_url": "http://www.mass.gov/eea/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/open_spc/openspace.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/osp.html",
+  },
+/*  {
+    "id": "openspace_type",
+    "folder": "Recreation",
+    "name": "Open Space by Type",
+    "description": "The protected and recreational open space datalayer contains the boundaries of conservation lands and outdoor recreational facilities in Massachusetts. The associated database contains relevant information about each parcel, including ownership, level of protection, public accessibility, assessor’s map and lot numbers, and related legal interests held on the land, including conservation restrictions. Conservation and outdoor recreational facilities owned by federal, state, county, municipal, and nonprofit enterprises are included in this datalayer. Not all lands in this layer are protected in perpetuity, though nearly all have at least some level of protection.",
+    "source": "Executive Office of Energy and Environmental Affairs",
+    "source_url": "http://www.mass.gov/eea/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/open_spc/openspace.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/osp.html",
+  },*/
+  {
     "id": "biomap_core",
     "folder": "Natural Resources/Habitats",
     "name": "BioMAP2",
