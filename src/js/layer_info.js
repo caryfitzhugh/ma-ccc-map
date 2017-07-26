@@ -29,24 +29,6 @@ var CDN = function (url_str) {
 
 var available_layers = [
   {
-    "id": "example_esri_layer",
-    "folder": "DEV Examples",
-    "name": "Esri Layer",
-    "sectors": []
-  },
-  {
-    "id": "example_wms_layer",
-    "folder": "DEV Examples",
-    "name": "WMS Layer",
-    "sectors": []
-  },
-  {
-    "id": "example_esri_feature_layer",
-    "folder": "DEV Examples",
-    "name": "Esri Feature Layer",
-    "sectors": []
-  },
-  {
     "id": "boundary_counties",
     "folder": "Boundaries",
     "name": "Counties",
@@ -69,6 +51,17 @@ var available_layers = [
     "download_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
     "metadata_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
   },*/
+  {
+    "id": "acec",
+    "folder": "Natural Resources/Habitats",
+    "name": "Areas of Critical Environmental Concern",
+    "description": "The Areas of Critical Environmental Concern (ACEC) datalayers provide digital polygon and line boundaries for areas that have been designated ACECs by the Secretary of Energy and Environmental Affairs (EEA).  ACECs are places in Massachusetts that receive special recognition because of the quality, uniqueness and significance of their natural and cultural resources.  These areas are identified and nominated at the community level and are reviewed and designated by the state’s EEA Secretary.  ACEC designation creates a framework for local and regional stewardship of these critical resource areas and ecosystems.  ACEC designation also requires stricter environmental review of certain kinds of proposed development under state jurisdiction within the ACEC boundaries.",
+    "source": "Department of Conservation and Recreation",
+    "source_url": "http://www.mass.gov/eea/agencies/dcr/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/acecs.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/acecs.html",
+  },
   {
     "id": "barrier_beaches",
     "folder": "Coastal Zones",
