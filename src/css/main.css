@@ -331,6 +331,20 @@ input[type="radio"], input[type="checkbox"] {
   color: #FFF;
   background: #D40A0A;
 }
+
+.layer-import-modal .input-upload {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.layer-import-modal .drop-target {
+  border: 2px dashed #aaa;
+  width: 100%;
+  line-height: 200px;
+  font-size: 20px;
+  text-align: center;
+}
+
 .layer-controls .bulk {
   text-align: right;
   border-top: 1px solid #063;
@@ -708,6 +722,16 @@ input[type="radio"], input[type="checkbox"] {
   font-size: 16px;
   padding: 5px;
   padding-right: 50px;
+}
+.map-controls .add-layer  {
+  position: relative;
+}
+.map-controls .add-layer .fa-plus-circle {
+  font-size: 75%;
+  top: 16px;
+  right: 10px;
+  position: absolute;
+  background: white;
 }
 
 .map-control {

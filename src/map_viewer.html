@@ -42,6 +42,7 @@
   {{>wizard_template}}
   {{>wizard_standalone_template}}
   {{>map_out_of_view_layers_template}}
+  {{>layer_import_modal_template}}
 </script>
 
 <script id='map_out_of_view_layers_template' type='text/ractive'>
@@ -61,6 +62,35 @@
 <script id='wizard_link_template' type='text/ractive'>
   Show a Link Here
 </script>
+
+<script id='layer_import_modal_template' type="text/ractive">
+  <div class='modal-wrapper {{layer_import.show_modal ? "open" : "closed"}} '>
+    <div class='modal-bg' on-tap="close-layer-import-modal"></div>
+    <div class='modal-content layer-import-modal'>
+      <div class='container-fluid'>
+        <span class='show-cursor fa fa-close' on-tap="close-layer-import-modal"></span>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <h2> Layer Import </h2>
+            <p> This mapper allows you to import and view your own map layer in the browser.  </p>
+            <div class='input-upload'>
+              <input id='layer_import_file_input' type='file' value='{{layer_import.import_file}}'
+                  accept=".kml, .geojson, .json, .gpx "/>
+              {{#if layer_import.import_file}}
+                {{#if layer_import.import_file_processing}}
+                  Loading ... <span class='fa fa-spinner fa-spin-custom'></span>
+                {{else}}
+                  <span class='btn btn-primary' on-click='upload-layer-import-file'> Import </span>
+                {{/if layer_import.import_file_processing}}
+              {{/if layer_import.import_file}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
 
 <script id='wizard_standalone_template' type="text/ractive">
   <div class='modal-wrapper {{wizard.standalone ? "open" : "closed"}} '>
@@ -814,6 +844,11 @@
     <span class='btn btn-md btn-default' on-tap="show-wizard">
       <span class='fa fa-question'></span>
     </span>
+    <span class='btn btn-md btn-default add-layer'
+          on-tap="open-layer-import-modal">
+      <span class='fa fa-map-o'></span>
+      <span class='fa fa-plus-circle'></span>
+    </span>
     <span class='btn btn-md btn-default'
           on-tap="print-map">
       <span class='fa fa-print'></span>
@@ -873,6 +908,7 @@
     <script src="./vendor/topojson.js?__inline=true"></script>
     <script src='./vendor/ractive-tooltip.min.js?__inline=true'></script>
     <script src='./vendor/path-data-polyfill.js?__inline=true'></script>
+    <script src='./vendor/togeojson.js?__inline=true'></script>
 
     <!-- THIS NEEDS TO BE FIRST -->
     <script src="./js/polyfills.js?__inline=true"></script>
@@ -894,6 +930,7 @@
     <script src="./js/renderer_templates/esri.js?__inline=true"></script>
     <script src="./js/renderer_templates/esri_feature_layer.js?__inline=true"></script>
     <script src="./js/renderer_templates/esri_feature_layer_points.js?__inline=true"></script>
+    <script src="./js/renderer_templates/imported_geojson.js?__inline=true"></script>
 
     <script src="./js/renderers/example_wms_layer.js?__inline=true"></script>
     <script src="./js/renderers/example_esri_feature_layer.js?__inline=true"></script>
@@ -910,6 +947,7 @@
     <script src="./js/geometry_loader.js?__inline=true"></script>
 
     <script> var Controllers = {}; </script>
+    <script src='./js/controllers/layer_import.js?__inline=true'></script>
     <script src="./js/controllers/search.js?__inline=true"></script>
     <script src="./js/controllers/layers.js?__inline=true"></script>
     <script src="./js/controllers/sharing.js?__inline=true"></script>

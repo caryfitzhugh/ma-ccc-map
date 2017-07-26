@@ -148,9 +148,17 @@ var Renderers = {
   zoom_to: function (center, zoom) {
     Views.ControlPanel.fire("map-set-view", center, zoom);
   },
+  zoom_to_bounding_box: function (bbox_string) {
+    [west, south, east, north] = bbox_string.split(',').map(parseFloat);
+    Views.ControlPanel.fire("map-set-bbox", west, south, east, north);
+  },
   utils: {
     zoom_to_location_link: function (geometry) {
-      return "<a href='#' onclick='Renderers.zoom_to([" + geometry.coordinates[1] + "," + geometry.coordinates[0] + "], 15);'>Zoom to feature</a>";
+      if (geometry.type === "Point") {
+        return "<a href='#' onclick='Renderers.zoom_to([" + geometry.coordinates[1] + "," + geometry.coordinates[0] + "], 15);'>Zoom to feature</a>";
+      } else if (geometry._northEast) {
+        return `<a href='#' onclick='Renderers.zoom_to_bounding_box("${geometry.toBBoxString()}");'>Zoom to feature</a>`;
+      }
     }
   },
 };

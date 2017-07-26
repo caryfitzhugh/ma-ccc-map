@@ -60,7 +60,7 @@ Views.ControlPanel = new Ractive({
     },
     layer_has_standalone_wizard: function (active_layer ) {
       if (active_layer) {
-        return !!active_layer.templates.wizard
+        return !!(active_layer.templates && active_layer.templates.wizard);
       } else {
         return false;
       }
@@ -99,7 +99,6 @@ Views.ControlPanel = new Ractive({
       // So they can have modifications and such
       // The order of this array should be the order of rendering
       active: [],
-
       tree: []
     },
 
@@ -213,6 +212,10 @@ Views.ControlPanel.on({
   "map-set-view": function (center, zoom ) {
     var map = Views.ControlPanel.get('map');
     map.setView(center, zoom);
+  },
+  "map-set-bbox": function (west,south,east,north) {
+    var map = Views.ControlPanel.get('map');
+    map.fitBounds(new L.LatLngBounds(new L.LatLng(south, west), new L.LatLng(north, east)));
   },
   "map-zoom-home" : function (evt) {
     var map = Views.ControlPanel.get('map');
@@ -460,6 +463,24 @@ Views.ControlPanel.on({
     var selected = cp.get(keypath);
     cp.set('sectors.selected', []);
     cp.set('sectors.show_dropdown', false);
+  },
+  'open-layer-import-modal': function (evt) {
+    var cp = Views.ControlPanel;
+    cp.set('layer_import.show_modal', true);
+    evt.original.stopPropagation();
+    evt.original.preventDefault();
+  },
+  'close-layer-import-modal': function (evt) {
+    var cp = Views.ControlPanel;
+    cp.set('layer_import.show_modal', false);
+    evt.original.stopPropagation();
+    evt.original.preventDefault();
+  },
+  'upload-layer-import-file': function (evt) {
+    var cp = Views.ControlPanel;
+    Controllers.LayerImport.import_layer(cp, evt.context.layer_import.import_file[0]);
+    evt.original.stopPropagation();
+    evt.original.preventDefault();
   }
 });
 

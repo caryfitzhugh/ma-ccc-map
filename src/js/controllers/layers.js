@@ -83,6 +83,20 @@ Controllers.Layers = {
     return pickled;
   },
 
+  add_imported_layer: function (cp, filename, data) {
+    var new_active_layers = _.cloneDeep(cp.get("layers.active"));
+    Controllers.Layers.counter = Controllers.Layers.counter + 1;
+    var layer_id = "imported_layer:" + Controllers.Layers.counter;
+    Controllers.Layers.counter = Controllers.Layers.counter + 1;
+
+    cp.push('layers.defaults', {folder: "User Imports", id: layer_id, name: filename});
+    cp.push('layers.available_ids', layer_id);
+    RendererTemplates.imported_geojson(layer_id, { templates: {},
+                                       name: filename,
+                                       data: JSON.parse(data) });
+
+    Controllers.Layers.toggle_layer_active(cp, layer_id);
+  },
   add_cloned_layer: function (cp, active_layer, name) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
     var cloned_layer = _.cloneDeep(active_layer);
