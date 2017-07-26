@@ -107,6 +107,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/fire-stations-.html",
   },
   {
+    "id": "police_stations",
+    "folder": "Public Safety/Emergency Response",
+    "name": "Police Stations",
+    "description": "The Police Stations layer shows the point locations of law enforcement and sheriff offices in Massachusetts, covering local, county and state jurisdictions. The Massachusetts Emergency Management Agency (MEMA) GIS Program in cooperation with the Regional Planning Agencies and participating communities created the original data as part of the development of Homeland Security Data Layers. MassGIS has since incorporated updates into the data.",
+    "source": "MassGIS",
+    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/policestations.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/policestations.html",
+  },
+  {
     "id": "land_use",
     "folder": "Land Cover",
     "name": "Land Use 2005",
