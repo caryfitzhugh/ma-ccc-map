@@ -1,6 +1,8 @@
-RendererTemplates.wms("env_justice", {
+RendererTemplates.wms("land_use", {
   parameters: {
     opacity: 70,
+    min_zoom: 12,
+    max_zoom: 20,
     options: {
 
     }
@@ -12,7 +14,7 @@ RendererTemplates.wms("env_justice", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.EJ_POLY',
+      layers: 'massgis:GISDATA.LANDUSE2005_POLY',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -23,8 +25,8 @@ RendererTemplates.wms("env_justice", {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.EJ_POLY&"+
-          "QUERY_LAYERS=massgis:GISDATA.EJ_POLY&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.LANDUSE2005_POLY&"+
+          "QUERY_LAYERS=massgis:GISDATA.LANDUSE2005_POLY&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -38,7 +40,7 @@ RendererTemplates.wms("env_justice", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.EJ_POLY&format=image/png")}}'/>
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.LANDUSE2005_POLY&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -48,7 +50,7 @@ RendererTemplates.wms("env_justice", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            % Foreign Born: {{properties.FOREIGN_BORN}}
+            No additional information for this layer.
           </div>
         {{ else }}
           Unknown / No Response
