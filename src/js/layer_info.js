@@ -96,6 +96,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/impervioussurface.html",
   },
   {
+    "id": "dcr_roads_trails",
+    "folder": "Recreation",
+    "name": "DCR Roads and Trails",
+    "description": "The Massachusetts Department of Conservation and Recreation (DCR) – Division of State Parks and Recreation (DSPR) Roads and Trails datalayer contains all legal roads and trails (lines and point features) identified by DCR staff and consultants on DCR DSPR properties (as well as some of the Urban Parks; eventually all trails on these properties will be integrated into this dataset). Roads and trails on private and non-DCR public land were mapped if they connected to these roads and trails and should be used with permission and should not be used if posted.",
+    "source": "MA Department of Conservation and Recreation",
+    "source_url": "http://www.mass.gov/eea/agencies/dcr/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/dcrtrails.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/dcrtrails.html",
+  },
+  {
     "id": "fire_stations",
     "folder": "Public Safety/Emergency Response",
     "name": "Fire Stations",
