@@ -118,6 +118,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/bicycle-trails.html",
   },
   {
+    "id": "wetlands",
+    "folder": "Water Resources",
+    "name": "MassDEP Wetlands",
+    "description": " layer contains polygon features delineating mapped wetland resource areas and attribute codes indicating wetland type.",
+    "source": "Mass Department of Environmental Protection",
+    "source_url": "http://www.mass.gov/dep/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/wetlandsdep_poly.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/depwetlands112000.html",
+  },
+  {
     "id": "fire_stations",
     "folder": "Public Safety/Emergency Response",
     "name": "Fire Stations",
