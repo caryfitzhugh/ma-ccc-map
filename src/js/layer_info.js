@@ -107,6 +107,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/dcrtrails.html",
   },
   {
+    "id": "bicycle_trails",
+    "folder": "Recreation",
+    "name": "Bicycle Trails",
+    "description": "This dataset, formerly named Rail Trails, was created by the Massachusetts Department of Conservation and Recreation (formerly DEM - Dept. of Environmental Management) for the purpose of regional planning and mapping. In 2002 the layer was updated and renamed Bicycle Trails. The linework in this layer represents trails which all permit bicycle travel or corridors with conversion potential; however, bicycles are not the exclusive travel mode permitted on these trails. The manager or owner of the trail should be contacted for detailed information about the permitted uses and rules of conduct that are specific to that trail. Most such corridors use, or connect to, old railway lines. The trails represented in this layer are open to bicycling as well as some combination of activities such as walking, jogging, roller blading, skiing, horse riding, snowmobiling, etc, though there are many other trails in the state that are considered multi-use but which are not included in this layer.",
+    "source": "MA Department of Conservation and Recreation",
+    "source_url": "http://www.mass.gov/eea/agencies/dcr/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/biketrails_arc.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/bicycle-trails.html",
+  },
+  {
     "id": "fire_stations",
     "folder": "Public Safety/Emergency Response",
     "name": "Fire Stations",

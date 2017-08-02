@@ -1,8 +1,8 @@
-RendererTemplates.wms("dcr_roads_trails", {
+RendererTemplates.wms("bicycle_trails", {
   parameters: {
     opacity: 70,
-    min_zoom: 14,
-    max_zoom: 20,
+/*    min_zoom: 14,
+    max_zoom: 20,*/
     options: {
 
     }
@@ -14,7 +14,7 @@ RendererTemplates.wms("dcr_roads_trails", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.DCR_ROADS_TRAILS_ARC',
+      layers: 'massgis:GISDATA.BIKETRAILS_ARC',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -25,8 +25,8 @@ RendererTemplates.wms("dcr_roads_trails", {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.DCR_ROADS_TRAILS_ARC&"+
-          "QUERY_LAYERS=massgis:GISDATA.DCR_ROADS_TRAILS_ARC&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.BIKETRAILS_ARC&"+
+          "QUERY_LAYERS=massgis:GISDATA.BIKETRAILS_ARC&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -40,7 +40,7 @@ RendererTemplates.wms("dcr_roads_trails", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.DCR_ROADS_TRAILS_ARC&format=image/png")}}'/>
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.BIKETRAILS_ARC&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -50,7 +50,7 @@ RendererTemplates.wms("dcr_roads_trails", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.NAME}} {{properties.WIDTH}}
+            {{properties.TRAILNAME}} (OWNER: {{properties.OWNER}})
           </div>
         {{ else }}
           Unknown / No Response
