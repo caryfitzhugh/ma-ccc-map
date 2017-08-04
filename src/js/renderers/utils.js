@@ -139,10 +139,9 @@ var Renderers = {
       pane.style.pointerEvents = 'none';
     }
     pane.style.zIndex = z_index;
-    var opacity = Renderers.opacity(active_layer);
-    pane.style.opacity = opacity;
+    pane.style.opacity = Renderers.opacity(active_layer);
 
-    renderer.render(map, active_layer, pane);
+    renderer.render(map, active_layer, pane_name);
   },
   // This is used by map layer dialogs to "Zoom to " something
   zoom_to: function (center, zoom) {

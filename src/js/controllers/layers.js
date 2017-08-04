@@ -87,15 +87,14 @@ Controllers.Layers = {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
     Controllers.Layers.counter = Controllers.Layers.counter + 1;
     var layer_id = "imported_layer:" + Controllers.Layers.counter;
-    Controllers.Layers.counter = Controllers.Layers.counter + 1;
 
     cp.push('layers.defaults', {folder: "User Imports", id: layer_id, name: filename});
-    cp.push('layers.available_ids', layer_id);
     RendererTemplates.imported_geojson(layer_id, { templates: {},
                                        name: filename,
                                        data: JSON.parse(data) });
 
     Controllers.Layers.toggle_layer_active(cp, layer_id);
+    cp.push('layers.available_ids', layer_id);
   },
   add_cloned_layer: function (cp, active_layer, name) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
@@ -206,15 +205,15 @@ Controllers.Layers = {
     // Remove any active layers that are no longer available
     var valid_available_ids = _.filter(available_layer_ids,
           function (id) { return _.find(layer_defaults, "id", id); });
-
     cp.set("layers.available_ids", available_layer_ids);
   },
 
   ensure_active_are_available: function (cp) {
     var active = cp.get("layers.active") || [];
     var available = cp.get("layers.available_ids");
+
     cp.set("layers.active", _.filter(active, function (layer) {
-      return _.contains(available, layer.id);
+      return _.contains(available, layer.id) || _.contains(available, layer.renderer_id);
     }));
   },
 

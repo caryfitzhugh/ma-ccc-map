@@ -5,11 +5,7 @@ RendererTemplates.imported_geojson = function (layer_id, opts) {
       opacity: 100,
     },
     // Can't pickle
-    update_legend: Renderers.update_legend(opts),
-
-    create_leaflet_layers: function (map, active_layer) {
-      Renderers.geojson_add_to_map(map, active_layer, layer);
-    },
+    update_legend: Renderers.update_legend(opts)
   };
 
   renderer.render = function (map, active_layer, pane) {
@@ -18,8 +14,6 @@ RendererTemplates.imported_geojson = function (layer_id, opts) {
       active_layer,
       active_layer.id,
       () => {
-        console.log("Creating...", active_layer, pane);
-        debugger;
         var layer = new L.GeoJSON(opts.data, {pane: pane,
             style: {
               stroke: true,
