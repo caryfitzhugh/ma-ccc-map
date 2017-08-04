@@ -22,8 +22,7 @@ RendererTemplates.imported_geojson = function (layer_id, opts) {
               weight: 2,
             },
             onEachFeature: function (feature, layer) {
-              layer.bindPopup(
-                `<h5>${opts.name}</h5>
+              layer.bindPopup(`<h5>${opts.name}</h5>
                 <pre>${JSON.stringify(feature.properties, null, 2)}</pre>
                 <br/>
                 ${Renderers.utils.zoom_to_location_link( layer.getBounds())}
