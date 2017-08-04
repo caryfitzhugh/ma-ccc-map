@@ -96,6 +96,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/gwp.html",
   },
   {
+    "id": "aquifers",
+    "folder": "Water Resources",
+    "name": "Aquifers",
+    "description": "MassGIS produced an aquifer datalayer composed of 20 individual panels, generally based on the boundaries of the major drainage basins. Areas of high and medium yield were mapped. The SDE layers contain seamless data from Basin-based tiles pdf format of ix_bas.pdf and are named AQUIFERS_POLY and AQUIFERS_ARC.  Aquifer polygons were not delineated for Cape Cod and the Elizabeth Islands. These areas in their entirety are considered by the Massachusetts Contingency Plan (MCP) as medium yield aquifers. The areas of Martha's Vineyard and Nantucket not delineated as high yield aquifers are also considered as medium yield under the MCP.",
+    "source": "MassGIS",
+    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/aquifers.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/aquifers-.html",
+  },
+  {
     "id": "transmission_lines",
     "folder": "Energy",
     "name": "Transmission Lines",
