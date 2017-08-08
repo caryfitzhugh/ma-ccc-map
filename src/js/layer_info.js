@@ -161,6 +161,7 @@ var available_layers = [
     "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/aquifers.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/aquifers-.html",
   },
+  
   {
     "id": "transmission_lines",
     "folder": "Energy",
