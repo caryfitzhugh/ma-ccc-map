@@ -96,6 +96,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/gwp.html",
   },
   {
+    "id": "public_water_supplies",
+    "folder": "Water Resources",
+    "name": "Public Water Supplies",
+    "description": "The Public Water Supply (PWS) datalayer contains the locations of public community surface and groundwater supply sources and public non-community supply sources as defined in 310 CMR 22.00. The public water supply systems represented in this datalayer are based primarily on information in the DEP’s Water Quality Testing System (WQTS) database. The WQTS database is the Department’s central database for tracking water supply data. The PWS datalayer also contains the locations of proposed wells that have a defined DEP approved wellhead protection area (Zone IIs).",
+    "source": "MassDEP",
+    "source_url": "http://www.mass.gov/eea/agencies/massdep/water/wastewater/groundwater-discharge-permitting.html",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/order-restricted-data.html",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/pws.html",
+  },
+  {
     "id": "aquifers",
     "folder": "Water Resources",
     "name": "Aquifers",
