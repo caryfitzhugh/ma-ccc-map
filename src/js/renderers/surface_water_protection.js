@@ -1,23 +1,24 @@
 RendererTemplates.wms("surface_water_protection", {
   parameters: {
     opacity: 90,
-    layer: "SWP_ZONES_POLY",
+    style: "GISDATA.SWP_ZONES_POLY::Zone_A",
     options: {
-      layer: {
-        'SWP_ZONES_POLY': "SWP",
-        'SWP_ZONES_POLY': "Zone 1",
-        'SWP_ZONES_POLY': "Zone 2"
+      style: {
+        'GISDATA.SWP_ZONES_POLY::Zone_A': "Zone A",
+        'GISDATA.SWP_ZONES_POLY::Zone_B': "Zone B",
+        'GISDATA.SWP_ZONES_POLY::Zone_C': "Zone C"
       }
     }
   },
   clone_layer_name: function(active_layer) {
-    return active_layer.name + " Layer:" + active_layer.parameters.layer;
+    return active_layer.name + " Layer:" + active_layer.parameters.style;
   },
   url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
-    var layer = active_layer.parameters.layer;
+    var layer = active_layer.parameters.style;
     return  {
-      layers: 'massgis:GISDATA.'+layer,
+      layers: 'massgis:GISDATA.SWP_ZONES_POLY',
+      styles: layer,
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -25,13 +26,13 @@ RendererTemplates.wms("surface_water_protection", {
     };
   },
   get_feature_info_url: function (active_layer) {
-    var layer = active_layer.parameters.layer;
+    var layer = active_layer.parameters.style;
 
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA."+layer+"&"+
-          "QUERY_LAYERS=massgis:GISDATA."+layer+"&"+
-          "STYLES=&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.SWP_ZONES_POLY&"+
+          "QUERY_LAYERS=massgis:GISDATA.SWP_ZONES_POLY&"+
+          "STYLES=" + layer + "&" +
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
           "HEIGHT=<%= height %>&"+
@@ -44,13 +45,13 @@ RendererTemplates.wms("surface_water_protection", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Variable: </label>
-        <select value='{{parameters.layer}}'>
-        {{#u.to_sorted_values_from_hash(parameters.options.layer)}}
+        <select value='{{parameters.style}}'>
+        {{#u.to_sorted_values_from_hash(parameters.options.style)}}
           <option value='{{key}}'>{{value}}</option>
-        {{/u.to_sorted_values_from_hash(parameters.options.layer)}}
+        {{/u.to_sorted_values_from_hash(parameters.options.style)}}
         </select>
       </div>
-       <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.{{parameters.options.layer.value}}&format=image/png")}}'/>
+       <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.SWP_ZONES_POLY&styles={{parameters.options.style.value}}&format=image/png")}}'/>
   `,
   info_template: `
       <div class='col-xs-2'>

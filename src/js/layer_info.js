@@ -161,7 +161,17 @@ var available_layers = [
     "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/aquifers.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/aquifers-.html",
   },
-  
+  {
+    "id": "surface_water_protection",
+    "folder": "Water Resources",
+    "name": "Surface Water Protection",
+    "description": "These Surface Water Supply Protection Areas delineate those areas included in 310 CMR 22.00, the Massachusetts Drinking Water Regulations, as Surface Water Supply Protection Zones: ZONEA: represents a) the land area between the surface water source and the upper boundary of the bank; b) the land area within a 400 foot lateral distance from the upper boundary of the bank of a Class A surface water source, as defined in 314 CMR 4.05(3)(a); and c) the land area within a 200 foot lateral distance from the upper boundary of the bank of a tributary or associated surface water body. ZONEB: represents the land area within one-half mile of the upper boundary of the bank of a Class A surface water source, as defined in 314 CMR 4.05(3)(a), or edge of watershed, whichever is less. Zone B always includes the land area within a 400 ft lateral distance from the upper boundary of the bank of a Class A surface water source. ZONEC: represents the land area not designated as Zone A or B within the watershed of a Class A surface water source, as defined in 314 CMR 4.05(3)(a).  All active and inactive surface water supplies have zones delineated, but some may be covered by other legislation. MassDEP protection Zones A, B, & C are in effect at MWRA sources and are subject to the protections in 310 CMR 22.00. MWRA has additional protections for their reservoirs that are included in the Massachusetts Watershed Protection Act, MGL 350 CMR 11.00. Watershed extents for all surface water supplies including active, inactive, emergency, sources outside of Massachusetts, watersheds that extend into other states and watersheds of sources from other states that extend into Massachusetts are included in the datalayer SWP Watersheds. Surface water intakes on Class B Rivers are not included in either datalayer. The reservoir features were taken from the datalayer and removed from the Zone A and B features and added as a separate feature. For MassDEP's regulatory wording of these zones please see Water Supply Protection Area Definitions..",
+    "source": "Mass Department of Environmental Protection",
+    "source_url": "http://www.mass.gov/dep",
+    "sectors": ["Ecosystems"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/swp_zones.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/swp.html",
+  },
   {
     "id": "transmission_lines",
     "folder": "Energy",
