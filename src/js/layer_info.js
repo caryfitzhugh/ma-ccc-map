@@ -52,6 +52,17 @@ var available_layers = [
     "metadata_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
   },*/
   {
+    "id": "noaa_slr",
+    "folder": "Coastal Zones",
+    "name": "Sea Level Rise (NOAA)",
+    "description": "Sea Level Rise: the maps show inland extent and relative depth of inundation from 0 to 6 feet above mean higher high water (MHHW). Areas that are hydrologically connected (according to the digital elevation model used) are shown in shades of blue. Low-lying areas, displayed in green, are considered hydrologically “unconnected” areas that may flood. The inundation maps are created by subtracting the NOAA VDATUM MHHW surface from the digital elevation model. Mapping Confidence: blue areas denote a high confidence of inundation, orange areas denote a low confidence of inundation, and unshaded areas denote a high confidence that these areas will be dry given the chosen water level.",
+    "source": "NOAA",
+    "source_url": "https://coast.noaa.gov/slr",
+    "sectors": ["Ecosystems"],
+    "download_url": null,
+    "metadata_url": "https://coast.noaa.gov/digitalcoast/tools/slr",
+  },
+  {
     "id": "acec",
     "folder": "Natural Resources/Habitats",
     "name": "Areas of Critical Environmental Concern",
