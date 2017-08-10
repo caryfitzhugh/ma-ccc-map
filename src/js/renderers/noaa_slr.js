@@ -6,7 +6,7 @@ RendererTemplates.esri("noaa_slr", {
     display_layer : "slr",
     options: {
       sea_level_height: {
-        '0': "Current",
+        '0': "0",
         '1': "1",
         '2': "2",
         '3': "3",
@@ -23,12 +23,10 @@ RendererTemplates.esri("noaa_slr", {
   legend_template: `
     <div class='detail-block show-confidence'>
       <label decorator='tooltip:Choose a sea level rise scenario'> Predicted Rise: </label>
-
-      <select value='{{parameters.sea_level_height}}'>
-        {{#u.to_sorted_values_from_hash(parameters.options.sea_level_height)}}
-          <option value='{{key}}'>{{value}} ft</option>
-        {{/u.to_sorted_values_from_hash(parameters.options.sea_level_height)}}
-      </select>
+      <input type='range' 
+        min='0'
+        max='6'
+        value= '{{parameters.sea_level_height}}'> {{parameters.sea_level_height}} ft.
     </div>
     <div class='detail-block show-confidence'>
       <label decorator='tooltip:Choose a layer to display'> Layer: </label>
@@ -41,7 +39,7 @@ RendererTemplates.esri("noaa_slr", {
 
     <div class='detail-block legend taccimo '>
       <label> Legend </label>
-      <img  src="img/taccimo.jpg">
+      <img  src="img/noaa_{{parameters.display_layer}}Legend.jpg">
     </div>
   `,
   clone_layer_name: function (active_layer) {
