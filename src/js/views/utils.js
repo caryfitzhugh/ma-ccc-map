@@ -1,4 +1,7 @@
 var ViewUtils = {
+  object_entries_count: (obj) => {
+    return Object.keys(obj).length;
+  },
   color_range_label: (metrics_range, colors, index, fixed) => {
     if (!fixed && fixed !== 0) {
       fixed = 2;

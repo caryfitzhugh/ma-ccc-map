@@ -29,14 +29,17 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
           {{/u.to_sorted_values_from_hash(parameters.all_seasons)}}
         </select>
       </div>
-      <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Metric'> Metric: </label>
-        <select value='{{parameters.options.metric}}'>
-          {{#u.to_sorted_values_from_hash(parameters.all_metrics)}}
-            <option value='{{key}}'>{{value}}</option>
-          {{/u.to_sorted_values_from_hash(parameters.all_metrics)}}
-        </select>
-      </div>
+
+      {{#u.object_entries_count(parameters.all_metrics || []) > 1}}
+        <div class='detail-block show-confidence'>
+          <label decorator='tooltip:Choose a Metric'> Metric: </label>
+          <select value='{{parameters.options.metric}}'>
+            {{#u.to_sorted_values_from_hash(parameters.all_metrics)}}
+              <option value='{{key}}'>{{value}}</option>
+            {{/u.to_sorted_values_from_hash(parameters.all_metrics)}}
+          </select>
+        </div>
+      {{/u.object_entries_count(parameters.all_metrics || []) > 1}}
 
       {{#{metrics: parameters.metrics_ranges[parameters.options.metric],
           legend: '` + opts.legend + `',

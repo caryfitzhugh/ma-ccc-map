@@ -88,6 +88,18 @@ var available_layers = [
     "name": "MA Projected Days Above Temperature Thresholds",
     "sectors": ['testing'],
   },
+  {
+    "id": "ma_historical_precipitation",
+    "folder": "Under Construction",
+    "name": "MA Historical Preciptiation",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_projected_precipitation",
+    "folder": "Under Construction",
+    "name": "MA Projected Preciptiation",
+    "sectors": ['testing'],
+  },
 /*  {
     "id": "nfhl",
     "folder": "Public safety/emergency response",
