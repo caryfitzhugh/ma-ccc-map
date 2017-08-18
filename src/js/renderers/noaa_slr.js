@@ -23,7 +23,7 @@ RendererTemplates.esri("noaa_slr", {
   legend_template: `
     <div class='detail-block opacity'>
       <label decorator='tooltip:Choose a sea level rise scenario'> Predicted Rise: </label>
-      <input type='range' 
+      <input type='range'
         min='0'
         max='6'
         value= '{{parameters.sea_level_height}}'> {{parameters.sea_level_height}} ft.
@@ -53,7 +53,6 @@ RendererTemplates.esri("noaa_slr", {
     var p = active_layer.parameters;
     var sea_level_height = p.sea_level_height;
     var display_layer = p.display_layer;
-    console.log(sea_level_height,'_',display_layer)
 
     return {
       layers: [Number(sea_level_height)+Number(display_layer)],

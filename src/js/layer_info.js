@@ -53,9 +53,39 @@ var available_layers = [
     "sectors": ['testing'],
   },
   {
-    "id": "ma_degree_days",
+    "id": "ma_projected_degree_days",
     "folder": "Under Construction",
-    "name": "MA Degree Days",
+    "name": "MA Projected Degree Days",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_historical_degree_days",
+    "folder": "Under Construction",
+    "name": "MA Historical Degree Days",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_historical_days_below_temp",
+    "folder": "Under Construction",
+    "name": "MA Historical Days Below Temperature Thresholds",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_projected_days_below_temp",
+    "folder": "Under Construction",
+    "name": "MA Projected Days Below Temperature Thresholds",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_historical_days_above_temp",
+    "folder": "Under Construction",
+    "name": "MA Historical Days Above Temperature Thresholds",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_projected_days_above_temp",
+    "folder": "Under Construction",
+    "name": "MA Projected Days Above Temperature Thresholds",
     "sectors": ['testing'],
   },
 /*  {
