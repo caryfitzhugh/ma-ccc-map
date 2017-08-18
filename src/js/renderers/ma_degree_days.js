@@ -1,8 +1,7 @@
-
-RendererTemplates.ma_climate_data('ma_projected_temperature', {
+RendererTemplates.ma_climate_data('ma_degree_days', {
   clone_layer_name: function(active_layer) {
     let p = active_layer.parameters.options;
-    var name =  "MA Projected Temps " + p.metric + " S: " + p.scenario + " Y:" + active_layer.parameters.years[p.year_indx] + " S:" + p.season + " by " + p.summary;
+    var name =  "MA Degree Days " + p.metric + " Y:" + active_layer.parameters.years[p.year_indx] + " S:" + p.season + " by " + p.summary;
     return name;
   },
   legend_template: `
@@ -47,28 +46,27 @@ RendererTemplates.ma_climate_data('ma_projected_temperature', {
     </div>
 
     {{#{metrics: parameters.metrics_ranges[parameters.options.metric],
-        legend: "Temperature &deg;F",
+        legend: parameters.all_metrics[parameters.options.metric],
+        precision: 0,
         colors: parameters.color_ranges[parameters.options.metric]} }}
       {{> map_color_block_legend_template }}
     {{/{metrics: parameters.metrics_ranges[parameters.options.metric], foo: 1} }}
   `,
-  data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/temperature.json",
+  data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/degree_days.json",
   onLoadedData: (layer_data, active_layer) => {
     // Snag all the years which have the 'obs' field
-    let proj_years = _.uniq(
+    let obs_years = _.uniq(
       _.flatten(
         _.map(layer_data, (root) => {
-          let res =  _.compact(_.map(root, (yr_data, yr) => {
-              if (yr_data['min']) {
+          return _.compact(_.map(root, (yr_data, yr) => {
+              if (yr_data['obs']) {
                 return parseInt(yr,10)
               } else {
                 return null;
               }
           }));
-          console.log(res);
-          return res;
       }))).sort();
-    active_layer.parameters.years = proj_years;
+    active_layer.parameters.years = obs_years;
 
     // Calculate the color brewer bands.
     // Get min / max values for all these metrics across all the years / seasons / etc.
@@ -108,12 +106,11 @@ RendererTemplates.ma_climate_data('ma_projected_temperature', {
 
     try {
       let year_data = layer_data[ma_trans[feature.properties.name]][active_layer.parameters.years[p.year_indx]];
-      let value = year_data[p.scenario][p.season][p.metric];
+      let value = year_data['obs'][p.season][p.metric];
 
       let color = colorize(active_layer.parameters.metrics_ranges[p.metric], value, active_layer.parameters.color_ranges[p.metric]);
       layer.setStyle({fillColor: color, color: color});
     } catch( e) {
-      debugger
       console.log('failed to find value for ', p.metric, feature.properties.name, layer_data);
       let rgb = `transparent`;//rgb(${gray}, ${gray}, ${gray})`
       layer.setStyle({fillColor: rgb, color: rgb});
@@ -123,14 +120,14 @@ RendererTemplates.ma_climate_data('ma_projected_temperature', {
   parameters: {
     opacity: 100,
     color_ranges: {
-      'tmax': colorbrewer.OrRd[9],
-      'tmin': colorbrewer.OrRd[9],
-      'tavg': colorbrewer.OrRd[9],
+      'h': colorbrewer.Oranges[9],
+      'g': colorbrewer.Purples[9],
+      'c': colorbrewer.Blues[9],
     },
     all_metrics: {
-      "tmin" : "Minimum Temp",
-      "tmax" : "Maximum Temp",
-      "tavg" : "Average Temp",
+      "g" : "Growing Degree Day Accumulation",
+      "h" : "Heating Degree Day Accumulation",
+      "c" : "Cooling Degree Day Accumulation",
     },
     all_summaries: {
       "county": "County",
@@ -156,7 +153,7 @@ RendererTemplates.ma_climate_data('ma_projected_temperature', {
       year_indx: 0,
       season: 'annual',
       scenario: 'med',
-      metric: "tmin",
+      metric: "g",
       summary: 'state',
     },
   }

@@ -52,6 +52,12 @@ var available_layers = [
     "name": "MA Projected Temperatures",
     "sectors": ['testing'],
   },
+  {
+    "id": "ma_degree_days",
+    "folder": "Under Construction",
+    "name": "MA Degree Days",
+    "sectors": ['testing'],
+  },
 /*  {
     "id": "nfhl",
     "folder": "Public safety/emergency response",
