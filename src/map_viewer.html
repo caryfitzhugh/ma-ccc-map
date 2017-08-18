@@ -44,6 +44,19 @@
   {{>map_out_of_view_layers_template}}
   {{>layer_import_modal_template}}
 </script>
+<script id='map_color_block_legend_template' type='text/ractive'/>
+  <div class='detail-block legend'>
+    <div class='color-legend'>{{{legend}}}</div>
+    {{#colors:i}}
+      <div class='color-block' style="width: {{100.0 / colors.length}}%;">
+        <svg width="100" height="100">
+          <rect height="100" width="100" style="fill: {{.}}; opacity:{{(0.7 * parameters.opacity / 100.0) + 0.3}}; "/>
+        </svg>
+        <label>{{u.color_range_label(metrics, colors, i, 2)}}</label>
+      </div>
+    {{/colors}}
+  </div>
+</script>
 
 <script id='map_out_of_view_layers_template' type='text/ractive'>
   {{#if (out_of_view_layers(layers.active, map_state.zoom)).length > 0}}
@@ -929,44 +942,47 @@
     <script src="./js/renderer_templates/esri_feature_layer.js?__inline=true"></script>
     <script src="./js/renderer_templates/esri_feature_layer_points.js?__inline=true"></script>
     <script src="./js/renderer_templates/imported_geojson.js?__inline=true"></script>
+    <script src="./js/renderer_templates/ma_climate_data.js?__inline=true"></script>
 
-    <script src="./js/renderers/example_wms_layer.js?__inline=true"></script>
-    <script src="./js/renderers/example_esri_feature_layer.js?__inline=true"></script>
-    <script src="./js/renderers/example_esri_layer.js?__inline=true"></script>
+    <script src="./js/renderers/acec.js?__inline=true"></script>
+    <script src="./js/renderers/aquifers.js?__inline=true"></script>
+    <script src="./js/renderers/barrier_beaches.js?__inline=true"></script>
+    <script src="./js/renderers/bicycle_trails.js?__inline=true"></script>
+    <script src="./js/renderers/biomap_core.js?__inline=true"></script>
     <script src="./js/renderers/boundary_counties.js?__inline=true"></script>
     <script src="./js/renderers/boundary_huc8.js?__inline=true"></script>
-    <script src="./js/renderers/barrier_beaches.js?__inline=true"></script>
-    <script src="./js/renderers/tree_atlas.js?__inline=true"></script>
-    <script src="./js/renderers/prime_forest.js?__inline=true"></script>
-    <script src="./js/renderers/nfhl.js?__inline=true"></script>
-    <script src="./js/renderers/wind_power.js?__inline=true"></script>
-    <script src="./js/renderers/hurricane_surge.js?__inline=true"></script>
-    <script src="./js/renderers/soils.js?__inline=true"></script>
+    <script src="./js/renderers/dams.js?__inline=true"></script>
+    <script src="./js/renderers/dcr_roads_trails.js?__inline=true"></script>
+    <script src="./js/renderers/electric_providers.js?__inline=true"></script>
     <script src="./js/renderers/env_justice.js?__inline=true"></script>
-    <script src="./js/renderers/tax_parcels.js?__inline=true"></script>
+    <script src="./js/renderers/example_esri_feature_layer.js?__inline=true"></script>
+    <script src="./js/renderers/example_esri_layer.js?__inline=true"></script>
+    <script src="./js/renderers/example_wms_layer.js?__inline=true"></script>
+    <script src="./js/renderers/fire_stations.js?__inline=true"></script>
     <script src="./js/renderers/flood_zones.js?__inline=true"></script>
-    <script src="./js/renderers/transmission_lines.js?__inline=true"></script>
+    <script src="./js/renderers/gas_providers.js?__inline=true"></script>
+    <script src="./js/renderers/groundwater_discharge.js?__inline=true"></script>
+    <script src="./js/renderers/hurricane_surge.js?__inline=true"></script>
     <script src="./js/renderers/impervious_surface.js?__inline=true"></script>
     <script src="./js/renderers/land_use.js?__inline=true"></script>
-    <script src="./js/renderers/biomap_core.js?__inline=true"></script>
-    <script src="./js/renderers/acec.js?__inline=true"></script>
-    <script src="./js/renderers/fire_stations.js?__inline=true"></script>
-    <script src="./js/renderers/police_stations.js?__inline=true"></script>
+    <script src="./js/renderers/ma_historical_temperature.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_temperature.js?__inline=true"></script>
+    <script src="./js/renderers/nfhl.js?__inline=true"></script>
+    <script src="./js/renderers/noaa_slr.js?__inline=true"></script>
     <script src="./js/renderers/openspace_owner.js?__inline=true"></script>
     <script src="./js/renderers/openspace_type.js?__inline=true"></script>
-    <script src="./js/renderers/dcr_roads_trails.js?__inline=true"></script>
-    <script src="./js/renderers/bicycle_trails.js?__inline=true"></script>
-    <script src="./js/renderers/wetlands.js?__inline=true"></script>
-    <script src="./js/renderers/dams.js?__inline=true"></script>
-    <script src="./js/renderers/groundwater_discharge.js?__inline=true"></script>
-    <script src="./js/renderers/aquifers.js?__inline=true"></script>
-    <script src="./js/renderers/public_water_supplies.js?__inline=true"></script>
-    <script src="./js/renderers/wellhead_protection.js?__inline=true"></script>
     <script src="./js/renderers/outstanding_resource_waters.js?__inline=true"></script>
-    <script src="./js/renderers/electric_providers.js?__inline=true"></script>
-    <script src="./js/renderers/gas_providers.js?__inline=true"></script>
+    <script src="./js/renderers/police_stations.js?__inline=true"></script>
+    <script src="./js/renderers/prime_forest.js?__inline=true"></script>
+    <script src="./js/renderers/public_water_supplies.js?__inline=true"></script>
+    <script src="./js/renderers/soils.js?__inline=true"></script>
     <script src="./js/renderers/surface_water_protection.js?__inline=true"></script>
-    <script src="./js/renderers/noaa_slr.js?__inline=true"></script>
+    <script src="./js/renderers/tax_parcels.js?__inline=true"></script>
+    <script src="./js/renderers/transmission_lines.js?__inline=true"></script>
+    <script src="./js/renderers/tree_atlas.js?__inline=true"></script>
+    <script src="./js/renderers/wellhead_protection.js?__inline=true"></script>
+    <script src="./js/renderers/wetlands.js?__inline=true"></script>
+    <script src="./js/renderers/wind_power.js?__inline=true"></script>
 
 
     <script src="./js/geometry_loader.js?__inline=true"></script>

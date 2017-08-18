@@ -69,43 +69,73 @@ var Renderers = {
       }
     }
   },
-  create_leaflet_layer: (map, active_layer, attributes, callback) => {
-    if (!Renderers.get_leaflet_layer(map, active_layer, attributes)) {
-      var layer = callback();
+  is_loading_leaflet_layer: (active_layer, attributes) => {
+    active_layer.loading_layers = active_layer.loading_layers || {};
+    return active_layer.loading_layers[stringify(attributes)];
+  },
+  loading_leaflet_layer: (active_layer, attributes) => {
+    active_layer.loading_layers = active_layer.loading_layers || {};
+    active_layer.loading_layers[stringify(attributes)] = true;
+  },
+  loaded_leaflet_layer: (active_layer, attributes) => {
+    active_layer.loading_layers = active_layer.loading_layers || {};
+    active_layer.loading_layers[stringify(attributes)] = false;
+  },
+  create_leaflet_layer_async: (map, active_layer, attributes, load_layer, completed) => {
+    if (!Renderers.get_leaflet_layer(map, active_layer, attributes) &&
+        !Renderers.is_loading_leaflet_layer(active_layer, attributes)) {
+      Renderers.loading_leaflet_layer(active_layer, attributes);
+
+     load_layer()
+     .then((layer) => {
+        layer.addTo(map);
+        Renderers.save_leaflet_layer(active_layer, layer._leaflet_id, attributes);
+        completed();
+     });
+    } else {
+      completed();
+    }
+  },
+  create_leaflet_layer: (map, active_layer, attributes, load_layer) => {
+    if (!Renderers.get_leaflet_layer(map, active_layer, attributes) &&
+        !Renderers.is_loading_leaflet_layer(active_layer, attributes)) {
+      Renderers.loading_leaflet_layer(active_layer, attributes);
+      var layer = load_layer();
       layer.addTo(map);
       Renderers.save_leaflet_layer(active_layer, layer._leaflet_id, attributes);
     }
   },
-  save_leaflet_layer: (active_layer, layer_id, attrs) => {
+  save_leaflet_layer: (active_layer, layer_id, attributes) => {
     active_layer.leaflet_layer_ids.push(
       Object.assign({},
-                    {id: stringify(attrs)},
+                    {id: stringify(attributes)},
                     {leaflet_id: layer_id}));
+    Renderers.loaded_leaflet_layer(active_layer, attributes);
   },
   get_all_leaflet_layers: function(map, active_layer) {
     var leaflet_ids = _.pluck(active_layer.leaflet_layer_ids,"leaflet_id");
     return Renderers.lookup_layers(map, leaflet_ids);
   },
-  get_leaflet_layer: function (map, active_layer, attrs)  {
-    var active_leaflet_layer_id =  _.find(active_layer.leaflet_layer_ids, {id:stringify(attrs)});
+  get_leaflet_layer: function (map, active_layer, attributes)  {
+    var active_leaflet_layer_id =  _.find(active_layer.leaflet_layer_ids, {id:stringify(attributes)});
     var result;
     if (active_leaflet_layer_id) {
       result = Renderers.lookup_layers(map, [active_leaflet_layer_id.leaflet_id])[0];
     }
     return result;
   },
-  get_layer: function (map, layer_type, attrs) {
+  get_layer: function (map, layer_type, attributes) {
     var leaflet_layers = [];
     map.eachLayer(function (layer) {
       // Does the id match? (if
-      if (layer._leaflet_id === attrs.id)
+      if (layer._leaflet_id === attributes.id)
       if (_.contains(leaflet_layer_ids, layer._leaflet_id)) {
         leaflet_layers.push(layer);
       }
     });
     return leaflet_layers;
   },
-  lookup_layers: function (map, leaflet_layer_ids, extra_attrs) {
+  lookup_layers: function (map, leaflet_layer_ids, extra_attributes) {
     var leaflet_layers = [];
     map.eachLayer(function (layer) {
       if (_.contains(leaflet_layer_ids, layer._leaflet_id)) {

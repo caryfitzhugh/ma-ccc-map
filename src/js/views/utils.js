@@ -1,4 +1,9 @@
 var ViewUtils = {
+  color_range_label: (metrics_range, colors, index, fixed) => {
+    let buckets = colors.length - 1;
+    let step_size= metrics_range.range / buckets;
+    return (metrics_range.min + index * step_size).toFixed(fixed);
+  },
   to_sorted_values_from_hash(hsh) {
     var vals = _.reduce(hsh, (memo, v, k) => {
           memo.push([k,v])

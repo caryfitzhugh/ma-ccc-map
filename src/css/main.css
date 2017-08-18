@@ -578,6 +578,22 @@ input[type="radio"], input[type="checkbox"] {
   margin: 0;
   position: relative;
 }
+.active-layer .detail-block.legend .color-legend {
+  text-align: center;
+  font-weight: 300;
+  font-size: 90%;
+  margin-top: -6px;
+}
+.active-layer .detail-block.legend .color-block .color {
+  width: 100%;
+  height: 100%;
+}
+.active-layer .detail-block.legend .color-block label {
+  text-align: center;
+  width: 100%;
+  font-weight: 300;
+  vertical-align: text-top;
+}
 
 .active-layer .detail-block.legend .color-block svg ,
 .active-layer .detail-block.legend .color-block svg rect {
@@ -599,22 +615,6 @@ input[type="radio"], input[type="checkbox"] {
 
 .active-layer .detail-block.legend {
   margin: 10px 0px;
-}
-.active-layer .detail-block.legend .color-legend {
-  text-align: center;
-  font-weight: 300;
-  font-size: 90%;
-  margin-top: -6px;
-}
-.active-layer .detail-block.legend .color-block .color {
-  width: 100%;
-  height: 100%;
-}
-.active-layer .detail-block.legend .color-block label {
-  text-align: center;
-  width: 100%;
-  font-weight: 300;
-  vertical-align: text-top;
 }
 
 .active-layer .detail-block.legend-url-text {

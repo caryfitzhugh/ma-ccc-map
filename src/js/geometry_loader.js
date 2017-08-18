@@ -1,7 +1,7 @@
 var GeometryLoader ={
   load: function (name, callback, error_cb) {
     var paths = {
-      "county": CDN(GEOSERVER + "/vt/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=vt:county_boundary&maxFeatures=50&outputFormat=application%2Fjson"),
+      "county": "https://repository.nescaum-ccsc-dataservices.com/geofocuses/bulk_geojson/?ids=1545%2C%201724%2C%201646%2C%201644%2C%201596%2C%201554%2C%201645%2C%201622%2C%201676%2C%201606%2C%201708%2C%201555%2C%201725%2C%201730",
       "basin": CDN("http://api.nescaum-ccsc-dataservices.com/basin.topojson")
     };
 
@@ -9,7 +9,6 @@ var GeometryLoader ={
       callback(null, GeometryLoader.cache[name]);
     } else {
       d3.json(paths[name], function (error, geometries) {
-        
         if (error) {
           callback(error, null);
         } else {
