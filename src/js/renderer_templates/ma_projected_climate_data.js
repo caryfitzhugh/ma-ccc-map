@@ -58,7 +58,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     `,
     data_url: opts.data_url,
     onLoadedData: (layer_data, active_layer) => {
-      // Snag all the years which have the 'obs' field
+      // Snag all the years which have the 'min' field
       let min_years = _.uniq(
         _.flatten(
           _.map(layer_data, (root) => {

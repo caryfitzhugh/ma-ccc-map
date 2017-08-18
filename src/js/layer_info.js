@@ -100,6 +100,18 @@ var available_layers = [
     "name": "MA Projected Preciptiation",
     "sectors": ['testing'],
   },
+  {
+    "id": "ma_historical_extreme_precipitation",
+    "folder": "Under Construction",
+    "name": "MA Historical Extreme Preciptiation Events",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_projected_extreme_precipitation",
+    "folder": "Under Construction",
+    "name": "MA Projected Extreme Preciptiation Events",
+    "sectors": ['testing'],
+  },
 /*  {
     "id": "nfhl",
     "folder": "Public safety/emergency response",
