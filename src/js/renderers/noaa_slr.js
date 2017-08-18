@@ -21,7 +21,7 @@ RendererTemplates.esri("noaa_slr", {
     }
   },
   legend_template: `
-    <div class='detail-block show-confidence'>
+    <div class='detail-block opacity'>
       <label decorator='tooltip:Choose a sea level rise scenario'> Predicted Rise: </label>
       <input type='range' 
         min='0'
