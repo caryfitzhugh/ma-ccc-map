@@ -9,8 +9,8 @@ RendererTemplates.ma_projected_climate_data("ma_projected_days_above_temp", {
     'gt100': colorbrewer.Reds[9],
   },
   all_metrics: {
-    "gt90" : "Days Above 90F",
-    "gt95" : "Days Above 95F",
-    "gt100" : "Days Above 100F",
+    "gt90" : "Days Above 90&deg;F",
+    "gt95" : "Days Above 95&deg;F",
+    "gt100" : "Days Above 100&deg;F",
   }
 });

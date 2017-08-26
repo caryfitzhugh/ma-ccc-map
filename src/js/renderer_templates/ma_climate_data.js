@@ -73,6 +73,20 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
   };
 
   var renderer = RendererTemplates.base(layer_id, opts, {
+    find_geo_json: function (map, active_layer, evt) {
+      var layers = Renderers.get_all_leaflet_layers(map,active_layer);
+      var active_leaflet_layer = Renderers.get_leaflet_layer(map, active_layer, get_opts(active_layer))
+      if (active_leaflet_layer) {
+        let latlng = evt.latlng;
+        let match = leafletPip.pointInLayer(evt.latlng, active_leaflet_layer, true);
+        if (match[0]) {
+          return match[0].feature.properties;
+        } else {
+          return null;
+        }
+      }
+      return null;
+    },
     render: function (map, active_layer, pane) {
       load_data_url(opts.data_url)
       .then((layer_data) => {

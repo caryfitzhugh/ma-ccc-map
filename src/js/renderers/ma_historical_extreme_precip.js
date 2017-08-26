@@ -2,6 +2,7 @@ RendererTemplates.ma_historical_climate_data("ma_historical_extreme_precipitatio
   title: "MA Historical Extreme Precipitation Events",
   legend: "Number of Events",
   legend_precision: 1,
+  info_legend: "Events of ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/precip_events.json",
   color_ranges: {
     'gt1in': colorbrewer.BuGn[5],

@@ -126,9 +126,10 @@ Controllers.FeatureInfo = {
             });
           } else if (renderer.find_geo_json) {
             var resp = renderer.find_geo_json(map, active_layer, evt);
-              cp.set("map_details.feature_info_responses."+response_id, {
-              active_layer: active_layer,
-              geojson: resp});
+
+            cp.set("map_details.feature_info_responses."+response_id, {
+            active_layer: active_layer,
+            geojson: resp});
           }
         });
     }

@@ -8,7 +8,7 @@ RendererTemplates.ma_historical_climate_data("ma_historical_days_below_temp", {
     'lt32': colorbrewer.Blues[9],
   },
   all_metrics: {
-    "lt0" : "Days Below 0F",
-    "lt32" : "Days Below 32F",
+    "lt0" : "Days Below 0&deg;F",
+    "lt32" : "Days Below 32&deg;F",
   }
 });

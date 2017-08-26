@@ -9,8 +9,8 @@ RendererTemplates.ma_projected_climate_data("ma_projected_degree_days", {
     'c': colorbrewer.Blues[9],
   },
   all_metrics: {
-    "h" : "Heating Degree Day Accumulation",
-    "g" : "Growing Degree Day Accumulation",
-    "c" : "Cooling Degree Day Accumulation",
+    "h" : "Heating Degree Days Accumulation",
+    "g" : "Growing Degree Days Accumulation",
+    "c" : "Cooling Degree Days Accumulation",
   }
 });

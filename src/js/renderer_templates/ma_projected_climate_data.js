@@ -5,12 +5,27 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       var name =  opts.title + " " + p.scenario + " " + p.metric + " Y:" + active_layer.parameters.years[p.year_indx] + " S:" + p.season + " by " + p.summary;
       return name;
     },
+    info_template: `
+        <div class='col-xs-2'>
+          <label> {{geojson.name}} </label>
+        </div>
+        <div class='col-xs-6'>
+          {{active_layer.parameters.years[active_layer.parameters.options.year_indx]}}
+          {{active_layer.parameters.all_seasons[active_layer.parameters.options.season]}}
+
+          ${opts.info_legend || ""}
+          {{{active_layer.parameters.all_metrics[active_layer.parameters.options.metric]}}}
+        </div>
+        <div class='col-xs-4'>
+          {{geojson.data_value}}
+        </div>
+    `,
     legend_template: `
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose a Summary Area'> Summary: </label>
         <select value='{{parameters.options.summary}}'>
           {{#u.to_sorted_values_from_hash(parameters.all_summaries)}}
-            <option value='{{key}}'>{{value}}</option>
+            <option value='{{key}}'>{{{value}}}</option>
           {{/u.to_sorted_values_from_hash(parameters.all_summaries)}}
         </select>
       </div>
@@ -111,10 +126,13 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       try {
         let year_data = layer_data[ma_trans[feature.properties.name]][active_layer.parameters.years[p.year_indx]];
         let value = year_data[p.scenario][p.season][p.metric];
+        feature.properties.data_value = value;
 
         let color = colorize(active_layer.parameters.metrics_ranges[p.metric], value, active_layer.parameters.color_ranges[p.metric]);
         layer.setStyle({fillColor: color, color: color});
       } catch( e) {
+        feature.properties.data_value = null;
+
         console.log('failed to find value for ', p.metric, feature.properties.name, layer_data);
         let rgb = `transparent`;//rgb(${gray}, ${gray}, ${gray})`
         layer.setStyle({fillColor: rgb, color: rgb});
