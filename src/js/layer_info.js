@@ -41,6 +41,18 @@ var available_layers = [
     "sectors": [],
   },
   {
+    "id": "ma_historical_consecutive_dry_days",
+    "folder": "Climate Data.Precipitation",
+    "name": "MA Historical Consecutive Dry Days",
+    "sectors": ['testing'],
+  },
+  {
+    "id": "ma_projected_consecutive_dry_days",
+    "folder": "Climate Data.Precipitation",
+    "name": "MA Projected Consecutive Dry Days",
+    "sectors": ['testing'],
+  },
+  {
     "id": "ma_historical_temperature",
     "folder": "Climate Data.Temperature",
     "name": "MA Historical Temperatures",
@@ -103,13 +115,13 @@ var available_layers = [
   {
     "id": "ma_historical_extreme_precipitation",
     "folder": "Climate Data.Precipitation",
-    "name": "MA Historical Extreme Preciptiation Events",
+    "name": "MA Historical Extreme Precipitiation Events",
     "sectors": ['testing'],
   },
   {
     "id": "ma_projected_extreme_precipitation",
     "folder": "Climate Data.Precipitation",
-    "name": "MA Projected Extreme Preciptiation Events",
+    "name": "MA Projected Extreme Precipitiation Events",
     "sectors": ['testing'],
   },
 /*  {
