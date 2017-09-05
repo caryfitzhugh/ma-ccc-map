@@ -167,7 +167,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         season: 'annual',
         metric: Object.keys(opts.all_metrics)[0],
         scenario: 'med',
-        summary: 'state',
+        summary: 'county',
       },
     }
   });

@@ -5,9 +5,9 @@ RendererTemplates.ma_projected_climate_data("ma_projected_extreme_precipitation"
   info_legend: "Events of ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/precip_events.json",
   color_ranges: {
-    'gt1in': colorbrewer.BuGn[5],
-    'gt2in': colorbrewer.BuGn[5],
-    'gt4in': colorbrewer.BuGn[5],
+    'gt1in': colorbrewer.Blues[7],
+    'gt2in': colorbrewer.Blues[7],
+    'gt4in': colorbrewer.Blues[7],
   },
   all_metrics: {
     'gt1in': "Greater than 1\" Precipitation",
