@@ -58,7 +58,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
           <label decorator='tooltip:Choose a Metric'> Metric: </label>
           <select value='{{parameters.options.metric}}'>
             {{#u.to_sorted_values_from_hash(parameters.all_metrics)}}
-              <option value='{{key}}'>{{value}}</option>
+              <option value='{{key}}'>{{{value}}}</option>
             {{/u.to_sorted_values_from_hash(parameters.all_metrics)}}
           </select>
         </div>

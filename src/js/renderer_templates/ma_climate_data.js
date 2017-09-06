@@ -1,3 +1,5 @@
+RendererTemplates.ma_climate_data_cache = {};
+
 RendererTemplates.ma_climate_data_colorize = (metrics_range, value, colors) => {
   let buckets = colors.length - 1;
   let step_size= metrics_range.range / buckets;
@@ -45,13 +47,12 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
   let get_opts = function (active_layer) {
     return active_layer.parameters.options;
   };
-  let cache = {};
   let loading = {};
 
   let load_data_url = (durl) =>  {
     return new Promise( (win, lose) => {
-      if (cache[durl]) {
-        win(cache[durl])
+      if (RendererTemplates.ma_climate_data_cache[durl]) {
+        win(RendererTemplates.ma_climate_data_cache[durl])
       } else  {
         if (!loading[durl]) {
           loading[durl] = true;
@@ -60,7 +61,30 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
             dataType: "json",
             url: durl,
             success: function (json) {
-              cache[durl] = json;
+              RendererTemplates.ma_climate_data_cache[durl] = json;
+              win(json);
+            },
+            error:   function (err) {
+              lose();
+            }
+          });
+        }
+      }
+    });
+  };
+  let load_geometry_url = (durl) =>  {
+    return new Promise( (win, lose) => {
+      if (RendererTemplates.ma_climate_data_cache[durl]) {
+        win(RendererTemplates.ma_climate_data_cache[durl])
+      } else  {
+        if (!loading[durl]) {
+          loading[durl] = true;
+          $.ajax({
+            cache: true,
+            dataType: "json",
+            url: durl,
+            success: function (json) {
+              RendererTemplates.ma_climate_data_cache[durl] = json;
               win(json);
             },
             error:   function (err) {
@@ -100,27 +124,23 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
           get_opts(active_layer),
           () => {
             return new Promise((win, lose) => {
-              $.ajax({
-                cache: true,
-                dataType: "json",
-                url: geometries[active_layer.parameters.options.summary],
-                success: function (data) {
-                  var layer = new L.GeoJSON(data, {
-                    pointToLayer: opts.pointToLayer,
-                    pane: pane,
-                    onEachFeature: (feature, layer) => {
-                      opts.onEachGeometry(layer_data, active_layer, feature, layer);
-                    }
-                  });
-                  win(layer);
-                  Views.ControlPanel.fire("tile-layer-loaded", active_layer);
-                },
-                error:   function (err) {
-                  if (err.status !== 200) {
-                    Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
+              load_geometry_url(geometries[active_layer.parameters.options.summary])
+              .then((data) => {
+                var layer = new L.GeoJSON(data, {
+                  pointToLayer: opts.pointToLayer,
+                  pane: pane,
+                  onEachFeature: (feature, layer) => {
+                    opts.onEachGeometry(layer_data, active_layer, feature, layer);
                   }
-                  lose();
+                });
+                win(layer);
+                Views.ControlPanel.fire("tile-layer-loaded", active_layer);
+              })
+              .catch((err) => {
+                if (err.status !== 200) {
+                  Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
                 }
+                lose();
               });
             })
           }, () => {
