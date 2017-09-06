@@ -153,7 +153,7 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
         year_indx: 0,
         season: 'annual',
         metric: Object.keys(opts.all_metrics)[0],
-        summary: 'state',
+        summary: 'county',
       },
     }
   });
