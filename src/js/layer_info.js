@@ -84,116 +84,6 @@ var available_layers = [
     "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_description.html.",
   },
   {
-    "id": "ma_historical_consecutive_dry_days",
-    "folder": "Climate Data.Precipitation.Consecutive Dry Days",
-    "name": "Consecutive Dry Days (Past)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-     "description": "Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_projected_consecutive_dry_days",
-    "folder": "Climate Data.Precipitation.Consecutive Dry Days",
-    "name": "Consecutive Dry Days (Future)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Projected changes in annual or seasonal mean consecutive dry days. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_historical_temperature",
-    "folder": "Climate Data.Temperature",
-    "name": "Temperatures (Past)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Annual or seasonal mean temperature over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_projected_temperature",
-    "folder": "Climate Data.Temperature",
-    "name": "Temperatures (Future)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Projected changes in annual or seasonal mean temperature. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_projected_degree_days",
-    "folder": "Climate Data.Temperature",
-    "name": "Degree Days (Future)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Projected changes in annual or seasonal mean degree-days. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_historical_degree_days",
-    "folder": "Climate Data.Temperature",
-    "name": "Degree Days (Past)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Annual or seasonal mean degree-days over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_historical_days_below_temp",
-    "folder": "Climate Data.Temperature",
-    "name": "Days Below Temperature Thresholds (Past)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Number of days per season or annually with temperature below threshold values over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_projected_days_below_temp",
-    "folder": "Climate Data.Temperature",
-    "name": "Days Below Temperature Thresholds (Future)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Projected changes in the number of days per season or annually with temperature below threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_historical_days_above_temp",
-    "folder": "Climate Data.Temperature",
-    "name": "Days Above Temperature Thresholds (Past)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Number of days per season or annually with temperature above threshold values over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
-    "id": "ma_projected_days_above_temp",
-    "folder": "Climate Data.Temperature",
-    "name": "Days Above Temperature Thresholds (Future)",
-    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
-    "description": "Projected changes in the number of days per season or annually with temperature above threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
-    "metadata_url": "http://loca.ucsd.edu/"
-  },
-  {
     "id": "ma_historical_precipitation",
     "folder": "Climate Data.Precipitation",
     "name": "Precipitation (Past)",
@@ -201,7 +91,7 @@ var available_layers = [
     "description": "Annual or seasonal total precipitation over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
     "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/precipitation.json",
     "metadata_url": "http://loca.ucsd.edu/"
   },
   {
@@ -212,7 +102,29 @@ var available_layers = [
     "description": "Projected changes in annual or seasonal total precipitation. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
     "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/precipitation.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_historical_consecutive_dry_days",
+    "folder": "Climate Data.Precipitation.Consecutive Dry Days",
+    "name": "Consecutive Dry Days (Past)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+     "description": "Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/consecutive_dry_days.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_projected_consecutive_dry_days",
+    "folder": "Climate Data.Precipitation.Consecutive Dry Days",
+    "name": "Consecutive Dry Days (Future)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Projected changes in annual or seasonal mean consecutive dry days. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/consecutive_dry_days.json",
     "metadata_url": "http://loca.ucsd.edu/"
   },
   {
@@ -223,7 +135,7 @@ var available_layers = [
     "description": "Number of days per season or annually with precipitation above or below threshold values over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
     "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/precip_events.json",
     "metadata_url": "http://loca.ucsd.edu/"
   },
   {
@@ -234,7 +146,95 @@ var available_layers = [
     "description": "Projected changes in the number of days per season or annually with precipitation above or below threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
     "source_url": "http://loca.ucsd.edu/",
-    "download_url": "",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/precip_events.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_historical_temperature",
+    "folder": "Climate Data.Temperature",
+    "name": "Temperatures (Past)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Annual or seasonal mean temperature over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/temperature.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_projected_temperature",
+    "folder": "Climate Data.Temperature",
+    "name": "Temperatures (Future)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Projected changes in annual or seasonal mean temperature. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/temperature.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_projected_degree_days",
+    "folder": "Climate Data.Temperature.Degree Days",
+    "name": "Degree Days (Future)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Projected changes in annual or seasonal mean degree-days. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/degree_days.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_historical_degree_days",
+    "folder": "Climate Data.Temperature.Degree Days",
+    "name": "Degree Days (Past)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Annual or seasonal mean degree-days over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/degree_days.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_historical_days_below_temp",
+    "folder": "Climate Data.Temperature.Thresholds",
+    "name": "Days Below Temperature Thresholds (Past)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Number of days per season or annually with temperature below threshold values over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/below_temp_thresholds.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_projected_days_below_temp",
+    "folder": "Climate Data.Temperature.Thresholds",
+    "name": "Days Below Temperature Thresholds (Future)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Projected changes in the number of days per season or annually with temperature below threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/below_temp_thresholds.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_historical_days_above_temp",
+    "folder": "Climate Data.Temperature.Thresholds",
+    "name": "Days Above Temperature Thresholds (Past)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Number of days per season or annually with temperature above threshold values over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/above_temp_thresholds.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "ma_projected_days_above_temp",
+    "folder": "Climate Data.Temperature.Thresholds",
+    "name": "Days Above Temperature Thresholds (Future)",
+    "sectors": ["Agriculture/Forestry","Buildings","Coastal Zones","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Transportation/Infrastructure","Water Resources"],
+    "description": "Projected changes in the number of days per season or annually with temperature above threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/above_temp_thresholds.json",
     "metadata_url": "http://loca.ucsd.edu/"
   },
 /*  {
@@ -363,7 +363,7 @@ var available_layers = [
     "folder": "Energy",
     "name": "Power Plants",
     "description": "Operable electric generating plants in the Massachusetts by energy source. This includes all plants that are operating, on standby, or short- or long-term out of service with a combined nameplate capacity of 1 MW or more.",
-    "source": "US Energry Information Administration",
+    "source": "US Energy Information Administration",
     "source_url": "https://www.eia.gov/",
     "sectors": ["Economy","Energy","Local Government","Public Safety/Emergency Response"],
     "download_url": "https://www.eia.gov/maps/map_data/PowerPlants_US_EIA.zip",
