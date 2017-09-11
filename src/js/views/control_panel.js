@@ -566,6 +566,7 @@ Views.ControlPanel.observe("layers.available_ids", function (available_ids) {
 Views.ControlPanel.observe("sectors.selected", function (search_string) {
   var cp = Views.ControlPanel;
   Controllers.Layers.update_layer_tree(cp);
+  Controllers.Layers.expand_all_layers(cp);
 });
 
 Views.ControlPanel.observe("layers.search_string", function (search_string) {
