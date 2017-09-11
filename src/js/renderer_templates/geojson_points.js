@@ -36,7 +36,7 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
   };
 
   renderer.render = function (map, active_layer, z_index) {
-    alert("This is not converted");
+    //alert("This is not converted");
     renderer.update_legend(active_layer);
     renderer.create_leaflet_layers(map, active_layer);
 

@@ -42,8 +42,13 @@ var available_layers = [
   {
     "id": "boundary_huc8",
     "folder": "Boundaries",
-    "name": "Watersheds",
+    "name": "Watersheds (HUC8)",
     "sectors": ["Agriculture/Forestry","Coastal Zones","Local Government","Natural Resources/Habitats","Recreation","Water Resources"],
+    "description": "NRCS Watershed Boundary Dataset (WBD), as of 7/17/2017. The Watershed Boundary Dataset (WBD) defines the areal extent of surface water drainage to a point, accounting for all land and surface areas. Watershed Boundaries are determined solely upon science-based hydrologic principles, not favoring any administrative boundaries or special projects, nor particular program or agency. The intent of defining Hydrologic Units (HU) for the Watershed Boundary Dataset is to establish a baseline drainage boundary framework, accounting for all land and surface areas. At a minimum, the WBD is being delineated and georeferenced to the USGS 1:24,000 scale topographic base map meeting National Map Accuracy Standards (NMAS). Hydrologic units are given a Hydrologic Unit Code (HUC). For example, a hydrologic region has a 2-digit HUC. A HUC describes where the unit is in the country and the level of the unit. ",
+    "source": "USDA Natural Resources Conservation Service",
+    "source_url": "https://www.nrcs.usda.gov",
+    "download_url": "https://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState",
+    "metadata_url": "https://gdg.sc.egov.usda.gov/Catalog/ProductDescription/WBD.html"
   },
 /*  {
     "id": "boundary_state",
@@ -352,6 +357,17 @@ var available_layers = [
     "sectors": ["Economy","Energy","Local Government","Public Safety/Emergency Response"],
     "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/pubutil.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/pubutil.html",
+  },
+  {
+    "id": "power_plants",
+    "folder": "Energy",
+    "name": "Power Plants",
+    "description": "",
+    "source": "",
+    "source_url": "",
+    "sectors": ["Economy","Energy","Local Government","Public Safety/Emergency Response"],
+    "download_url": "",
+    "metadata_url": "",
   },
   {
     "id": "aquifers",
