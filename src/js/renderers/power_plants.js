@@ -37,7 +37,7 @@ RendererTemplates.geojson_points("power_plants", {
     return "<strong>Name: " + feature.properties.plant_name + "</strong></br>" +
            "Description: " + feature.properties.source_des + "<br/>"+
            "Specs: " + feature.properties.tech_desc + "<br/>"+
-           "<a href='https://www.eia.gov/electricity/data/browser/#/plant/" + feature.properties.plant_code + "' target='_blank_'>View in Electricity City Browser</a><br/>"+
+           "<a href='https://www.eia.gov/electricity/data/browser/#/plant/" + feature.properties.plant_code + "' target='_blank_'>View in Electricity Data Browser</a><br/>"+
           "</br>"+
            Renderers.utils.zoom_to_location_link( feature.geometry );
   },

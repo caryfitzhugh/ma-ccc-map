@@ -403,6 +403,18 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/trnslns.html",
   },
   {
+    "id": "nlcd",
+    "folder": "Land Cover",
+    "name": "National Land Cover Dataset",
+    "description": "The Impervious Surface raster layer represents impervious surfaces covering the Commonwealth of Massachusetts. The surfaces were extracted using semi-automated techniques by Sanborn Map Company from 50-cm Vexcel UltraCam near infrared orthoimagery that was acquired in April 2005 as part of the Color Ortho Imagery project. The pixel size for the impervious surface data is 1-meter.",
+    "description": "National Land Cover Dataset (NLCD). NLCD 2011 is a National Land Cover Database classification scheme based primarily on Landsat data along with ancillary data sources, such as topography, census and agricultural statistics, soil characteristics, wetlands, and other land cover maps. NLCD is a 21-class land cover classification scheme that has been applied consistently across the conterminous U.S. at a spatial resolution of 30 meters.",
+      "source": "USGS",
+      "source_url": "http://www.mrlc.gov",
+      "sectors": "Agriculture,Ecosystems,Buildings and Transportation",
+      "download_url": null,
+      "metadata_url": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-#sec-dates",
+  },
+  {
     "id": "impervious_surface",
     "folder": "Land Cover",
     "name": "Impervious Surfaces",
