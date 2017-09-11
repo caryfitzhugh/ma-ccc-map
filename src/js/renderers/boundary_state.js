@@ -1,9 +1,6 @@
 RendererTemplates.wms("boundary_state", {
-
   parameters: {
-    //min_zoom: 10,
-    //max_zoom: 20,
-    opacity: 100,
+    opacity: 70,
     options: {
 
     }
@@ -11,24 +8,24 @@ RendererTemplates.wms("boundary_state", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: "http://giswebservices.massgis.state.ma.us/geoserver/wms",
+  url: CDN(GEOSERVER + "/ma/wms/"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.OUTLINE25K_ARC',
+      layers: 'ma:state_boundary',
       format: "image/png",
       opacity: 0,
-      //zIndex: 1,
+      zIndex: -1,
       transparent: true,
     };
   },
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
 
-    return "http://giswebservices.massgis.state.ma.us/geoserver/wms/" +
+    return CDN(GEOSERVER + "/ma/wms/")  +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.OUTLINE25K_ARC&"+
-          "QUERY_LAYERS=massgis:GISDATA.OUTLINE25K_ARC&"+
+          "REQUEST=GetFeatureInfo&LAYERS=ma:state_boundary"+
+          "QUERY_LAYERS=ma:state_boundary&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -42,7 +39,7 @@ RendererTemplates.wms("boundary_state", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.OUTLINE25K_ARC&format=image/png")}}'/>
+        <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:state_boundary&format=image/png'/> State Boundary
       </div>
   `,
   info_template: `
@@ -50,9 +47,11 @@ RendererTemplates.wms("boundary_state", {
         <label> {{name}} </label>
       </div>
       <div class='col-xs-10'>
+        {{#json.features}}
           <div>
-            Massachussetts
+            {{properties.name}} Watershed
           </div>
+        {{/json.features}}
       </div>
   `
 });
