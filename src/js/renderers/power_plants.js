@@ -1,11 +1,22 @@
 RendererTemplates.geojson_points("power_plants", {
   parameters: {
-    opacity: 100,
+    opacity: false,
     options: {
+      power_plants_to_key: {
+        "solar": "Solar",
+        "natural gas": "Natural Gas",
+        "petroleum": "Petroleum",
+        "hydroelectric":"Hydroelectric",
+        "biomass":"Biomass",
+        "wind":"Wind",
+        "nuclear":"Nuclear",
+        "coal":"Coal",
+        "pumped storage":"Pumped Storage"
+      }
     }
   },
   url: CDN(GEOSERVER + "/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:power_plants&maxFeatures=500&outputFormat=application%2Fjson"),
-  update_legend: null,
+
   pointToLayer: function (feature, latlng) {
     var icon_url;
     icon_url = './img/PowerPlant_' + feature.properties.primsource + '.png'
@@ -19,23 +30,10 @@ RendererTemplates.geojson_points("power_plants", {
         title: feature.properties.plant_name
     });
   },
+
   popupContents: function (feature) {
-
-    var power_plants_to_key = {
-      "solar": "Solar",
-      "natural gas": "Natural Gas",
-      "petroleum": "Petroleum",
-      "hydroelectric":"Hydroelectric",
-      "biomass":"Biomass",
-      "wind":"Wind",
-      "nuclear":"Nuclear",
-      "coal":"Coal",
-      "pumped storage":"Pumped Storage"
-    };
-
     var index = feature.properties.reason_cls
-    //var desc = beach_closures_descriptions[index];
-    //console.log(index,power_plants_to_key[index])
+
     return "<strong>Name: " + feature.properties.plant_name + "</strong></br>" +
            "Description: " + feature.properties.source_des + "<br/>"+
            "Specs: " + feature.properties.tech_desc + "<br/>"+
@@ -45,8 +43,12 @@ RendererTemplates.geojson_points("power_plants", {
   },
   legend_template: `
       <div class='detail-block show-confidence'>
-        <label> Legend: </label>
-        <img src='{{icon_url}}'/>
+        {{#u.to_sorted_values_from_hash(parameters.options.power_plants_to_key)}}
+          <div style='width: 50%; float: left;'>
+            <img src={{'./img/PowerPlant_' + key + '.png'}}>
+            <strong>{{value}}</strong>
+          </div>
+        {{/u.to_sorted_values_from_hash(parameters.options.power_plants_to_key)}}
       </div>
-  `
+  `,
 });
