@@ -48,7 +48,6 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
       return null;
     },
     render: function (map, active_layer, pane) {
-      debugger;
       load_data_url(opts.url)
       .then((data) => {
         Renderers.create_leaflet_layer_async(
