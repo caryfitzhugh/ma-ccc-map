@@ -2,6 +2,7 @@ RendererTemplates.ma_historical_climate_data("ma_historical_temperature", {
   title: "MA Historical Temps",
   legend: "Temperature &deg;F",
   legend_precision: 2,
+  info_legend: "&deg; ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/temperature.json",
   color_ranges: {
       'tmax': colorbrewer.OrRd[9],

@@ -2,6 +2,7 @@ RendererTemplates.ma_historical_climate_data("ma_historical_days_above_temp", {
   title: "MA Historical Days Above Temp ",
   legend: "Days",
   legend_precision: 0,
+  info_legend: " Days ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/above_temp_thresholds.json",
   color_ranges: {
     'gt90': colorbrewer.Oranges[9],
