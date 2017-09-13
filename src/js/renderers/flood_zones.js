@@ -50,7 +50,7 @@ RendererTemplates.wms("flood_zones", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Zone: {{properties.ZONE}}
+            {{properties.LABEL}}
           </div>
         {{ else }}
           Unknown / No Response

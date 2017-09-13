@@ -53,7 +53,7 @@ RendererTemplates.wms("tax_parcels", {
             Owner: {{properties.OWNER1}}
           </div>
         {{ else }}
-          Unknown / No Response
+         Zoom in to view and query the tax parcels layer.
         {{/json.features}}
       </div>
   `

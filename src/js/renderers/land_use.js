@@ -50,7 +50,7 @@ RendererTemplates.wms("land_use", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            No additional information for this layer.
+            {{properties.LU05_DESC}} 
           </div>
         {{ else }}
           Unknown / No Response

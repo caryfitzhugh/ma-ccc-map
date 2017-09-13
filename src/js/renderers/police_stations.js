@@ -1,6 +1,6 @@
 RendererTemplates.wms("police_stations", {
   parameters: {
-    opacity: 70,
+    opacity: 100,
     options: {
 
     }
@@ -48,7 +48,8 @@ RendererTemplates.wms("police_stations", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.NAME}} ({{properties.ADDRESS}})
+            {{properties.NAME}}<br>
+            {{properties.ADDRESS}}, {{properties.CITY}}, {{properties.STATE}}
           </div>
         {{ else }}
           Unknown / No Response

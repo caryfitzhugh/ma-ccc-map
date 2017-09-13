@@ -22,11 +22,10 @@ RendererTemplates.esri("hurricane_surge", {
   esri_opts: function (active_layer) {
 
     return {
-      url: CDN("http://tiles3.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/Hurr_Surge_Inun_Zones/MapServer"),
-      layers: [ 0 ],
+      url: CDN("http://tiles4.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/Hurr_Surge_Inun_Zones/MapServer"),
+      layers: 0,
       attribution: 'unkn',
-      f:"image",
-      clickable: false
+      f:"image"
     };
   },
 });

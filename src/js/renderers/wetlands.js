@@ -8,7 +8,7 @@ RendererTemplates.wms("wetlands", {
     }
   },
   clone_layer_name: function(active_layer) {
-    return active_layer.name;
+    return active_layer.name + " Copy";
   },
   url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {

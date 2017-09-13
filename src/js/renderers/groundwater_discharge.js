@@ -1,6 +1,6 @@
 RendererTemplates.wms("groundwater_discharge", {
   parameters: {
-    opacity: 70,
+    opacity: 100,
 /*    min_zoom: 12,
     max_zoom: 20,*/
     options: {

@@ -24,7 +24,7 @@ RendererTemplates.wms("boundary_state", {
 
     return CDN(GEOSERVER + "/ma/wms/")  +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=ma:state_boundary"+
+          "REQUEST=GetFeatureInfo&LAYERS=ma:state_boundary&"+
           "QUERY_LAYERS=ma:state_boundary&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
@@ -49,7 +49,7 @@ RendererTemplates.wms("boundary_state", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.name}} Watershed
+            State of Massachussetts
           </div>
         {{/json.features}}
       </div>
