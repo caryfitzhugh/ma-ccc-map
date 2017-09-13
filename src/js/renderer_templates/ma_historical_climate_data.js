@@ -7,17 +7,14 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
     },
     info_template: `
         <div class='col-xs-2'>
-          <label> {{geojson.name}} </label>
+          <label> {{name}} <br> 
+          </label>
         </div>
-        <div class='col-xs-6'>
-          {{active_layer.parameters.years[active_layer.parameters.options.year_indx]}}
-          {{active_layer.parameters.all_seasons[active_layer.parameters.options.season]}}
-
-          ${opts.info_legend || ""}
-          {{{active_layer.parameters.all_metrics[active_layer.parameters.options.metric]}}}
+        <div class='col-xs-5'>
+          Model results for {{geojson.name}} {{active_layer.parameters.years[active_layer.parameters.options.year_indx]}}, ({{active_layer.parameters.all_seasons[active_layer.parameters.options.season]}}): 
         </div>
-        <div class='col-xs-4'>
-          {{geojson.data_value}}
+        <div class='col-xs-5'>
+          {{geojson.data_value}} ${opts.info_legend || ""} {{{active_layer.parameters.all_metrics[active_layer.parameters.options.metric]}}} 
         </div>
     `,
     legend_template: `

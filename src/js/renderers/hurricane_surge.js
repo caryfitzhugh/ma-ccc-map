@@ -1,8 +1,8 @@
 /*global _, Renderers, L */
 RendererTemplates.esri("hurricane_surge", {
   parameters: {
-    min_zoom: 10,
-    max_zoom: 20,
+
+
     opacity: 85,
     options: {
 
@@ -22,9 +22,9 @@ RendererTemplates.esri("hurricane_surge", {
   esri_opts: function (active_layer) {
 
     return {
-      url: CDN("https://tiles4.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/Hurr_Surge_Inun_Zones/MapServer"),
+      url: CDN("http://gisprpxy.itd.state.ma.us/arcgisserver/rest/services/MEMA/InundataionZones/MapServer"),
       layers: [ 0 ],
-      attribution: 'unkn',
+      attribution: 'MEMA',
       f:"image"
     };
   },
