@@ -12,7 +12,7 @@ RendererTemplates.esri("hurricane_surge", {
     <div class='detail-block show-confidence'>
     <div class='detail-block legend taccimo '>
       <label> Legend </label>
-      <img  src="img/nfhlLegend.png">
+      <img  src="img/hurricane_surge.png">
     </div>
   `,
   clone_layer_name: function (active_layer) {
@@ -22,8 +22,8 @@ RendererTemplates.esri("hurricane_surge", {
   esri_opts: function (active_layer) {
 
     return {
-      url: CDN("http://tiles4.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/Hurr_Surge_Inun_Zones/MapServer"),
-      layers: 0,
+      url: CDN("https://tiles4.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/Hurr_Surge_Inun_Zones/MapServer"),
+      layers: [ 0 ],
       attribution: 'unkn',
       f:"image"
     };
