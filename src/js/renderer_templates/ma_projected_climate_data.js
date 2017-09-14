@@ -8,17 +8,17 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     },
     info_template: `
         <div class='col-xs-2'>
-          <label> {{name}} <br> 
+          <label> {{name}} <br>
           </label>
         </div>
         <div class='col-xs-2'>
-          {{geojson.name}} 
+          {{geojson.name}}
         </div>
         <div class='col-xs-4'>
-          {{{active_layer.parameters.all_metrics[active_layer.parameters.options.metric]}}} ({{active_layer.parameters.all_seasons[active_layer.parameters.options.season]}} Average {{active_layer.parameters.years[active_layer.parameters.options.year_indx]-5}}-{{active_layer.parameters.years[active_layer.parameters.options.year_indx]+4}})        
+          {{{active_layer.parameters.all_metrics[active_layer.parameters.options.metric]}}} ({{active_layer.parameters.all_seasons[active_layer.parameters.options.season]}} Average {{active_layer.parameters.years[active_layer.parameters.options.year_indx]-5}}-{{active_layer.parameters.years[active_layer.parameters.options.year_indx]+4}})
         </div>
         <div class='col-xs-4'>
-          {{geojson.data_value}}${opts.info_legend || ""} 
+          {{geojson.data_value}}${opts.info_legend || ""}
         </div>
     `,
     legend_template: `
@@ -75,7 +75,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     data_url: opts.data_url,
     onLoadedData: (layer_data, active_layer) => {
       // Snag all the years which have the 'min' field
-      let min_years = _.uniq(
+      let min_years = _.filter(_.uniq(
         _.flatten(
           _.map(layer_data, (root) => {
             return _.compact(_.map(root, (yr_data, yr) => {
@@ -85,7 +85,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                   return null;
                 }
             }));
-        }))).sort();
+        }))), (v) => { return v >= 2020; }).sort();
       active_layer.parameters.years = min_years;
 
       // Calculate the color brewer bands.

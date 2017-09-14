@@ -127,9 +127,15 @@ Controllers.FeatureInfo = {
           } else if (renderer.find_geo_json) {
             var resp = renderer.find_geo_json(map, active_layer, evt);
 
-            cp.set("map_details.feature_info_responses."+response_id, {
-            active_layer: active_layer,
-            geojson: resp});
+            if (resp) {
+              cp.set("map_details.feature_info_responses."+response_id, {
+                active_layer: active_layer,
+                geojson: resp});
+            } else {
+              // It's an invalid request - so remove it.
+              let fir = cp.get("map_details.feature_info_requests");
+              cp.set("map_details.feature_info_requests", _.without(fir, _.find(fir, {response_id: response_id})));
+            }
           }
         });
     }
