@@ -1,8 +1,6 @@
 RendererTemplates.wms("transmission_lines", {
   parameters: {
-    opacity: 70,
-    min_zoom: 11,
-    max_zoom: 20,
+    opacity: 90,
     options: {
 
     }
@@ -21,7 +19,7 @@ RendererTemplates.wms("transmission_lines", {
       transparent: true,
     };
   },
-  get_feature_info_url: function (active_layer) {
+/*  get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
@@ -36,14 +34,14 @@ RendererTemplates.wms("transmission_lines", {
           "INFO_FORMAT=application%2Fjson&"+
           "SRS=EPSG:4326&"+
           "X=<%= x %>&Y=<%= y %>";
-  },
+  },*/
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
         <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.TRANSLINES_ARC&format=image/png")}}'/>
       </div>
   `,
-  info_template: `
+  /*info_template: `
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -56,5 +54,5 @@ RendererTemplates.wms("transmission_lines", {
           Unknown / No Response
         {{/json.features}}
       </div>
-  `
+  `*/
 });

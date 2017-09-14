@@ -50,7 +50,7 @@ RendererTemplates.wms("gas_providers", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.GAS_LABEL}}
+            TOWN OF {{properties.TOWN}}: {{properties.GAS_LABEL}}
           </div>
         {{ else }}
           Unknown / No Response

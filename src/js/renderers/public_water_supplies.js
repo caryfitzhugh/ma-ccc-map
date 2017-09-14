@@ -1,6 +1,6 @@
 RendererTemplates.wms("public_water_supplies", {
   parameters: {
-    opacity: 90,
+    opacity: 100,
     min_zoom: 14,
     max_zoom: 20,
     options: {
@@ -50,7 +50,8 @@ RendererTemplates.wms("public_water_supplies", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.SITE_NAME}} 
+            {{properties.SITE_NAME}}<br>
+            {{properties.TOWN}} 
           </div>
         {{ else }}
           Unknown / No Response

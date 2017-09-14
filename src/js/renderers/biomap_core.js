@@ -26,7 +26,7 @@ RendererTemplates.wms("biomap_core", {
       transparent: true,
     };
   },
-  get_feature_info_url: function (active_layer) {
+/*  get_feature_info_url: function (active_layer) {
     var layer = active_layer.parameters.layer;
 
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
@@ -42,18 +42,23 @@ RendererTemplates.wms("biomap_core", {
           "INFO_FORMAT=application%2Fjson&"+
           "SRS=EPSG%3A4326&"+
           "X=<%= x %>&Y=<%= y %>";
-  },
+  },*/
   legend_template: `
       <div class='detail-block show-confidence'>
-        <label> Variable: </label>
+        <label> Layer: </label>
         <select value='{{parameters.layer}}'>
         {{#u.to_sorted_values_from_hash(parameters.options.layer)}}
           <option value='{{key}}'>{{value}}</option>
         {{/u.to_sorted_values_from_hash(parameters.options.layer)}}
         </select>
       </div>
-       <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.{{parameters.options.layer.value}}&format=image/png")}}'/>
-  `,
+      <div class='detail-block show-confidence'>
+        <label> Legend: </label>
+          <img src='http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.{{parameters.layer}}&format=image/png'/>
+      </div>
+
+
+  `,/*
   info_template: `
       <div class='col-xs-2'>
         <label> {{name}} </label>
@@ -65,5 +70,5 @@ RendererTemplates.wms("biomap_core", {
           </div>
         {{/json.features}}
       </div>
-  `
+  `*/
 });

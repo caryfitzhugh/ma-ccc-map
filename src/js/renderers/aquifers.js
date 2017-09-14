@@ -50,7 +50,7 @@ RendererTemplates.wms("aquifers", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Yield= {{properties.YIELD_GPM}} 
+            Yield= {{properties.YIELD_GPM}} GPM
           </div>
         {{ else }}
           Unknown / No Response

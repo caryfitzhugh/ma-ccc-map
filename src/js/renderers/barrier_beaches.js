@@ -15,7 +15,7 @@ RendererTemplates.wms("barrier_beaches", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'ma:GISDATA.BARRIERB_POLY',
+      layers: 'ma:barrier_beaches',
       format: "image/png",
       opacity: 0,
       //zIndex: 1,
@@ -27,8 +27,8 @@ RendererTemplates.wms("barrier_beaches", {
 
     return "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms/" +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=ma:GISDATA.BARRIERB_POLY&"+
-          "QUERY_LAYERS=ma:GISDATA.BARRIERB_POLY&"+
+          "REQUEST=GetFeatureInfo&LAYERS=ma:barrier_beaches&"+
+          "QUERY_LAYERS=ma:barrier_beaches&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -42,7 +42,7 @@ RendererTemplates.wms("barrier_beaches", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.BARRIERB_POLY&format=image/png")}}'/> Barrier Beaches
+        <img src='{{CDN("http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms?request=GetLegendGraphic&LAYER=ma:barrier_beaches&format=image/png")}}'/> Barrier Beaches
       </div>
   `,
   info_template: `
@@ -52,7 +52,7 @@ RendererTemplates.wms("barrier_beaches", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Barrier Beach ID: {{properties.BBNAME}}
+            Beach Name: {{properties.bbname}} (ID={{properties.bbpolyid}})
           </div>
         {{/json.features}}
       </div>

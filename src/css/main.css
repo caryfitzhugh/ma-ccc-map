@@ -812,6 +812,9 @@ input[type="radio"], input[type="checkbox"] {
     user-select: none;
 }
 
+.leaflet-interactive {
+  stroke: black;
+}
 .leaflet-bottom .leaflet-control-scale {
   position: fixed;
   right: 0;

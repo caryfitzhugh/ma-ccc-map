@@ -19,7 +19,7 @@ RendererTemplates.wms("impervious_surface", {
       transparent: true,
     };
   },
-  get_feature_info_url: function (active_layer) {
+  /*get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
@@ -34,14 +34,14 @@ RendererTemplates.wms("impervious_surface", {
           "INFO_FORMAT=application%2Fjson&"+
           "SRS=EPSG:4326&"+
           "X=<%= x %>&Y=<%= y %>";
-  },
+  },*/
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
         <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.IMG_IMPERVIOUSSURFACE&format=image/png")}}'/>
       </div>
   `,
-  info_template: `
+/*  info_template: `
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -54,5 +54,5 @@ RendererTemplates.wms("impervious_surface", {
           Unknown / No Response
         {{/json.features}}
       </div>
-  `
+  `*/
 });

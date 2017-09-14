@@ -49,8 +49,8 @@ RendererTemplates.wms("wellhead_protection", {
           <option value='{{key}}'>{{value}}</option>
         {{/u.to_sorted_values_from_hash(parameters.options.layer)}}
         </select>
+        <img src='http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.{{parameters.layer}}&format=image/png'/>
       </div>
-       <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.{{parameters.options.layer.value}}&format=image/png")}}'/>
   `,
   info_template: `
       <div class='col-xs-2'>
