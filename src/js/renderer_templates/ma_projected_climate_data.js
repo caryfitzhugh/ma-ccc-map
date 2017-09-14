@@ -92,29 +92,34 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       // Get min / max values for all these metrics across all the years / seasons / etc.
       let metrics_ranges = {};
       _.each(layer_data, (root) => {
-        _.each(root, (years) => {
-          _.each(years, (yr_data) => {
-            _.each(yr_data, (season) => {
-              _.each(season, (value, metric) => {
-                if (!metrics_ranges[metric]) {
-                  metrics_ranges[metric] = {min: value, max: value};
-                }
-
-                if (metrics_ranges[metric].min > value) {
-                  metrics_ranges[metric].min = value;
-                }
-
-                if (metrics_ranges[metric].max < value) {
-                  metrics_ranges[metric].max = value;
-                }
-              });
+        _.each(root, (years, yr) => {
+          if (min_years.includes(parseInt(yr,10))) {
+            _.each(years, (yr_data, yr_data_source) => {
+              // Only want the projected ones (ignore obs)
+              if (['min','med','max'].includes(yr_data_source)) {
+                _.each(yr_data, (season, season_name) => {
+                  _.each(season, (value, metric) => {
+                    if (!metrics_ranges[metric]) {
+                      metrics_ranges[metric] = [];
+                    }
+                    metrics_ranges[metric].push(value);
+                  });
+                });
+              }
             });
-          });
+          }
         });
       });
 
       _.each(metrics_ranges, (values, key) => {
-        metrics_ranges[key].range = values.max - values.min;
+        values.sort();
+        let max = d3.max(values)
+        let min = d3.min(values);
+        let color_buckets = active_layer.parameters.color_ranges[key].length;
+        let quantiles = d3.range(0, color_buckets).map((q) =>  d3.quantile(values,(1/color_buckets) * q));
+        metrics_ranges[key] = {
+          quantiles: quantiles,
+          min: min, max: max, range: max-min};
       });
 
       active_layer.parameters.metrics_ranges = metrics_ranges;

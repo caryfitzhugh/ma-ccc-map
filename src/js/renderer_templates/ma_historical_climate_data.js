@@ -7,17 +7,17 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
     },
     info_template: `
         <div class='col-xs-2'>
-          <label> {{name}} <br> 
+          <label> {{name}} <br>
           </label>
         </div>
         <div class='col-xs-2'>
-          {{geojson.name}} 
+          {{geojson.name}}
         </div>
         <div class='col-xs-4'>
-          {{{active_layer.parameters.all_metrics[active_layer.parameters.options.metric]}}} ({{active_layer.parameters.all_seasons[active_layer.parameters.options.season]}} Average {{active_layer.parameters.years[active_layer.parameters.options.year_indx]-5}}-{{active_layer.parameters.years[active_layer.parameters.options.year_indx]+4}})        
+          {{{active_layer.parameters.all_metrics[active_layer.parameters.options.metric]}}} ({{active_layer.parameters.all_seasons[active_layer.parameters.options.season]}} Average {{active_layer.parameters.years[active_layer.parameters.options.year_indx]-5}}-{{active_layer.parameters.years[active_layer.parameters.options.year_indx]+4}})
         </div>
         <div class='col-xs-4'>
-          {{geojson.data_value}}${opts.info_legend || ""} 
+          {{geojson.data_value}}${opts.info_legend || ""}
         </div>
     `,
     legend_template: `
@@ -84,29 +84,32 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
       let metrics_ranges = {};
       _.each(layer_data, (root) => {
         _.each(root, (years) => {
-          _.each(years, (yr_data) => {
-            _.each(yr_data, (season) => {
+          if (years.obs) {
+            _.each(years.obs, (season) => {
+              // We should only be looking at "OBS"
               _.each(season, (value, metric) => {
                 if (!metrics_ranges[metric]) {
-                  metrics_ranges[metric] = {min: value, max: value};
+                  metrics_ranges[metric] = [];
                 }
-
-                if (metrics_ranges[metric].min > value) {
-                  metrics_ranges[metric].min = value;
-                }
-
-                if (metrics_ranges[metric].max < value) {
-                  metrics_ranges[metric].max = value;
-                }
+                metrics_ranges[metric].push(value);
               });
             });
-          });
+          }
         });
       });
 
       _.each(metrics_ranges, (values, key) => {
-        metrics_ranges[key].range = values.max - values.min;
+        values.sort();
+        let max = d3.max(values)
+        let min = d3.min(values);
+        let color_buckets = active_layer.parameters.color_ranges[key].length;
+        let quantiles = d3.range(0, color_buckets).map((q) =>  d3.quantile(values,(1/color_buckets) * q));
+
+        metrics_ranges[key] = {
+          quantiles: quantiles,
+          min: min, max: max, range: max-min};
       });
+
 
       active_layer.parameters.metrics_ranges = metrics_ranges;
     },

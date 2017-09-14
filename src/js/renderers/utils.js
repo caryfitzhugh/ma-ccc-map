@@ -118,6 +118,7 @@ var Renderers = {
   },
   get_leaflet_layer: function (map, active_layer, attributes)  {
     var active_leaflet_layer_id =  _.find(active_layer.leaflet_layer_ids, {id:stringify(attributes)});
+
     var result;
     if (active_leaflet_layer_id) {
       result = Renderers.lookup_layers(map, [active_leaflet_layer_id.leaflet_id])[0];
