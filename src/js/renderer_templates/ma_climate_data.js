@@ -45,7 +45,7 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
 
 
   let get_opts = function (active_layer) {
-    return active_layer.parameters.options;
+    return {options: active_layer.parameters.options, id: active_layer.id};
   };
   let loading = {};
 
