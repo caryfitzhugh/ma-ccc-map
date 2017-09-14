@@ -10,8 +10,8 @@ RendererTemplates.ma_projected_climate_data('ma_projected_temperature', {
     'tavg': colorbrewer.OrRd[9],
   },
   all_metrics: {
+    "tavg" : "Average Temp &deg;F",
     "tmin" : "Minimum Temp &deg;F",
     "tmax" : "Maximum Temp &deg;F",
-    "tavg" : "Average Temp &deg;F",
   },
 });

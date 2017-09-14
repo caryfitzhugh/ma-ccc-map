@@ -4,7 +4,6 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       let p = active_layer.parameters.options;
       var name =  opts.title + " " + p.scenario + " " + p.metric + " Y:" + active_layer.parameters.years[p.year_indx] + " S:" + p.season + " by " + p.summary;
       return name;
-      console.log(active_layer)
     },
     info_template: `
         <div class='col-xs-2'>
@@ -117,6 +116,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         let min = d3.min(values);
         let color_buckets = active_layer.parameters.color_ranges[key].length;
         let quantiles = d3.range(0, color_buckets).map((q) =>  d3.quantile(values,(1/color_buckets) * q));
+
         metrics_ranges[key] = {
           quantiles: quantiles,
           min: min, max: max, range: max-min};

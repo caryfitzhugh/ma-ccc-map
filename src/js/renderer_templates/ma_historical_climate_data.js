@@ -119,7 +119,10 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
       let colorize = RendererTemplates.ma_climate_data_colorize;
 
       try {
-        let year_data = layer_data[ma_trans[feature.properties.name]][active_layer.parameters.years[p.year_indx]];
+        let loc = ma_trans[feature.properties.name];
+        let year = active_layer.parameters.years[p.year_indx];
+        let year_data = layer_data[loc][year];
+
         let value = year_data['obs'][p.season][p.metric];
         feature.properties.data_value = value;
 

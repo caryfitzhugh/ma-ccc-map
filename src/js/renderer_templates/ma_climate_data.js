@@ -85,7 +85,7 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
   let load_geometry_url = (durl) =>  {
     return new Promise( (win, lose) => {
       if (RendererTemplates.ma_climate_data_cache[durl]) {
-        win(RendererTemplates.ma_climate_data_cache[durl])
+        win(_.cloneDeep(RendererTemplates.ma_climate_data_cache[durl]));
       } else  {
         if (!loading[durl]) {
           loading[durl] = true;
@@ -95,7 +95,7 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
             url: durl,
             success: function (json) {
               RendererTemplates.ma_climate_data_cache[durl] = json;
-              win(json);
+              win(_.cloneDeep(json));
             },
             error:   function (err) {
               lose();
@@ -141,8 +141,8 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
           () => {
             return new Promise((win, lose) => {
               load_geometry_url(geometries[active_layer.parameters.options.summary])
-              .then((data) => {
-                var layer = new L.GeoJSON(data, {
+              .then((geom_data) => {
+                var layer = new L.GeoJSON(geom_data, {
                   pointToLayer: opts.pointToLayer,
                   pane: pane,
                   onEachFeature: (feature, layer) => {
