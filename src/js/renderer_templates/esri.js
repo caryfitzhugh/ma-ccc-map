@@ -15,7 +15,12 @@ RendererTemplates.esri = function (layer_id, opts) {
           active_layer,
           get_esri_opts(active_layer),
           () => {
-            var layer = L.esri.dynamicMapLayer(_.merge({useCors: false, pane: pane}, get_esri_opts(active_layer)));
+            var layer = L.esri.dynamicMapLayer(
+                _.merge({useCors: false,
+                        pane: pane,
+                        minZoom: opts.parameters.min_zoom || 0,
+                        maxZoom: opts.parameters.max_zoom || 18},
+                        get_esri_opts(active_layer)));
             layer.on("requestsuccess", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
             layer.on("requesterror", function (err) { Views.ControlPanel.fire("tile-layer-loading-error", active_layer); });
             return layer;

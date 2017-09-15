@@ -1,7 +1,8 @@
 /*global _, Renderers, L */
 RendererTemplates.esri("hurricane_surge", {
   parameters: {
-
+    min_zoom: 9,
+    max_zoom: 20,
 
     opacity: 85,
     options: {

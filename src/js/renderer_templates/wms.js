@@ -15,7 +15,10 @@ RendererTemplates.wms = function (layer_id, opts) {
         get_wms_opts(active_layer),
         () => {
           var layer = new L.TileLayer.WMS(opts.url,
-            _.merge({pane: pane}, get_wms_opts(active_layer)));
+            _.merge({ pane: pane,
+                      minZoom: opts.parameters.min_zoom || 0,
+                      maxZoom: opts.parameters.max_zoom || 18},
+                    get_wms_opts(active_layer)));
           layer.on("tileload", function (loaded) {
             Views.ControlPanel.fire("tile-layer-loaded", active_layer);
           });
