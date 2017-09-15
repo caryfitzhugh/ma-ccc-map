@@ -3,6 +3,8 @@ RendererTemplates.base = function (layer_id, opts, impl) {
     {
       pickle: function (al) {
         al.leaflet_layer_ids = [];
+        delete al.loading_layers
+        delete al.templates;
       },
       clone_layer_name: opts.clone_layer_name,
       parameters: opts.parameters,
