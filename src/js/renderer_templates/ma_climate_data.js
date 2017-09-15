@@ -1,16 +1,9 @@
 RendererTemplates.ma_climate_data_cache = {};
 
 RendererTemplates.ma_climate_data_colorize = (metrics_range, value, colors) => {
-  let index = 0;
-  if (metrics_range.quantiles) {
-    // Should search for which bucket this goes in (
-    index = _.findLastIndex(metrics_range.quantiles, (qv) => { return value >= qv;});
-    if (index === -1) {
-      index = colors.length - 1;
-    }
-  } else {
-    console.log("Ack - no quantiles", index, metrics_range, value, colors);
-  }
+  // Should search for which bucket this goes in (
+  // -1 because we "pass" it.
+  let index = _.findIndex(metrics_range, (qv) => { return value <= qv;}) - 1;
   return colors[index];
 };
 

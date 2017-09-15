@@ -58,6 +58,7 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
 
       {{#{metrics: parameters.metrics_ranges[parameters.options.metric],
           legend: '` + opts.legend + `',
+          quantiled: true,
           precision: '` + opts.legend_precision + `',
           colors: parameters.color_ranges[parameters.options.metric]} }}
         {{> map_color_block_legend_template }}
@@ -81,35 +82,28 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
 
       // Calculate the color brewer bands.
       // Get min / max values for all these metrics across all the years / seasons / etc.
-      let metrics_ranges = {};
+      let data_values = {};
       _.each(layer_data, (root) => {
         _.each(root, (years) => {
           if (years.obs) {
             _.each(years.obs, (season) => {
               // We should only be looking at "OBS"
               _.each(season, (value, metric) => {
-                if (!metrics_ranges[metric]) {
-                  metrics_ranges[metric] = [];
+                if (!data_values[metric]) {
+                  data_values[metric] = [];
                 }
-                metrics_ranges[metric].push(value);
+                data_values[metric].push(value);
               });
             });
           }
         });
       });
 
-      _.each(metrics_ranges, (values, key) => {
+      let metrics_ranges = {};
+      _.each(data_values, (values, key) => {
         values.sort();
-        let max = d3.max(values)
-        let min = d3.min(values);
-        let color_buckets = active_layer.parameters.color_ranges[key].length;
-        let quantiles = d3.range(0, color_buckets).map((q) =>  d3.quantile(values,(1/color_buckets) * q));
-
-        metrics_ranges[key] = {
-          quantiles: quantiles,
-          min: min, max: max, range: max-min};
+        metrics_ranges[key] = d3.scaleQuantile().domain(values).range(active_layer.parameters.color_ranges[key]).quantiles();
       });
-
 
       active_layer.parameters.metrics_ranges = metrics_ranges;
     },

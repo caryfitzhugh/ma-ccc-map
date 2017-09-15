@@ -45,8 +45,8 @@
   {{>layer_import_modal_template}}
 </script>
 <script id='map_color_block_legend_template' type='text/ractive'/>
-  <div class='detail-block legend'>
-    <div class='color-legend'>{{{legend}}}</div>
+  <div class='detail-block legend {{quantiled ? 'quantiled' : ''}}'>
+    <div class='color-legend '>{{{legend}}}</div>
     {{#colors:i}}
       <div class='color-block' style="width: {{100.0 / colors.length}}%;">
         <svg width="100" height="100">

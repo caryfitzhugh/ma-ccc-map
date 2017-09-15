@@ -6,7 +6,7 @@ var ViewUtils = {
     if (!fixed && fixed !== 0) {
       fixed = 2;
     }
-    return metrics_range.quantiles[index].toFixed(fixed);
+    return metrics_range[index].toFixed(fixed);
   },
   to_sorted_values_from_hash(hsh) {
     var vals = _.reduce(hsh, (memo, v, k) => {
