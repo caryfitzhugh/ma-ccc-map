@@ -10,8 +10,8 @@ RendererTemplates.ma_projected_climate_data("ma_projected_extreme_precipitation"
     'gt4in': colorbrewer.Blues[7],
   },
   all_metrics: {
-    'gt1in': "Greater than 1\" Precipitation",
-    'gt2in': "Greater than 2\" Precipitation",
-    'gt4in': "Greater than 4\" Precipitation",
+    'gt1in': "Events > 1\" Precipitation",
+    'gt2in': "Events > 2\" Precipitation",
+    'gt4in': "Events > 4\" Precipitation",
   }
 });
