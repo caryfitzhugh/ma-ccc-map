@@ -2,8 +2,17 @@ RendererTemplates.ma_climate_data_cache = {};
 
 RendererTemplates.ma_climate_data_colorize = (metrics_range, value, colors) => {
   // Should search for which bucket this goes in (
-  // -1 because we "pass" it.
-  let index = _.findIndex(metrics_range, (qv) => { return value <= qv;}) - 1;
+  // Start from left.
+  // Find the first quantile which our value is LESS than.
+  //    if it's < [0], it returns immediately.
+  //    error case is if it's > [last], which is -1
+  //    and we set that to the last bucket index.
+  let index = _.findIndex(metrics_range, (qv) => { return value <= qv;});
+
+  if (index === -1 ) {
+    index = metrics_range.length - 1;
+  }
+
   return colors[index];
 };
 

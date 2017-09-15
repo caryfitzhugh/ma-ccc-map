@@ -6,7 +6,11 @@ var ViewUtils = {
     if (!fixed && fixed !== 0) {
       fixed = 2;
     }
-    return metrics_range[index].toFixed(fixed);
+    if (index < metrics_range.length) {
+      return metrics_range[index].toFixed(fixed);
+    } else {
+      return "";
+    }
   },
   to_sorted_values_from_hash(hsh) {
     var vals = _.reduce(hsh, (memo, v, k) => {

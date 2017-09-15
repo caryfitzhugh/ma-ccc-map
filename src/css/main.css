@@ -165,7 +165,6 @@ input[type="radio"], input[type="checkbox"] {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  white-space: nowrap;
   color: #063;
   background: white;
   cursor: pointer;
@@ -186,7 +185,8 @@ input[type="radio"], input[type="checkbox"] {
 .layer-controls .search-header .sector-select .sector-selection-dropdown {
   position: absolute;
   top: 72px;
-  right: 5px;
+  right: 10px;
+  left: 10px;
   background: white;
   border: 1px solid black;
   padding:1em;
