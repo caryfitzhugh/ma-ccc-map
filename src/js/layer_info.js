@@ -577,7 +577,7 @@ var available_layers = [
     "source_url": "http://www.nhc.noaa.gov/",
     "sectors": ["Buildings","Coastal Zones","Economy","Local Government","Natural Resources/Habitats","Public Safety/Emergency Response","Transportation/Infrastructure","Water Resources"],
     "download_url": null,
-    "metadata_url": "http://tiles3.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/Hurr_Surge_Inun_Zones/MapServer",
+    "metadata_url": "http://gisprpxy.itd.state.ma.us/arcgisserver/rest/services/MEMA/InundataionZones/MapServer",
   },
   {
     "id": "wind_power",
