@@ -270,7 +270,13 @@ Controllers.Layers = {
         }
 
         if (add_layer && current_sectors.length > 0) {
-          add_layer = _.intersection(layer.sectors, current_sectors).length > 0;
+          add_layer = _.any(layer.sectors, (layer_sector) => {
+            return _.any(current_sectors, (current_sector) => {
+              let cs =current_sector.toLowerCase()  ;
+              let ls = layer_sector.toLowerCase();
+              return cs === ls;
+            });
+          });
         }
 
         if (add_layer) {
