@@ -50,17 +50,6 @@ var available_layers = [
     "download_url": "https://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState",
     "metadata_url": "https://gdg.sc.egov.usda.gov/Catalog/ProductDescription/WBD.html"
   },
-/*  {
-    "id": "boundary_state",
-    "folder": "Boundaries",
-    "name": "State",
-    "description": "These polygon and line datalayers are available that represent the outline (boundary) of the Commonwealth of Massachusetts:",
-    "source": "MassGIS",
-    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
-    "sectors": [""],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/outline25k.zip",
-    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/outline.html",
-  },*/
   {
     "id": "boundary_state",
     "folder": "Boundaries",
@@ -592,7 +581,7 @@ var available_layers = [
   },
   {
     "id": "prime_forest",
-    "folder": "Agriculture","Forestry",
+    "folder": "Agriculture/Forestry",
     "name": "Prime Forest Land",
     "description": "Using primarily the NRCS/MassGIS Soils data, the basic procedure was to classify potentially forested land into nine different categories based on potential average timber productivity of white pine and red oak “…per acre per year at culmination of mean annual increment. Site index values are at age 50.” Other data sets were used to refine this classification, including aspect, land cover, riparian, slope position, wetlands, hydrologic soil association and unique areas.  With the January 2013 update the dataset is complete statewide.",
     "source": "DCR, Bureau of Forestry, Management Forestry Program",
@@ -603,7 +592,7 @@ var available_layers = [
   },
   {
     "id": "tree_atlas",
-    "folder": "Agriculture","Forestry",
+    "folder": "Agriculture/Forestry",
     "name": "USFS Climate Change Atlas - Tree Species",
     "description": "Modeled importance value (IV) of 20 Massachusetts native tree species for three climate conditions: 1) current climate (1961-1990 average); 2) future climate (2071-2100 average) with IPCC scenario B1 (significant conservation and reduction of CO2 emissions); and 3) future climate (2071-2100 average) with IPCC scenario A1FI (high emissions, no modification in current emission trends). Importance Value measures the dominance of a tree species in a forest, based on the relative frequency, density, and basal area of the species. For more information on the models and to explore more tree species and climate scenarios, visit the US Forest Service Climate Change Atlas: http://www.fs.fed.us/nrs/atlas/",
     "source": "USDA Forest Service Northern Research Station",
@@ -612,7 +601,6 @@ var available_layers = [
     "download_url": null,
     "metadata_url": null,
   },
-
 ];
 
 var desired_active_on_load = [
