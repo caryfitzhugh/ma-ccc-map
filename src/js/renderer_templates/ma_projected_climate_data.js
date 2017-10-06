@@ -19,7 +19,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         <div class='col-xs-3'>
           {{active_layer.parameters.years[active_layer.parameters.options.year_indx]-5}}-{{active_layer.parameters.years[active_layer.parameters.options.year_indx]+4}} (mean)
         </div>
-        
+
         <div class='col-xs-1'>
           {{geojson.data_value}}
         </div>
@@ -138,7 +138,10 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       } catch( e) {
         feature.properties.data_value = null;
 
-        console.log('failed to find value for ', p.metric, feature.properties.name, layer_data);
+        console.log('failed to find value for ', p.metric,
+                    "Feature Name:", feature.properties.name,
+                    ma_trans[feature.properties.name],
+                    "Available Names:", Object.keys(layer_data));
         let rgb = `transparent`;//rgb(${gray}, ${gray}, ${gray})`
         layer.setStyle({fillColor: rgb, color: rgb});
       }
@@ -151,6 +154,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       all_summaries: {
         "county": "County",
         "state": "State",
+        "basin": "Drainage Basin",
         //"watershed": "HUC8 Watershed",
         //"6km": "6km Bounding Box",
       },

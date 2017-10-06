@@ -19,7 +19,7 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
         <div class='col-xs-3'>
           {{active_layer.parameters.years[active_layer.parameters.options.year_indx]-5}}-{{active_layer.parameters.years[active_layer.parameters.options.year_indx]+4}} (mean)
         </div>
-        
+
         <div class='col-xs-1'>
           {{geojson.data_value}}
         </div>
@@ -142,7 +142,7 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
       all_summaries: {
         "county": "County",
         "state": "State",
-        //"watershed": "HUC8 Watershed",
+        "basin": "Drainage Basin",
         //"6km": "6km Bounding Box",
       },
       all_seasons: {

@@ -32,23 +32,43 @@ RendererTemplates.ma_climate_data_translation = {
   "Plymouth County, MA": "Plymouth",
   "Suffolk County, MA": "Suffolk",
   "Worcester County, MA": "Worcester",
+  // Basins
+  "Blackstone Basin": "Blackstone",
+  "Boston Harbor Basin": "Boston Harbor",
+  "Buzzards Bay Basin": "Buzzards Bay",
+  "Cape Cod Basin": "Cape Cod",
+  "Charles Basin": "Charles",
+  "Chicopee Basin": "Chicopee",
+  "Connecticut Basin": "Connecticut",
+  "Deerfield Basin": "Deerfield",
+  "Farmington Basin": "Farmington",
+  "French Basin": "French",
+  "Housatonic Basin": "Housatonic",
+  "Hudson Basin":"Hudson",
+  "Islands Basin": "Islands",
+  "Ipswich Basin": "Ipswich",
+  "Merrimack Basin": "Merrimack",
+  "Millers Basin": "Millers",
+  "Narragansett Basin": "Narragansett Bay & Mt. Hope Bay Shore",
+  "Nashua Basin": "Nashua",
+  "North Coastal": "North Coastal",
+  "Parker Basin": "Parker",
+  "Quinebaug Basin": "Quinebaug",
+  "Shawsheen Basin": "Shawsheen",
+  "South Coastal Basin": "South Coastal",
+  "SuAsCo Basin":"SuAsCo",
+  "Taunton Basin":"Taunton",
+  "Ten Mile Basin":"Ten Mile",
+  "Westfield Basin":"Westfield",
 };
 
 RendererTemplates.ma_climate_data = function (layer_id, opts) {
   let geometries = {
     "county": "https://repository.nescaum-ccsc-dataservices.com/geofocuses/bulk_geojson/?ids=1545%2C%201724%2C%201646%2C%201644%2C%201596%2C%201554%2C%201645%2C%201622%2C%201676%2C%201606%2C%201708%2C%201555%2C%201725%2C%201730",
     "state": "https://repository.nescaum-ccsc-dataservices.com/geofocuses/bulk_geojson/?ids=1922",
-    "watershed": "" ,
-    "6km": "" ,
+    "basin": "https://repository.nescaum-ccsc-dataservices.com/geofocuses/bulk_geojson/?ids=2086%2C2087%2C2088%2C2089%2C2090%2C2091%2C2092%2C2093%2C2094%2C2095%2C2096%2C2097%2C2098%2C2099%2C2100%2C2101%2C2102%2C2103%2C2104%2C2105%2C2106%2C2107%2C2108%2C2109%2C2110%2C2111%2C2112",
+    //"6km": "" ,
   }
-
-  let all_geometries = {
-    "county": "County",
-    "state": "State",
-    "watershed": "HUC8 Watershed",
-    "6km": "6km Bounding Box",
-  }
-
 
   // This takes an active layer and returns a hash of uniquely identifying data (including parameters)
   // This relates a set of params (sliders/toggles/etc) with a leaflet layer.
