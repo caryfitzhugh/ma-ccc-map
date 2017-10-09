@@ -51,7 +51,7 @@ RendererTemplates.ma_climate_data_translation = {
   "Millers Basin": "Millers",
   "Narragansett Basin": "Narragansett Bay & Mt. Hope Bay Shore",
   "Nashua Basin": "Nashua",
-  "North Coastal": "North Coastal",
+  "North Coastal Basin": "North Coastal",
   "Parker Basin": "Parker",
   "Quinebaug Basin": "Quinebaug",
   "Shawsheen Basin": "Shawsheen",
