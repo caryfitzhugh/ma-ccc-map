@@ -29,7 +29,8 @@ module.exports = function (grunt) {
       },
       vendor_images: {
         expand: true,
-        src: "src/vendor/leaflet-1.0.3/dist/images/*",
+        cwd: "src/vendor/leaflet-1.0.3/dist/images",
+        src: "*",
         dest: "dist/vendor/leaflet-1.0.3/dist/images/",
       },
       images: {
