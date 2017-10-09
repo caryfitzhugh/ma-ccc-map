@@ -24,8 +24,9 @@ module.exports = function (grunt) {
         dest: "dist/ZeroClipboard.swf"
       },
       vendor: {
-        src: "src/vendor/leaflet-1.0.3/dist/leaflet.css",
-        dest: "dist/vendor/leaflet-1.0.3/dist/leaflet.css",
+        expand: true,
+        src: "src/vendor/leaflet-1.0.3/dist/**", //leaflet.css",
+        dest: "dist/vendor/leaflet-1.0.3/dist/", ///leaflet.css",
       },
       images: {
         expand: true,
