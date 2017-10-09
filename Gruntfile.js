@@ -27,6 +27,11 @@ module.exports = function (grunt) {
         src: "src/vendor/leaflet-1.0.3/dist/leaflet.css",
         dest: "dist/vendor/leaflet-1.0.3/dist/leaflet.css",
       },
+      vendor_images: {
+        expand: true,
+        src: "src/vendor/leaflet-1.0.3/dist/images/*",
+        dest: "dist/vendor/leaflet-1.0.3/dist/images/",
+      },
       images: {
         expand: true,
         cwd: "src",
@@ -92,5 +97,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF", "copy:vendor"]);
+  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF", "copy:vendor", "copy:vendor_images"]);
 }
