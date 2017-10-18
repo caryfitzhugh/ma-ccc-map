@@ -359,6 +359,17 @@ var available_layers = [
     "metadata_url": "https://www.eia.gov/maps/layer_info-m.php",
   },
   {
+    "id": "tide_guage_slr",
+    "folder": "Coastal Zones",
+    "name": "Tide Guage Data",
+    "description": "",
+    "source": "",
+    "source_url": "",
+    "sectors": [""],
+    "download_url": "",
+    "metadata_url": "",
+  },
+  {
     "id": "aquifers",
     "folder": "Water Resources",
     "name": "Aquifers",
