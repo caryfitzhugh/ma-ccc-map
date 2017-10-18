@@ -30,9 +30,16 @@ RendererTemplates.geojson_points("tide_guage_slr", {
   url: CDN(GEOSERVER + "/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:tide_guage_slr&maxFeatures=1000&outputFormat=application%2Fjson"),
 
   pointToLayer: function (feature, latlng) {
-    return L.circleMarker(latlng, {
-        radius: feature.properties.p17*2,
-        title: feature.properties.name
+    var icon_url;
+    icon_url = './img/PowerPlant_hydroelectric.png'
+    return L.marker(latlng, {
+        icon: L.icon({
+            iconUrl: icon_url,
+            iconSize: [21, 24],
+            iconAnchor: [11, 24],
+            popupAnchor: [0, -22]
+        }),
+        title: feature.properties.plant_name
     });
   },
 
