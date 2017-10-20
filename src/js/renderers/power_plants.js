@@ -17,7 +17,7 @@ RendererTemplates.geojson_points("power_plants", {
   },
   url: CDN(GEOSERVER + "/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:power_plants&maxFeatures=500&outputFormat=application%2Fjson"),
 
-  pointToLayer: function (feature, latlng) {
+  pointToLayer: function (active_layer, feature, latlng) {
     var icon_url;
     icon_url = './img/PowerPlant_' + feature.properties.primsource + '.png'
     return L.marker(latlng, {
@@ -42,7 +42,7 @@ RendererTemplates.geojson_points("power_plants", {
            Renderers.utils.zoom_to_location_link( feature.geometry );
   },
   legend_template: `
-      <div class='detail-block show-confidence'>
+      <div class='detail-block show-confidence' style='float: left; clear: both;'>
         {{#u.to_sorted_values_from_hash(parameters.options.power_plants_to_key)}}
           <div style='width: 50%; float: left;'>
             <img src={{'./img/PowerPlant_' + key + '.png'}}>

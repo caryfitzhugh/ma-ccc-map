@@ -1229,3 +1229,25 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   width: 100%;
 }
+
+.tide-guage-slr-icon  {
+  width: auto;
+  display: block;
+}
+.tide-guage-slr-icon .percentile {
+  display: inline-block;
+  width: 10px;
+  height: 50px;
+}
+.tide-guage-slr-icon .percentile-17 {
+  background: rgb(0, 128,0);
+}
+.tide-guage-slr-icon .percentile-50 {
+  background: rgb(0, 128,128);
+}
+.tide-guage-slr-icon .percentile-83 {
+  background: rgb(128, 128,128);
+}
+.tide-guage-slr-icon .percentile-99 {
+  background: rgb(255, 128,128);
+}

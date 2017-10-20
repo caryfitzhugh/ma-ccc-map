@@ -56,8 +56,14 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
           get_opts(active_layer),
           () => {
             return new Promise((win, lose) => {
-              var layer = new L.GeoJSON(data, {
-                pointToLayer: opts.pointToLayer,
+              let features = opts.selectData ? opts.selectData(active_layer, data.features) : data.features;
+
+              var layer = new L.GeoJSON(Object.assign({}, data, {features: features}), {
+                pointToLayer: function(feature, latlng) {
+                  if (opts.pointToLayer) {
+                    return opts.pointToLayer(active_layer, feature, latlng);
+                  }
+                },
                 pane: pane,
                 onEachFeature: (feature, layer) => {
                   if (opts.onEachGeometry) {
@@ -76,19 +82,18 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
             var opacity = Renderers.opacity(active_layer);
             var layers = Renderers.get_all_leaflet_layers(map,active_layer);
             var active_leaflet_layer = Renderers.get_leaflet_layer(map, active_layer, get_opts(active_layer))
-            let base_style = {
-              "weight": '1'
-            };
 
             _.each(layers, function (layer) {
               // Hide the ones which aren't active
               if (active_leaflet_layer && active_leaflet_layer._leaflet_id === layer._leaflet_id) {
-                layer.setStyle((feature) => {
-                  return _.merge({}, base_style, {opacity: opacity, fillOpacity: Math.max(0, opacity - 0.2)});
+                Object.keys(layer._layers).forEach((key) => {
+                  let point = layer._layers[key];
+                  point.setOpacity(opacity);
                 });
               } else {
-                layer.setStyle((feature) => {
-                  return _.merge({}, base_style, {opacity: 0, fillOpacity: 0})
+                Object.keys(layer._layers).forEach((key) => {
+                  let point = layer._layers[key];
+                  point.setOpacity(0);
                 });
               }
             });

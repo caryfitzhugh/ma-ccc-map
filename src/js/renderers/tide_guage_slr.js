@@ -1,45 +1,65 @@
 RendererTemplates.geojson_points("tide_guage_slr", {
   parameters: {
     opacity: false,
-    year: "2000",
-    percentile: "17",
-    rcp: "4.5",
+    rcps: [4.5,
+           8.5],
+    percentiles: [
+        "All",
+        17,
+        50,
+        83,
+        99],
+   years: [
+        2000,
+        2010,
+        2020,
+        2030,
+        2040,
+        2050
+        ],
     options: {
-      rcp: {
-        "4.5": "4.5",
-        "8.5": "8.5"
-      },
-      percentile: {
-        "17": "17",
-        "50": "50",
-        "83": "83",
-        "99": "99"
-      },
-
-      year: {
-        "2000": "2000",
-        "2010": "2010",
-        "2020": "2020",
-        "2030": "2030",
-        "2040": "2040",
-        "2050": "2050"
-
-      }
+      year_indx: 0,
+      percentile_indx: 0,
+      rcp_indx: 0,
     }
   },
+
   url: CDN(GEOSERVER + "/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:tide_guage_slr&maxFeatures=1000&outputFormat=application%2Fjson"),
 
-  pointToLayer: function (feature, latlng) {
-    var icon_url;
-    icon_url = './img/PowerPlant_hydroelectric.png'
+  selectData: function (active_layer, all_data) {
+    let year = active_layer.parameters.years[active_layer.parameters.options.year_indx];
+    let rcp = active_layer.parameters.rcps[active_layer.parameters.options.rcp_indx];
+
+    return _.reduce(all_data, function (all, feature) {
+      if (year === feature.properties.year) {
+        if (rcp === feature.properties.rcp) {
+          all.push(feature);
+        }
+      }
+
+      return all;
+    }, []);
+  },
+  pointToLayer: function (active_layer, feature, latlng) {
+    // Find
+    let percentile = active_layer.parameters.percentiles[active_layer.parameters.options.percentile_indx];
+    let values = [];
+    let params = active_layer.parameters;
+    if (percentile === 'All') {
+      values.push(['17', feature.properties.p17])
+      values.push(['50', feature.properties.p50])
+      values.push(['83', feature.properties.p83])
+      values.push(['99', feature.properties.p99])
+    } else {
+      values.push([percentile, feature.properties["p"+percentile]]);
+    }
     return L.marker(latlng, {
-        icon: L.icon({
-            iconUrl: icon_url,
-            iconSize: [21, 24],
-            iconAnchor: [11, 24],
-            popupAnchor: [0, -22]
-        }),
-        title: feature.properties.plant_name
+        icon: L.divIcon({
+            className: 'tide-guage-slr-icon',
+            html: values.map((v) => {
+                return `<div class='bar percentile percentile-${v[0]}'> ${v[1]} </div>`;
+              }).join(" ")
+            })
     });
   },
 
@@ -52,13 +72,30 @@ RendererTemplates.geojson_points("tide_guage_slr", {
            Renderers.utils.zoom_to_location_link( feature.geometry );
   },
   legend_template: `
+      <div class='detail-block opacity'>
+        <label  decorator='tooltip:Use slider to adjust Year'> Year: </label>
+        <input type="range" value="{{parameters.options.year_indx}}"
+          min="0"
+          max="{{parameters.years.length-1}}">
+        {{parameters.years[parameters.options.year_indx]}}
+      </div>
+
       <div class='detail-block show-confidence'>
-        {{#u.to_sorted_values_from_hash(parameters.options.tide_guage_slr_to_key)}}
-          <div style='width: 50%; float: left;'>
-            <img src={{'./img/PowerPlant_' + key + '.png'}}>
-            <strong>{{value}}</strong>
-          </div>
-        {{/u.to_sorted_values_from_hash(parameters.options.tide_guage_slr_to_key)}}
+        <label decorator='tooltip:Choose a Model'> Model: </label>
+        <select value='{{parameters.options.rcp_indx}}'>
+          {{#u.to_sorted_values_from_hash(parameters.rcps)}}
+            <option value='{{key}}'>{{value}}</option>
+          {{/u.to_sorted_values_from_hash(parameters.rcps)}}
+        </select>
+      </div>
+
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose a Percentile'> Percentile: </label>
+        <select value='{{parameters.options.percentile_indx}}'>
+          {{#u.to_sorted_values_from_hash(parameters.percentiles)}}
+            <option value='{{key}}'>{{value}}</option>
+          {{/u.to_sorted_values_from_hash(parameters.percentiles)}}
+        </select>
       </div>
   `,
 });
