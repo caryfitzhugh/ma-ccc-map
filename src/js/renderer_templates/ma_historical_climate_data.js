@@ -126,6 +126,18 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
 
         let color = colorize(active_layer.parameters.metrics_ranges[p.metric], value, active_layer.parameters.color_ranges[p.metric]);
         layer.setStyle({fillColor: color, color: color});
+
+        var popupContent = opts.legend  + "<br/>" + "<strong>" + p.metric + ":</strong> " + value;
+
+        layer.bindPopup(popupContent, {closeButton: false, offset: L.point(0, 0)});
+
+        layer.on('mouseover', function() { layer.openPopup();
+          layer.setStyle({weight: 3, });
+        });
+
+        layer.on('mouseout', function() { layer.closePopup();
+          layer.setStyle({weight: 1});
+        });
       } catch( e) {
         feature.properties.data_value = null;
 
