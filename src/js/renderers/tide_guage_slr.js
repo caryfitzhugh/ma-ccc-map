@@ -41,7 +41,6 @@ RendererTemplates.geojson_points("tide_guage_slr", {
                                   feature.properties.p83, feature.properties.p99]);
     });
     max = _.max(all_vals);
-
     let data = _.reduce(all_data, function (all, feature) {
       if (year === feature.properties.year) {
         if (rcp === feature.properties.rcp) {
@@ -115,6 +114,14 @@ RendererTemplates.geojson_points("tide_guage_slr", {
             <option value='{{key}}'>{{value}}</option>
           {{/u.to_sorted_values_from_hash(parameters.percentiles)}}
         </select>
+      </div>
+
+      <div class='detail-block show-confidence'>
+        <label> Legend: </label>
+        <svg width="12" height="12">
+          <rect width="12" height="12" style="fill:red;stroke-width:3;stroke:red" />
+        </svg>
+        Predicted Sea Level Rise (ft.)
       </div>
   `,
 });
