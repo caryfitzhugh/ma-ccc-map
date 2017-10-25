@@ -598,13 +598,13 @@
   </div>
 
   <div class='search-results'>
-    {{#layer_controls.search_results}}
+    {{#layer_controls.search_results.results}}
       <div class='result show-cursor'
             on-tap="zoom-to-search-result">
-        <a class='' decorator="tooltip:Focus map on {{properties.name}}">
+        <a class='' decorator="tooltip:Focus map on {{formatted_address}}">
           <span class='fa fa-circle-o'></span>
         </a>
-        <span> {{name}} </span>
+        <span> {{formatted_address}} </span>
       </div>
     {{/layer_controls.search_results}}
 

@@ -337,7 +337,7 @@ Views.ControlPanel.on({
   },
   "zoom-to-search-result": function (evt) {
     var map = Views.ControlPanel.get('map');
-    map.setView([evt.context.lat,evt.context.lng],16);
+    map.setView([evt.context.geometry.location.lat,evt.context.geometry.location.lng],16);
   },
   "print-map": function (evt) {
     var cp = Views.ControlPanel;
@@ -490,6 +490,7 @@ Views.ControlPanel.observe("layer_controls.search_string", function (str) {
   if (str.length > 1) {
     Controllers.Search.execute_search(str,
       function (search_str, results) {
+        console.log(search_str,results)
         if (cp.get("layer_controls.search_string") === search_str) {
          cp.set("layer_controls.search_results", results);
         }

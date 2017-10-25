@@ -27,6 +27,7 @@ RendererTemplates.wms("prime_forest", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.PRIMEFOREST_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.PRIMEFOREST_POLY&"+
+          "PROPERTYNAME=PRIME&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
