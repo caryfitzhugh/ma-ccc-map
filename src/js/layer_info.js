@@ -459,6 +459,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/depwetlands112000.html",
   },
   {
+    "id": "boundary_towns",
+    "folder": "Boundaries",
+    "name": "Towns",
+    "description": "TThe political boundary datalayer is a 1:25,000 scale datalayer containing the boundaries of the 351 communities (cities and towns) in Massachusetts. The seaward boundary of coastal communities has been defined at mean high water in this datalayer.",
+    "source": "MassGIS",
+    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
+    "sectors": ["Agriculture","Forestry","Coastal Zones","Economy","Local Government","Natural Resources/Habitats","Infrastructure","Water Resources"],
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/towns.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/towns.html",
+  },
+  {
     "id": "fire_stations",
     "folder": "Public Safety/Emergency Response",
     "name": "Fire Stations",
