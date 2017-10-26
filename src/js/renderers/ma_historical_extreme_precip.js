@@ -5,9 +5,9 @@ RendererTemplates.ma_historical_climate_data("ma_historical_extreme_precipitatio
   info_legend: " Events ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/precip_events.json",
   color_ranges: {
-    'gt1in': colorbrewer.Purples[7],
-    'gt2in': colorbrewer.Purples[7],
-    'gt4in': colorbrewer.Purples[7],
+    'gt1in': colorbrewer.Purples[8],
+    'gt2in': colorbrewer.Purples[8],
+    'gt4in': colorbrewer.Purples[8],
   },
   all_metrics: {
     'gt1in': "Events > 1\" Precipitation",

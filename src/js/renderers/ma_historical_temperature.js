@@ -5,9 +5,9 @@ RendererTemplates.ma_historical_climate_data("ma_historical_temperature", {
   info_legend: "&deg; ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/temperature.json",
   color_ranges: {
-      'tmax': colorbrewer.OrRd[9],
-      'tmin': colorbrewer.OrRd[9],
-      'tavg': colorbrewer.OrRd[9],
+      'tmax': colorbrewer.OrRd[8],
+      'tmin': colorbrewer.OrRd[8],
+      'tavg': colorbrewer.OrRd[8],
     },
   all_metrics: {
     "tavg" : "Average Temp &deg;F",

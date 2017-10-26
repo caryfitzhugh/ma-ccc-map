@@ -5,7 +5,7 @@ RendererTemplates.ma_historical_climate_data("ma_historical_precipitation", {
   info_legend: " Inches ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/precipitation.json",
   color_ranges: {
-    'tot': colorbrewer.Purples[7],
+    'tot': colorbrewer.Purples[8],
   },
   all_metrics: {
     "tot" : "Total Precipitation",
