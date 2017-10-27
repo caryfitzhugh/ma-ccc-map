@@ -1,9 +1,9 @@
-RendererTemplates.geojson_points("tide_guage_slr", {
+RendererTemplates.geojson_points("sea_level_rise", {
   parameters: {
     opacity: false,
     rcps: [4.5,
            8.5],
-    percentiles: [
+    likelihoods: [
         17,
         50,
         83,
@@ -22,9 +22,9 @@ RendererTemplates.geojson_points("tide_guage_slr", {
         2100
         ],
     options: {
-      year_indx: 0,
-      percentile_indx: 0,
-      rcp_indx: 0,
+      year_indx: 3,
+      likelihood_indx: 1,
+      rcp_indx: 1,
     }
   },
 
@@ -33,7 +33,7 @@ RendererTemplates.geojson_points("tide_guage_slr", {
   selectData: function (active_layer, all_data) {
     let year = active_layer.parameters.years[active_layer.parameters.options.year_indx];
     let rcp = active_layer.parameters.rcps[active_layer.parameters.options.rcp_indx];
-    let percentile = active_layer.parameters.percentiles[active_layer.parameters.options.percentile_indx];
+    let likelihood = active_layer.parameters.likelihoods[active_layer.parameters.options.likelihood_indx];
     let all_vals = [];
     let max = 0;
     all_data.forEach((feature) => {
@@ -44,10 +44,10 @@ RendererTemplates.geojson_points("tide_guage_slr", {
     let data = _.reduce(all_data, function (all, feature) {
       if (year === feature.properties.year) {
         if (rcp === feature.properties.rcp) {
-          let val = feature.properties["p"+percentile];
+          let val = feature.properties["p"+likelihood];
 
           let new_feature = _.cloneDeep(feature);
-          new_feature.properties.value = [percentile, val, ( val / max)];
+          new_feature.properties.value = [likelihood, val, ( val / max)];
           all.push(new_feature);
         }
       }
@@ -60,13 +60,16 @@ RendererTemplates.geojson_points("tide_guage_slr", {
   pointToLayer: function (active_layer, feature, latlng) {
     let v = feature.properties.value;
     let height = v[2] * 100;
+    // Forces signing on a number, returned as a string
+
     return L.marker(latlng, {
 
         icon: L.divIcon({
             className: 'tide-guage-slr-icon',
-            html: `<div class='bar percentile percentile-${v[0]}'>
+            iconAnchor: [0, 100],
+            html: `<div class='bar likelihood likelihood-${v[0]}'>
                 <div class='bar' style='height: ${height}%; width: 100%;'> </div>
-                <div class='label'>${v[1]}</div>
+                <div class='label' style="color:blue;">${Renderers.utils.addPlusSign(v[1])} ft</div>
             </div>`
             })
     });
@@ -75,16 +78,16 @@ RendererTemplates.geojson_points("tide_guage_slr", {
   popupContents: function (feature) {
     var index = feature.properties.reason_cls
 
-    return `<strong>Name: ${feature.properties.name}</strong></br>
-           <strong>Year:</strong>${feature.properties.year}<br/>
-           <strong>RCP:</strong>${feature.properties.rcp}<br/>
+    return `<h5>${feature.properties.name}</h5>
+           <strong>Year: </strong>${feature.properties.year}<br/>
+           <strong>Emissions Scenario: </strong>${feature.properties.rcp}<br/>
            <table>
-              <thead> <tr> <th> Percentile</th><th> Value </th></tr></thead>
+              <thead> <tr> <th> Likelihood</th><th> Value </th></tr></thead>
               <tbody>
-                <tr><td>17%</td><td>${feature.properties.p17}</td> </tr>
-                <tr><td>50%</td><td>${feature.properties.p50}</td> </tr>
-                <tr><td>83%</td><td>${feature.properties.p83}</td> </tr>
-                <tr><td>99%</td><td>${feature.properties.p99}</td> </tr>
+                <tr><td>Likely(17%)</td><td>${feature.properties.p17}</td> </tr>
+                <tr><td>Median50%)</td><td>${feature.properties.p50}</td> </tr>
+                <tr><td>Likely(83%)</td><td>${feature.properties.p83}</td> </tr>
+                <tr><td>Exceptionally Unlikely to Exceed (99.9%)</td><td>${feature.properties.p99}</td> </tr>
               </tbody>
            </table>` +
            Renderers.utils.zoom_to_location_link( feature.geometry );
@@ -99,29 +102,29 @@ RendererTemplates.geojson_points("tide_guage_slr", {
       </div>
 
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Model'> Model: </label>
+        <label decorator='tooltip:Choose an emissions Model'> Emissions Scenario: </label>
         <select value='{{parameters.options.rcp_indx}}'>
-          {{#u.to_sorted_values_from_hash(parameters.rcps)}}
-            <option value='{{key}}'>{{value}}</option>
-          {{/u.to_sorted_values_from_hash(parameters.rcps)}}
+          <option value='0'>Medium</option>
+          <option value='1'>High</option>
         </select>
       </div>
 
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Percentile'> Percentile: </label>
-        <select value='{{parameters.options.percentile_indx}}'>
-          {{#u.to_sorted_values_from_hash(parameters.percentiles)}}
-            <option value='{{key}}'>{{value}}</option>
-          {{/u.to_sorted_values_from_hash(parameters.percentiles)}}
+        <label decorator='tooltip:Choose a likelihood'> Likelihood: </label>
+        <select value='{{parameters.options.likelihood_indx}}'>
+          <option value='0'>Likely - Lower</option>
+          <option value='1'>Median</option>
+          <option value='2'>Likely - Upper</option>
+          <option value='3'>Exceptionally Unlikely to Exceed</option>
         </select>
       </div>
 
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
         <svg width="12" height="12">
-          <rect width="12" height="12" style="fill:red;stroke-width:3;stroke:red" />
+          <rect width="12" height="12" style="fill:blue;stroke-width:3;stroke:blue" />
         </svg>
-        Predicted Sea Level Rise (ft.)
+        Projected Sea Level Rise (ft)
       </div>
   `,
 });

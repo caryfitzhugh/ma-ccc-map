@@ -189,6 +189,14 @@ var Renderers = {
       } else if (geometry._northEast) {
         return `<a href='#' onclick='Renderers.zoom_to_bounding_box("${geometry.toBBoxString()}");'>Zoom to feature</a>`;
       }
+    },
+    addPlusSign(theNumber)
+    {
+        if(theNumber > 0){
+            return "+" + theNumber;
+        }else{
+            return theNumber.toString();
+        }
     }
   },
 };
