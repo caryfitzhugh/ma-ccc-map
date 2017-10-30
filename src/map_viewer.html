@@ -165,7 +165,7 @@
 
           <p>
             <strong>Quick Zoom</strong>
-            tab allows you to search for a location (town, country, watershed) in Massachusetts. The map will zoom to the location you select from the search results.
+            tab allows you to search for a location or address in and around Massachusetts. The map will zoom to the location you select from the search results.
           </p>
         {{/if "sidebar_intro" === wizard.steps[wizard.current_step]}}
 
@@ -176,7 +176,7 @@
             on the map itself to adjust the map view.
           </p>
           <p>
-            Use the controls in the upper right to <strong> zoom in and out </strong>.  You may also double-click on the map, or use your mouse scroll wheel to zoom.
+            Use the controls in the upper right to <strong> zoom in and out </strong>.  You may also double-click on the map, use your mouse scroll wheel, or hold down shift and draw a box with your mouse to zoom.
           </p>
 
           <p>
@@ -186,7 +186,7 @@
           <p>
             Click the <strong>Target</strong> icon (<span class='fa fa-crosshairs'></span>) to zoom to your current location
             <br>
-            <em>(note: your browser will request permission to locate you)</em>
+            <em>(note: your browser may request permission to locate you)</em>
           </p>
 
           <p>
@@ -204,6 +204,9 @@
           </p>
           <p>
             Once you find a layer you are interested in, you can click its name or checkbox to enable it. Once it is loaded it will display on the map. Some layers may take a few moments to load.
+          </p>
+          <p>
+            Use the 'Sectors' filter to find the layers relevant to various sectors.
           </p>
         {{/if "adding_things" === wizard.steps[wizard.current_step]}}
 
