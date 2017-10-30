@@ -69,7 +69,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
             iconAnchor: [0, 100],
             html: `<div class='bar likelihood likelihood-${v[0]}'>
                 <div class='bar' style='height: ${height}%; width: 100%;'> </div>
-                <div class='label' style="color:blue;">${Renderers.utils.addPlusSign(v[1])} ft</div>
+                <div class='label'>${Renderers.utils.addPlusSign(v[1])} ft</div>
             </div>`
             })
     });

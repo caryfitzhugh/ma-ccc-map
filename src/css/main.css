@@ -1248,9 +1248,9 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   width: 50px;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   left: 0px;
-  color: black;
+  color: blue;
 
 }
 .tide-guage-slr-icon .likelihood > div.bar {
