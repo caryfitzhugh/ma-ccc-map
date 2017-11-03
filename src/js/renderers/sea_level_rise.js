@@ -84,9 +84,9 @@ RendererTemplates.geojson_points("sea_level_rise", {
            <table>
               <thead> <tr> <th> Likelihood</th><th> Value </th></tr></thead>
               <tbody>
-                <tr><td>Likely(17%)</td><td>${feature.properties.p17}</td> </tr>
-                <tr><td>Median50%)</td><td>${feature.properties.p50}</td> </tr>
-                <tr><td>Likely(83%)</td><td>${feature.properties.p83}</td> </tr>
+                <tr><td>Likely (17%)</td><td>${feature.properties.p17}</td> </tr>
+                <tr><td>Median (50%)</td><td>${feature.properties.p50}</td> </tr>
+                <tr><td>Likely (83%)</td><td>${feature.properties.p83}</td> </tr>
                 <tr><td>Exceptionally Unlikely to Exceed (99.9%)</td><td>${feature.properties.p99}</td> </tr>
               </tbody>
            </table>` +

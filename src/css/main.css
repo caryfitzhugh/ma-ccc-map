@@ -1244,13 +1244,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 .tide-guage-slr-icon .likelihood > div.label {
   position: absolute;
-  bottom: -10px;
+  bottom: -15px;
   display: block;
   width: 50px;
   text-align: center;
-  font-size: 12px;
-  left: 0px;
-  color: blue;
+  font-size: 11px;
+  left: -15px;
+  color: black; 
+  text-shadow: white 0.1em 0.1em 0.2em;
 
 }
 .tide-guage-slr-icon .likelihood > div.bar {
@@ -1259,4 +1260,5 @@ input[type="radio"], input[type="checkbox"] {
   min-height: 1px;
   max-height: 100px;
   background: blue;
+  text-shadow: white 0.1em 0.1em 0.2em
 }
