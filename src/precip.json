@@ -1,0 +1,319 @@
+{
+  "Barnstable": {
+    "2030": {
+      "obs": {
+        "annual": {
+          "tot": 1.37    
+        },
+        "fall": {
+          "tot": -0.09    
+        },
+        "spring": {
+          "tot": 0.64    
+        },
+        "summer": {
+          "tot": 0.06    
+        },
+        "winter": {
+          "tot": 0.535
+        }
+      }
+    },
+    "2050": {
+      "obs": {
+        "annual": {
+          "tot": 2.1    
+        },
+        "fall": {
+          "tot": 0.145    
+        },
+        "spring": {
+          "tot": 0.875    
+        },
+        "summer": {
+          "tot": 0.275    
+        },
+        "winter": {
+          "tot": 0.685
+        }
+      }
+    },
+    "2070": {
+      "obs": {
+        "annual": {
+          "tot": 1.755    
+        },
+        "fall": {
+          "tot": 0.165   
+        },
+        "spring": {
+          "tot":  1.225    
+        },
+        "summer": {
+          "tot": 0.055    
+        },
+        "winter": {
+          "tot": 0.99
+        }
+      }
+    },
+    "2090": {
+      "obs": {
+        "annual": {
+          "tot": 2.315    
+        },
+        "fall": {
+          "tot": -0.03    
+        },
+        "spring": {
+          "tot": 1.195    
+        },
+        "summer": {
+          "tot": -0.26    
+        },
+        "winter": {
+          "tot": 1.435
+        }
+      }
+    }
+  },
+  "Berkshire": {
+    "2030": {
+      "obs": {
+        "annual": {
+          "tot": 2.56    
+        },
+        "fall": {
+          "tot": 0.405    
+        },
+        "spring": {
+          "tot": 0.835    
+        },
+        "summer": {
+          "tot": 0.675    
+        },
+        "winter": {
+          "tot": 0.605
+
+        }
+      }
+    },
+    "2050": {
+      "obs": {
+        "annual": {
+          "tot": 3.545    
+        },
+        "fall": {
+          "tot": 0.42    
+        },
+        "spring": {
+          "tot": 1.03    
+        },
+        "summer": {
+          "tot": 0.715    
+        },
+        "winter": {
+          "tot": 1.03
+
+        }
+      }
+    },
+    "2070": {
+      "obs": {
+        "annual": {
+          "tot": 4.02    
+        },
+        "fall": {
+          "tot": 0.315    
+        },
+        "spring": {
+          "tot": 1.525    
+        },
+        "summer": {
+          "tot": 1.055    
+        },
+        "winter": {
+          "tot": 1.65
+        }
+      }
+    },
+    "2090": {
+      "obs": {
+        "annual": {
+          "tot": 4.715    
+        },
+        "fall": {
+          "tot": 0.15    
+        },
+        "spring": {
+          "tot": 1.765    
+        },
+        "summer": {
+          "tot": 0.9    
+        },
+        "winter": {
+          "tot": 2.115
+        }
+      }
+    }
+  },
+  "Bristol": {
+    "2030": {
+      "obs": {
+        "annual": {
+          "tot":   1.865 
+        },
+        "fall": {
+          "tot": 0.32 
+        },
+        "spring": {
+          "tot": 0.835 
+        },
+        "summer": {
+          "tot": 0.205 
+        },
+        "winter": {
+          "tot": 0.67
+        }
+      }
+    },
+    "2050": {
+      "obs": {
+        "annual": {
+          "tot": 3.165 
+        },
+        "fall": {
+          "tot": 0.525 
+        },
+        "spring": {
+          "tot": 1.05 
+        },
+        "summer": {
+          "tot": 0.54 
+        },
+        "winter": {
+          "tot": 0.92
+        }
+      }
+    },
+    "2070": {
+      "obs": {
+        "annual": {
+          "tot": 3.215 
+        },
+        "fall": {
+          "tot": 0.415 
+        },
+        "spring": {
+          "tot": 1.435 
+        },
+        "summer": {
+          "tot": 0.64 
+        },
+        "winter": {
+          "tot": 1.385
+        }
+      }
+    },
+    "2090": {
+      "obs": {
+        "annual": {
+          "tot": 3.635 
+        },
+        "fall": {
+          "tot": 0.395 
+        },
+        "spring": {
+          "tot": 1.595 
+        },
+        "summer": {
+          "tot": 0.375 
+        },
+        "winter": {
+          "tot": 2.05
+        }
+      }
+    }
+  },
+  "Dukes": {
+    "2030": {
+      "obs": {
+        "annual": {
+          "tot": 1.155 
+        },
+        "fall": {
+          "tot": -0.22 
+        },
+        "spring": {
+          "tot": 0.505 
+        },
+        "summer": {
+          "tot": 0.095 
+        },
+        "winter": {
+          "tot": 0.495
+   
+        }
+      }
+    },
+    "2050": {
+      "obs": {
+        "annual": {
+          "tot": 1.435 
+        },
+        "fall": {
+          "tot": -0.105 
+        },
+        "spring": {
+          "tot": 0.81 
+        },
+        "summer": {
+          "tot": 0.38 
+        },
+        "winter": {
+          "tot": 0.5
+   
+        }
+      }
+    },
+    "2070": {
+      "obs": {
+        "annual": {
+          "tot": 1.52 
+        },
+        "fall": {
+          "tot": -0.04 
+        },
+        "spring": {
+          "tot": 0.895 
+        },
+        "summer": {
+          "tot": 0.165 
+        },
+        "winter": {
+          "tot": 0.755
+   
+        }
+      }
+    },
+    "2090": {
+      "obs": {
+        "annual": {
+          "tot": 1.66 
+        },
+        "fall": {
+          "tot": -0.27 
+        },
+        "spring": {
+          "tot": 1.11
+        },
+        "summer": {
+          "tot":  -0.19 
+        },
+        "winter": {
+          "tot": 1.28
+        }
+      }
+    }
+  }
+}

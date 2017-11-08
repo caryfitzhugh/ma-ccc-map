@@ -72,6 +72,17 @@ var available_layers = [
     "download_url": "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:state_mask&maxFeatures=50&outputFormat=SHAPE-ZIP",
     "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_description.html.",
   },
+   {
+    "id": "ma_precipitation",
+    "folder": "Climate Data & Projections",
+    "name": "Total Precipitation",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
+    "description": "Annual or seasonal total precipitation over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
+    "source": "University of California San Diego",
+    "source_url": "http://loca.ucsd.edu/",
+    "download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/precipitation.json",
+    "metadata_url": "http://loca.ucsd.edu/"
+  },
   {
     "id": "ma_historical_precipitation",
     "folder": "Climate Data & Projections.Precipitation.Past",
