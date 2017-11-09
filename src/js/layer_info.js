@@ -75,7 +75,7 @@ var available_layers = [
    {
     "id": "ma_precipitation",
     "folder": "Climate Data & Projections",
-    "name": "Total Precipitation",
+    "name": "Precip Deltas Test Layer",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "Annual or seasonal total precipitation over the period 1971-2000. Observational dataset: Livneh et al. (2015). Data Source: Statistically downscaled CMIP5 daily climate data using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
