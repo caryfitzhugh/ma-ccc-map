@@ -337,7 +337,7 @@ Views.ControlPanel.on({
   },
   "zoom-to-search-result": function (evt) {
     var map = Views.ControlPanel.get('map');
-    map.setView([evt.context.geometry.location.lat,evt.context.geometry.location.lng],16);
+    map.setView([evt.context.geometry.location.lat,evt.context.geometry.location.lng],15);
   },
   "print-map": function (evt) {
     var cp = Views.ControlPanel;

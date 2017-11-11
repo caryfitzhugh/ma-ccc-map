@@ -159,13 +159,13 @@
           </p>
 
           <p>
-            <strong>Legend</strong>
+            <strong>Controls & Legends</strong>
             tab provides map legend information, allows you to adjust the layer information and how it is shown in the map.
           </p>
 
           <p>
-            <strong>Locations</strong>
-            tab allows you to search for a location (town, country, watershed) in Massachusetts. The map will zoom to the location you select from the search results.
+            <strong>Quick Zoom</strong>
+            tab allows you to search for a location or address in and around Massachusetts. The map will zoom to the location you select from the search results.
           </p>
         {{/if "sidebar_intro" === wizard.steps[wizard.current_step]}}
 
@@ -176,7 +176,7 @@
             on the map itself to adjust the map view.
           </p>
           <p>
-            Use the controls in the upper right to <strong> zoom in and out </strong>.  You may also double-click on the map, or use your mouse scroll wheel to zoom.
+            Use the controls in the upper right to <strong> zoom in and out </strong>.  You may also double-click on the map, use your mouse scroll wheel, or hold down shift and draw a box with your mouse to zoom.
           </p>
 
           <p>
@@ -186,7 +186,7 @@
           <p>
             Click the <strong>Target</strong> icon (<span class='fa fa-crosshairs'></span>) to zoom to your current location
             <br>
-            <em>(note: your browser will request permission to locate you)</em>
+            <em>(note: your browser may request permission to locate you)</em>
           </p>
 
           <p>
@@ -204,6 +204,9 @@
           </p>
           <p>
             Once you find a layer you are interested in, you can click its name or checkbox to enable it. Once it is loaded it will display on the map. Some layers may take a few moments to load.
+          </p>
+          <p>
+            Use the 'Sectors' filter to find the layers relevant to various sectors.
           </p>
         {{/if "adding_things" === wizard.steps[wizard.current_step]}}
 
@@ -236,7 +239,7 @@
         {{/if "order_layers" === wizard.steps[wizard.current_step]}}
 
         {{#if "using_legends_tab" === wizard.steps[wizard.current_step]}}
-          <h1> Using Legends Tab </h1>
+          <h1> Using Controls & Legends Tab </h1>
           <p>
             Each layer has a set of buttons that vary depending on the functions available for that layer.
           </p>
@@ -280,13 +283,13 @@
         {{#if "advanced_layer_controls" === wizard.steps[wizard.current_step]}}
           <h1> Advanced Layer Controls </h1>
           <p>
-            Some layers, especially those in the <strong>Climate Data</strong> and <strong>Ecosystems</strong> folders, contain multiple datasets as part of the layer. These datasets can be accessed using customized controls found in the <strong>Legend</strong> tab once the layer is active.
+            Some layers, especially those in the <strong>Climate Data</strong> and <strong>Ecosystems</strong> folders, contain multiple datasets as part of the layer. These datasets can be accessed using customized controls found in the <strong>Controls & Legends</strong> tab once the layer is active.
           </p>
           <p>
             Use drop down menus, buttons and sliders to navigate to the data you are interested in. <em>Note: for most interactive layers, the legend color bar will automatically adjust based on which data you select to show in the map.</em>
           </p>
           <p>
-          You can also <strong>Clone</strong> (<span class='fa fa-clone'></span>) a specific dataset and add it to the map as a ‘stand-alone’ layer. This is helpful when comparing multiple datasets from one or more of these types of interactive layers. The new layer is added to the list in the <strong>Legend</strong> tab (but does <em>not</em> appear in the list on the <strong>Layers</strong> tab).
+          You can also <strong>Clone</strong> (<span class='fa fa-clone'></span>) a specific dataset and add it to the map as a ‘stand-alone’ layer. This is helpful when comparing multiple datasets from one or more of these types of interactive layers. The new layer is added to the list in the <strong>Controls & Legends</strong> tab (but does <em>not</em> appear in the list on the <strong>Layers</strong> tab).
           </p>
           <p>
             Most interactive layers include the ability to click on the map <span class='fa fa-map-marker'></span> to return a value for that location.
@@ -1006,7 +1009,7 @@
     <script src="./js/renderers/soils.js?__inline=true"></script>
     <script src="./js/renderers/surface_water_protection.js?__inline=true"></script>
     <script src="./js/renderers/tax_parcels.js?__inline=true"></script>
-    <script src="./js/renderers/tide_guage_slr.js?__inline=true"></script>
+    <script src="./js/renderers/sea_level_rise.js?__inline=true"></script>
     <script src="./js/renderers/transmission_lines.js?__inline=true"></script>
     <script src="./js/renderers/tree_atlas.js?__inline=true"></script>
     <script src="./js/renderers/wellhead_protection.js?__inline=true"></script>

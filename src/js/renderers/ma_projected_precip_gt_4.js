@@ -5,3 +5,4 @@ RendererTemplates.ma_projected_climate_data('ma_projected_precip_gt_4', {
   legend_units: " Events ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/precipgt4.json",
   color_range: colorbrewer.Purples[8]
+});
