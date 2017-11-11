@@ -63,7 +63,7 @@
     <div class='out-of-zoom-alerts'>
       {{#(out_of_view_layers(layers.active, map_state.zoom))}}
         <div class='alert alert-warning'>
-          <label>{{name}} </label>
+          <label>{{{name}}} </label>
           is not visible at this zoom level.
           <a class='btn btn-sm btn-primary' on-click='zoom-to-view-layer'> Zoom to Layer </a>
         </div>
@@ -309,7 +309,7 @@
     <div class='columns'>
       {{#layers.active}}
         <div class='active-layer'>
-          <label class='layer-name'> {{name}} </label>
+          <label class='layer-name'> {{{name}}} </label>
          {{> layer_controls_details_blocks_template}}
         </div>
       {{/layers.active}}
@@ -336,7 +336,7 @@
             {{#map_details.feature_info_responses[response_id]}}
               {{#error}}
                 <div class='col-xs-2'>
-                  <label> {{name}} </label>
+                  <label> {{{name}}} </label>
                 </div>
                 <div class='col-xs-10'>
                   <span class='error'> Error Loading </span>
@@ -352,7 +352,7 @@
               {{/error}}
             {{else}}
               <div class='col-xs-2'>
-                <label> {{name}} </label>
+                <label> {{{name}}} </label>
               </div>
               <div class='col-xs-10'>
                 <span> loading ...
@@ -448,7 +448,7 @@
         <div class='row'>
           <div class='col-xs-12'>
             <h2>
-              {{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).name}}
+              {{{get_layer_defaults(layers.defaults, layer_controls.current_layer_info).name}}}
               <small>{{layer_controls.current_layer_info}}</small>
             </h2>
           </div>
@@ -627,7 +627,7 @@
         {{else}}
           <span class='fa fa-square-o'></span>
         {{/if is_active}}
-        <label class='show-cursor'>{{name}}</label>
+        <label class='show-cursor'>{{{name}}}</label>
       </div>
 </script>
 <script id="layer_controls_layer_group_tree_template" type="text/ractive">
@@ -664,7 +664,7 @@
                  on-tap='show-layer-info'>
                 <span class='fa fa-info'> </span>
               </a>
-              <span>{{get_layer_defaults(layers.defaults, this).name}}</span>
+              <span>{{{get_layer_defaults(layers.defaults, this).name}}}</span>
             </li>
           {{/if}}
         {{/children}}
@@ -774,7 +774,7 @@
     <div decorator='{{parameters.no_sorting ? "" : "sortable"}}' class='active-layer'>
       {{#if "" === layer_load_state(layers_loading_states, layer_default_id)}}
         <div class='disable-active-layer-overlay'>
-          <label> Loading {{name}}...
+          <label> Loading {{{name}}}...
             <span class='fa fa-spinner fa-spin-custom'></span>
           </label>
         </div>
@@ -795,7 +795,7 @@
           {{#if !parameters.no_sorting}}
             <span decorator="tooltip:Drag to reorder layer" class='drag-handle fa fa-hand-stop-o'></span>
           {{/if !parameters.no_sorting}}
-          {{name}}
+          {{{name}}}
         </span>
       </label>
 
@@ -880,7 +880,7 @@
     {{#map_controls.base_layer_control_open }}
       <div class='control-details base-layers'>
         {{#each base_layers}}
-          <a class="base-layer show-cursor {{map_controls.active_base_layer === name ? 'active' : ''}}" on-tap="activate-base-layer">{{name}}</a>
+          <a class="base-layer show-cursor {{map_controls.active_base_layer === name ? 'active' : ''}}" on-tap="activate-base-layer">{{{name}}}</a>
         {{/each}}
       </div>
       <div class='map-control-bg' on-tap='toggle-base-layer-control'></div>
@@ -971,19 +971,28 @@
     <script src="./js/renderers/impervious_surface.js?__inline=true"></script>
     <script src="./js/renderers/land_use.js?__inline=true"></script>
     <script src="./js/renderers/ma_historical_consecutive_dry_days.js?__inline=true"></script>
-    <script src="./js/renderers/ma_projected_consecutive_dry_days.js?__inline=true"></script>
-    <script src="./js/renderers/ma_historical_extreme_precip.js?__inline=true"></script>
-    <script src="./js/renderers/ma_projected_extreme_precip.js?__inline=true"></script>
-    <script src="./js/renderers/ma_historical_precipitation.js?__inline=true"></script>
-    <script src="./js/renderers/ma_projected_precipitation.js?__inline=true"></script>
     <script src="./js/renderers/ma_historical_days_above_temp.js?__inline=true"></script>
-    <script src="./js/renderers/ma_projected_days_above_temp.js?__inline=true"></script>
     <script src="./js/renderers/ma_historical_days_below_temp.js?__inline=true"></script>
-    <script src="./js/renderers/ma_projected_days_below_temp.js?__inline=true"></script>
     <script src="./js/renderers/ma_historical_degree_days.js?__inline=true"></script>
-    <script src="./js/renderers/ma_projected_degree_days.js?__inline=true"></script>
+    <script src="./js/renderers/ma_historical_extreme_precip.js?__inline=true"></script>
+    <script src="./js/renderers/ma_historical_precipitation.js?__inline=true"></script>
     <script src="./js/renderers/ma_historical_temperature.js?__inline=true"></script>
-    <script src="./js/renderers/ma_projected_temperature.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_consecutive_dry_days.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_days_above_90.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_days_above_95.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_days_above_100.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_temp_lt_0.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_temp_lt_32.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_growing_degree_days.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_cooling_degree_days.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_heating_degree_days.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_precip_gt_1.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_precip_gt_2.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_precip_gt_4.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_precipitation.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_avg_temp.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_min_temp.js?__inline=true"></script>
+    <script src="./js/renderers/ma_projected_max_temp.js?__inline=true"></script>
     <script src="./js/renderers/nfhl.js?__inline=true"></script>
     <script src="./js/renderers/nlcd.js?__inline=true"></script>
     <script src="./js/renderers/noaa_slr.js?__inline=true"></script>

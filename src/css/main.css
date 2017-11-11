@@ -1261,3 +1261,17 @@ input[type="radio"], input[type="checkbox"] {
   max-height: 25px;
   background: red;
 }
+
+.active-year, .active-season {
+  background-color: rgba(0, 102, 51, 0.05);
+}
+tr.active-season td.active-year {
+  background-color: rgba(0, 102, 51, 0.3);
+}
+tr.smaller-header {
+  font-size: 70%;
+}
+th.deltas {
+  background: black;
+  color: white;
+}

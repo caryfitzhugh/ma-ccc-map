@@ -12,6 +12,12 @@ var ViewUtils = {
       return "";
     }
   },
+  sort_by: (arry, field) => {
+    return _.sortBy(arry, field);
+  },
+  capitalize: (str) => {
+    return _.capitalize(str);
+  },
   to_sorted_values_from_hash(hsh) {
     var vals = _.reduce(hsh, (memo, v, k) => {
           memo.push([k,v])
