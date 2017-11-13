@@ -97,7 +97,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       </div>
 
       {{#{metrics: parameters.metrics_ranges[parameters.options.season],
-          legend: 'Delta ` + opts.legend + `',
+          legend: '` + opts.legend + `',
           quantiled: true,
           precision: '` + opts.legend_precision + `',
           colors: parameters.color_range} }}
