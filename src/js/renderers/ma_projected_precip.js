@@ -1,4 +1,4 @@
-RendererTemplates.ma_projected_climate_data('ma_projected_precipitation', {
+RendererTemplates.ma_projected_climate_data('ma_projected_precip', {
   title: "MA Projected Precipitation",
   legend: "Inches",
   legend_precision: 1,
