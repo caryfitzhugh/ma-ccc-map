@@ -26,9 +26,11 @@ const findDataForMAProjectedData = (layer_data, area, season, year) => {
 
 RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
   RendererTemplates.ma_climate_data(layer_id, {
+   
     clone_layer_name: function(active_layer) {
-      let p = active_layer.parameters.options;
-      var name =  opts.title + " " + p.scenario + " " + p.metric + " Y:" + active_layer.parameters.years[p.year_indx] + " S:" + p.season + " by " + p.summary;
+       console.log(layer_id,opts)
+       let p = active_layer.parameters.options;
+      var name =  opts.title + " Y:" + active_layer.parameters.years[p.year_indx] + "s S:" + p.season + " by " + p.summary;
       return name;
     },
     info_template: `
@@ -45,16 +47,16 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
               </tr>
               <tr class='smaller-header'>
                 <th> </th>
-                <th> Actual ` + opts.legend_units + ` </th>
+                <th> ` + opts.title + ` (` + opts.legend_units + `) </th>
                 <th class='deltas' style='text-align: center;'
                     colspan='{{u.object_entries_count(active_layer.parameters.all_seasons)}}'>
-                    Deltas  ` + opts.legend_units + ` </th>
+                      ` + opts.legend + ` </th>
               </tr>
               <tr>
                 <th> Season </th>
-                <th> Baseline </th>
+                <th> Baseline (1970-2000)</th>
                 {{#active_layer.parameters.years}}
-                  <th> {{.}}</th>
+                  <th> {{.}}s</th>
                 {{/active_layer.parameters.years}}
               </tr>
             </thead>
@@ -81,11 +83,11 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         </select>
       </div>
       <div class='detail-block opacity'>
-        <label  decorator='tooltip:Use slider to adjust Year'> Year: </label>
+        <label  decorator='tooltip:Use slider to adjust Decade'> Decade: </label>
         <input type="range" value="{{parameters.options.year_indx}}"
           min="0"
           max="{{parameters.years.length-1}}">
-        {{parameters.years[parameters.options.year_indx]}}
+        {{parameters.years[parameters.options.year_indx]}}s
       </div>
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose a Season'> Season: </label>

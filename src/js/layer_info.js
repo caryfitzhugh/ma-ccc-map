@@ -288,7 +288,7 @@ var available_layers = [
     "metadata_url": "http://loca.ucsd.edu/"
   },
   {
-    "id": "ma_projected_days_above_90",
+    "id": "ma_projected_temp_gt_90",
     "folder": "Climate Projections.Temperature",
     "name": "Days > 90&deg;F (Projected)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
@@ -298,7 +298,7 @@ var available_layers = [
     "metadata_url": "http://loca.ucsd.edu/"
   },
   {
-    "id": "ma_projected_days_above_95",
+    "id": "ma_projected_temp_gt_95",
     "folder": "Climate Projections.Temperature",
     "name": "Days > 95&deg;F (Projected)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
@@ -308,7 +308,7 @@ var available_layers = [
     "metadata_url": "http://loca.ucsd.edu/"
   },
   {
-    "id": "ma_projected_days_above_100",
+    "id": "ma_projected_temp_gt_100",
     "folder": "Climate Projections.Temperature",
     "name": "Days > 100&deg;F (Projected)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
