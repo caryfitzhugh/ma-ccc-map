@@ -82,14 +82,15 @@ RendererTemplates.geojson_points("sea_level_rise", {
            <strong>Year: </strong>${feature.properties.year}<br/>
            <strong>Emissions Scenario: </strong>${feature.properties.rcp}<br/>
            <table>
-              <thead> <tr> <th> Likelihood</th><th> Value </th></tr></thead>
+              <thead> <tr> <th> Likelihood</th><th> Feet </th></tr></thead>
               <tbody>
-                <tr><td>Likely (17%)</td><td>${feature.properties.p17}</td> </tr>
+                <tr><td>Likely - Lower (17%)</td><td>${feature.properties.p17}</td> </tr>
                 <tr><td>Median (50%)</td><td>${feature.properties.p50}</td> </tr>
-                <tr><td>Likely (83%)</td><td>${feature.properties.p83}</td> </tr>
+                <tr><td>Likely - Upper (83%)</td><td>${feature.properties.p83}</td> </tr>
                 <tr><td>Exceptionally Unlikely to Exceed (99.9%)</td><td>${feature.properties.p99}</td> </tr>
               </tbody>
-           </table>` +
+           </table>
+           <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=${feature.properties.station_id}" target="_blank_">NOAA Home Page for this station</a><br>` +
            Renderers.utils.zoom_to_location_link( feature.geometry );
   },
   legend_template: `

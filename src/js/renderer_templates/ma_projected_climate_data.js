@@ -66,7 +66,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                   <td>{{u.capitalize(season)}}</td>
                   <td>{{baseline}}</td>
                   {{#u.sort_by(values, 'year')}}
-                    <td class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{delta}}</td>
+                    <td decorator="tooltip: Likely Range: {{range}}" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{delta}}</td>
                   {{/sort_by(values, 'year')}}
                 </tr>
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
@@ -101,6 +101,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       {{#{metrics: parameters.metrics_ranges[parameters.options.season],
           legend: '` + opts.legend + `',
           quantiled: true,
+          reversed: true,
           precision: '` + opts.legend_precision + `',
           colors: parameters.color_range} }}
         {{> map_color_block_legend_template }}

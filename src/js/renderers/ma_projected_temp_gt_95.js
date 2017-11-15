@@ -4,5 +4,5 @@ RendererTemplates.ma_projected_climate_data("ma_projected_temp_gt_95", {
   legend_precision: 1,
   legend_units: " Days ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/tempgt95.json",
-  color_ranges: colorbrewer.OrRd[6]
+  color_range: colorbrewer.OrRd[6]
 });
