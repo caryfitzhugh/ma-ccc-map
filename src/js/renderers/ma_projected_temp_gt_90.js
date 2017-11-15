@@ -1,5 +1,5 @@
 RendererTemplates.ma_projected_climate_data("ma_projected_temp_gt_90", {
-  title: "MA Projected Days > 90&deg;F",
+  title: "Days > 90&deg;F",
   legend: " Change in # days above 90&deg;F",
   legend_precision: 1,
   legend_units: " Days ",
