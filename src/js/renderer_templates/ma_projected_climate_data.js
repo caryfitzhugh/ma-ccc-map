@@ -42,7 +42,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
             <thead>
               <tr>
                 <th style='text-align: center;'
-                    colspan='{{u.object_entries_count(active_layer.parameters.all_seasons) + 2}}'> {{geojson.name}}
+                    colspan='{{u.object_entries_count(active_layer.parameters.all_seasons) + 2}}'> {{geojson.name}} {{geojson.geomtype}}
     </th>
               </tr>
               <tr class='smaller-header'>
@@ -141,12 +141,12 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     },
     onEachGeometry: (layer_data, active_layer, feature, layer) => {
       let p = active_layer.parameters.options;
-      let ma_trans = RendererTemplates.ma_climate_data_translation;
+      //let ma_trans = RendererTemplates.ma_climate_data_translation;
       let colorize = RendererTemplates.ma_climate_data_colorize;
 
       try {
         let location_data = findDataForMAProjectedData(layer_data,
-                                               ma_trans[feature.properties.name],
+                                               feature.properties.name,
                                                p.season,
                                                active_layer.parameters.years[p.year_indx]
                                               );
@@ -162,7 +162,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
 
         console.log('failed to find value for ', p.metric,
                     "Feature Name:", feature.properties.name,
-                    ma_trans[feature.properties.name],
+                    feature.properties.name,
                     "Available Names:", Object.keys(layer_data));
         let rgb = `transparent`;
         layer.setStyle({fillColor: rgb, color: rgb});
