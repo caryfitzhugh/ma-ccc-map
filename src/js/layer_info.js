@@ -51,6 +51,17 @@ var available_layers = [
     "metadata_url": "https://gdg.sc.egov.usda.gov/Catalog/ProductDescription/WBD.html"
   },
   {
+    "id": "huc10",
+    "folder": "Boundaries",
+    "name": "Watersheds (HUC10)",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Local Government","Natural Resources/Habitats","Recreation","Water Resources"],
+    "description": "This dataset is a digital hydrologic unit boundary layer that is at the  Watershed (10-digit) level. Each basin is identified by a unique Hydrologic Unit Code (HUC), as well a name, at each level. HUCs are identifiers as assigned to basin polygons by the U.S. Geological Survey (USGS).",
+    "source": "MassGIS",
+    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/nrcshuc.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/nrcshuc.html"
+  },
+  {
     "id": "boundary_state",
     "folder": "Boundaries",
     "name": "State Boundary",
