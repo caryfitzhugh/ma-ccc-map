@@ -532,6 +532,10 @@ input[type="radio"], input[type="checkbox"] {
 .active-layer .detail-block {
   line-height: 25px;
 }
+.active-layer .detail-block.baseline-label  {
+  text-align: center;
+  margin-top: -16px;
+}
 .active-layer .detail-block .labelled-range {
   position: relative;
   padding-bottom: 15px;
@@ -1250,7 +1254,7 @@ input[type="radio"], input[type="checkbox"] {
   text-align: center;
   font-size: 12px;
   left: -15px;
-  color: blue; 
+  color: blue;
   text-shadow: white 0.15em 0.15em 0.2em;
 
 }

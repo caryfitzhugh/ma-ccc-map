@@ -1,16 +1,33 @@
 var ViewUtils = {
+
+  add_sign: (val) => {
+    let sign = ' ';
+    if (val > 0) {
+      sign = '+';
+    } else if (val < 0) {
+      sign = '-';
+    }
+
+    return `<span class='sign'>${sign}</span>${val}`;
+  },
+
   object_entries_count: (obj) => {
     return Object.keys(obj).length;
   },
-  color_range_label: (metrics_range, colors, index, fixed) => {
+  color_range_label: (metrics_range, colors, index, fixed, signed) => {
+    let val = "";
     if (!fixed && fixed !== 0) {
       fixed = 2;
     }
     if (index < metrics_range.length) {
-      return metrics_range[index].toFixed(fixed);
-    } else {
-      return "";
+      val =  metrics_range[index].toFixed(fixed);
     }
+
+    if (signed) {
+      val = ViewUtils.add_sign(val);
+    }
+
+    return val;
   },
   sort_by: (arry, field) => {
     return _.sortBy(arry, field);

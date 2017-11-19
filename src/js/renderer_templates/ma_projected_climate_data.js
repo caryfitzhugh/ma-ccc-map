@@ -26,7 +26,7 @@ const findDataForMAProjectedData = (layer_data, area, season, year) => {
 
 RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
   RendererTemplates.ma_climate_data(layer_id, {
-   
+
     clone_layer_name: function(active_layer) {
        console.log(layer_id,opts)
        let p = active_layer.parameters.options;
@@ -66,7 +66,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                   <td>{{u.capitalize(season)}}</td>
                   <td>{{baseline}}</td>
                   {{#u.sort_by(values, 'year')}}
-                    <td decorator="tooltip: Likely Range: {{range}}" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{delta}}</td>
+                    <td decorator="tooltip: Likely Range: {{range}}" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{u.add_sign(delta)}}}</td>
                   {{/sort_by(values, 'year')}}
                 </tr>
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
@@ -101,7 +101,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       {{#{metrics: parameters.metrics_ranges[parameters.options.season],
           legend: '` + opts.legend + `',
           quantiled: true,
-          reversed: true,
+          signed: true,
           precision: '` + opts.legend_precision + `',
           colors: parameters.color_range} }}
         {{> map_color_block_legend_template }}
@@ -109,6 +109,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     `,
     data_url: opts.data_url,
     onLoadedData: (layer_data, active_layer) => {
+      let baselines = {};
       // Only do this ONCE.
       if (_.isEmpty(active_layer.parameters.metrics_ranges)) {
         let years = _.uniq(_.flatten(_.map(layer_data.features, (feature) => {
@@ -123,9 +124,12 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
 
         // Calculate the color brewer bands.
         // Get min / max values for all these metrics across all the years / seasons / etc.
+        // track baselines
         let data_values = {};
         _.each(layer_data.features, (feature) => {
+          //console.log(feature);
           _.each(feature.properties.data, (data) => {
+          //console.log("data:",feature, data.baseline);
             data_values[data.season] = data_values[data.season] || [];
             _.each(data.values, (value) => {
               data_values[data.season].push(value.delta);
