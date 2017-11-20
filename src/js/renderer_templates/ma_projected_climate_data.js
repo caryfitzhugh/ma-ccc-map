@@ -47,14 +47,14 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
               </tr>
               <tr class='smaller-header'>
                 <th> </th>
-                <th> ` + opts.title + ` (` + opts.legend_units + `) </th>
+                <th> ` + opts.legend_units + ` </th>
                 <th class='deltas' style='text-align: center;'
                     colspan='{{u.object_entries_count(active_layer.parameters.all_seasons)}}'>
                       ` + opts.legend + ` </th>
               </tr>
               <tr>
                 <th> Season </th>
-                <th> Baseline (1970-2000)</th>
+                <th> Baseline </th>
                 {{#active_layer.parameters.years}}
                   <th> {{.}}s</th>
                 {{/active_layer.parameters.years}}
