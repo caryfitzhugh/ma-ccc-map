@@ -8,26 +8,27 @@ var ViewUtils = {
       sign = '-';
     }
 
-    return `<span class='sign'>${sign}</span>${val}`;
+    return `<span class='sign'>${sign}</span>${Math.abs(val)}`;
   },
 
   object_entries_count: (obj) => {
     return Object.keys(obj).length;
   },
-  color_range_label: (metrics_range, colors, index, fixed, signed) => {
-    let val = "";
+  color_range_label: (metrics_range, colors, index, fixed, signed, inverted) => {
+    let label = "";
     if (!fixed && fixed !== 0) {
       fixed = 2;
     }
     if (index < metrics_range.length) {
-      val =  metrics_range[index].toFixed(fixed);
+      label =  metrics_range[index].toFixed(fixed);
+      if (signed) {
+        return ViewUtils.add_sign(label);
+      } else {
+        return label;
+      }
+    } else if (index >= metrics_range.length) {
+      return  "";
     }
-
-    if (signed) {
-      val = ViewUtils.add_sign(val);
-    }
-
-    return val;
   },
   sort_by: (arry, field) => {
     return _.sortBy(arry, field);

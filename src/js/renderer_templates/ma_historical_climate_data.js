@@ -62,7 +62,9 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
 
       {{#{metrics: parameters.metrics_ranges[parameters.options.metric],
           legend: '` + opts.legend + `',
+          inverted: '` + opts.invert_scale + `',
           quantiled: true,
+          signed: true,
           precision: '` + opts.legend_precision + `',
           colors: parameters.color_ranges[parameters.options.metric]} }}
         {{> map_color_block_legend_template }}
@@ -124,7 +126,7 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
         let value = year_data['obs'][p.season][p.metric];
         feature.properties.data_value = value;
 
-        let color = colorize(active_layer.parameters.metrics_ranges[p.metric], value, active_layer.parameters.color_ranges[p.metric]);
+        let color = colorize(active_layer.parameters.metrics_ranges[p.metric], value, active_layer.parameters.color_ranges[p.metric], opts);
         layer.setStyle({fillColor: color, color: color});
 
         var popupContent = opts.legend  + "<br/>" + "<strong>" + p.metric + ":</strong> " + value;
@@ -141,7 +143,7 @@ RendererTemplates.ma_historical_climate_data = function (layer_id, opts) {
       } catch( e) {
         feature.properties.data_value = null;
 
-        console.log('failed to find value for ', p.metric, feature.properties.name, layer_data);
+        console.log('failed to find value for ', p.metric, feature.properties.name, layer_data, "EX:", e);
         let rgb = `transparent`;//rgb(${gray}, ${gray}, ${gray})`
         layer.setStyle({fillColor: rgb, color: rgb});
       }

@@ -100,6 +100,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
 
       {{#{metrics: parameters.metrics_ranges[parameters.options.season],
           legend: '` + opts.legend + `',
+          inverted: '` + opts.invert_scale + `',
           quantiled: true,
           signed: true,
           precision: '` + opts.legend_precision + `',
@@ -137,9 +138,18 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
           });
         });
 
+        let color_range = _.cloneDeep(active_layer.parameters.color_range);
+        if (opts.invert_scale) {
+          color_range.reverse();
+        }
+
         _.each(active_layer.parameters.all_seasons, (name, season) => {
-          active_layer.parameters.metrics_ranges[season] =
-            d3.scaleQuantile().domain(data_values[season]).range(active_layer.parameters.color_range).quantiles();
+          let scale = d3.scaleQuantile().domain(data_values[season]).range(color_range).quantiles();
+
+          if (opts.invert_scale) {
+            scale.reverse();
+          }
+          active_layer.parameters.metrics_ranges[season] = scale;
         });
       }
     },
@@ -158,7 +168,8 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
 
         let color = colorize(active_layer.parameters.metrics_ranges[p.season],
                              location_data.value.delta,
-                             active_layer.parameters.color_range);
+                             active_layer.parameters.color_range,
+                             opts);
 
         layer.setStyle({fillColor: color, color: color});
       } catch( e) {

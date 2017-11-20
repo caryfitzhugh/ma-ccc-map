@@ -5,8 +5,8 @@ RendererTemplates.ma_historical_climate_data("ma_historical_days_below_temp", {
   info_legend: " Days ",
   data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/below_temp_thresholds.json",
   color_ranges: {
-    'lt0': colorbrewer.Blues[8],
-    'lt32': colorbrewer.Blues[8],
+    'lt0': colorbrewer.Blues[5],
+    'lt32': colorbrewer.Blues[5],
   },
   all_metrics: {
     "lt0" : "Days Below 0&deg;F",
