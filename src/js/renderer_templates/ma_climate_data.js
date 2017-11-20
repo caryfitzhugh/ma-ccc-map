@@ -202,7 +202,7 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
               // Hide the ones which aren't active
               if (active_leaflet_layer && active_leaflet_layer._leaflet_id === layer._leaflet_id) {
                 layer.setStyle((feature) => {
-                  return _.merge({}, base_style, {opacity: opacity, fillOpacity: Math.max(0, opacity - 0.2)});
+                  return _.merge({}, base_style, {opacity: opacity, fillOpacity: Math.max(0, opacity - 0.1)});
                 });
               } else {
                 layer.setStyle((feature) => {

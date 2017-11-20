@@ -1,4 +1,4 @@
-const findDataForMAProjectedData = (layer_data, area, season, year) => {
+const findDataForMAObservedData = (layer_data, area, season, year) => {
   let data_value = {};
   _.each(layer_data.features, (feature) => {
     if (feature.properties.name === area) {
@@ -24,7 +24,7 @@ const findDataForMAProjectedData = (layer_data, area, season, year) => {
   return data_value;
 };
 
-RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
+RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
   RendererTemplates.ma_climate_data(layer_id, {
 
     clone_layer_name: function(active_layer) {
@@ -43,18 +43,16 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
               <tr>
                 <th style='text-align: center;'
                     colspan='{{u.object_entries_count(active_layer.parameters.all_seasons) + 2}}'> {{geojson.name}} {{geojson.geomtype}}
-    </th>
+                </th>
               </tr>
               <tr class='smaller-header'>
                 <th> </th>
-                <th> ` + opts.title + ` (` + opts.legend_units + `) </th>
                 <th class='deltas' style='text-align: center;'
                     colspan='{{u.object_entries_count(active_layer.parameters.all_seasons)}}'>
                       ` + opts.legend + ` </th>
               </tr>
               <tr>
                 <th> Season </th>
-                <th> Baseline (1970-2000)</th>
                 {{#active_layer.parameters.years}}
                   <th> {{.}}s</th>
                 {{/active_layer.parameters.years}}
@@ -64,9 +62,8 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
               {{#u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
                 <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}}">
                   <td>{{u.capitalize(season)}}</td>
-                  <td>{{baseline}}</td>
                   {{#u.sort_by(values, 'year')}}
-                    <td decorator="tooltip: Likely Range: {{range}}" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{u.add_sign(delta)}}}</td>
+                    <td decorator="tooltip: Range: {{range}}" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{delta}}}</td>
                   {{/sort_by(values, 'year')}}
                 </tr>
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
@@ -102,7 +99,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
           legend: '` + opts.legend + `',
           inverted: '` + opts.invert_scale + `',
           quantiled: true,
-          signed: true,
+          signed: false,
           precision: '` + opts.legend_precision + `',
           colors: parameters.color_range} }}
         {{> map_color_block_legend_template }}
@@ -159,7 +156,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       let colorize = RendererTemplates.ma_climate_data_colorize;
 
       try {
-        let location_data = findDataForMAProjectedData(layer_data,
+        let location_data = findDataForMAObservedData(layer_data,
                                                feature.properties.name,
                                                p.season,
                                                active_layer.parameters.years[p.year_indx]
