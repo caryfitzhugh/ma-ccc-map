@@ -45,7 +45,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
                     colspan='{{u.object_entries_count(active_layer.parameters.all_seasons) + 2}}'> {{geojson.name}} {{geojson.geomtype}}
                 </th>
               </tr>
-              <tr class='smaller-header'>
+              <tr>
                 <th> </th>
                 <th class='deltas' style='text-align: center;'
                     colspan='{{u.object_entries_count(active_layer.parameters.all_seasons)}}'>
@@ -63,7 +63,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
                 <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}}">
                   <td>{{u.capitalize(season)}}</td>
                   {{#u.sort_by(values, 'year')}}
-                    <td decorator="tooltip: Range: {{range}}" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{delta}}}</td>
+                    <td decorator="tooltip: Range: {{range}}  (` + opts.legend_units + `)" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{delta}}}</td>
                   {{/sort_by(values, 'year')}}
                 </tr>
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
