@@ -35,7 +35,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
     },
     info_template: `
         <div class='col-xs-2'>
-          <label> {{name}}</label>
+          <label> {{{name}}}</label>
         </div>
         <div class='col-xs-10'>
           <table class='table'>
