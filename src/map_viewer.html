@@ -88,7 +88,7 @@
             <p> This mapper allows you to import and view your own map layer in the browser.  </p>
             <div class='input-upload'>
               <input id='layer_import_file_input' type='file' value='{{layer_import.import_file}}'
-                  accept=".kml, .geojson, .json, .gpx "/>
+                  accept=".zip, .kml, .geojson, .json, .gpx "/>
               {{#if layer_import.import_file}}
                 {{#if layer_import.import_file_processing}}
                   Loading ... <span class='fa fa-spinner fa-spin-custom'></span>
@@ -898,9 +898,11 @@
     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src='https://unpkg.com/shpjs@latest/dist/shp.js'></script>
 
     <script type='text/javascript' src='./vendor/leaflet-1.0.3/dist/leaflet-src.js?__inline=true'></script>
     <script type='text/javascript' src="./vendor/esri-leaflet-2.0.8/esri-leaflet.js?__inline=true"></script>
+    <script type='text/javascript' src='./vendor/togeojson.js?__inline=true'></script>
 
     <script>
       if (!console) {

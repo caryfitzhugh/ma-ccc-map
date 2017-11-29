@@ -1020,6 +1020,11 @@ input[type="radio"], input[type="checkbox"] {
 .leaflet-popup-pane {
   z-index: 15000;
 }
+.leaflet-popup-content {
+  max-height: 50vh;
+  max-width: 25vw;
+  overflow: auto;
+}
 
 @media (max-width: 600px) {
   .layer-controls .tray, .layer-controls {

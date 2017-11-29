@@ -15,17 +15,25 @@ RendererTemplates.imported_geojson = function (layer_id, opts) {
       active_layer.id,
       () => {
         var layer = new L.GeoJSON(opts.data, {pane: pane,
-            style: {
-              stroke: true,
-              color: "#000",
-              fillColor: "rgba(0,102,51,0.8)",
-              weight: 2,
+            style: (feature) => {
+              let props = feature.properties || {};
+              return {
+                stroke: true,
+                opacity: props['stroke-opacity'] || 1,
+                color: props.stroke || "#000",
+                fillColor: "rgba(0,102,51,0.8)",
+                weight: props['stroke-width'] || 2,
+              };
             },
             onEachFeature: function (feature, layer) {
+              let loc_link = "";
+              if (layer.getBounds) {
+                loc_link = Renderers.utils.zoom_to_location_link( layer.getBounds())
+              }
               layer.bindPopup(`<h5>${opts.name}</h5>
                 <pre>${JSON.stringify(feature.properties, null, 2)}</pre>
                 <br/>
-                ${Renderers.utils.zoom_to_location_link( layer.getBounds())}
+                ${loc_link}
                 `
                 );
             }

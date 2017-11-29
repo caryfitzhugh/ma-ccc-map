@@ -91,7 +91,7 @@ Controllers.Layers = {
     cp.push('layers.defaults', {folder: "User Imports", id: layer_id, name: filename});
     RendererTemplates.imported_geojson(layer_id, { templates: {},
                                        name: filename,
-                                       data: JSON.parse(data) });
+                                       data: (data.type ? data : JSON.parse(data)) });
 
     Controllers.Layers.toggle_layer_active(cp, layer_id);
     cp.push('layers.available_ids', layer_id);
