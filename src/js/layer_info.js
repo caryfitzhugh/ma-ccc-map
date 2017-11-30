@@ -62,6 +62,17 @@ var available_layers = [
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/nrcshuc.html"
   },
   {
+    "id": "major_basins",
+    "folder": "Boundaries",
+    "name": "Major Basins",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Local Government","Natural Resources/Habitats","Recreation","Water Resources"],
+    "description": "MassGIS has produced a statewide digital datalayer of the 27 major drainage basins of Massachusetts as defined by the USGS Water Resources Division and the MA Water Resources Commission.",
+    "source": "MA Water Resources Commission",
+    "source_url": "https://www.mass.gov/orgs/water-resources-commission",
+    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/majorbasins.zip",
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/majbas.html"
+  },
+  {
     "id": "boundary_state",
     "folder": "Boundaries",
     "name": "State Boundary",
@@ -143,7 +154,7 @@ var available_layers = [
   {
     "id": "ma_observed_precip_gt_1",
     "folder": "Climate Observations.Precipitation",
-    "name": "Extreme Precip. > 1\" (Observed)",
+    "name": "Extreme Precipitation > 1\" (Observed)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "Days with precipitation greater than one inch summarized by area (state,county,basin) and decade over the period 1960-2005. Observational dataset: Livneh et al. (2015). <br>Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015)",
     "source": "University of California San Diego",
@@ -154,7 +165,7 @@ var available_layers = [
   {
     "id": "ma_projected_precip_gt_1",
     "folder": "Climate Projections.Precipitation",
-    "name": "Extreme Precip. > 1\" (Projected)",
+    "name": "Extreme Precipitation > 1\" (Projected)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "Projected changes in the number of days per season or annually with precipitation above or below threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
@@ -165,7 +176,7 @@ var available_layers = [
   {
     "id": "ma_observed_precip_gt_2",
     "folder": "Climate Observations.Precipitation",
-    "name": "Extreme Precip. > 2\" (Observed)",
+    "name": "Extreme Precipitation > 2\" (Observed)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "Days with precipitation greater than two inches summmarized by area (state,county,basin) and decade over the period 1960-2005. Observational dataset: Livneh et al. (2015). <br>Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015)",
     "source": "University of California San Diego",
@@ -176,7 +187,7 @@ var available_layers = [
   {
     "id": "ma_projected_precip_gt_2",
     "folder": "Climate Projections.Precipitation",
-    "name": "Extreme Precip. > 2\" (Projected)",
+    "name": "Extreme Precipitation > 2\" (Projected)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "Projected changes in the number of days per season or annually with precipitation above or below threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
@@ -187,7 +198,7 @@ var available_layers = [
   {
     "id": "ma_observed_precip_gt_4",
     "folder": "Climate Observations.Precipitation",
-    "name": "Extreme Precip. > 4\" (Observed)",
+    "name": "Extreme Precipitation > 4\" (Observed)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "Days with precipitation greater than four inches summarized by area (state,county,basin) and decade over the period 1960-2005. Observational dataset: Livneh et al. (2015). <br>Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015)",
     "source": "University of California San Diego",
@@ -198,7 +209,7 @@ var available_layers = [
   {
     "id": "ma_projected_precip_gt_4",
     "folder": "Climate Projections.Precipitation",
-    "name": "Extreme Precip. > 4\" (Projected)",
+    "name": "Extreme Precipitation > 4\" (Projected)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "Projected changes in the number of days per season or annually with precipitation above or below threshold values. Changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
     "source": "University of California San Diego",
@@ -459,8 +470,8 @@ var available_layers = [
   },*/
   {
     "id": "noaa_slr",
-    "folder": "Coastal Zone",
-    "name": "Sea Level Rise Inundation Zones",
+    "folder": "Coastal Vulnerability",
+    "name": "Sea Level Rise & Coastal Flooding (NOAA)",
     "description": "Sea Level Rise: the maps show inland extent and relative depth of inundation from 0 to 6 feet above mean higher high water (MHHW). Areas that are hydrologically connected (according to the digital elevation model used) are shown in shades of blue. Low-lying areas, displayed in green, are considered hydrologically “unconnected” areas that may flood. The inundation maps are created by subtracting the NOAA VDATUM MHHW surface from the digital elevation model. Mapping Confidence: blue areas denote a high confidence of inundation, orange areas denote a low confidence of inundation, and unshaded areas denote a high confidence that these areas will be dry given the chosen water level.",
     "source": "NOAA",
     "source_url": "https://coast.noaa.gov/slr",
@@ -468,6 +479,17 @@ var available_layers = [
     "download_url": null,
     "metadata_url": "https://coast.noaa.gov/digitalcoast/tools/slr",
   },
+/*  {
+    "id": "orthos1990s",
+    "folder": "Boundaries",
+    "name": "Orthoimagery- 1990s",
+    "description": "These medium resolution images provide a high-quality 'basemap' for the Commonwealth. As of March 31, 2000, the entire state is available. The imagery was captured during the spring from 1992 through 1999.",
+    "source": "MASSGIS",
+    "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
+    "download_url": null,
+    "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/oqdesc.html",
+  },*/
   {
     "id": "acec",
     "folder": "Natural Resources/Habitats",
@@ -481,7 +503,7 @@ var available_layers = [
   },
   {
     "id": "barrier_beaches",
-    "folder": "Coastal Zone",
+    "folder": "Coastal Vulnerability",
     "name": "Barrier Beaches",
     "description": "The state barrier beach data layer was compiled by the Resource Mapping Project staff at the University of Massachusetts, Amherst for the Massachusetts Coastal Zone Management Program.",
     "source": "Massachusetts Coastal Zone Management Program",
@@ -801,7 +823,7 @@ var available_layers = [
   },
   {
     "id": "hurricane_surge",
-    "folder": "Coastal Zone",
+    "folder": "Coastal Vulnerability",
     "name": "Hurricane Surge Inundation Zones",
     "description": "Developed to assist emergency management officials in hurricane preparedness and operations, this layer represents worst-case Hurricane Surge Inundation areas for Category 1 through 4 hurricanes striking the coast of Massachusetts. Hurricane surge values were developed by the National Hurricane Center using the PV2 basin SLOSH (Sea Lake and Overland Surge from Hurricanes) Model data.  This Surge Inundation layer was created by the U.S. Army Corps of Engineers, New England District. Using ArcInfo's Grid extension, LiDAR bare earth elevation data were subtracted from the worst-case hurricane surge values to determine which areas could be expected to be inundated.",
     "source": "National Hurricane Center",
@@ -812,7 +834,7 @@ var available_layers = [
   },
   {
     "id": "marine_beaches",
-    "folder": "Coastal Zone",
+    "folder": "Coastal Vulnerability",
     "name": "Marine Beaches",
     "description": "The Massachusetts Department of Public Health (MDPH), Center for Environmental Health (CEH), Environmental Toxicology Program (ETP) has developed two marine beach data layers, an arc feature class representing the linear extents of each beach, and points marking beaches' boundaries and access, sampling, and other locations. Data were collected from 7/20/2003 to 10/20/2003 for public and semi-public beaches in Massachusetts' oceanfront communities as part of the BEACH Act, as administered by the U.S. Environmental Protection Agency. The beach points (based on GPS) are accurate to within 10 meters.",
     "source": "Massachusetts Department of Public Health",
