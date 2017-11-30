@@ -28,6 +28,7 @@ RendererTemplates.wms("openspace_type", {
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.OPENSPACE_ARC&"+
           "QUERY_LAYERS=massgis:GISDATA.OPENSPACE_ARC&"+
           "STYLES=GISDATA.OPENSPACE_ARC&"+
+          "PROPERTYNAME=SITE_NAME,FEE_OWNER&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
           "HEIGHT=<%= height %>&"+

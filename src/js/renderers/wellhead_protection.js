@@ -31,6 +31,7 @@ RendererTemplates.wms("wellhead_protection", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA."+layer+"&"+
           "QUERY_LAYERS=massgis:GISDATA."+layer+"&"+
+          "PROPERTYNAME=SUPPLIER,SITENAME&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

@@ -25,6 +25,7 @@ RendererTemplates.wms("soils", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.SOILS_POLY_SV_MUNAME&"+
           "QUERY_LAYERS=massgis:GISDATA.SOILS_POLY_SV_MUNAME&"+
+          "PROPERTYNAME=MAPUNIT_NAME&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

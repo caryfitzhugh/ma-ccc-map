@@ -27,6 +27,7 @@ RendererTemplates.wms("wetlands", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.WETLANDSDEP_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.WETLANDSDEP_POLY&"+
+          "PROPERTYNAME=IT_VALDESC&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

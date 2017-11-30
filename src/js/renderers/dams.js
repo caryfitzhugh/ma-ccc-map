@@ -27,6 +27,7 @@ RendererTemplates.wms("dams", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.DAMS_PT&"+
           "QUERY_LAYERS=massgis:GISDATA.DAMS_PT&"+
+          "PROPERTYNAME=DAMNAME,HAZCODE&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

@@ -1,8 +1,9 @@
 RendererTemplates.ma_projected_climate_data('ma_projected_min_temp', {
   title: "Minimum Temperature",
-  legend: "Projected change in Min Temp. (&deg;F)",
+  legend: "Projected change in minimum temperature (&deg;F)",
   legend_precision: 1,
   legend_units: " &deg;F",
-  data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/mintemp.json",
+  //data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/mintemp.json",
+  data_url: "https://adirondackatlas.org/api/v1/climatedeltas.php?parameter=mintemp",
   color_range: colorbrewer.OrRd[6]
 });

@@ -29,6 +29,7 @@ RendererTemplates.wms("acec", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.ACECS_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.ACECS_POLY&"+
+          "PROPERTYNAME=NAME,ACEC_ACRES&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

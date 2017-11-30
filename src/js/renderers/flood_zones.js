@@ -27,6 +27,7 @@ RendererTemplates.wms("flood_zones", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
+          "PROPERTYNAME=LABEL&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

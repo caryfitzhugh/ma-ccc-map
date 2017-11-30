@@ -27,6 +27,7 @@ RendererTemplates.wms("tax_parcels", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.L3_TAXPAR_POLY_ASSESS&"+
           "QUERY_LAYERS=massgis:GISDATA.L3_TAXPAR_POLY_ASSESS&"+
+          "PROPERTYNAME=OWNER1&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

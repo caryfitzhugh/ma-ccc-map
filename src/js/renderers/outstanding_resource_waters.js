@@ -27,6 +27,7 @@ RendererTemplates.wms("outstanding_resource_waters", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.ORW_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.ORW_POLY&"+
+          "PROPERTYNAME=ORW_NAME,ORW_TYPE&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

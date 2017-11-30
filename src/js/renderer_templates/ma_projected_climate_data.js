@@ -66,7 +66,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                   <td>{{u.capitalize(season)}}</td>
                   <td>{{baseline}}</td>
                   {{#u.sort_by(values, 'year')}}
-                    <td decorator="tooltip: Likely Range: {{range}} ` + opts.legend_units + `" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{u.add_sign(delta)}}}</td>
+                    <td decorator="tooltip: Likely Range: {{range}} " class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{u.add_sign(delta)}}}</td>
                   {{/sort_by(values, 'year')}}
                 </tr>
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}

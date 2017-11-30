@@ -23,7 +23,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
         ],
     options: {
       year_indx: 3,
-      likelihood_indx: 1,
+      likelihood_indx: 2,
       rcp_indx: 1,
     }
   },
@@ -79,17 +79,19 @@ RendererTemplates.geojson_points("sea_level_rise", {
 
     return `<h5>${feature.properties.name}</h5>
            <strong>Year: </strong>${feature.properties.year}<br/>
-           <strong>Emissions Scenario: </strong>${feature.properties.rcp}<br/>
+           <strong>Scenario: </strong>${feature.properties.rcp}
            <table>
-              <thead> <tr> <th> Likelihood</th><th> Feet </th></tr></thead>
+              <thead> <tr> <th> Likelihood&nbsp;&nbsp;</th><th> Percentile&nbsp;&nbsp;</th><th> Feet </th></tr></thead>
               <tbody>
-                <tr><td>Likely - Lower (17%)</td><td>${feature.properties.p17}</td> </tr>
-                <tr><td>Median (50%)</td><td>${feature.properties.p50}</td> </tr>
-                <tr><td>Likely - Upper (83%)</td><td>${feature.properties.p83}</td> </tr>
-                <tr><td>Exceptionally Unlikely to Exceed (99.9%)</td><td>${feature.properties.p99}</td> </tr>
+                <tr><td>Likely - Lower</td><td>17%</td><td>${feature.properties.p17}</td> </tr>
+                <tr><td>Median </td><td>50%</td><td>${feature.properties.p50}</td> </tr>
+                <tr><td>Likely - Upper</td><td>83%</td><td>${feature.properties.p83}</td> </tr>
+                <tr><td>Extremely Unlikely to Exceed&nbsp;&nbsp;  </td><td>99.9%</td><td>${feature.properties.p99}</td> </tr>
               </tbody>
            </table>
-           <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=${feature.properties.station_id}" target="_blank_">NOAA Home Page for this station</a><br>` +
+           <br/>
+           <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=${feature.properties.station_id}" target="_blank_">NOAA Link</a><br/><br/>
+           ` +
            Renderers.utils.zoom_to_location_link( feature.geometry );
   },
   legend_template: `

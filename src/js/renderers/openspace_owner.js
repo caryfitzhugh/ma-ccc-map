@@ -27,6 +27,7 @@ RendererTemplates.wms("openspace_owner", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.OPENSPACE_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.OPENSPACE_POLY&"+
+          "PROPERTYNAME=SITE_NAME,FEE_OWNER&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

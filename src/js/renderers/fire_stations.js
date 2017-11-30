@@ -25,6 +25,7 @@ RendererTemplates.wms("fire_stations", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.FIRESTATIONS_PT_MEMA&"+
           "QUERY_LAYERS=massgis:GISDATA.FIRESTATIONS_PT_MEMA&"+
+          "PROPERTYNAME=NAME,OFFICE,ADDRESS&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

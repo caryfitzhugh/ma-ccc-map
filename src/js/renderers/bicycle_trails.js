@@ -27,6 +27,7 @@ RendererTemplates.wms("bicycle_trails", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.BIKETRAILS_ARC&"+
           "QUERY_LAYERS=massgis:GISDATA.BIKETRAILS_ARC&"+
+          "PROPERTYNAME=TRAILNAME,OWNER&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

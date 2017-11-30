@@ -27,6 +27,7 @@ RendererTemplates.wms("groundwater_discharge", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.GWP_PT&"+
           "QUERY_LAYERS=massgis:GISDATA.GWP_PT&"+
+          "PROPERTYNAME=NAME&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

@@ -27,6 +27,7 @@ RendererTemplates.wms("land_use", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.LANDUSE2005_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.LANDUSE2005_POLY&"+
+          "PROPERTYNAME=LU05_DESC&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

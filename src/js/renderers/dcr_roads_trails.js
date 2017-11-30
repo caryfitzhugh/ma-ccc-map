@@ -27,6 +27,7 @@ RendererTemplates.wms("dcr_roads_trails", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.DCR_ROADS_TRAILS_ARC&"+
           "QUERY_LAYERS=massgis:GISDATA.DCR_ROADS_TRAILS_ARC&"+
+          "PROPERTYNAME=NAME,WIDTH&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

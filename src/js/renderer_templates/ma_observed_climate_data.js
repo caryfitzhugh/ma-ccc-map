@@ -63,7 +63,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
                 <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}}">
                   <td>{{u.capitalize(season)}}</td>
                   {{#u.sort_by(values, 'year')}}
-                    <td decorator="tooltip: Range: {{range}}  (` + opts.legend_units + `)" class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{delta}}}</td>
+                    <td decorator="tooltip: Range: {{range}} " class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{delta}}}</td>
                   {{/sort_by(values, 'year')}}
                 </tr>
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}

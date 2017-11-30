@@ -25,6 +25,7 @@ RendererTemplates.wms("env_justice", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.EJ_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.EJ_POLY&"+
+          "PROPERTYNAME=TOWN2,LOGSF1,PCT_NO_ENG,MED_HH_INC,PCT_MIN,PCT_LT_HS_&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -46,13 +47,26 @@ RendererTemplates.wms("env_justice", {
         <label> {{name}} </label>
       </div>
       <div class='col-xs-10'>
-        {{#json.features}}
-          <div>
-            % Foreign Born: {{properties.FOREIGN_BORN}}
-          </div>
-        {{ else }}
-          Unknown / No Response
-        {{/json.features}}
+          <table class='table'>
+            <thead>
+              <tr>
+                <th> Town </th>
+                <th> Census 2010<br/>Summary ID </th>
+                <th> % Minority </th> 
+                <th> Median household<br/>income </th>
+                <th> % No high school<br/>diploma</th>
+                <th> % No English </th>
+              </tr>
+            </thead>
+             <tbody>
+                {{#json.features}}
+                  <tr><td>{{properties.TOWN2}}</td>
+                  <td>{{properties.LOGSF1}}</td><td>{{properties.PCT_MIN}}</td><td>{{properties.MED_HH_INC}}</td><td>{{properties.PCT_LT_HS_}}</td>{{properties.PCT_NO_ENG}} </tr>
+                {{ else }}
+                  Unknown / No Response
+                {{/json.features}}
+              </tbody>
+          </table>           
       </div>
   `
 });

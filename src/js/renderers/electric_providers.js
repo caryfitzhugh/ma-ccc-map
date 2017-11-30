@@ -27,6 +27,7 @@ RendererTemplates.wms("electric_providers", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.TOWNS_POLY_V_ELEC&"+
           "QUERY_LAYERS=massgis:GISDATA.TOWNS_POLY_V_ELEC&"+
+          "PROPERTYNAME=ELEC_LABEL&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+

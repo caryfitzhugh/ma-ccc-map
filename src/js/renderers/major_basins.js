@@ -1,6 +1,6 @@
-RendererTemplates.wms("marine_beaches", {
+RendererTemplates.wms("major_basins", {
   parameters: {
-    opacity: 100,
+    opacity: 70,
 /*    min_zoom: 12,
     max_zoom: 20,*/
     options: {
@@ -14,7 +14,7 @@ RendererTemplates.wms("marine_beaches", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.MARINEBEACHES_ARC',
+      layers: 'massgis:GISDATA.MAJBAS_POLY',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -25,9 +25,9 @@ RendererTemplates.wms("marine_beaches", {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.MARINEBEACHES_ARC&"+
-          "QUERY_LAYERS=massgis:GISDATA.MARINEBEACHES_ARC&"+
-          "PROPERTYNAME=BEACHNAME,TYPE,LENMILES&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.MAJBAS_POLY&"+
+          "QUERY_LAYERS=massgis:GISDATA.MAJBAS_POLY&"+
+          "PROPERTYNAME=NAME&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -41,7 +41,7 @@ RendererTemplates.wms("marine_beaches", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.MARINEBEACHES_ARC&format=image/png")}}'/>
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.MAJBAS_POLY&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -51,7 +51,7 @@ RendererTemplates.wms("marine_beaches", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.BEACHNAME}}: {{properties.TYPE}} Beach ({{properties.LENINMILES}} .mi)
+            {{properties.NAME}} 
           </div>
         {{ else }}
           Unknown / No Response
