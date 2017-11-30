@@ -28,7 +28,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
     }
   },
 
-  url: CDN(GEOSERVER + "/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:tide_guage_slr&maxFeatures=1000&outputFormat=application%2Fjson"),
+  url: "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:tide_gauge_slr&maxFeatures=1000&outputFormat=application%2Fjson",
 
   selectData: function (active_layer, all_data) {
     let year = active_layer.parameters.years[active_layer.parameters.options.year_indx];
@@ -61,9 +61,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
     let v = feature.properties.value;
     let height = v[2] * 100;
     // Forces signing on a number, returned as a string
-
     return L.marker(latlng, {
-
         icon: L.divIcon({
             className: 'tide-guage-slr-icon',
             iconAnchor: [0, 100],
@@ -73,6 +71,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
             </div>`
             })
     });
+
   },
 
   popupContents: function (feature) {

@@ -1257,7 +1257,7 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   width: 50px;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   left: -15px;
   color: blue;
   text-shadow: white 0.15em 0.15em 0.2em;
