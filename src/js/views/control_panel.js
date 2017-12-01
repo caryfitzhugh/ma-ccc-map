@@ -596,6 +596,9 @@ Views.ControlPanel.observe("layers.active", function (new_active_layers, old_act
   // Sometimes things add new layers or whatnot.
   // So update, check for dirty.
   cp.update("layers.active");
+
+  // Close all popups when you modify the map
+  map.closePopup();
 });
 
 Views.ControlPanel.observe("map_details.location", function (click_location) {

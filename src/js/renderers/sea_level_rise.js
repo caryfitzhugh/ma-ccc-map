@@ -78,10 +78,16 @@ RendererTemplates.geojson_points("sea_level_rise", {
     var index = feature.properties.reason_cls
 
     return `<h5>${feature.properties.name}</h5>
-           <strong>Year: </strong>${feature.properties.year}<br/>
-           <strong>Scenario: </strong>${feature.properties.rcp}
+           <strong>Year: </strong>&nbsp;${feature.properties.year}<br/>
+           <strong>Emissions Scenario: &nbsp; </strong>${feature.properties.rcp}
            <table>
-              <thead> <tr> <th> Likelihood&nbsp;&nbsp;</th><th> Percentile&nbsp;&nbsp;</th><th> Feet </th></tr></thead>
+              <thead>
+                <tr>
+                  <th> Likelihood&nbsp;&nbsp;</th>
+                  <th> Percentile&nbsp;&nbsp;</th>
+                  <th> Feet </th>
+                </tr>
+              </thead>
               <tbody>
                 <tr><td>Likely - Lower</td><td>17%</td><td>${feature.properties.p17}</td> </tr>
                 <tr><td>Median </td><td>50%</td><td>${feature.properties.p50}</td> </tr>
