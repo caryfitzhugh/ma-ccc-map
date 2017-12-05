@@ -1,8 +1,8 @@
 RendererTemplates.geojson_points("sea_level_rise", {
   parameters: {
     opacity: false,
-    rcps: [4.5,
-           8.5],
+    rcps: ["Medium",
+           "High"],
     likelihoods: [
         17,
         50,
@@ -43,7 +43,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
     max = _.max(all_vals);
     let data = _.reduce(all_data, function (all, feature) {
       if (year === feature.properties.year) {
-        if (rcp === feature.properties.rcp) {
+        if (rcp === feature.properties.rcp_label) {
           let val = feature.properties["p"+likelihood];
 
           let new_feature = _.cloneDeep(feature);
@@ -79,7 +79,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
 
     return `<h5>${feature.properties.name}</h5>
            <strong>Year: </strong>&nbsp;${feature.properties.year}<br/>
-           <strong>Emissions Scenario: &nbsp; </strong>${feature.properties.rcp}
+           <strong>Emissions Scenario: &nbsp; </strong>${feature.properties.rcp_label}
            <table>
               <thead>
                 <tr>
@@ -92,11 +92,11 @@ RendererTemplates.geojson_points("sea_level_rise", {
                 <tr><td>Likely - Lower</td><td>17%</td><td>${feature.properties.p17}</td> </tr>
                 <tr><td>Median </td><td>50%</td><td>${feature.properties.p50}</td> </tr>
                 <tr><td>Likely - Upper</td><td>83%</td><td>${feature.properties.p83}</td> </tr>
-                <tr><td>Extremely Unlikely to Exceed&nbsp;&nbsp;  </td><td>99.9%</td><td>${feature.properties.p99}</td> </tr>
+                <tr><td>Exceptionally Unlikely to Exceed&nbsp;&nbsp;  </td><td>99.9%</td><td>${feature.properties.p99}</td> </tr>
               </tbody>
            </table>
            <br/>
-           <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=${feature.properties.station_id}" target="_blank_">NOAA Link</a><br/><br/>
+           <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=${feature.properties.station_id}" target="_blank_">NOAA Station Info</a><br/><br/>
            ` +
            Renderers.utils.zoom_to_location_link( feature.geometry );
   },
