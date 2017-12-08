@@ -61,7 +61,11 @@ RendererTemplates.wms("env_justice", {
              <tbody>
                 {{#json.features}}
                   <tr><td>{{properties.TOWN2}}</td>
-                  <td>{{properties.LOGSF1}}</td><td>{{properties.PCT_MIN}}</td><td>{{properties.MED_HH_INC}}</td><td>{{properties.PCT_LT_HS_}}</td>{{properties.PCT_NO_ENG}} </tr>
+                  <td>{{properties.LOGSF1}}</td>
+                  <td>{{properties.PCT_MIN}}</td>
+                  <td>{{properties.MED_HH_INC}}</td>
+                  <td>{{properties.PCT_LT_HS_}}</td>
+                  <td>{{properties.PCT_NO_ENG}}</td> </tr>
                 {{ else }}
                   Unknown / No Response
                 {{/json.features}}

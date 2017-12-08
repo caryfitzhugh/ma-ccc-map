@@ -1,4 +1,4 @@
-RendererTemplates.wms("flood_zones", {
+RendererTemplates.wms("flood_zones_q3", {
   parameters: {
     opacity: 70,
     min_zoom: 11,
@@ -14,7 +14,7 @@ RendererTemplates.wms("flood_zones", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.FEMA_NFHL_POLY',
+      layers: 'massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -25,9 +25,9 @@ RendererTemplates.wms("flood_zones", {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
-          "QUERY_LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
-          "PROPERTYNAME=DFIRM_ID,LABEL,FLD_AR_ID&"+
+          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&"+
+          "QUERY_LAYERS=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&"+
+          "PROPERTYNAME=FIRM_PANEL,QUAD,ZONE,COUNTY,SFHA&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -41,33 +41,38 @@ RendererTemplates.wms("flood_zones", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.FEMA_NFHL_POLY&format=image/png")}}'/>
+        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&format=image/png")}}'/>
       </div>
   `,
   info_template: `
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
-      <div class='col-xs-10'><table class='table'>
+      <div class='col-xs-10'>
+        <table class='table'>
             <thead>
               <tr>
-                <th> DFIRM_ID </th>
-                <th> FLD_AR_ID </th>
-                <th> Zone Info</th>
+                <th> County </th>
+                <th> FIRM Panel </th>
+                <th> Quad </th>
+                <th> Zone </th> 
+                <th> SFHA </th>
               </tr>
             </thead>
              <tbody>
                 {{#json.features}}
                   <tr>
-                    <td>{{properties.DFIRM_ID}}</td>
-                    <td>{{properties.FLD_AR_ID}}</td>
-                    <td>{{properties.LABEL}}</td>
+                    <td>{{properties.COUNTY}}</td>
+                    <td>{{properties.FIRM_PANEL}}</td>
+                    <td>{{properties.QUAD}}</td>
+                    <td>{{properties.ZONE}}</td>
+                    <td>{{properties.SFHA}}</td>
                   </tr>
                 {{ else }}
                   Unknown / No Response
                 {{/json.features}}
               </tbody>
-          </table>      
+          </table>         
       </div>
   `
 });
