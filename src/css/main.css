@@ -4,6 +4,7 @@
 // #063 dark blue
 // rgb(238, 241, 242) grey-bg
 */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
 
 html, body, #container {
   height: 100%;
@@ -15,6 +16,10 @@ body {
 }
 input[type="radio"], input[type="checkbox"] {
   margin: 0;
+}
+
+header {
+  height: 80px;
 }
 
 #map {
@@ -31,7 +36,7 @@ input[type="radio"], input[type="checkbox"] {
 .layer-controls {
   position: fixed;
   z-index: 1001;
-  top: 0;
+  top: 80px;
   left: 0;
   /*background: white;*/
   width: 400px;
@@ -56,7 +61,7 @@ input[type="radio"], input[type="checkbox"] {
   background: white;
   padding: 10px;
   font-size: 12px;
-  top: 40px;
+  top: 120px;
   right: 8px;
   left: 8px;
   color: black;
@@ -132,7 +137,7 @@ input[type="radio"], input[type="checkbox"] {
 .layer-controls .tray {
   background: white;
   position: fixed;
-  top: 108px; /*111px;*/
+  top: 117px; /*111px;*/
   left: 0;
   width: 400px;
   overflow:hidden;
@@ -723,7 +728,7 @@ input[type="radio"], input[type="checkbox"] {
 .map-controls {
   position: fixed;
   z-index: 1000;
-  top: 10px;
+  top: 90px;
   right: 10px;
   min-width: 100px;
   color: #666;
@@ -750,7 +755,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .map-control-bg {
   position: absolute;
-  top: -1000px;
+  top: -20px;
   right: -10000px;
   width: 20000px;
   height: 20000px;
@@ -1056,76 +1061,6 @@ input[type="radio"], input[type="checkbox"] {
 .printin-legends {
   display: none;
 }
-@media print {
-  .hide-printing {
-    display: none;
-  }
-  #control_panel_root > div {
-    display: none;
-  }
-  #control_panel_root > div.printing-legends {
-    position: absolute;
-    display: block;
-    top: 100%;
-  }
-
-  #control_panel_root > div.printing-legends  .columns  {
-    column-count: 4 !important;
-    column-gap: 1em !important;
-  }
-  #control_panel_root > div.printing-legends  .columns  .active-layer {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    margin: 0 0 1em;
-  }
-
-  #control_panel_root > div.printing-legends  .columns  .active-layer label.layer-name {
-    text-align: center;
-    width: 100%;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-  }
-  #control_panel_root > div.printing-legends  .columns  .active-layer .opacity {
-    display: none;
-  }
-  #control_panel_root > div.printing-legends  .columns  .active-layer {
-    width: 40%;
-    float: left;
-    margin: 10px;
-  }
-  .zoom-controls , .layer-controls, .map-controls
-    { display: none; }
-
-  .print-legend-page {
-    display: block;
-    position: absolute;
-    top: 100%;
-    page-break-before: always;
-  }
-  .print-header {
-    position: absolute;
-    top: 0;
-    z-index: 990000;
-  }
-  html, body {
-    height: 100%;
-    display: block;
-  }
-  #content, #map { height: 50%; }
-  #map.tray-open { margin-left: 0; }
-  body {
-    height: 200%;
-    overflow: auto;
-  }
-  /*
-  html, body, #container {
-    height: auto;
-    width: auto;
-    overflow: auto;;
-  }
-  */
-}
 
 .fa-spin-custom, .glyphicon-spin {
   -webkit-animation: spin 1000ms infinite linear;
@@ -1284,4 +1219,165 @@ tr.smaller-header {
 th.deltas {
   background: black;
   color: white;
+}
+header {
+  /*overflow: hidden;*/
+}
+header .left-side {
+  float: left;
+}
+header .left-side h1 {
+  font-size: 4em;
+}
+header .slate-text {
+  color: #113f83;
+  font-weight: 700;
+}
+header .gray-text {
+  color: rgb(94,94,94);
+  font-weight: 300;
+}
+header .left-side img {
+  height: 50px;
+  display: inline-block;
+  position: relative;
+  top: -5px;
+}
+
+header .left-side h1 a:hover {
+  text-decoration: none;
+}
+
+header .left-side h1 {
+  font-family: Raleway;
+  display: inline-block;
+  margin: 10px 15px;
+  padding: 0;
+}
+header .right-side {
+  float: right;
+}
+
+header .right-side .search {
+  padding: 12px;
+}
+header .right-side .search input {
+  padding: 15px;
+  width: 350px;
+}
+
+header .right-side .search button {
+  border-radius: 0;
+  position: relative;
+  top: 2px;
+  padding: 12px;
+  color: white;
+  font-size: 20px;
+  background: #f27421;
+
+}
+
+header .right-side .search .fa-bars {
+  background: #113f83;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+header .right-side .search .fa-bars .menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  z-index: 9999000;
+  right: 0px;
+  background: white;
+  border: 1px solid #113f83;
+  padding: 15px;
+  box-shadow: 0px 0px 5px #333;
+}
+
+header .right-side .search .fa-bars .menu ul {
+  padding: 0;
+}
+
+header .right-side .search .fa-bars .menu.show {
+  display: block;
+}
+
+
+header .right-side .search .fa-bars .menu li {
+  display: block;
+  font-family: "Raleway";
+  padding: 5px 5px;
+}
+
+header .right-side .search .fa-bars .menu li a {
+  white-space: nowrap;
+}
+
+@media print {
+  .hide-printing {
+    display: none;
+  }
+  #control_panel_root > div {
+    display: none;
+  }
+  #control_panel_root > div.printing-legends {
+    position: absolute;
+    display: block;
+    top: 100%;
+  }
+
+  #control_panel_root > div.printing-legends  .columns  {
+    column-count: 4 !important;
+    column-gap: 1em !important;
+  }
+  #control_panel_root > div.printing-legends  .columns  .active-layer {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 0 0 1em;
+  }
+
+  #control_panel_root > div.printing-legends  .columns  .active-layer label.layer-name {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+  }
+  #control_panel_root > div.printing-legends  .columns  .active-layer .opacity {
+    display: none;
+  }
+  #control_panel_root > div.printing-legends  .columns  .active-layer {
+    width: 40%;
+    float: left;
+    margin: 10px;
+  }
+  .zoom-controls , .layer-controls, .map-controls
+    { display: none; }
+
+  .print-legend-page {
+    display: block;
+    position: absolute;
+    top: 100%;
+    page-break-before: always;
+  }
+  .print-header {
+    position: absolute;
+    top: 0;
+    z-index: 990000;
+  }
+  html, body {
+    height: 100%;
+    display: block;
+  }
+  #content, #map { height: 50%; }
+  #map.tray-open { margin-left: 0; }
+  body {
+    height: 200%;
+    overflow: auto;
+  }
 }

@@ -15,9 +15,30 @@
 </head>
 
 <body>
-    <div class="print-header visible-print">
-      <img height="50px" src="img/eea_logo.png">
-    </div>
+    <header class='hide-printing'>
+      <div class="left-side">
+        <h1>
+          <a href="/"><img src="img/logo.png" class="img-left"></a>
+          <a href='/'><strong class="slate-text"> MA </strong><span class="gray-text">CCC</span></a></h1>
+      </div>
+
+      <div class="right-side">
+        <!-- search -->
+        <form class="search" action="/search" method="get">
+          <input type="text" name="query" placeholder="Find maps, data products, reports, articles..."><button type="submit" id="search"><span>Search</span></button>
+          <div class='fa fa-bars' onclick="$('#header_menu').toggleClass('show')">
+            <div class='menu' id='header_menu'>
+              <ul>
+                <li><a href='/sectors'>Explore Sectors</a></li>
+                <li><a href='/changes'>Identify Changes</a></li>
+                <li><a href='/actions'>Take Action</a></li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </header>
+
     <div class='main-header hide-printing'> </div>
     <div id="container">
       <div id='ractive_root'>
@@ -546,9 +567,6 @@
 
 <script id="layer_controls_template" type="text/ractive">
   <div class='layer-controls noselect'>
-    <div class='header'>
-      <img height="50px;" src="img/eea_logo.png"/>
-    </div>
     <div class='tabs container-fluid'>
       <div class='row'>
         <a on-tap="show-layers-control" class="layers-tab col-xs-3 {{layer_controls.active_tab === 'layers' ? 'active': '' }}">
