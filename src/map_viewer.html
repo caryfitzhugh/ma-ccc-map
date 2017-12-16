@@ -442,13 +442,7 @@
             {{ else }}
               <div class='col-xs-1'></div>
               <div class='col-xs-10'>
-                <div class='input-group'>
-                  <input class='form-control' value='{{sharing_url(sharing_modal.token)}}'>
-                  <span class='input-group-btn'>
-                    <button id='sharing_copy_button' class='btn btn-primary'
-                            disabled="{{(sharing_modal.token || sharing_modal.copied) ? "" :"disabled"}}">{{sharing_modal.copied ? "Copied!" : "Copy"}}</button>
-                  </span>
-                </div>
+                <input class='form-control' readonly onfocus="this.select()" onmouseup='return false;' value='{{sharing_url(sharing_modal.token)}}'>
               </div>
               <div class='col-xs-1'></div>
             {{/if}}
