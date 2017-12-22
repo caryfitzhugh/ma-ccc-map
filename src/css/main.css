@@ -20,11 +20,16 @@ input[type="radio"], input[type="checkbox"] {
 
 header {
   height: 80px;
+  z-index: 99999999999;
 }
 
 #map {
   width: auto;
-  height: 100%;
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  right: 0;
+  left: 0;
   margin-left: 0;
   cursor: crosshair;
 }
