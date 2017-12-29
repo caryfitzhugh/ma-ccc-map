@@ -172,18 +172,49 @@ header {
 }
 
 .layer-controls .search-header .sector-select {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  display: block;
+  height: 35px;
   color: #063;
   background: white;
   cursor: pointer;
-  align-items:  baseline;
   border: 0;
   width: 100%;
   font-size: 16px;
-  padding: 5px;
-  padding-bottom: 0;
+  line-height: 35px;
+  padding: 5px 20px 5px 80px;
+  position: relative;
+}
+
+.layer-controls .search-header .sector-select label {
+  display: inline-block;
+  border: 0;
+  font-weight: bold;
+  position: absolute;
+  left: 5px;
+  line-height: 24px;
+}
+
+.layer-controls .search-header .sector-select label:hover {
+  cursor: default;
+  color: #063;
+}
+
+
+.layer-controls .search-header .sector-select .selected-text-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 24px;
+  text-align: right;
+}
+.layer-controls .search-header .sector-select .fa-caret-down {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}
+
+.layer-controls .search-header .sector-select .selected {
+  font-size: 80%;
 }
 
 .layer-controls .search-header .sector-select .sector-selection-dropdown .btn-primary {
@@ -194,34 +225,13 @@ header {
 }
 .layer-controls .search-header .sector-select .sector-selection-dropdown {
   position: absolute;
-  top: 72px;
+  top: 35px;
   right: 10px;
   left: 10px;
   background: white;
   border: 1px solid black;
   padding:1em;
 }
-
-.layer-controls .search-header .sector-select .selected-text-container {
-  overflow: hidden;
-  max-width: 265px;
-  text-overflow: ellipsis;
-}
-
-.layer-controls .search-header .sector-select .selected {
-  font-size: 80%;
-}
-.layer-controls .search-header .sector-select label {
-  display: inline-block;
-  border: 0;
-  font-weight: bold;
-}
-
-.layer-controls .search-header .sector-select label:hover {
-  cursor: default;
-  color: #063;
-}
-
 .layer-controls .tray .search-header input {
   border: 0;
   width: 100%;
