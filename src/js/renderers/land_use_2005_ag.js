@@ -11,7 +11,7 @@ RendererTemplates.wms("land_use_2005_ag", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms/",
+  url: CDN(GEOSERVER + "/ma/wms/"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
@@ -25,7 +25,7 @@ RendererTemplates.wms("land_use_2005_ag", {
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
 
-    return "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms/" +
+    return CDN(GEOSERVER + "/ma/wms/") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=ma:landuse_2005_ag&"+
           "QUERY_LAYERS=ma:landuse_2005_ag&"+
