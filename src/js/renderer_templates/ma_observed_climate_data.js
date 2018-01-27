@@ -28,7 +28,6 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
   RendererTemplates.ma_climate_data(layer_id, {
 
     clone_layer_name: function(active_layer) {
-       console.log(layer_id,opts)
        let p = active_layer.parameters.options;
       var name =  opts.title + " Y:" + active_layer.parameters.years[p.year_indx] + "s S:" + p.season + " by " + p.summary;
       return name;
@@ -109,46 +108,42 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
     onLoadedData: (layer_data, active_layer) => {
       let baselines = {};
       // Only do this ONCE.
-      if (_.isEmpty(active_layer.parameters.metrics_ranges)) {
-        let years = _.uniq(_.flatten(_.map(layer_data.features, (feature) => {
-          return _.flatten(_.map(feature.properties.data, (data) => {
-              return _.flatten(_.map(data.values, (value) => {
-                return value.year;
-              }));
-          }));
-        }))).sort();
+      let years = _.uniq(_.flatten(_.map(layer_data.features, (feature) => {
+        return _.flatten(_.map(feature.properties.data, (data) => {
+            return _.flatten(_.map(data.values, (value) => {
+              return value.year;
+            }));
+        }));
+      }))).sort();
 
-        active_layer.parameters.years = years;
+      active_layer.parameters.years = years;
 
-        // Calculate the color brewer bands.
-        // Get min / max values for all these metrics across all the years / seasons / etc.
-        // track baselines
-        let data_values = {};
-        _.each(layer_data.features, (feature) => {
-          //console.log(feature);
-          _.each(feature.properties.data, (data) => {
-          //console.log("data:",feature, data.baseline);
-            data_values[data.season] = data_values[data.season] || [];
-            _.each(data.values, (value) => {
-              data_values[data.season].push(value.delta);
-            });
+      // Calculate the color brewer bands.
+      // Get min / max values for all these metrics across all the years / seasons / etc.
+      // track baselines
+      let data_values = {};
+      _.each(layer_data.features, (feature) => {
+        _.each(feature.properties.data, (data) => {
+          data_values[data.season] = data_values[data.season] || [];
+          _.each(data.values, (value) => {
+            data_values[data.season].push(value.delta);
           });
         });
+      });
 
-        let color_range = _.cloneDeep(active_layer.parameters.color_range);
-        if (opts.invert_scale) {
-          color_range.reverse();
-        }
-
-        _.each(active_layer.parameters.all_seasons, (name, season) => {
-          let scale = d3.scaleQuantile().domain(data_values[season]).range(color_range).quantiles();
-
-          if (opts.invert_scale) {
-            scale.reverse();
-          }
-          active_layer.parameters.metrics_ranges[season] = scale;
-        });
+      let color_range = _.cloneDeep(active_layer.parameters.color_range);
+      if (opts.invert_scale) {
+        color_range.reverse();
       }
+
+      _.each(active_layer.parameters.all_seasons, (name, season) => {
+        let scale = d3.scaleQuantile().domain(data_values[season]).range(color_range).quantiles();
+
+        if (opts.invert_scale) {
+          scale.reverse();
+        }
+        active_layer.parameters.metrics_ranges[season] = scale;
+      });
     },
     onEachGeometry: (layer_data, active_layer, feature, layer) => {
       let p = active_layer.parameters.options;

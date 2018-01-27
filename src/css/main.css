@@ -1243,9 +1243,14 @@ header .left-side {
 }
 header .left-side h1 {
   font-size: 4em;
+  letter-spacing: -2px;
 }
 header .slate-text {
   color: #113f83;
+  font-weight: 300;
+}
+header .orange-text {
+  color: #f27421;
   font-weight: 700;
 }
 header .gray-text {
