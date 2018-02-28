@@ -1196,7 +1196,7 @@ header {
 .tide-guage-slr-icon {
 }
 .tide-guage-slr-icon .likelihood  {
-  width: 6px;
+  width: 16px;
   height: 100px;
 
   position: relative;
@@ -1205,7 +1205,7 @@ header {
   position: absolute;
   bottom: -18px;
   display: block;
-  width: 50px;
+  width: 75px;
   text-align: center;
   font-size: 11px;
   left: -15px;

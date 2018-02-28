@@ -1,16 +1,12 @@
 RendererTemplates.geojson_points("sea_level_rise", {
   parameters: {
     opacity: false,
-    rcps: ["Medium",
-           "High"],
     likelihoods: [
         17,
         50,
         83,
         99],
    years: [
-        2000,
-        2010,
         2020,
         2030,
         2040,
@@ -24,7 +20,6 @@ RendererTemplates.geojson_points("sea_level_rise", {
     options: {
       year_indx: 3,
       likelihood_indx: 2,
-      rcp_indx: 1,
     }
   },
 
@@ -32,7 +27,6 @@ RendererTemplates.geojson_points("sea_level_rise", {
 
   selectData: function (active_layer, all_data) {
     let year = active_layer.parameters.years[active_layer.parameters.options.year_indx];
-    let rcp = active_layer.parameters.rcps[active_layer.parameters.options.rcp_indx];
     let likelihood = active_layer.parameters.likelihoods[active_layer.parameters.options.likelihood_indx];
     let all_vals = [];
     let max = 0;
@@ -43,13 +37,11 @@ RendererTemplates.geojson_points("sea_level_rise", {
     max = _.max(all_vals);
     let data = _.reduce(all_data, function (all, feature) {
       if (year === feature.properties.year) {
-        if (rcp === feature.properties.rcp_label) {
           let val = feature.properties["p"+likelihood];
 
           let new_feature = _.cloneDeep(feature);
           new_feature.properties.value = [likelihood, val, ( val / max)];
           all.push(new_feature);
-        }
       }
 
       return all;
@@ -79,7 +71,6 @@ RendererTemplates.geojson_points("sea_level_rise", {
 
     return `<h5>${feature.properties.name}</h5>
            <strong>Year: </strong>&nbsp;${feature.properties.year}<br/>
-           <strong>Emissions Scenario: &nbsp; </strong>${feature.properties.rcp_label}
            <table>
               <thead>
                 <tr>
@@ -110,14 +101,6 @@ RendererTemplates.geojson_points("sea_level_rise", {
       </div>
 
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose an emissions Model'> Emissions Scenario: </label>
-        <select value='{{parameters.options.rcp_indx}}'>
-          <option value='0'>Medium</option>
-          <option value='1'>High</option>
-        </select>
-      </div>
-
-      <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose a likelihood'> Likelihood: </label>
         <select value='{{parameters.options.likelihood_indx}}'>
           <option value='0'>Likely - Lower</option>
@@ -132,7 +115,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
         <svg width="12" height="12">
           <rect width="12" height="12" style="fill:blue;stroke-width:3;stroke:blue" />
         </svg>
-        Projected Sea Level Rise (ft)
+        Relative Mean Sea Level (feet NAVD88)
       </div>
   `,
 });

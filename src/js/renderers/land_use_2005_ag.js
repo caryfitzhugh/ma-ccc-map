@@ -1,8 +1,8 @@
 RendererTemplates.wms("land_use_2005_ag", {
 
   parameters: {
-    min_zoom: 10,
-    max_zoom: 20,
+/*    min_zoom: 10,
+    max_zoom: 20,*/
     opacity: 100,
     options: {
 
