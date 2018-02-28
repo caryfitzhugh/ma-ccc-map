@@ -1196,22 +1196,22 @@ header {
 .tide-guage-slr-icon {
 }
 .tide-guage-slr-icon .likelihood  {
-  width: 16px;
+  width: 14px;
   height: 100px;
 
   position: relative;
 }
 .tide-guage-slr-icon .likelihood > div.label {
   position: absolute;
-  bottom: -18px;
+  bottom: -5px;
   display: block;
   width: 75px;
+  font-weight: 600;
   text-align: center;
-  font-size: 13px;
-  font-weight: 400;
-  left: -30px;
-  color: white;
-  text-shadow: 0 0 0.4em blue, 0 0 0.5em blue, 0 0 0.6em blue;
+  font-size: 12px;
+  left: -4px;
+  color: blue;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 
 }
 .tide-guage-slr-icon .likelihood > div.bar {
@@ -1220,6 +1220,7 @@ header {
   min-height: 1px;
   max-height: 100px;
   background: blue;
+  
 }
 
 .active-year, .active-season {
