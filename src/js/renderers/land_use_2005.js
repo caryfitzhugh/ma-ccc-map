@@ -1,5 +1,4 @@
 RendererTemplates.wms("land_use_2005", {
-
   parameters: {
     min_zoom: 12,
     max_zoom: 20,

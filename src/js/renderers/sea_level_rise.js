@@ -74,16 +74,16 @@ RendererTemplates.geojson_points("sea_level_rise", {
            <table>
               <thead>
                 <tr>
-                  <th> Likelihood&nbsp;&nbsp;</th>
+                  <th> Scenario&nbsp;&nbsp;</th>
                   <th> Percentile&nbsp;&nbsp;</th>
                   <th> Feet </th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Likely - Lower</td><td>17%</td><td>${feature.properties.p17}</td> </tr>
-                <tr><td>Median </td><td>50%</td><td>${feature.properties.p50}</td> </tr>
-                <tr><td>Likely - Upper</td><td>83%</td><td>${feature.properties.p83}</td> </tr>
-                <tr><td>Exceptionally Unlikely to Exceed&nbsp;&nbsp;  </td><td>99.9%</td><td>${feature.properties.p99}</td> </tr>
+                <tr><td>Intermediate</td><td>17%</td><td>${feature.properties.p17}</td> </tr>
+                <tr><td>Intermediate-High</td><td>50%</td><td>${feature.properties.p50}</td> </tr>
+                <tr><td>High</td><td>83%</td><td>${feature.properties.p83}</td> </tr>
+                <tr><td>Extreme (Maximum physically plausible)&nbsp;&nbsp;  </td><td>99.9%</td><td>${feature.properties.p99}</td> </tr>
               </tbody>
            </table>
            <br/>
@@ -101,12 +101,12 @@ RendererTemplates.geojson_points("sea_level_rise", {
       </div>
 
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a likelihood'> Likelihood: </label>
+        <label decorator='tooltip:Choose a likelihood'> Scenario: </label>
         <select value='{{parameters.options.likelihood_indx}}'>
-          <option value='0'>Likely - Lower</option>
-          <option value='1'>Median</option>
-          <option value='2'>Likely - Upper</option>
-          <option value='3'>Exceptionally Unlikely to Exceed</option>
+          <option value='0'>Intermediate</option>
+          <option value='1'>Intermediate-High</option>
+          <option value='2'>High</option>
+          <option value='3'>Extreme (Maximum physically plausible)</option>
         </select>
       </div>
 

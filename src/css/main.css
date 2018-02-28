@@ -1207,10 +1207,11 @@ header {
   display: block;
   width: 75px;
   text-align: center;
-  font-size: 11px;
-  left: -15px;
-  color: blue;
-  text-shadow: white 0.15em 0.15em 0.2em;
+  font-size: 13px;
+  font-weight: 400;
+  left: -30px;
+  color: white;
+  text-shadow: 0 0 0.4em blue, 0 0 0.5em blue, 0 0 0.6em blue;
 
 }
 .tide-guage-slr-icon .likelihood > div.bar {
@@ -1219,7 +1220,6 @@ header {
   min-height: 1px;
   max-height: 100px;
   background: blue;
-  text-shadow: white 0.1em 0.1em 0.2em
 }
 
 .active-year, .active-season {
