@@ -94,7 +94,7 @@ var available_layers = [
     "download_url": "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:state_mask&maxFeatures=50&outputFormat=SHAPE-ZIP",
     "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_description.html.",
   },
-  
+
 
 /*  {
     "id": "ma_historical_precipitation",
@@ -609,7 +609,7 @@ var available_layers = [
     "source_url": "",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "download_url": "",
-    "metadata_url": "",
+    "metadata_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/UMASS_SLR_METADATA_UPDATE_20180305.pdf",
   },
   {
     "id": "aquifers",
