@@ -1220,12 +1220,14 @@ header {
   min-height: 1px;
   max-height: 100px;
   background: blue;
-  
+
 }
 
+.active-year, .active-scenario,
 .active-year, .active-season {
   background-color: rgba(0, 102, 51, 0.05);
 }
+tr.active-scenario td.active-year,
 tr.active-season td.active-year {
   background-color: rgba(0, 102, 51, 0.3);
 }

@@ -549,6 +549,12 @@ Views.ControlPanel.observe("map_controls.active_base_layer", function (base_laye
   }
 });
 
+Views.ControlPanel.on("layer-show-singleton-details", function (active_layer, data) {
+    var cp = Views.ControlPanel;
+    cp.set("map_details.location", true);
+    cp.set("map_details.feature_info_requests", [{name: active_layer.name, active_layer: active_layer, response_id: "singleton"}]);
+    cp.set("map_details.feature_info_responses", {"singleton": data});
+});
 Views.ControlPanel.observe("layers.defaults", function (layer_infos) {
   if (layer_infos) {
     var cp = Views.ControlPanel;
@@ -605,6 +611,15 @@ Views.ControlPanel.observe("map_details.location", function (click_location) {
   var map = Views.ControlPanel.get('map');
   var cp = Views.ControlPanel;
   var marker = cp.get("map_details.location_marker");
+  if (click_location === true) {
+    if (marker) {
+      map.removeLayer(marker);
+      marker = null;
+      cp.set("map_details.location_marker", marker);
+    }
+    // It's just a flag, skip all processing.
+    return;
+  }
 
   if (click_location) {
     if (marker && marker.getLatLng() !== click_location) {

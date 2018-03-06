@@ -56,7 +56,8 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
                     opts.onEachGeometry(data, active_layer, feature, layer);
                   }
                   if (opts.popupContents) {
-                    layer.bindPopup(opts.popupContents(feature));
+                    layer.bindPopup(opts.popupContents(feature, active_layer),
+                                    { maxWidth: opts.maxPopupWidth || 300});
                   }
                 }
               });

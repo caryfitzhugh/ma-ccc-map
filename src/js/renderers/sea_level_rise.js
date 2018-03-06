@@ -41,6 +41,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
 
           let new_feature = _.cloneDeep(feature);
           new_feature.properties.value = [likelihood, val, ( val / max)];
+          new_feature.properties.all_data = all_data
           all.push(new_feature);
       }
 
@@ -65,32 +66,75 @@ RendererTemplates.geojson_points("sea_level_rise", {
     });
 
   },
+  onEachGeometry: (all_data, active_layer, feature, layer) => {
+    layer.on({
+      click: (e) =>  {
+        let year = feature.properties.year;
+        let likelihood = active_layer.parameters.likelihoods[active_layer.parameters.options.likelihood_indx];
+        let cur_station_id = feature.properties.station_id;
+        let table_data = {};
 
-  popupContents: function (feature) {
-    var index = feature.properties.reason_cls
+        _.each(all_data.features, (dat) => {
+          if (dat.properties.station_id === cur_station_id) {
+            table_data[dat.properties.year] = dat;
+          }
+        });
 
-    return `<h5>${feature.properties.name}</h5>
-           <strong>Year: </strong>&nbsp;${feature.properties.year}<br/>
-           <table>
-              <thead>
-                <tr>
-                  <th> Scenario&nbsp;&nbsp;</th>
-                  <th> Percentile&nbsp;&nbsp;</th>
-                  <th> Feet </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Intermediate</td><td>17%</td><td>${feature.properties.p17}</td> </tr>
-                <tr><td>Intermediate-High</td><td>50%</td><td>${feature.properties.p50}</td> </tr>
-                <tr><td>High</td><td>83%</td><td>${feature.properties.p83}</td> </tr>
-                <tr><td>Extreme (Maximum physically plausible)&nbsp;&nbsp;  </td><td>99.9%</td><td>${feature.properties.p99}</td> </tr>
-              </tbody>
-           </table>
-           <br/>
-           <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=${feature.properties.station_id}" target="_blank_">NOAA Station Info</a><br/><br/>
-           ` +
-           Renderers.utils.zoom_to_location_link( feature.geometry );
+        let sorted_table_data = [];
+        _.each(_.keys(table_data).sort(), (k) => {
+          sorted_table_data.push(table_data[k]);
+        });
+        Views.ControlPanel.fire("layer-show-singleton-details",
+            active_layer, {name: feature.properties.name, table_data: sorted_table_data, year: year, likelihood: likelihood});
+      }
+    });
   },
+  info_template: `
+        <div class='col-xs-2'>
+          <label> {{{name}}}</label>
+        </div>
+        <div class='col-xs-10'>
+          <table class='table slr-table'>
+            <thead>
+              <tr>
+                <th style='text-align: center;'
+                    colspan='{{u.object_entries_count(table_data) + 1}}'> Relative mean seal level (feet NAVD88) for {{name}} </th>
+              </tr>
+              <tr>
+                <th> Scenario </th>
+                {{#table_data}}
+                  <th> {{properties.year}}</th>
+                {{/table_data}}
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="{{likelihood === 13 ? 'active-scenario' : ''}}">
+                <td>Intermediate </td>
+                {{#table_data}}
+                  <td class='{{year === properties.year ? 'active-year' : ''}}'> {{properties.p17}} </td>
+                {{/table_data}}
+              </tr>
+              <tr class="{{likelihood === 50 ? 'active-scenario' : ''}}">
+                <td>Intermediate High</td>
+                {{#table_data}}
+                  <td class='{{year === properties.year ? 'active-year' : ''}}'> {{properties.p50}} </td>
+                {{/table_data}}
+              </tr>
+              <tr class="{{likelihood === 83 ? 'active-scenario' : ''}}">
+                <td>High</td>
+                {{#table_data}}
+                  <td class='{{year === properties.year ? 'active-year' : ''}}'> {{properties.p83}} </td>
+                {{/table_data}}
+              </tr>
+              <tr class="{{likelihood === 99 ? 'active-scenario' : ''}}">
+                <td>Extreme</td>
+                {{#table_data}}
+                  <td class='{{year === properties.year ? 'active-year' : ''}}'> {{properties.p99}} </td>
+                {{/table_data}}
+              </tr>
+            </tbody>
+          </table>
+  `,
   legend_template: `
       <div class='detail-block opacity'>
         <label  decorator='tooltip:Use slider to adjust Year'> Year: </label>
