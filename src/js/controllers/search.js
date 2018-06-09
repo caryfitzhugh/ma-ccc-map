@@ -1,8 +1,11 @@
 Controllers.Search = {
   execute_search: function (search_str, callback) {
     $.getJSON(
-      /*Not on CDN, b/c the port is not 8080 */
-      "https://maps.google.com/maps/api/geocode/json?sensor=false&bounds=41,-74|43,-69&address=" + encodeURIComponent(search_str),
+      "https://maps.google.com/maps/api/geocode/json?bounds="+
+      Config.defaults["bounding-box"][1] + "," +
+      Config.defaults["bounding-box"][0] + "|" +
+      Config.defaults["bounding-box"][3] + "," +
+      Config.defaults["bounding-box"][2] + "&address=" + encodeURIComponent(search_str) + "&key=AIzaSyAOCQaASjkuA5J9S_6Nn0T7oz4VnFsh5dU",
       function (data, textStatus, jqXHR) {
         callback(search_str, data);
       }

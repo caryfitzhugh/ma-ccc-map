@@ -131,11 +131,46 @@
   <div class='modal-wrapper {{wizard.standalone ? "open" : "closed"}} '>
     <div class='modal-bg' on-tap="close-standalone-wizard"></div>
     <div class='modal-content wizard-modal'>
-      <div class='container-fluid'>
+      <div class='container-fluid {{wizard.standalone}}'>
         <span class='show-cursor fa fa-close' on-tap="close-standalone-wizard"></span>
-        {{#wizard.standalone.templates.wizard }}
-          {{> . }}
-        {{/wizard.standalone.templates.wizard }}
+        {{#if "climate-vulnerability" === wizard.standalone }}
+          <h1> Climate Vulnerability</h1>
+          <p>
+            Using this tool you can explore the climate change effects on your locality.
+          </p>
+          <form role='form' on-submit='add-climate-vulnerability-layer'>
+            <div class='form-group'>
+              <label for='climate_vuln_town'>Pick Your Town: </label>
+              <input class='form-control' value='{{climate_vulnerability.town}}' type='text' list='climate_vulnerability_towns'/>
+            </div>
+            <div class='form-group clearfix'>
+              <label for='climate_vuln_features'>Pick Vulnerabilities to Map:</label>
+
+              {{#climate_vulnerability.all_features}}
+                <div class='feature-toggler'>
+                  <div class="btn {{ u.contains(climate_vulnerability.features, .) ? 'btn-primary' : 'btn-secondary'}}"
+                       on-tap='toggle-climate-vulnerability-feature'>
+                       {{.}}
+                  </div>
+                </div>
+              {{/climate_vulnerability.all_features}}
+            </div>
+            <datalist id='climate_vulnerability_towns'>
+              {{#climate_vulnerability.towns}}
+                <option name={{.}}> {{.}} </option>
+              {{/climate_vulnerability.towns}}
+            </datalist>
+
+            <hr/>
+            <div class='pull-right'>
+              {{#(climate_vulnerability.town && u.object_entries_count(climate_vulnerability.features) > 0)}}
+                <button class='btn btn-primary' on-tap='add-climate-vulnerability-layer'> View Climate Vulnerability for {{climate_vulnerability.town}} </button>
+              {{else}}
+                <button class='btn-primary btn' disabled > View Climate Vulnerability</button>
+              {{/(climate_vulnerability.town && u.object_entries_count(climate_vulnerability.features) > 0)}}
+            </div>
+          </form>
+        {{/if "climate-vulnerability" === wizard.standalone}}
       </div>
     </div>
   </div>
@@ -599,6 +634,11 @@
           {{/if}}
         {{/if}}
       </div>
+      {{#if layer_controls.active_tab === "layers"}}
+        <div class='footer'>
+          <div class='btn btn-secondary btn-sm btn-block' on-tap='show-climate-vulnerability-wizard'> Town Climate Vulerability Wizard</div>
+        </div>
+      {{/if layer_controls.active_tab === "layers"}}
     </div>
   </div>
 </script>
@@ -856,7 +896,6 @@
                 <span class='fa fa-question'> </span>
               </a>
             {{/if layer_has_standalone_wizard(this)}}
-
           </div>
           {{> layer_controls_details_blocks_template}}
         </div>
@@ -944,6 +983,7 @@
     <script src="./js/polyfills.js?__inline=true"></script>
     <script src="./js/config.js?__inline=true"></script>
     <script src="./js/layer_info.js?__inline=true"></script>
+    <script src="./js/data/climate_vulnerability_towns.js?__inline=true"></script>
 
     <!-- Add all the javascript libs here -->
     <script src="./vendor/lodash.min.js?__inline=true"></script>
@@ -1063,6 +1103,7 @@
     <script src="./js/views/utils.js?__inline=true"></script>
     <script src="./js/views/map.js?__inline=true"></script>
     <script src="./js/views/control_panel.js?__inline=true"></script>
+    <script src="./js/views/climate_vulnerability.js?__inline=true"></script>
 
     <script src="./js/init.js?__inline=true"></script>
 </body>

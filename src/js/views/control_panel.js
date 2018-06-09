@@ -60,7 +60,7 @@ Views.ControlPanel = new Ractive({
     },
     layer_has_standalone_wizard: function (active_layer ) {
       if (active_layer) {
-        return !!(active_layer.templates && active_layer.templates.wizard);
+        return !!(active_layer.parameters.standalone_wizard);
       } else {
         return false;
       }
@@ -154,6 +154,12 @@ Views.ControlPanel = new Ractive({
               "advanced_layer_controls"
       ]
     },
+    climate_vulnerability: {
+      town: "",
+      towns: CLIMATE_VULNERABILITY_TOWNS,
+      features: ["Flooding"],
+      all_features: ["Flooding"]
+    }
   },
   decorators: {
       tooltip:  RactiveTooltip
@@ -337,7 +343,14 @@ Views.ControlPanel.on({
   },
   "zoom-to-search-result": function (evt) {
     var map = Views.ControlPanel.get('map');
-    map.setView([evt.context.geometry.location.lat,evt.context.geometry.location.lng],15);
+    let bounds = evt.context.geometry.bounds;
+    if (bounds) {
+      map.fitBounds([[bounds.northeast.lat, bounds.northeast.lng],
+                    [bounds.southwest.lat, bounds.southwest.lng]]);
+
+    } else {
+      map.setView([evt.context.geometry.location.lat,evt.context.geometry.location.lng],15);
+    }
   },
   "print-map": function (evt) {
     var cp = Views.ControlPanel;
@@ -413,7 +426,30 @@ Views.ControlPanel.on({
     cp.set("wizard.current_step", next);
   },
   "show-standalone-wizard": function (evt) {
-    Views.ControlPanel.set("wizard.standalone", evt.context);
+    Views.ControlPanel.set("wizard.standalone", evt.context.parameters.standalone_wizard);
+  },
+  "show-climate-vulnerability-wizard": function (evt) {
+    Views.ControlPanel.set("wizard.standalone", 'climate-vulnerability');
+  },
+  "add-climate-vulnerability-layer": function (evt) {
+    Views.ControlPanel.set("wizard.standalone", false);
+    var map = Views.ControlPanel.get('map');
+    town = Views.ControlPanel.get('climate_vulnerability.town');
+    features = Views.ControlPanel.get('climate_vulnerability.features');
+
+    Views.ClimateVulnerability.add_layers(map, town, features);
+
+    evt.original.stopPropagation();
+    evt.original.preventDefault();
+  },
+  "toggle-climate-vulnerability-feature": function (evt) {
+    let features = Views.ControlPanel.get("climate_vulnerability.features", []);
+    if (_.includes(features, evt.context)) {
+      features = _.without(features, evt.context);
+    } else {
+      features.push(evt.context);
+    }
+    Views.ControlPanel.set('climate_vulnerability.features', features);
   },
   "close-standalone-wizard": function (evt) {
     Views.ControlPanel.set('wizard.standalone', null);

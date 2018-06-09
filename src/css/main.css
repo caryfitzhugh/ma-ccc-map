@@ -252,10 +252,23 @@ header {
   top: 68px;
   left: 0;
   right:0;
-  bottom:0;
+  bottom: 50px;
+  border-bottom: 1px solid #999;
   overflow-y: auto;
-  position: relative;
 }
+.layer-controls .tray .footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.layer-controls .tray .footer .btn-secondary {
+  background: #f27421;
+  color: white;
+}
+
 .layer-controls .tray .search-results .result {
   padding: 5px;
   border-bottom: 1px solid #999;
@@ -1188,7 +1201,13 @@ header {
   display: block;
   width: 100%;
 }
-
+.wizard-modal .climate-vulnerability .form-group label {
+  display:  block;
+}
+.wizard-modal .climate-vulnerability .feature-toggler {
+  float: left;
+  margin-right: 10px;
+}
 .tide-guage-slr-icon  {
   width: auto;
   display: block;

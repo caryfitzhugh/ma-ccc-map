@@ -49,13 +49,14 @@ Controllers.Layers = {
     return !!_.find(active_layers, {"layer_default_id": layer_default_id, "copied_source": null});
   },
   counter: 0,
-  new_active_layer: function (map, layer_default) {
+  new_active_layer: function (map, layer_default, parameters) {
     var renderer = Renderers[layer_default.renderer_id || layer_default.id];
     Controllers.Layers.counter = Controllers.Layers.counter + 1;
 
     var parameters = Object.assign({},
                                    renderer.parameters || {},
-                                   layer_default.parameters || {});
+                                   layer_default.parameters || {},
+                                   parameters || {});
 
     var active_layer = { id: "layer:" + Controllers.Layers.counter,
              layer_default_id: layer_default.id,
@@ -165,6 +166,23 @@ Controllers.Layers = {
     new_active_layers.unshift(layer);
 
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
+  },
+  add_custom_layer: function (cp, defaults, params) {
+    // Find out if it's active or not (in layers.active)
+    var new_active_layers = _.cloneDeep(cp.get("layers.active", []));
+    let renderer_id = defaults.id;
+    var existing_layer = _.find(new_active_layers, {"layer_default_id": renderer_id, "name": defaults.name, "copied_source": null});
+
+    if (existing_layer) {
+        // Do nothing, it's here already
+    } else {
+      var new_layer = Controllers.Layers.new_active_layer(cp.get("map"), defaults, params);
+      new_active_layers.unshift(new_layer);
+
+      cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
+      cp.set("active_layers_added_count", cp.get("active_layers_added_count") + 1);
+    }
+
   },
   toggle_layer_active: function (cp, layer_default_id) {
     // Find out if it's active or not (in layers.active)
