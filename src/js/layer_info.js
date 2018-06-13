@@ -18,6 +18,12 @@ var CDN = function (url_str) {
       uri.hostname("d2749s27r5h52i.cloudfront.net");
       uri.port(null);
       uri.scheme("https");
+    /// *
+    } else if (hostname.match(/repository.nescaum-ccsc-dataservices.com/)) {
+      uri.hostname("d2iq7uivdprspu.cloudfront.net");
+      uri.port(null);
+      uri.scheme("https");
+     ///
     } else {
       console.warn("Hostname not in a CDN", hostname);
     }

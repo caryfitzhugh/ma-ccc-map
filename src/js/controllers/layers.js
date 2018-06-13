@@ -11,7 +11,7 @@ Controllers.Layers = {
   update_layers_parameters: function (cp, active_layer) {
     var al_index = _.findIndex(cp.get("layers.active"), {id: active_layer.id});
 
-    cp.update("layers.active."+al_index+".parameters");
+    cp.set("layers.active."+al_index+".parameters", active_layer.parameters);
   },
   mark_layer_as_loaded: function (cp, active_layer, success, force_reload) {
     var this_layer = cp.get("layers_loading_states." + active_layer.layer_default_id) || { loaded: 0, errors: 0};
