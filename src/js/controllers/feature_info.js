@@ -77,6 +77,17 @@ Controllers.FeatureInfo = {
           var current = _.cloneDeep(cp.get("map_details.feature_info_requests"));
           var response_id = active_layer.id + "-" + Date.now();
 
+          let callback = (response_id, data) => {
+            if (renderer.got_feature_info_response) {
+              let prom = renderer.got_feature_info_response(active_layer, data)
+              prom.then((addl_data) => {
+
+                cp.set("map_details.feature_info_responses."+response_id + '.' + addl_data.keypath, addl_data.value);
+              });
+            }
+          };
+
+
           current.push({name: active_layer.name,
                         active_layer: active_layer,
                         response_id: response_id})
@@ -90,6 +101,7 @@ Controllers.FeatureInfo = {
                 dataType: 'json',
                 success: function (resp) {
                   if (cp.get("map_details.location") === evt.latlng) {
+                    callback(response_id, resp);
                     cp.set("map_details.feature_info_responses."+response_id, {
                       active_layer: active_layer,
                       json: resp});
@@ -111,6 +123,7 @@ Controllers.FeatureInfo = {
               dataType: "xml",
               success: function (resp) {
                 if (cp.get("map_details.location") === evt.latlng) {
+                  callback(response_id, resp);
                   cp.set("map_details.feature_info_responses."+response_id, {
                     active_layer: active_layer,
                     xml: resp});
@@ -128,6 +141,7 @@ Controllers.FeatureInfo = {
             var resp = renderer.find_geo_json(map, active_layer, evt);
 
             if (resp) {
+              callback(response_id, resp);
               cp.set("map_details.feature_info_responses."+response_id, {
                 active_layer: active_layer,
                 geojson: resp});
