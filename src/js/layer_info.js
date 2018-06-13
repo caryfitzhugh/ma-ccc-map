@@ -460,13 +460,46 @@ var available_layers = [
   {
     "id": "vulnerability_test",
     "folder": "vulnerability_test",
-    "name": "vulnerability_test",
+    "name": "Vulnerability",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": " ",
     "source": "University of California San Diego",
     "source_url": "http://loca.ucsd.edu/",
     "download_url": "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:climate_data_projected_download&CQL_FILTER=var_name='growdegdays'&maxFeatures=1000&outputFormat=SHAPE-ZIP&format_options=filename:ma_projected_growing_degree_days",
     "metadata_url": "http://loca.ucsd.edu/"
+  },
+  {
+    "id": "vulnerability_flood",
+    "folder": "Vulnerability",
+    "name": "Stormwater Flooding",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
+    "description": " ",
+    "source": "NESCAUM",
+    "source_url": "",
+    "download_url": "",
+    "metadata_url": ""
+  },
+  {
+    "id": "vulnerability_drought",
+    "folder": "Vulnerability",
+    "name": "Drought",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
+    "description": " ",
+    "source": "NESCAUM",
+    "source_url": "",
+    "download_url": "",
+    "metadata_url": ""
+  },
+  {
+    "id": "vulnerability_extreme_heat",
+    "folder": "Vulnerability",
+    "name": "Extreme Heat",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
+    "description": " ",
+    "source": "NESCAUM",
+    "source_url": "",
+    "download_url": "",
+    "metadata_url": ""
   },
   /*
   {

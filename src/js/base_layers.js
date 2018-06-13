@@ -30,6 +30,14 @@ var BaseLayers = [
           })
   },
   {
+    name: "2001 Imagery",
+    data: L.tileLayer(/* Already a CDN */
+            "http://tiles.arcgis.com/tiles/hGdibHYSPO59RG1h/arcgis/rest/services/orthos_2001_tile_package/MapServer/tile/{z}/{y}/{x}", {
+            maxZoom: 18,
+            attribution: '2001-2003 Imagery Courtesy of <a href="https://docs.digital.mass.gov/dataset/massgis-data-15000-color-ortho-imagery-2001-2003" target="_blank">Massachusetts Dept. of Transportation</a>'
+          })
+  },
+  {
     name: "Watercolor",
     data: L.tileLayer(
       /* Already a CDN */
