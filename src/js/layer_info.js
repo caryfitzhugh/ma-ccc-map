@@ -475,62 +475,6 @@ var available_layers = [
     "metadata_url": "http://loca.ucsd.edu/"
   },
   {
-    "id": "vulnerability_flood",
-    "folder": "Vulnerability",
-    "name": "Stormwater Flooding",
-    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "description": " ",
-    "source": "NESCAUM",
-    "source_url": "",
-    "download_url": "",
-    "metadata_url": ""
-  },
-  {
-    "id": "vulnerability_drought",
-    "folder": "Vulnerability",
-    "name": "Drought",
-    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "description": " ",
-    "source": "NESCAUM",
-    "source_url": "",
-    "download_url": "",
-    "metadata_url": ""
-  },
-  {
-    "id": "vulnerability_extreme_heat",
-    "folder": "Vulnerability",
-    "name": "Extreme Heat",
-    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "description": " ",
-    "source": "NESCAUM",
-    "source_url": "",
-    "download_url": "",
-    "metadata_url": ""
-  },
-  /*
-  {
-    "id": "vulnerability_flood",
-    "folder": "Climate Vulnerability",
-    "name": "Flood Vulnerability",
-    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "description": " Projected changes in annual or seasonal mean growing degree-days.  A growing degree day (GDD) is an index used to express crop maturity. The index is computed by subtracting a base temperature of 50°F from the average of the maximum and minimum temperatures for the day. Minimum temperatures less than 50°F are set to 50, and maximum temperatures greater than 86°F are set to 86. These substitutions indicate that no appreciable growth is detected with temperatures lower than 50° or greater than 86°. (Definition adapted from National Weather Service) <br>  Projected changes are relative to the 1971-2000 mean, calculated for four periods 2020-2049 (2030s), 2040-2069 (2050s), 2060-2089 (2070s), 2080-2099 (2090s). The projections are derived from statistically downscaled (LOCA method) CMIP5 daily data. Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015).",
-    "source": "University of California San Diego",
-    "source_url": "http://loca.ucsd.edu/",
-    "download_url": "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:climate_data_projected_download&CQL_FILTER=var_name='growdegdays'&maxFeatures=1000&outputFormat=SHAPE-ZIP&format_options=filename:ma_projected_growing_degree_days",
-    "metadata_url": "http://loca.ucsd.edu/"
-  }, */
-  /*  {
-    "id": "nfhl",
-    "folder": "Public safety/emergency response",
-    "name": "National Flood Hazard Layer",
-    "description": "FEMA National Flood Hazard Layer",
-    "source": "FEMA",
-    "source_url": "http:\/\/www.fema.gov\/",
-    "sectors": ["Water Resources"],
-    "download_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
-    "metadata_url": "http:\/\/www.hazards.fema.gov\/gis\/nfhl\/rest\/services\/public\/NFHL\/MapServer",
-  },*/
-  {
     "id": "noaa_slr",
     "folder": "Coastal Vulnerability",
     "name": "Sea Level Rise & Coastal Flooding (NOAA)",

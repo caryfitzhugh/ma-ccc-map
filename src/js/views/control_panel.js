@@ -157,8 +157,8 @@ Views.ControlPanel = new Ractive({
     climate_vulnerability: {
       town: "",
       towns: CLIMATE_VULNERABILITY_TOWNS,
-      features: ["Stormwater Flooding", "Sea Level Rise", "Extreme Heat"],
-      all_features: ["Stormwater Flooding", "Sea Level Rise", "Extreme Heat"]
+      features: Object.keys(RendererTemplates.ma_climate_vulnerability_layers()).sort(),
+      all_features: Object.keys(RendererTemplates.ma_climate_vulnerability_layers()).sort(),
     }
   },
   decorators: {
