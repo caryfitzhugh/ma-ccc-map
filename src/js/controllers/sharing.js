@@ -48,21 +48,24 @@ Controllers.Sharing = {
   },
   save_state: function (data, cb) {
     $.ajax({
-      url: CDN("http://52.2.5.122/api/v1/savemap.php"),
+      //url: CDN("http://52.2.5.122/api/v1/savemap.php"),
+      url: "https://repository.nescaum-ccsc-dataservices.com/map_states",
       method: "POST",
-      data: { data:  JSON.stringify(data) },
-      success: function (token) {
-        cb(token);
+      contentType: "application/json",
+      data: JSON.stringify({ map_state:  JSON.stringify(data) }),
+      success: function (resp) {
+        cb(resp.token);
       }
-      });
+    });
   },
   load_state: function (token, cp, map) {
     cp.set("sharing_modal_loading", true);
     $.ajax({
-      url: CDN("http://52.2.5.122/api/v1/getmap.php"),
-      data: { token:  token},
-      success: function (data) {
-        var json = JSON.parse(JSON.parse(data)[0].data);
+      // url: CDN("http://52.2.5.122/api/v1/getmap.php"),
+      url: CDN("https://repository.nescaum-ccsc-dataservices.com/map_states/" + token),
+      dataType: "json",
+      success: function (resp) {
+        var json = JSON.parse(resp.data);
         if (json.version != Controllers.Sharing.version) {
           alert("Ack! We can't load this saved map!")
         } else {
