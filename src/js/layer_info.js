@@ -463,7 +463,7 @@ var available_layers = [
     "download_url": "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:climate_data_projected_download&CQL_FILTER=var_name='growdegdays'&maxFeatures=1000&outputFormat=SHAPE-ZIP&format_options=filename:ma_projected_growing_degree_days",
     "metadata_url": "http://loca.ucsd.edu/"
   },
-  {
+  /*{
     "id": "vulnerability_test",
     "folder": "vulnerability_test",
     "name": "Vulnerability",
@@ -473,7 +473,7 @@ var available_layers = [
     "source_url": "http://loca.ucsd.edu/",
     "download_url": "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:climate_data_projected_download&CQL_FILTER=var_name='growdegdays'&maxFeatures=1000&outputFormat=SHAPE-ZIP&format_options=filename:ma_projected_growing_degree_days",
     "metadata_url": "http://loca.ucsd.edu/"
-  },
+  },*/
   {
     "id": "noaa_slr",
     "folder": "Coastal Vulnerability",
