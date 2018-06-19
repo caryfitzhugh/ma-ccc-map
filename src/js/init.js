@@ -19,9 +19,11 @@ var params = URI.parseQuery(window.location.search);
 if (params.map_state_token) {
   Controllers.Sharing.load_state(params.map_state_token, Views.ControlPanel, LeafletMap);
 }
+
 if (params.climate_vulnerability) {
   Views.ControlPanel.set('tools.climate_vulnerability', true);
 }
+
 if (params.sectors) {
   Views.ControlPanel.set('sectors.selected', params.sectors.split(","));
 }
