@@ -634,11 +634,11 @@
           {{/if}}
         {{/if}}
       </div>
-      {{#if layer_controls.active_tab === "layers"}}
+      {{#if layer_controls.active_tab === "layers" && tools.climate_vulnerability}}
         <div class='footer'>
           <div class='btn btn-secondary btn-sm btn-block' on-tap='show-climate-vulnerability-wizard'> Town Climate Vulnerability Wizard</div>
         </div>
-      {{/if layer_controls.active_tab === "layers"}}
+      {{/if layer_controls.active_tab === "layers" && tools.climate_vulnerability}}
     </div>
   </div>
 </script>
