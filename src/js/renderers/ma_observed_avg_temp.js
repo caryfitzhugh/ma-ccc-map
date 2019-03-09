@@ -3,7 +3,6 @@ RendererTemplates.ma_observed_climate_data('ma_observed_avg_temp', {
   legend: "Observed Average Temp. (&deg;F)",
   legend_units: " &deg; F",
   legend_precision: 1,
-  //data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma/avgtemp.json",
-  data_url: "https://adirondackatlas.org/api/v1/climateobs.php?parameter=avgtemp",
+  data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma_observed/avgtemp.json",
   color_range: colorbrewer.OrRd[6]
 });

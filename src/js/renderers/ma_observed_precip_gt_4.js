@@ -3,7 +3,6 @@ title: " Precipitation &gt; 4\"",
   legend: " Observed # Days with precipitation &gt; 4\" ",
   legend_precision: 2,
   legend_units: "days",
-  //data_url: "https://adirondackatlas.org/api/v1/climatedeltas.php?parameter=precipgt4",
-  data_url: "https://adirondackatlas.org/api/v1/climateobs.php?parameter=precipgt4",
+  data_url: "https://repository.nescaum-ccsc-dataservices.com/data/ma_observed/precipgt4.json",
   color_range: colorbrewer.Purples[5]
 });
