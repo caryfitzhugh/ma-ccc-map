@@ -1,27 +1,42 @@
-const findDataForMAProjectedData = (layer_data, area, season, year) => {
-  let data_value = {};
-  _.each(layer_data.features, (feature) => {
-    if (feature.properties.name === area) {
-      _.each(feature.properties.data, (data) => {
-        if (data.season === season) {
-          data_value = _.find(data.values, (value) => {
-            return value.year === year;
-          });
-          if (data_value) {
-            data_value = {
-              value: data_value,
-              season: season,
-              year: year,
-              area: area,
-              season_data: data,
-              area_data: feature
+const findDataForMAProjectedData = (layer_data, area, season, year, scenario) => {
+  let found_value = null;
+  // console.log("Looking for " , area, season, year);
+  try {
+    _.each(layer_data.features, (feature) => {
+      if (feature.properties.name === area) {
+        // console.log("found ", area);
+        _.each(feature.properties.data, (data) => {
+          if (data.season === season) {
+            // console.log("found ", season);
+            data_value = _.find(data.values, (value) => {
+              return value.year === year;
+            });
+            if (data_value) {
+              // console.log("found ", year);
+              throw {
+                value: data_value["delta_" + scenario],
+                season: season,
+                scenario: scenario,
+                year: year,
+                area: area,
+                season_data: data,
+                area_data: feature
+              }
+            } else {
+              // console.log(year , "not found", _.map(data.values, (v) => { return v.year} ));
             }
+          } else {
+            // console.log(data.season, " != ", season)
           }
-        }
-      });
-    }
-  })
-  return data_value;
+        });
+      } else {
+        // console.log(feature.properties.name, " != ", area);
+      }
+    })
+  } catch (data_value) {
+    return data_value;
+  }
+  // Otherwise NUTIN!
 };
 
 RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
@@ -59,20 +74,43 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                 {{/active_layer.parameters.years}}
               </tr>
             </thead>
-            <tbody>
-              {{#u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
-                <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}}">
-                  <td>{{u.capitalize(season)}}</td>
-                  <td>{{baseline}}</td>
-                  {{#u.sort_by(values, 'year')}}
-                    <td decorator="tooltip: Likely Range: {{range}} " class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{u.add_sign(delta)}}}</td>
-                  {{/sort_by(values, 'year')}}
-                </tr>
-              {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
-            </tbody>
+              <tbody>
+                {{#u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
+                  <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}} {{(("high" == geojson.location_data.scenario) ? 'active-scenario' : '')}}">
+                    <td >{{u.capitalize(season)}}</td>
+                    <td >{{u.to_fixed(baseline, ${opts.info_precision})}}</td>
+                    <td> High </td>
+
+                    {{#u.sort_by(values, 'year')}}
+                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}'>
+                      {{{u.add_sign(u.to_fixed(delta_high, ${opts.info_precision}))}}}</td>
+                    {{/sort_by(values, 'year')}}
+                  </tr>
+
+                  <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}} {{(("low" == geojson.location_data.scenario) ? 'active-scenario' : '')}}">
+
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td> Low </td>
+
+                    {{#u.sort_by(values, 'year')}}
+                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}'>
+                      {{{u.add_sign(u.to_fixed(delta_low, ${opts.info_precision}))}}}</td>
+                    {{/sort_by(values, 'year')}}
+                  </tr>
+                {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
+              </tbody>
           </table>
     `,
     legend_template: `
+      <div class='detail-block show-confidence'>
+        <label decorator='tooltip:Choose a Scenario'> Scenario: </label>
+        <select value='{{parameters.options.scenario}}'>
+          {{#u.to_sorted_values_from_hash(parameters.all_scenarios)}}
+            <option value='{{key}}'>{{{value}}}</option>
+          {{/u.to_sorted_values_from_hash(parameters.all_scenarios)}}
+        </select>
+      </div>
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose a Summary Area'> Summary: </label>
         <select value='{{parameters.options.summary}}'>
@@ -97,7 +135,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         </select>
       </div>
 
-      {{#{metrics: parameters.metrics_ranges[parameters.options.season],
+      {{#{metrics: parameters.metrics_ranges[parameters.options.season][parameters.options.scenario],
           legend: '` + opts.legend + `',
           inverted: '` + opts.invert_scale + `',
           quantiled: true,
@@ -111,9 +149,11 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
 
     onLoadedData: (layer_data, active_layer) => {
       let baselines = {};
+
       let years = _.uniq(_.flatten(_.map(layer_data.features, (feature) => {
         return _.flatten(_.map(feature.properties.data, (data) => {
             return _.flatten(_.map(data.values, (value) => {
+              // This is because winter years are -1 year.
               return value.year;
             }));
         }));
@@ -127,9 +167,10 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       let data_values = {};
       _.each(layer_data.features, (feature) => {
         _.each(feature.properties.data, (data) => {
-          data_values[data.season] = data_values[data.season] || [];
+          data_values[data.season] = data_values[data.season] || {'high': [], 'low': []};
           _.each(data.values, (value) => {
-            data_values[data.season].push(value.delta);
+            data_values[data.season]['high'].push(value.delta_high);
+            data_values[data.season]['low'].push(value.delta_low);
           });
         });
       });
@@ -140,13 +181,18 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       }
 
       _.each(active_layer.parameters.all_seasons, (name, season) => {
-        let scale = d3.scaleQuantile().domain(data_values[season]).range(color_range).quantiles();
+        let all_values = [].concat(data_values[season]['high'].concat(data_values[season]['low']));
+        let scale = d3.scaleQuantile().domain(all_values).range(color_range).quantiles();
 
         if (opts.invert_scale) {
-          scale.reverse();
+          scale.reverse()
         }
-        active_layer.parameters.metrics_ranges[season] = scale;
+        active_layer.parameters.metrics_ranges[season] = {
+          'low': scale,
+          'high': scale
+        };
       });
+      console.log(active_layer.parameters.metrics_ranges);
     },
     onEachGeometry: (layer_data, active_layer, feature, layer) => {
       let p = active_layer.parameters.options;
@@ -157,24 +203,29 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         let location_data = findDataForMAProjectedData(layer_data,
                                                feature.properties.name,
                                                p.season,
-                                               active_layer.parameters.years[p.year_indx]
+                                               active_layer.parameters.years[p.year_indx],
+                                               p.scenario
                                               );
 
         feature.properties.location_data = location_data;
 
-        let color = colorize(active_layer.parameters.metrics_ranges[p.season],
-                             location_data.value.delta,
+        let color = colorize(active_layer.parameters.metrics_ranges[p.season][p.scenario],
+                             location_data.value,
                              active_layer.parameters.color_range,
                              opts);
 
         layer.setStyle({fillColor: color, color: color});
+
       } catch( e) {
         feature.properties.location_data = null;
 
+        let available = _.map(layer_data.features, (f) => { return f.properties.name });
+
         console.log('failed to find value for ', p.metric,
-                    "Feature Name:", feature.properties.name,
-                    feature.properties.name,
-                    "Available Names:", Object.keys(layer_data));
+                    "Feature Name: [", feature.properties.name, "] ",
+                    "Available Names:", available,
+                    e);
+
         let rgb = `transparent`;
         layer.setStyle({fillColor: rgb, color: rgb});
       }
@@ -186,11 +237,12 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       metrics_ranges: {},
       all_summaries: {
         "county": "County",
-        "state": "State",
+        //"state": "State",
         "basin": "Drainage Basin",
         //"watershed": "HUC8 Watershed",
         //"6km": "6km Bounding Box",
       },
+      all_scenarios: {"high": "High RCP8.5", "low": "Low RCP4.5"},
       all_seasons: {
         "annual": "Annual",
         "fall": "Fall",
@@ -203,6 +255,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         year_indx: 0,
         season: 'annual',
         summary: 'county',
+        scenario: 'high'
       },
     }
   });

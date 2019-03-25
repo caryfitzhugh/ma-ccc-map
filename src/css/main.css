@@ -1247,8 +1247,8 @@ header {
 .active-year, .active-season {
   background-color: rgba(0, 102, 51, 0.05);
 }
-tr.active-scenario td.active-year,
-tr.active-season td.active-year {
+
+tr.active-season.active-scenario td.active-year {
   background-color: rgba(0, 102, 51, 0.3);
 }
 tr.smaller-header {

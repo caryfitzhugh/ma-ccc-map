@@ -16,6 +16,9 @@ var ViewUtils = {
   object_entries_count: (obj) => {
     return Object.keys(obj).length;
   },
+  to_fixed: (v, precision) => {
+    return v.toFixed(precision || 2);
+  },
   color_range_label: (metrics_range, colors, index, fixed, signed, inverted) => {
     let label = "";
     if (!fixed && fixed !== 0) {
