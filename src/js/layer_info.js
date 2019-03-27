@@ -618,6 +618,17 @@ var available_layers = [
     "metadata_url": "https://s3.amazonaws.com/nescaum-dataservices-assets/resources/production/UMASS+SLR+METADATA_UPDATE_20180327.pdf",
   },
   {
+    "id": "hydrology_projections",
+    "folder": "",
+    "name": "Hydrology",
+    "description":" <p>Hydrological projections are provided for stream gage locations.</p> ",
+    "source": "University of Massachusetts – Amherst",
+    "source_url": "",
+    "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
+    "download_url": "",
+    "metadata_url": "",
+  },
+  {
     "id": "aquifers",
     "folder": "Water Resources",
     "name": "Aquifers",

@@ -57,7 +57,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
               <tr>
                 <th style='text-align: center;'
                     colspan='{{u.object_entries_count(active_layer.parameters.all_seasons) + 2}}'> {{geojson.name}} {{geojson.geomtype}}
-    </th>
+                </th>
               </tr>
               <tr>
                 <th> </th>
@@ -69,6 +69,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
               <tr>
                 <th> Season </th>
                 <th> Baseline (` + opts.legend_units + `)</th>
+                <th> Emissions Scenario </th>
                 {{#active_layer.parameters.years}}
                   <th> {{.}}s</th>
                 {{/active_layer.parameters.years}}
@@ -79,7 +80,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                   <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}} {{(("high" == geojson.location_data.scenario) ? 'active-scenario' : '')}}">
                     <td >{{u.capitalize(season)}}</td>
                     <td >{{u.to_fixed(baseline, ${opts.info_precision})}}</td>
-                    <td> High </td>
+                    <td> High RCP8.5 </td>
 
                     {{#u.sort_by(values, 'year')}}
                       <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}'>
@@ -91,7 +92,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
 
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td> Low </td>
+                    <td> Medium RCP4.5 </td>
 
                     {{#u.sort_by(values, 'year')}}
                       <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}'>
@@ -242,7 +243,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         //"watershed": "HUC8 Watershed",
         //"6km": "6km Bounding Box",
       },
-      all_scenarios: {"high": "High RCP8.5", "low": "Low RCP4.5"},
+      all_scenarios: {"high": "High RCP8.5", "low": "Medium RCP4.5"},
       all_seasons: {
         "annual": "Annual",
         "fall": "Fall",
