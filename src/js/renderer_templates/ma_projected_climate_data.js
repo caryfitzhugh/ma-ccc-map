@@ -77,7 +77,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
             </thead>
               <tbody>
                 {{#u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
-                  <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}} {{(("high" == geojson.location_data.scenario) ? 'active-scenario' : '')}}">
+                  <tr class=" {{(("high" == geojson.location_data.scenario && season === geojson.location_data.season) ? 'active-scenario active-season' : '')}}">
                     <td >{{u.capitalize(season)}}</td>
                     <td >{{u.to_fixed(baseline, ${opts.info_precision})}}</td>
                     <td> High RCP8.5 </td>
@@ -88,7 +88,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                     {{/sort_by(values, 'year')}}
                   </tr>
 
-                  <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}} {{(("low" == geojson.location_data.scenario) ? 'active-scenario' : '')}}">
+                  <tr class="{{(("low" == geojson.location_data.scenario  && season === geojson.location_data.season) ? 'active-scenario active-season' : '')}}">
 
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -121,11 +121,11 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         </select>
       </div>
       <div class='detail-block opacity'>
-        <label  decorator='tooltip:Use slider to adjust Decade'> Decade: </label>
+        <label  decorator='tooltip:Use slider to adjust Decade'> Year: </label>
         <input type="range" value="{{parameters.options.year_indx}}"
           min="0"
           max="{{parameters.years.length-1}}">
-        {{parameters.years[parameters.options.year_indx]}}s
+        {{parameters.years[parameters.options.year_indx]}}
       </div>
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose a Season'> Season: </label>
@@ -238,7 +238,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       metrics_ranges: {},
       all_summaries: {
         "county": "County",
-        //"state": "State",
+        "state": "State",
         "basin": "Drainage Basin",
         //"watershed": "HUC8 Watershed",
         //"6km": "6km Bounding Box",
