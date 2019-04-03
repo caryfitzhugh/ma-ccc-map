@@ -23,7 +23,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
     }
   },
 
-  url: "http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:tide_gauge_slr&maxFeatures=1000&outputFormat=application%2Fjson",
+  url: "https://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:tide_gauge_slr&maxFeatures=1000&outputFormat=application%2Fjson",
 
   selectData: function (active_layer, all_data) {
     let year = active_layer.parameters.years[active_layer.parameters.options.year_indx];

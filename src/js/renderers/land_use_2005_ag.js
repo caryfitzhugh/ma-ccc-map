@@ -41,7 +41,7 @@ RendererTemplates.wms("land_use_2005_ag", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms?request=GetLegendGraphic&LAYER=ma:landuse_2005_ag&format=image/png")}}'/> 
+        <img src='{{CDN("https://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms?request=GetLegendGraphic&LAYER=ma:landuse_2005_ag&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -51,7 +51,7 @@ RendererTemplates.wms("land_use_2005_ag", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Land Use: {{properties.lu05_desc}} 
+            Land Use: {{properties.lu05_desc}}
           </div>
         {{/json.features}}
       </div>

@@ -42,7 +42,7 @@ RendererTemplates.wms("barrier_beaches", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms?request=GetLegendGraphic&LAYER=ma:barrier_beaches&format=image/png")}}'/> Barrier Beaches
+        <img src='{{CDN("https://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/wms?request=GetLegendGraphic&LAYER=ma:barrier_beaches&format=image/png")}}'/> Barrier Beaches
       </div>
   `,
   info_template: `
