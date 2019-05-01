@@ -50,6 +50,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     info_template: `
         <div class='col-xs-2'>
           <label> {{{name}}}</label>
+          <i>Table shows estimated 50th percentile values for projected change in ` + opts.title + `.  The value highilghted in green is the value corresponding to the season, decade and emissions scenario currently selected on the map.   Hover over values to see the likely range (10th to 90th percentile) for any given value. Projected decreases are denoted by a minus (-) sign .</i>    
         </div>
         <div class='col-xs-10'>
           <table class='table'>
@@ -83,7 +84,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                     <td> High RCP8.5 </td>
 
                     {{#u.sort_by(values, 'year')}}
-                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}'>
+                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}' decorator='tooltip:Likely range (10-90th percentile): {{{range_high[0]}}} to {{{range_high[1]}}}'>
                       {{{u.add_sign(u.to_fixed(delta_high, ${opts.info_precision}))}}}</td>
                     {{/sort_by(values, 'year')}}
                   </tr>
@@ -95,7 +96,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                     <td> Medium RCP4.5 </td>
 
                     {{#u.sort_by(values, 'year')}}
-                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}'>
+                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}' decorator='tooltip:Likely range (10-90th percentile): {{{range_low[0]}}} to {{{range_low[1]}}}'>
                       {{{u.add_sign(u.to_fixed(delta_low, ${opts.info_precision}))}}}</td>
                     {{/sort_by(values, 'year')}}
                   </tr>
@@ -105,7 +106,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     `,
     legend_template: `
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Scenario'> Scenario: </label>
+        <label decorator='tooltip:Choose an Emissions Scenario'> Scenario: </label>
         <select value='{{parameters.options.scenario}}'>
           {{#u.to_sorted_values_from_hash(parameters.all_scenarios)}}
             <option value='{{key}}'>{{{value}}}</option>
