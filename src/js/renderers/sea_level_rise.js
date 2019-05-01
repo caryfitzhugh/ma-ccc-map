@@ -145,7 +145,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
       </div>
 
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a likelihood'> Scenario: </label>
+        <label decorator='tooltip:Choose a scenario'> Scenario: </label>
         <select value='{{parameters.options.likelihood_indx}}'>
           <option value='0'>Intermediate</option>
           <option value='1'>Intermediate-High</option>
