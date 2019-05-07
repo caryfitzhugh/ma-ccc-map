@@ -27,7 +27,7 @@ RendererTemplates.wms("gas_providers", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.TOWNS_POLY_V_GAS&"+
           "QUERY_LAYERS=massgis:GISDATA.TOWNS_POLY_V_GAS&"+
-          "PROPERTYNAME=TOWN,GAS_LABEL&"+
+          "PROPERTYNAME=town,gas_label&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("gas_providers", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            TOWN OF {{properties.TOWN}}: {{properties.GAS_LABEL}}
+            TOWN OF {{properties.town}}: {{properties.gas_label}}
           </div>
         {{ else }}
           Unknown / No Response

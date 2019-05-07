@@ -26,7 +26,7 @@ RendererTemplates.wms("wind_power", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.WINDPOWERGRID50_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.WINDPOWERGRID50_POLY&"+
-          "PROPERTYNAME=PWRDENSITY&"+
+          "PROPERTYNAME=pwrdensity&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -50,7 +50,7 @@ RendererTemplates.wms("wind_power", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Power Density: {{properties.PWRDENSITY}} Watts per square Meter
+            Power Density: {{properties.pwrdensity}} Watts per square Meter
           </div>
         {{/json.features}}
       </div>

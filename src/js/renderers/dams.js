@@ -27,7 +27,7 @@ RendererTemplates.wms("dams", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.DAMS_PT&"+
           "QUERY_LAYERS=massgis:GISDATA.DAMS_PT&"+
-          "PROPERTYNAME=DAMNAME,HAZCODE&"+
+          "PROPERTYNAME=damname,hazcode&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("dams", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.DAMNAME}}: {{properties.HAZCODE}} 
+            {{properties.damname}}, hazard code: {{properties.hazcode}} 
           </div>
         {{ else }}
           Unknown / No Response

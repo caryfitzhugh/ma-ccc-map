@@ -27,7 +27,7 @@ RendererTemplates.wms("openspace_owner", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.OPENSPACE_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.OPENSPACE_POLY&"+
-          "PROPERTYNAME=SITE_NAME,FEE_OWNER&"+
+          "PROPERTYNAME=site_name,fee_owner&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("openspace_owner", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.SITE_NAME}} (OWNER: {{properties.FEE_OWNER}})
+            {{properties.site_name}} (OWNER: {{properties.fee_owner}})
           </div>
         {{ else }}
           Unknown / No Response

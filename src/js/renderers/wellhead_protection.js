@@ -31,7 +31,7 @@ RendererTemplates.wms("wellhead_protection", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA."+layer+"&"+
           "QUERY_LAYERS=massgis:GISDATA."+layer+"&"+
-          "PROPERTYNAME=SUPPLIER,PWS_ID&"+
+          "PROPERTYNAME=supplier,pws_id&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -60,7 +60,7 @@ RendererTemplates.wms("wellhead_protection", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.SUPPLIER}}; PWS ID {{properties.PWS_ID}}
+            {{properties.supplier}}; PWS ID {{properties.pws_id}}
           </div>
         {{ else }}
           Unknown / No Response

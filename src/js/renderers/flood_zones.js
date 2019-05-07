@@ -27,7 +27,7 @@ RendererTemplates.wms("flood_zones", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.FEMA_NFHL_POLY&"+
-          "PROPERTYNAME=DFIRM_ID,LABEL,FLD_AR_ID&"+
+          "PROPERTYNAME=dfirm_id,label,fld_ar_id&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -59,9 +59,9 @@ RendererTemplates.wms("flood_zones", {
              <tbody>
                 {{#json.features}}
                   <tr>
-                    <td>{{properties.DFIRM_ID}}</td>
-                    <td>{{properties.FLD_AR_ID}}</td>
-                    <td>{{properties.LABEL}}</td>
+                    <td>{{properties.dfirm_id}}</td>
+                    <td>{{properties.fld_ar_id}}</td>
+                    <td>{{properties.label}}</td>
                   </tr>
                 {{ else }}
                   Unknown / No Response

@@ -27,7 +27,7 @@ RendererTemplates.wms("huc10", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.NRCSHUC10_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.NRCSHUC10_POLY&"+
-          "PROPERTYNAME=HU_10_NAME&"+
+          "PROPERTYNAME=hu_10_name&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("huc10", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.HU_10_NAME}} 
+            {{properties.hu_10_name}} 
           </div>
         {{ else }}
           Unknown / No Response

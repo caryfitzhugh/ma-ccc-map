@@ -27,7 +27,7 @@ RendererTemplates.wms("flood_zones_q3", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&"+
           "QUERY_LAYERS=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&"+
-          "PROPERTYNAME=FIRM_PANEL,QUAD,ZONE,COUNTY,SFHA&"+
+          "PROPERTYNAME=firm_panel,quad,zone,county,sfha&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -62,11 +62,11 @@ RendererTemplates.wms("flood_zones_q3", {
              <tbody>
                 {{#json.features}}
                   <tr>
-                    <td>{{properties.COUNTY}}</td>
-                    <td>{{properties.FIRM_PANEL}}</td>
-                    <td>{{properties.QUAD}}</td>
-                    <td>{{properties.ZONE}}</td>
-                    <td>{{properties.SFHA}}</td>
+                    <td>{{properties.county}}</td>
+                    <td>{{properties.firm_panel}}</td>
+                    <td>{{properties.quad}}</td>
+                    <td>{{properties.zone}}</td>
+                    <td>{{properties.sfha}}</td>
                   </tr>
                 {{ else }}
                   Unknown / No Response

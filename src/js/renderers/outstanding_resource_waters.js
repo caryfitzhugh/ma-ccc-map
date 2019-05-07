@@ -27,7 +27,7 @@ RendererTemplates.wms("outstanding_resource_waters", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.ORW_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.ORW_POLY&"+
-          "PROPERTYNAME=ORW_NAME,ORW_TYPE&"+
+          "PROPERTYNAME=orw_name,orw_type&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("outstanding_resource_waters", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.ORW_NAME}} {{properties.ORW_TYPE}}
+            {{properties.orw_name}} {{properties.orw_type}}
           </div>
         {{ else }}
           Unknown / No Response

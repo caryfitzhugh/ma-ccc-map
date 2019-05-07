@@ -27,7 +27,7 @@ RendererTemplates.wms("public_water_supplies", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.PWSDEP_PT&"+
           "QUERY_LAYERS=massgis:GISDATA.PWSDEP_PT&"+
-          "PROPERTYNAME=SITE_NAME,TOWN&"+
+          "PROPERTYNAME=site_name,town&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,8 +51,8 @@ RendererTemplates.wms("public_water_supplies", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.SITE_NAME}}<br>
-            {{properties.TOWN}} 
+            {{properties.site_name}}<br>
+            {{properties.town}} 
           </div>
         {{ else }}
           Unknown / No Response

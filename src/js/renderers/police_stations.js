@@ -25,7 +25,7 @@ RendererTemplates.wms("police_stations", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.POLICESTATIONS_PT_MEMA&"+
           "QUERY_LAYERS=massgis:GISDATA.POLICESTATIONS_PT_MEMA&"+
-          "PROPERTYNAME=NAME,ADDRESS,CITY,STATE&"+
+          "PROPERTYNAME=name,address,city,state&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -49,8 +49,8 @@ RendererTemplates.wms("police_stations", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.NAME}}<br>
-            {{properties.ADDRESS}}, {{properties.CITY}}, {{properties.STATE}}
+            {{properties.name}}<br>
+            {{properties.address}}, {{properties.city}}, {{properties.state}}
           </div>
         {{ else }}
           Unknown / No Response

@@ -27,7 +27,7 @@ RendererTemplates.wms("bicycle_trails", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.BIKETRAILS_ARC&"+
           "QUERY_LAYERS=massgis:GISDATA.BIKETRAILS_ARC&"+
-          "PROPERTYNAME=TRAILNAME,OWNER&"+
+          "PROPERTYNAME=trailname,owner&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("bicycle_trails", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.TRAILNAME}} (OWNER: {{properties.OWNER}})
+            {{properties.trailname}} (OWNER: {{properties.owner}})
           </div>
         {{ else }}
           Unknown / No Response

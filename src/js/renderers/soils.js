@@ -25,7 +25,7 @@ RendererTemplates.wms("soils", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.SOILS_POLY_SV_MUNAME&"+
           "QUERY_LAYERS=massgis:GISDATA.SOILS_POLY_SV_MUNAME&"+
-          "PROPERTYNAME=MAPUNIT_NAME&"+
+          "PROPERTYNAME=mapunit_name&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -49,7 +49,7 @@ RendererTemplates.wms("soils", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Map Unit: {{properties.MAPUNIT_NAME}}
+            Map Unit: {{properties.mapunit_name}}
           </div>
         {{ else }}
           Unknown / No Response

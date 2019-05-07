@@ -25,7 +25,7 @@ RendererTemplates.wms("env_justice", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.EJ_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.EJ_POLY&"+
-          "PROPERTYNAME=TOWN2,LOGSF1,PCT_NO_ENG,MED_HH_INC,PCT_MIN,PCT_LT_HS_&"+
+          "PROPERTYNAME=town2,logsf1,pct_no_eng,med_hh_inc,pct_min,pct_lt_hs_&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -60,12 +60,12 @@ RendererTemplates.wms("env_justice", {
             </thead>
              <tbody>
                 {{#json.features}}
-                  <tr><td>{{properties.TOWN2}}</td>
-                  <td>{{properties.LOGSF1}}</td>
-                  <td>{{properties.PCT_MIN}}</td>
-                  <td>{{properties.MED_HH_INC}}</td>
-                  <td>{{properties.PCT_LT_HS_}}</td>
-                  <td>{{properties.PCT_NO_ENG}}</td> </tr>
+                  <tr><td>{{properties.town2}}</td>
+                  <td>{{properties.logsf1}}</td>
+                  <td>{{properties.pct_min}}</td>
+                  <td>{{properties.med_hh_inc}}</td>
+                  <td>{{properties.pct_lt_hs_}}</td>
+                  <td>{{properties.pct_no_eng}}</td> </tr>
                 {{ else }}
                   Unknown / No Response
                 {{/json.features}}

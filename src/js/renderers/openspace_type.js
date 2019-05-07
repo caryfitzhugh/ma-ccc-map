@@ -28,7 +28,7 @@ RendererTemplates.wms("openspace_type", {
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.OPENSPACE_ARC&"+
           "QUERY_LAYERS=massgis:GISDATA.OPENSPACE_ARC&"+
           "STYLES=GISDATA.OPENSPACE_ARC&"+
-          "PROPERTYNAME=SITE_NAME,FEE_OWNER&"+
+          "PROPERTYNAME=site_name,fee_owner&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
           "HEIGHT=<%= height %>&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("openspace_type", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.SITE_NAME}} (OWNER: {{properties.FEE_OWNER}})
+            {{properties.site_name}} (OWNER: {{properties.fee_owner}})
           </div>
         {{ else }}
           Unknown / No Response

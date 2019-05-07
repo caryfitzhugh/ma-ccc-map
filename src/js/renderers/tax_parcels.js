@@ -27,7 +27,7 @@ RendererTemplates.wms("tax_parcels", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.L3_TAXPAR_POLY_ASSESS&"+
           "QUERY_LAYERS=massgis:GISDATA.L3_TAXPAR_POLY_ASSESS&"+
-          "PROPERTYNAME=OWNER1&"+
+          "PROPERTYNAME=owner1&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("tax_parcels", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Owner: {{properties.OWNER1}}
+            Owner: {{properties.owner1}}
           </div>
         {{ else }}
          Zoom in to view and query the tax parcels layer.

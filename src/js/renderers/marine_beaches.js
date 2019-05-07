@@ -27,7 +27,7 @@ RendererTemplates.wms("marine_beaches", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.MARINEBEACHES_ARC&"+
           "QUERY_LAYERS=massgis:GISDATA.MARINEBEACHES_ARC&"+
-          "PROPERTYNAME=BEACHNAME,TYPE,LENMILES&"+
+          "PROPERTYNAME=beachname,type,leninmiles&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("marine_beaches", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.BEACHNAME}}: {{properties.TYPE}} Beach ({{properties.LENINMILES}} .mi)
+            {{properties.beachname}}: {{properties.type}} Beach ({{properties.leninmiles}} .mi)
           </div>
         {{ else }}
           Unknown / No Response

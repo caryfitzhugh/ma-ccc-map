@@ -27,7 +27,7 @@ RendererTemplates.wms("groundwater_discharge", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.GWP_PT&"+
           "QUERY_LAYERS=massgis:GISDATA.GWP_PT&"+
-          "PROPERTYNAME=NAME&"+
+          "PROPERTYNAME=name&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -51,7 +51,7 @@ RendererTemplates.wms("groundwater_discharge", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.NAME}} 
+            {{properties.name}} 
           </div>
         {{ else }}
           Unknown / No Response

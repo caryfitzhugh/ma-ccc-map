@@ -32,7 +32,7 @@ RendererTemplates.wms("surface_water_protection", {
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.SWP_ZONES_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.SWP_ZONES_POLY&"+
-          "PROPERTYNAME=SUPPLIER,SITE_NAME&"+
+          "PROPERTYNAME=supplier,site_name&"+
           "STYLES=" + layer + "&" +
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -61,7 +61,7 @@ RendererTemplates.wms("surface_water_protection", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.SUPPLIER}} {{properties.SITENAME}}
+            {{properties.supplier}} {{properties.sitename}}
           </div>
         {{ else }}
           Unknown / No Response
