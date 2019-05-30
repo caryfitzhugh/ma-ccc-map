@@ -31,7 +31,7 @@ header {
   right: 0;
   left: 0;
   margin-left: 0;
-  cursor: crosshair;
+  cursor: help;
 }
 #map.tray-open {
   width: auto;
