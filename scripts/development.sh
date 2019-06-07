@@ -5,3 +5,5 @@ grunt
 aws s3 sync --profile=nescaum dist/ s3://ma-map-nescaum-ccsc-dataservices --acl public-read
 
 rm -rf dist/*
+
+echo "Avaialable at:   https://ma-map-nescaum-ccsc-dataservices.s3.amazonaws.com/map_viewer.html"
