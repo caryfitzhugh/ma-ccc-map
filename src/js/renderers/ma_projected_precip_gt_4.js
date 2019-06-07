@@ -1,6 +1,6 @@
 RendererTemplates.ma_projected_climate_data('ma_projected_precip_gt_4', {
-  title: " Precipitation &gt; 4\"",
-  legend: " Projected change in # Days with precipitation &gt; 4\" ",
+  title: " Precipitation &gt; 4 inches",
+  legend: " Projected change in # Days with precipitation &gt; 4 inches ",
   legend_precision: 2,
   info_precision: 2,
   legend_units: "days",

@@ -35,6 +35,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
     info_template: `
         <div class='col-xs-2'>
           <label> {{{name}}}</label>
+          <i>Table shows decadal average for ` + opts.title + `.  The value highlighted in dark green is the value corresponding to the season and decade currently selected on the map.   Hover over values to see the range (min/max) value for individual years within the currently selected decade. </i>
         </div>
         <div class='col-xs-10'>
           <table class='table'>
@@ -198,7 +199,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
       options: {
         year_indx: 0,
         season: 'annual',
-        summary: 'county',
+        summary: 'basin',
       },
     }
   });

@@ -92,13 +92,15 @@ RendererTemplates.geojson_points("sea_level_rise", {
   info_template: `
         <div class='col-xs-2'>
           <label> {{{name}}}</label>
+          <br><i>The value highlighted in green is the projected value corresponding to the decade and scenario currently selected on the map. For more information about these sea level rise projections, please review the <a href="https://s3.amazonaws.com/nescaum-dataservices-assets/resources/production/UMASS+SLR+METADATA_UPDATE_20180327.pdf" target="_blank">metadata documentation</a>.</i>
+
         </div>
         <div class='col-xs-10'>
           <table class='table slr-table'>
             <thead>
               <tr>
                 <th style='text-align: center;'
-                    colspan='{{u.object_entries_count(table_data) + 1}}'> Relative mean seal level (feet NAVD88) for {{name}} </th>
+                    colspan='{{u.object_entries_count(table_data) + 1}}'> Relative mean sea level (feet NAVD88) for {{name}} </th>
               </tr>
               <tr>
                 <th> Scenario </th>

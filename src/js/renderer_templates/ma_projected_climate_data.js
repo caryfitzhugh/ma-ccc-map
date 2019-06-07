@@ -50,7 +50,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     info_template: `
         <div class='col-xs-2'>
           <label> {{{name}}}</label>
-          <i>Table shows estimated 50th percentile values for projected change in ` + opts.title + `.  The value highilghted in green is the value corresponding to the season, decade and emissions scenario currently selected on the map.   Hover over values to see the likely range (10th to 90th percentile) for any given value. Projected decreases are denoted by a minus (-) sign .</i>
+          <i>Table shows estimated 50th percentile values for projected change in ` + opts.title + `.  The value highlighted in dark green is the value corresponding to the season, decade and emissions scenario currently selected on the map.   Hover over values to see the likely range (10th to 90th percentile) for any given value. Projected decreases are denoted by a minus (-) sign .</i>
         </div>
         <div class='col-xs-10'>
           <table class='table'>
@@ -239,7 +239,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       metrics_ranges: {},
       all_summaries: {
         "county": "County",
-        "state": "State",
+        "state": "Massachusetts - Statewide",
         "basin": "Drainage Basin",
         //"watershed": "HUC8 Watershed",
         //"6km": "6km Bounding Box",
@@ -256,7 +256,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
       options: {
         year_indx: 0,
         season: 'annual',
-        summary: 'county',
+        summary: 'basin',
         scenario: 'high'
       },
     }
