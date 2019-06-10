@@ -12,3 +12,5 @@ echo "Pushing to gh-pages"
 git push -f origin `git rev-parse --symbolic-full-name --abbrev-ref HEAD`:gh-pages
 echo "Going backward one revision"
 git reset --hard HEAD~1
+
+echo "https://caryfitzhugh.github.io/ma-ccc-map/"
