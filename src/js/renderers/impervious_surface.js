@@ -8,23 +8,23 @@ RendererTemplates.wms("impervious_surface", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: CDN("https://www.mrlc.gov/geoserver/wms?"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'massgis:GISDATA.IMG_IMPERVIOUSSURFACE',
+      layers: 'mrlc_display:NLCD_2016_Impervious_L48',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
       transparent: true,
     };
   },
-  /*get_feature_info_url: function (active_layer) {
+  get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return CDN("https://www.mrlc.gov/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.IMG_IMPERVIOUSSURFACE&"+
-          "QUERY_LAYERS=massgis:GISDATA.IMG_IMPERVIOUSSURFACE&"+
+          "REQUEST=GetFeatureInfo&LAYERS=mrlc_display:NLCD_2016_Impervious_L48&"+
+          "QUERY_LAYERS=mrlc_display:NLCD_2016_Impervious_L48&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -34,25 +34,25 @@ RendererTemplates.wms("impervious_surface", {
           "INFO_FORMAT=application%2Fjson&"+
           "SRS=EPSG:4326&"+
           "X=<%= x %>&Y=<%= y %>";
-  },*/
+  },
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.IMG_IMPERVIOUSSURFACE&format=image/png")}}'/>
+        <img src='{{CDN("https://www.mrlc.gov/geoserver/wms?request=GetLegendGraphic&LAYER=mrlc_display:NLCD_2016_Impervious_L48&format=image/png")}}'/>
       </div>
   `,
-/*  info_template: `
+  info_template: `
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            No additional information for this layer.
+            Percent Impervious: {{properties.PALETTE_INDEX}}
           </div>
         {{ else }}
           Unknown / No Response
         {{/json.features}}
       </div>
-  `*/
+  `
 });
