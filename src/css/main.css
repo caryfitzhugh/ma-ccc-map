@@ -1245,7 +1245,7 @@ header {
 .climate-vulnerability .table tr,
 .active-year, .active-scenario,
 .active-year, .active-season {
-  background-color: rgba(0, 102, 51, 0.05);
+  background-color: rgba(0, 102, 51, 0.3);
 }
 
 tr.active-season.active-scenario td.active-year {
