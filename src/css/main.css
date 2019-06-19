@@ -1373,10 +1373,23 @@ header .right-side .search .fa-bars .menu li a {
     display: block;
     top: 100%;
   }
-
+  #map { top: 0; }
+  .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
   #control_panel_root > div.printing-legends  .columns  {
-    column-count: 4 !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-column-count: 4; /* Chrome, Safari, Opera */
+    -moz-column-count: 4; /* Firefox */
+    column-count: 4;
+    /*column-count: 4 !important;*/
     column-gap: 1em !important;
+    border: 1px solid purple;
   }
   #control_panel_root > div.printing-legends  .columns  .active-layer {
     display: inline-block;
@@ -1417,7 +1430,7 @@ header .right-side .search .fa-bars .menu li a {
     height: 100%;
     display: block;
   }
-  #content, #map { height: 50%; }
+  #content/*, #map */ { height: 50%; }
   #map.tray-open { margin-left: 0; }
   body {
     height: 200%;
