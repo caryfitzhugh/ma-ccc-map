@@ -86,7 +86,7 @@ RendererTemplates.wms("impervious_surface", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Percent Impervious: {{properties.PALETTE_INDEX}}
+            <h3>{{properties.PALETTE_INDEX}}% Impervious</h3> at {{geometry}}: .  Impervious surfaces increase temperatures and impede drainage.  Surface temperatures can rise by <a href="322066994_Urban_Imperviousness_Effects_on_Summer_Surface_Temperatures_Nearby_Residential_Buildings_in_Different_Urban_Zones_of_Parma" target="blank_">up to 1.8°F</a> for every 20% increase in imperviousness.    
           </div>
         {{ else }}
           Unknown / No Response
