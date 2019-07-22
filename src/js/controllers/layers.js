@@ -175,14 +175,18 @@ Controllers.Layers = {
 
     if (existing_layer) {
         // Do nothing, it's here already
+      var new_active_layers = _.cloneDeep(cp.get("layers.active"));
+      _.find(new_active_layers, "id", existing_layer.id).is_hidden = false;
+      cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
+      return existing_layer;
     } else {
       var new_layer = Controllers.Layers.new_active_layer(cp.get("map"), defaults, params);
       new_active_layers.unshift(new_layer);
 
       cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
       cp.set("active_layers_added_count", cp.get("active_layers_added_count") + 1);
+      return new_layer;
     }
-
   },
   toggle_layer_active: function (cp, layer_default_id) {
     // Find out if it's active or not (in layers.active)
