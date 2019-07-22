@@ -971,6 +971,28 @@ var available_layers = [
     "download_url": null,
     "metadata_url": null,
   },
+  {
+    "id": "nfhl_roads",
+    "folder": "",
+    "name": "Major Roads in FEMA flood zones",
+    "description": "Roads intersecting FEMA 100 and 500 year flood zones.",
+    "source": "NESCAUM",
+    "source_url": "",
+    "sectors": ["Agriculture", "Forestry","Economy","Natural Resources/Habitats"],
+    "download_url": null,
+    "metadata_url": null,
+  },
+  {
+    "id": "nfhl_parcels",
+    "folder": "",
+    "name": "Tax Parcels in FEMA flood zones",
+    "description": "Parcels intersecting FEMA 100 and 500 year flood zones.",
+    "source": "NESCAUM",
+    "source_url": "",
+    "sectors": ["Agriculture", "Forestry","Economy","Natural Resources/Habitats"],
+    "download_url": null,
+    "metadata_url": null,
+  },
 ];
 
 var desired_active_on_load = [

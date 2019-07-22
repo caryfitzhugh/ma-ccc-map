@@ -1,5 +1,7 @@
-RendererTemplates.wms("vernal_pools", {
+RendererTemplates.wms("nfhl_parcels", {
   parameters: {
+    min_zoom: 12,
+    max_zoom: 20,
     opacity: 70,
     options: {
 
@@ -12,7 +14,7 @@ RendererTemplates.wms("vernal_pools", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'ma:vernal_pools',
+      layers: 'ma:nfhl_parcels',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -24,8 +26,8 @@ RendererTemplates.wms("vernal_pools", {
 
     return CDN(GEOSERVER + "/ma/wms/")  +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=ma:vernal_pools&"+
-          "QUERY_LAYERS=ma:vernal_pools&"+
+          "REQUEST=GetFeatureInfo&LAYERS=ma:nfhl_parcels&"+
+          "QUERY_LAYERS=ma:nfhl_parcels&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -39,7 +41,7 @@ RendererTemplates.wms("vernal_pools", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:vernal_pools&format=image/png'/> 
+        <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:nfhl_parcels&format=image/png'/> 
       </div>
   `,
   info_template: `
@@ -49,7 +51,7 @@ RendererTemplates.wms("vernal_pools", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            {{properties.criteria}}. Certified {{properties.certified}}.
+            State of Massachussetts
           </div>
         {{/json.features}}
       </div>

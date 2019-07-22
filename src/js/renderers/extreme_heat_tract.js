@@ -2,7 +2,7 @@ RendererTemplates.wms("extreme_heat_tract", {
   parameters: {
 /*    min_zoom: 10,
     max_zoom: 20,*/
-    opacity: 100,
+    opacity: 75,
     options: {
 
     }
@@ -47,6 +47,7 @@ RendererTemplates.wms("extreme_heat_tract", {
   info_template: `
       <div class='col-xs-2'>
         <label> {{name}} </label>
+        <i>Data summarized by MA Department of Public Health from 2010 census data.</i>
       </div>
       <div class='col-xs-10'>
         <table class='table'>
@@ -54,11 +55,12 @@ RendererTemplates.wms("extreme_heat_tract", {
               <tr>
                 <th> Census Tract ID</th>
                 <th> % Under 5 </th>
+                <th> % Under 15 </th>
                 <th> % Over 65 </th> 
                 <th> % Living alone </th>
                 <th> % Poverty </th>
-                <th> % Impervious </th>
-                <th> % Tree Canopy </th>
+                <th> % Not White </th>
+                <th> % No High School </th>
               </tr>
             </thead>
              <tbody>
@@ -66,11 +68,12 @@ RendererTemplates.wms("extreme_heat_tract", {
                   <tr>
                     <td>{{properties.census_tra}}</td>
                     <td>{{properties.percu5}}</td>
+                    <td>{{properties.percu15}}</td>
                     <td>{{properties.perc65}}</td>
                     <td>{{properties.percalone}}</td>
                     <td>{{properties.percpovert}}</td>
-                    <td>{{properties.impervious}}</td>
-                    <td>{{properties.canopy}}</td>
+                    <td>{{properties.percnowhit}}</td>
+                    <td>{{properties.percnohs}}</td>
                   </tr>
                 {{ else }}
                   Unknown / No Response

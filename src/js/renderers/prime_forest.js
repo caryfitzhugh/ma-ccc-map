@@ -21,13 +21,13 @@ RendererTemplates.wms("prime_forest", {
       transparent: true,
     };
   },
-/*  get_feature_info_url: function (active_layer) {
+  get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
     return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.PRIMEFOREST_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.PRIMEFOREST_POLY&"+
-          "PROPERTYNAME=&"+
+          //"PROPERTYNAME=&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -37,25 +37,24 @@ RendererTemplates.wms("prime_forest", {
           "INFO_FORMAT=application%2Fjson&"+
           "SRS=EPSG:4326&"+
           "X=<%= x %>&Y=<%= y %>";
-  },*/
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
         <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.PRIMEFOREST_POLY&format=image/png")}}'/>
       </div>
   `,
-/*  info_template: `
+  info_template: `
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            Forest Type: {{properties.PRIME}}
+            Forest Type: {{properties.prime}} ({{properties.acres}} acres)
           </div>
         {{ else }}
           Unknown / No Response
         {{/json.features}}
       </div>
-  `*/
+  `
 });

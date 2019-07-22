@@ -1,6 +1,6 @@
-RendererTemplates.wms("vernal_pools", {
+RendererTemplates.wms("nfhl_roads", {
   parameters: {
-    opacity: 70,
+    opacity: 100,
     options: {
 
     }
@@ -12,7 +12,7 @@ RendererTemplates.wms("vernal_pools", {
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
-      layers: 'ma:vernal_pools',
+      layers: 'ma:nfhl_roads',
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -24,8 +24,8 @@ RendererTemplates.wms("vernal_pools", {
 
     return CDN(GEOSERVER + "/ma/wms/")  +
           "?SERVICE=WMS&VERSION=1.1.1&"+
-          "REQUEST=GetFeatureInfo&LAYERS=ma:vernal_pools&"+
-          "QUERY_LAYERS=ma:vernal_pools&"+
+          "REQUEST=GetFeatureInfo&LAYERS=ma:nfhl_roads&"+
+          "QUERY_LAYERS=ma:nfhl_roads&"+
           "STYLES=&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -39,7 +39,7 @@ RendererTemplates.wms("vernal_pools", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:vernal_pools&format=image/png'/> 
+        <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:nfhl_roads&format=image/png'/> 
       </div>
   `,
   info_template: `
@@ -47,9 +47,9 @@ RendererTemplates.wms("vernal_pools", {
         <label> {{name}} </label>
       </div>
       <div class='col-xs-10'>
-        {{#json.features}}
+           {{#json.features}}
           <div>
-            {{properties.criteria}}. Certified {{properties.certified}}.
+             {{properties.street_name}}: {{properties.length_miles}} mi. in flood zone {{properties.fld_zone}} ({{properties.label}})
           </div>
         {{/json.features}}
       </div>
