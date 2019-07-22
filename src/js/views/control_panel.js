@@ -155,6 +155,7 @@ Views.ControlPanel = new Ractive({
       ]
     },
     climate_vulnerability: {
+      show: false,
       town: "",
       towns: CLIMATE_VULNERABILITY_TOWNS,
       features: [], //Object.keys(RendererTemplates.ma_climate_vulnerability_layers()).sort(),
@@ -428,17 +429,16 @@ Views.ControlPanel.on({
   "show-standalone-wizard": function (evt) {
     Views.ControlPanel.set("wizard.standalone", evt.context.parameters.standalone_wizard);
   },
-  "show-climate-vulnerability-wizard": function (evt) {
-    Views.ControlPanel.set("wizard.standalone", 'climate-vulnerability');
+  "toggle-climate-vulnerability-wizard": function (evt) {
+    Views.ControlPanel.set("climate_vulnerability.show",
+      !Views.ControlPanel.get("climate_vulnerability.show"));
   },
-  "add-climate-vulnerability-layer": function (evt) {
-    Views.ControlPanel.set("wizard.standalone", false);
+  "show-climate-vulnerability-layer": function (evt) {
     var map = Views.ControlPanel.get('map');
-    town = Views.ControlPanel.get('climate_vulnerability.town');
-    features = Views.ControlPanel.get('climate_vulnerability.features');
+    let town = Views.ControlPanel.get('climate_vulnerability.town');
+    let feature = evt.node.attributes['climate-vuln'].value;
 
-    Views.ClimateVulnerability.add_layers(map, town, features);
-
+    Views.ClimateVulnerability.add_layers(map, town, feature);
     evt.original.stopPropagation();
     evt.original.preventDefault();
   },

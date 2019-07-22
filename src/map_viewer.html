@@ -82,7 +82,7 @@
 
 <script id='map_out_of_view_layers_template' type='text/ractive'>
   {{#if (out_of_view_layers(layers.active, map_state.zoom)).length > 0}}
-    <div class='out-of-zoom-alerts'>
+    <div class='out-of-zoom-alerts' on-tap>
       {{#(out_of_view_layers(layers.active, map_state.zoom))}}
         <div class='alert alert-warning'>
           <label>{{{name}}} </label>
@@ -623,7 +623,7 @@
       </div>
     </div>
     <div class="tray {{layer_controls.tray.open ? 'show' : ''}}">
-      <div class='tray-container'>
+      <div class='tray-container {{tools.climate_vulnerability ? 'climate-vuln' : ''}}'>
         {{#if layer_controls.active_tab === "layers"}}
           {{>layer_controls_layers_template }}
         {{else}}
@@ -634,11 +634,41 @@
           {{/if}}
         {{/if}}
       </div>
-      {{#if layer_controls.active_tab === "layers" && tools.climate_vulnerability}}
-        <div class='footer'>
-          <div class='btn btn-secondary btn-sm btn-block' on-tap='show-climate-vulnerability-wizard'> Town Climate Vulnerability Wizard</div>
+      {{#if tools.climate_vulnerability}}
+        <div class='footer '>
+          <h3> Town Climate Vulnerability</h3>
+          <div class='form-group'>
+            <label for='climate_vuln_town'>Pick Your Town: </label>
+            <input class='form-control' value='{{climate_vulnerability.town}}' type='text' list='climate_vulnerability_towns'/>
+            {{#if climate_vulnerability.town}}
+              <label>Pick Your Report: </label>
+              <div>
+                <div class='col-md-6'>
+                  <div>
+                    <a href='#' climate-vuln='Extreme Heat' on-tap="show-climate-vulnerability-layer">Extreme Heat</a>
+                  </div>
+                  <div>
+                    <a href='#' climate-vuln='Drought' on-tap="show-climate-vulnerability-layer">Drought</a>
+                  </div>
+                </div>
+                <div class='col-md-6'>
+                  <div>
+                    <a href='#' climate-vuln='Sea Level Rise' on-tap="show-climate-vulnerability-layer">Sea-Level Rise</a>
+                  </div>
+                  <div>
+                    <a href='#' climate-vuln='Stormwater Flooding' on-tap="show-climate-vulnerability-layer">Stormwater Flooding</a>
+                  </div>
+                </div>
+              </div>
+            {{/if climate_vulnerability.town}}
+          </div>
+          <datalist id='climate_vulnerability_towns'>
+            {{#climate_vulnerability.towns}}
+              <option name={{.}}> {{.}} </option>
+            {{/climate_vulnerability.towns}}
+          </datalist>
         </div>
-      {{/if layer_controls.active_tab === "layers" && tools.climate_vulnerability}}
+      {{/if tools.climate_vulnerability}}
     </div>
   </div>
 </script>
@@ -798,110 +828,112 @@
 </script>
 
 <script id="layer_controls_details_template" type="text/ractive">
-  {{#if layers.active.length > 0 }}
-    <div class='bulk'>
-      {{#if !all_active_collapsed(layers.active)}}
-        <a on-tap='collapse-all-layers' class='show-cursor'> Collapse All</a>
-      {{else}}
-        <a on-tap='expand-all-layers' class='show-cursor'> Expand All</a>
-      {{/if}}
+  <div class='active-layers-wrapper'>
+    {{#if layers.active.length > 0 }}
+      <div class='bulk'>
+        {{#if !all_active_collapsed(layers.active)}}
+          <a on-tap='collapse-all-layers' class='show-cursor'> Collapse All</a>
+        {{else}}
+          <a on-tap='expand-all-layers' class='show-cursor'> Expand All</a>
+        {{/if}}
 
-      {{#if !all_active_hidden(layers.active)}}
-        <a on-tap='hide-all-layers' class='show-cursor'> Hide All</a>
-      {{else}}
-        <a on-tap='visible-all-layers' class='show-cursor'> Show All</a>
-      {{/if}}
+        {{#if !all_active_hidden(layers.active)}}
+          <a on-tap='hide-all-layers' class='show-cursor'> Hide All</a>
+        {{else}}
+          <a on-tap='visible-all-layers' class='show-cursor'> Show All</a>
+        {{/if}}
 
-      <a on-tap='deactivate-all-layers' class='show-cursor'> Remove All</a>
-    </div>
-  {{else}}
-    <div class='active-layers-empty'>
-      <span class='fa fa-globe'></span>
-      <div class='text'>
-        You need to select some layers to display on the map.
-        <br/>
-        Look in the Layers tab to the left to choose.
+        <a on-tap='deactivate-all-layers' class='show-cursor'> Remove All</a>
       </div>
-    </div>
-  {{/if}}
-
-  {{#each layers.active}}
-    <div decorator='{{parameters.no_sorting ? "" : "sortable"}}' class='active-layer'>
-      {{#if "" === layer_load_state(layers_loading_states, layer_default_id)}}
-        <div class='disable-active-layer-overlay'>
-          <label> Loading {{{name}}}...
-            <span class='fa fa-spinner fa-spin-custom'></span>
-          </label>
+    {{else}}
+      <div class='active-layers-empty'>
+        <span class='fa fa-globe'></span>
+        <div class='text'>
+          You need to select some layers to display on the map.
+          <br/>
+          Look in the Layers tab to the left to choose.
         </div>
-      {{/if "" !== layer_load_state(layers_loading_states, layer_default_id)}}
+      </div>
+    {{/if}}
 
-      <label class='name' on-tap="toggle-active-collapsed">
-        <span class='show-cursor'>
-          {{#if is_collapsed}}
-            <span decorator="tooltip:Expand Legend" class='fa fa-caret-right'></span>
-            {{#if layer_load_state(layers_loading_states, layer_default_id) !== "success"}}
+    {{#each layers.active}}
+      <div decorator='{{parameters.no_sorting ? "" : "sortable"}}' class='active-layer'>
+        {{#if "" === layer_load_state(layers_loading_states, layer_default_id)}}
+          <div class='disable-active-layer-overlay'>
+            <label> Loading {{{name}}}...
+              <span class='fa fa-spinner fa-spin-custom'></span>
+            </label>
+          </div>
+        {{/if "" !== layer_load_state(layers_loading_states, layer_default_id)}}
+
+        <label class='name' on-tap="toggle-active-collapsed">
+          <span class='show-cursor'>
+            {{#if is_collapsed}}
+              <span decorator="tooltip:Expand Legend" class='fa fa-caret-right'></span>
+              {{#if layer_load_state(layers_loading_states, layer_default_id) !== "success"}}
+                <a decorator="tooltip:Show layer metadata" on-tap="show-active-layer-info" class='info {{layer_load_state(layers_loading_states, layer_default_id)}}'>
+                  <span class='show-cursor fa fa-info'></span>
+                </a>
+              {{/if}}
+            {{else}}
+              <span decorator="tooltip:Minimize Legend" class='fa fa-caret-down'></span>
+            {{/if}}
+            {{#if !parameters.no_sorting}}
+              <span decorator="tooltip:Drag to reorder layer" class='drag-handle fa fa-hand-stop-o'></span>
+            {{/if !parameters.no_sorting}}
+            {{{name}}}
+          </span>
+        </label>
+
+        {{#if !is_collapsed}}
+          <div class='active-details'>
+            <div class='control-bar'>
+              <a decorator="tooltip:Remove layer" on-tap="remove-active">
+                <span class='show-cursor fa fa-trash-o' > </span>
+              </a>
+              {{#if !parameters.no_sorting}}
+                <a decorator="tooltip:Move to top" on-tap='move-active-to-top'>
+                  <span class='show-cursor fa fa-angle-double-up'> </span>
+                </a>
+              {{/if}}
+              {{#if is_hidden}}
+                <a decorator="tooltip:Make layer visible"  on-tap='make-active-visible'>
+                  <span class='show-cursor fa fa-eye-slash' ></span>
+                </a>
+              {{else}}
+                <a decorator="tooltip:Make layer hidden"  on-tap='make-active-hidden'>
+                  <span class='show-cursor fa fa-eye'></span>
+                </a>
+              {{/if}}
+
+              {{#if able_to_copy(this) }}
+                <a decorator="tooltip:Clone this layer" on-tap="clone-active-layer">
+                  <span class='show-cursor fa fa-clone'></span>
+                </a>
+              {{/if}}
+
               <a decorator="tooltip:Show layer metadata" on-tap="show-active-layer-info" class='info {{layer_load_state(layers_loading_states, layer_default_id)}}'>
                 <span class='show-cursor fa fa-info'></span>
               </a>
-            {{/if}}
-          {{else}}
-            <span decorator="tooltip:Minimize Legend" class='fa fa-caret-down'></span>
-          {{/if}}
-          {{#if !parameters.no_sorting}}
-            <span decorator="tooltip:Drag to reorder layer" class='drag-handle fa fa-hand-stop-o'></span>
-          {{/if !parameters.no_sorting}}
-          {{{name}}}
-        </span>
-      </label>
 
-      {{#if !is_collapsed}}
-        <div class='active-details'>
-          <div class='control-bar'>
-            <a decorator="tooltip:Remove layer" on-tap="remove-active">
-              <span class='show-cursor fa fa-trash-o' > </span>
-            </a>
-            {{#if !parameters.no_sorting}}
-              <a decorator="tooltip:Move to top" on-tap='move-active-to-top'>
-                <span class='show-cursor fa fa-angle-double-up'> </span>
-              </a>
-            {{/if}}
-            {{#if is_hidden}}
-              <a decorator="tooltip:Make layer visible"  on-tap='make-active-visible'>
-                <span class='show-cursor fa fa-eye-slash' ></span>
-              </a>
-            {{else}}
-              <a decorator="tooltip:Make layer hidden"  on-tap='make-active-hidden'>
-                <span class='show-cursor fa fa-eye'></span>
-              </a>
-            {{/if}}
+              {{#if layer_has_click_info(this)}}
+                <a decorator="tooltip:Click on the map to find out more details">
+                  <span class='fa fa-map-marker' > </span>
+                </a>
+              {{/if layer_has_click_info(this)}}
 
-            {{#if able_to_copy(this) }}
-              <a decorator="tooltip:Clone this layer" on-tap="clone-active-layer">
-                <span class='show-cursor fa fa-clone'></span>
-              </a>
-            {{/if}}
-
-            <a decorator="tooltip:Show layer metadata" on-tap="show-active-layer-info" class='info {{layer_load_state(layers_loading_states, layer_default_id)}}'>
-              <span class='show-cursor fa fa-info'></span>
-            </a>
-
-            {{#if layer_has_click_info(this)}}
-              <a decorator="tooltip:Click on the map to find out more details">
-                <span class='fa fa-map-marker' > </span>
-              </a>
-            {{/if layer_has_click_info(this)}}
-
-            {{#if layer_has_standalone_wizard(this)}}
-              <a decorator="tooltip:This layer has detailed instructions. Click to view" on-tap="show-standalone-wizard">
-                <span class='fa fa-question'> </span>
-              </a>
-            {{/if layer_has_standalone_wizard(this)}}
+              {{#if layer_has_standalone_wizard(this)}}
+                <a decorator="tooltip:This layer has detailed instructions. Click to view" on-tap="show-standalone-wizard">
+                  <span class='fa fa-question'> </span>
+                </a>
+              {{/if layer_has_standalone_wizard(this)}}
+            </div>
+            {{> layer_controls_details_blocks_template}}
           </div>
-          {{> layer_controls_details_blocks_template}}
-        </div>
-      {{/if}}
-    </div>
-  {{/each}}
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
 </script>
 
 <script id="map_controls_template" type="text/ractive">

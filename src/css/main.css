@@ -139,6 +139,13 @@ header {
   overflow-x: hidden;
   border-right: 1px solid #aaa;
 }
+.layer-controls .tray-container.climate-vuln {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 200px;
+}
 .layer-controls .tray {
   background: white;
   position: fixed;
@@ -252,16 +259,30 @@ header {
   top: 68px;
   left: 0;
   right:0;
-  bottom: 50px;
-  border-bottom: 1px solid #999;
+  bottom: 0px;
   overflow-y: auto;
 }
+.layer-controls .tray .footer h3 {
+  background: #063;
+  color: white;
+  padding: 5px;
+  margin: 0 0 10px 0px;
+}
+.layer-controls .tray .footer .form-group{
+  padding: 5px;
+}
+.layer-controls .tray .footer .form-group a{
+  font-size: 125%;
+}
+
 .layer-controls .tray .footer{
+  background: white;
   position: absolute;
+  border-top: 1px solid #999;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 10px;
+  height: 200px;
 }
 
 .layer-controls .tray .footer .btn-secondary {
@@ -377,7 +398,14 @@ header {
   font-size: 20px;
   text-align: center;
 }
-
+.layer-controls .active-layers-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: auto;
+}
 .layer-controls .bulk {
   text-align: right;
   border-top: 1px solid #063;
@@ -1014,13 +1042,13 @@ header {
 .out-of-zoom-alerts {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 30%;
+  right: 30%;
   text-align: center;
   z-index: 100001;
 }
 .out-of-zoom-alerts .alert {
-  width: 50%;
+  width: 100%;
   margin-left: 10px;
   margin-right: 10px;
   display: inline-block;
