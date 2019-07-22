@@ -37,6 +37,7 @@ RendererTemplates.wms("prime_forest", {
           "INFO_FORMAT=application%2Fjson&"+
           "SRS=EPSG:4326&"+
           "X=<%= x %>&Y=<%= y %>";
+  },
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
