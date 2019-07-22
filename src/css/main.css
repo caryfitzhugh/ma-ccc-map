@@ -273,6 +273,29 @@ header {
 }
 .layer-controls .tray .footer .form-group a{
   font-size: 125%;
+  opacity: 0.7;
+}
+.layer-controls .tray .footer .form-group a.active {
+  opacity: 1;
+}
+.footer .climate-vuln-report {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 33%;
+  box-shadow: 0px 0px 5px black;
+  background: white;
+}
+.footer .climate-vuln-report .body {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+}
+.footer .climate-vuln-report .body iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .layer-controls .tray .footer{
