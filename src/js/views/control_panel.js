@@ -434,6 +434,7 @@ Views.ControlPanel.on({
       !Views.ControlPanel.get("climate_vulnerability.show"));
   },
   "show-climate-vulnerability-layer": function (evt) {
+    $("#map").toggleClass("vuln-report-showing", true);
     var map = Views.ControlPanel.get('map');
     let town = Views.ControlPanel.get('climate_vulnerability.town');
     let feature = evt.node.attributes['climate-vuln'].value;
@@ -441,6 +442,13 @@ Views.ControlPanel.on({
     Views.ClimateVulnerability.add_layers(map, town, feature);
     evt.original.stopPropagation();
     evt.original.preventDefault();
+  },
+  "hide-climate-vulnerability-layer": function (evt) {
+    Views.ControlPanel.set("climate_vulnerability.show_report", false);
+    $("#map").toggleClass("vuln-report-showing", false);
+    evt.original.stopPropagation();
+    evt.original.preventDefault();
+
   },
   "toggle-climate-vulnerability-feature": function (evt) {
     let features = Views.ControlPanel.get("climate_vulnerability.features", []);
