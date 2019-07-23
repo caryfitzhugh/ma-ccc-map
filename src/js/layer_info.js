@@ -993,6 +993,17 @@ var available_layers = [
     "download_url": null,
     "metadata_url": null,
   },
+  {
+    "id": "vaw_towns",
+    "folder": "",
+    "name": "Town Vulnerability",
+    "description": "",
+    "source": "NESCAUM",
+    "source_url": "",
+    "sectors": ["Agriculture", "Forestry","Economy","Natural Resources/Habitats"],
+    "download_url": null,
+    "metadata_url": null,
+  },
 ];
 
 var desired_active_on_load = [
