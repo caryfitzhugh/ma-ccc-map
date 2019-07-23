@@ -17,6 +17,10 @@ module.exports = function (grunt) {
         src: "src/map_viewer.html",
         dest: "dist/map_viewer.html"
       },
+      vulnerability_report: {
+        src: "src/vulnerability_report.html",
+        dest: "dist/vulnerability_report.html"
+      },
     },
     copy: {
       zeroClipboardSWF: {
