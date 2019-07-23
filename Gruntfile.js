@@ -17,6 +17,10 @@ module.exports = function (grunt) {
         src: "src/map_viewer.html",
         dest: "dist/map_viewer.html"
       },
+      vulnerability_report: {
+        src: "src/vulnerability_report.html",
+        dest: "dist/vulnerability_report.html"
+      },
     },
     copy: {
       zeroClipboardSWF: {
@@ -98,5 +102,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['inline:map_viewer', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF", "copy:vendor", "copy:vendor_images"]);
+  grunt.registerTask('default', ['inline:map_viewer', 'inline:vulnerability_report', "copy:meta_data", "copy:images", "copy:data", "copy:zeroClipboardSWF", "copy:vendor", "copy:vendor_images"]);
 }
