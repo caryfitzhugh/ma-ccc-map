@@ -1,6 +1,6 @@
 RendererTemplates.wms("vaw_towns", {
   parameters: {
-    opacity: 70,
+    opacity: 100,
     options: {
 
     }
@@ -10,9 +10,10 @@ RendererTemplates.wms("vaw_towns", {
   },
   url: CDN(GEOSERVER + "/ma/wms/"),
   wms_opts:(active_layer) => {
-    //var year = active_layer.parameters.year;
+    var town = active_layer.parameters.town.toUpperCase();
     return  {
       layers: 'ma:towns',
+      cql_filter: "town='" + town + "'",
       format: "image/png",
       opacity: 0,
       zIndex: -1,
@@ -20,12 +21,12 @@ RendererTemplates.wms("vaw_towns", {
     };
   },
   get_feature_info_url: function (active_layer) {
-    //var year = active_layer.parameters.year;
-
+    var town = active_layer.parameters.town.toUpperCase();
     return CDN(GEOSERVER + "/ma/wms/")  +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=ma:towns&"+
           "QUERY_LAYERS=ma:towns&"+
+          "CQL_FILTER=town='" + town + "'&"+
           "STYLES=vaw_highlight&"+
           "BBOX=<%= bbox %>&"+
           "FEATURE_COUNT=5&"+
@@ -48,8 +49,8 @@ RendererTemplates.wms("vaw_towns", {
         <i>Data summarized by MA Department of Public Health from 2010 census data.</i>
       </div>
       <div class='col-xs-10'>
-        2010 Population: {{properties.pop2010}}        
+        2010 Population: {{properties.pop2010}}
       </div>
   `
-  
+
 });

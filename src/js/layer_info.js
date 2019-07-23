@@ -973,7 +973,7 @@ var available_layers = [
   },
   {
     "id": "nfhl_roads",
-    "folder": "",
+    "folder": false,
     "name": "Major Roads in FEMA flood zones",
     "description": "Roads intersecting FEMA 100 and 500 year flood zones.",
     "source": "NESCAUM",
@@ -984,7 +984,7 @@ var available_layers = [
   },
   {
     "id": "nfhl_parcels",
-    "folder": "",
+    "folder": false,
     "name": "Tax Parcels in FEMA flood zones",
     "description": "Parcels intersecting FEMA 100 and 500 year flood zones.",
     "source": "NESCAUM",
@@ -995,7 +995,7 @@ var available_layers = [
   },
   {
     "id": "vaw_towns",
-    "folder": "",
+    "folder": false,
     "name": "Town Vulnerability",
     "description": "",
     "source": "NESCAUM",

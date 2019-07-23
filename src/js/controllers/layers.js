@@ -301,7 +301,7 @@ Controllers.Layers = {
           });
         }
 
-        if (add_layer) {
+        if (add_layer && layer.folder) {
           new_tree = Controllers.Layers.add_tree_node(layer_defaults,
                         new_tree,
                         layer.folder.split("."),

@@ -656,24 +656,28 @@
                       class='{{climate_vulnerability.show_report.hazard == 'heat' && climate_vulnerability.show_report.town == climate_vulnerability.town ? 'active' : ''}}'
                       climate-vuln='heat' on-tap="show-climate-vulnerability-layer">Extreme Heat</a>
                   </div>
+                  <!--
+                    <div>
+                      <a href='#'
+                        class='{{climate_vulnerability.show_report.hazard == 'slr' && climate_vulnerability.show_report.town == climate_vulnerability.town ? 'active' : ''}}'
+
+                        climate-vuln='slr' on-tap="show-climate-vulnerability-layer">Sea-Level Rise</a>
+                    </div>
+                  -->
+                </div>
+                <div class='col-md-7'>
                   <div>
                     <a href='#'
                       class='{{climate_vulnerability.show_report.hazard == 'drought' && climate_vulnerability.show_report.town == climate_vulnerability.town ? 'active' : ''}}'
                       climate-vuln='drought' on-tap="show-climate-vulnerability-layer">Drought</a>
                   </div>
-                </div>
-                <div class='col-md-7'>
-                  <div>
-                    <a href='#'
-                      class='{{climate_vulnerability.show_report.hazard == 'slr' && climate_vulnerability.show_report.town == climate_vulnerability.town ? 'active' : ''}}'
-
-                      climate-vuln='slr' on-tap="show-climate-vulnerability-layer">Sea-Level Rise</a>
-                  </div>
-                  <div>
-                    <a href='#'
-                      class='{{climate_vulnerability.show_report.hazard == 'flooding' && climate_vulnerability.show_report.town == climate_vulnerability.town ? 'active' : ''}}'
-                      climate-vuln='flooding' on-tap="show-climate-vulnerability-layer">Stormwater Flooding</a>
-                  </div>
+                  <!--
+                    <div>
+                      <a href='#'
+                        class='{{climate_vulnerability.show_report.hazard == 'flooding' && climate_vulnerability.show_report.town == climate_vulnerability.town ? 'active' : ''}}'
+                        climate-vuln='flooding' on-tap="show-climate-vulnerability-layer">Stormwater Flooding</a>
+                    </div>
+                  -->
                 </div>
               </div>
             {{/if climate_vulnerability.town}}
