@@ -938,7 +938,7 @@ var available_layers = [
     "download_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/primeforest.html",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/primeforest.html",
   },
-  {
+ /* {
     "id": "tree_atlas",
     "folder": "Agriculture/Forestry",
     "name": "USFS Climate Change Atlas - Tree Species",
@@ -948,7 +948,7 @@ var available_layers = [
     "sectors": ["Agriculture", "Forestry","Economy","Natural Resources/Habitats"],
     "download_url": null,
     "metadata_url": null,
-  },
+  },*/
   {
     "id": "vernal_pools",
     "folder": "Natural Resources/Habitats",
