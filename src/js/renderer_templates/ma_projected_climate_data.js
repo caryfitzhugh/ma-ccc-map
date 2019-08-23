@@ -1,4 +1,7 @@
 const findDataForMAProjectedData = (layer_data, area, season, year, scenario) => {
+  let year_adjustment_map = {
+
+  };
   let found_value = null;
   // console.log("Looking for " , area, season, year);
   try {
@@ -72,7 +75,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                 <th> Baseline (` + opts.legend_units + `)</th>
                 <th> Emissions Scenario </th>
                 {{#active_layer.parameters.years}}
-                  <th> {{.}}s</th>
+                  <th>  {{active_layer.parameters.year_map[.]}}s</th>
                 {{/active_layer.parameters.years}}
               </tr>
             </thead>
@@ -259,6 +262,12 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         summary: 'basin',
         scenario: 'high'
       },
+      year_map: {
+        2035: 2030,
+        2055: 2050,
+        2075: 2070,
+        2090: 2090
+      }
     }
   });
 };
