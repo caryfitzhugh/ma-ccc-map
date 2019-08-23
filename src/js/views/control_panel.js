@@ -259,7 +259,7 @@ Views.ControlPanel.on({
   },
   "activate-base-layer" : function (evt) {
     var cp = Views.ControlPanel;
-    cp.set("map_controls.active_base_layer", evt.context.name);
+    cp.set("map_controls.active_base_layer", evt.get().name);
   },
   "toggle-base-layer-control" : function (evt) {
     var cp = Views.ControlPanel;
@@ -270,7 +270,7 @@ Views.ControlPanel.on({
   // You click a layer on / off active
   "toggle-layer-active": function (evt) {
     var cp = Views.ControlPanel;
-    Controllers.Layers.toggle_layer_active(cp, evt.context);
+    Controllers.Layers.toggle_layer_active(cp, evt.get());
     if (document.cookie.replace(/(?:(?:^|.*;\s*)seen_adding_layers_popup\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
       Views.ControlPanel.set("wizard.adding_layers_popup", true);
     }
@@ -315,18 +315,18 @@ Views.ControlPanel.on({
   },
   "toggle-layer-group-collapse": function (evt) {
     var cp = Views.ControlPanel;
-    evt.context.is_expanded = !evt.context.is_expanded;
-    cp.update(evt.keypath);
+    let new_state = !evt.get().is_expanded;
+    evt.set('is_expanded', new_state);
   },
   "show-layer-info" : function (evt) {
     var cp = Views.ControlPanel;
     evt.original.stopPropagation();
     evt.original.preventDefault();
-    cp.set("layer_controls.current_layer_info", evt.context);
+    cp.set("layer_controls.current_layer_info", evt.get());
   },
   "show-active-layer-info": function (evt) {
     var cp = Views.ControlPanel;
-    cp.set("layer_controls.current_layer_info", evt.context.layer_default_id);
+    cp.set("layer_controls.current_layer_info", evt.get().layer_default_id);
     evt.original.stopPropagation();
     evt.original.preventDefault();
   },
@@ -344,13 +344,13 @@ Views.ControlPanel.on({
   },
   "zoom-to-search-result": function (evt) {
     var map = Views.ControlPanel.get('map');
-    let bounds = evt.context.geometry.bounds;
+    let bounds = evt.get().geometry.bounds;
     if (bounds) {
       map.fitBounds([[bounds.northeast.lat, bounds.northeast.lng],
                     [bounds.southwest.lat, bounds.southwest.lng]]);
 
     } else {
-      map.setView([evt.context.geometry.location.lat,evt.context.geometry.location.lng],15);
+      map.setView([evt.get().geometry.location.lat,evt.get().geometry.location.lng],15);
     }
   },
   "print-map": function (evt) {
@@ -372,7 +372,7 @@ Views.ControlPanel.on({
   },
   "clone-active-layer": function (evt) {
     var cp = Views.ControlPanel;
-    Controllers.Layers.add_cloned_layer(cp, evt.context, "testly");
+    Controllers.Layers.add_cloned_layer(cp, evt.get(), "testly");
   },
   "open-sharing-modal": function (evt) {
     var cp = Views.ControlPanel;
@@ -427,7 +427,7 @@ Views.ControlPanel.on({
     cp.set("wizard.current_step", next);
   },
   "show-standalone-wizard": function (evt) {
-    Views.ControlPanel.set("wizard.standalone", evt.context.parameters.standalone_wizard);
+    Views.ControlPanel.set("wizard.standalone", evt.get().parameters.standalone_wizard);
   },
   "toggle-climate-vulnerability-wizard": function (evt) {
     Views.ControlPanel.set("climate_vulnerability.show",
@@ -452,10 +452,10 @@ Views.ControlPanel.on({
   },
   "toggle-climate-vulnerability-feature": function (evt) {
     let features = Views.ControlPanel.get("climate_vulnerability.features", []);
-    if (_.includes(features, evt.context)) {
-      features = _.without(features, evt.context);
+    if (_.includes(features, evt.get())) {
+      features = _.without(features, evt.get());
     } else {
-      features.push(evt.context);
+      features.push(evt.get());
     }
     Views.ControlPanel.set('climate_vulnerability.features', features);
   },
@@ -468,16 +468,15 @@ Views.ControlPanel.on({
   },
   "toggle-show-feature-info-response-details": function (evt) {
     var cp = Views.ControlPanel;
-    evt.context.show_error_details = !evt.context.show_error_details;
-    cp.update(evt.keypath);
+    evt.set('show_error_details', !evt.get().show_error_details);
   },
   "zoom-to-view-layer": function (evt) {
     var cp = Views.ControlPanel;
     var map = Views.ControlPanel.get('map');
     var zoom = cp.get('map_state.zoom');
     // What zoom level should we go to?
-    var min_zoom = evt.context.parameters.min_zoom;
-    var max_zoom = evt.context.parameters.max_zoom;
+    var min_zoom = evt.get().parameters.min_zoom;
+    var max_zoom = evt.get().parameters.max_zoom;
 
     if (min_zoom && zoom < min_zoom) {
       map.setZoom(min_zoom);
@@ -495,10 +494,10 @@ Views.ControlPanel.on({
     var keypath = 'sectors.selected';
     var selected = cp.get(keypath);
 
-    if (_.contains(selected, evt.context)) {
-      cp.set(keypath, _.without(selected, evt.context));
+    if (_.contains(selected, evt.get())) {
+      cp.set(keypath, _.without(selected, evt.get()));
     } else {
-      cp.set(keypath, selected.concat(evt.context));
+      cp.set(keypath, selected.concat(evt.get()));
     }
   },
   'clear-sector-dropdown': function (evt) {
@@ -522,7 +521,7 @@ Views.ControlPanel.on({
   },
   'upload-layer-import-file': function (evt) {
     var cp = Views.ControlPanel;
-    Controllers.LayerImport.import_layer(cp, evt.context.layer_import.import_file[0]);
+    Controllers.LayerImport.import_layer(cp, evt.get().layer_import.import_file[0]);
     evt.original.stopPropagation();
     evt.original.preventDefault();
   }
@@ -534,7 +533,6 @@ Views.ControlPanel.observe("layer_controls.search_string", function (str) {
   if (str.length > 1) {
     Controllers.Search.execute_search(str,
       function (search_str, results) {
-        console.log(search_str,results)
         if (cp.get("layer_controls.search_string") === search_str) {
          cp.set("layer_controls.search_results", results);
         }

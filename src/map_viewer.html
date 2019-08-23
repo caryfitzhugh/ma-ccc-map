@@ -66,7 +66,7 @@
   {{>map_out_of_view_layers_template}}
   {{>layer_import_modal_template}}
 </script>
-<script id='map_color_block_legend_template' type='text/ractive'/>
+<script id='map_color_block_legend_template' type='text/ractive'>
   <div class='detail-block legend {{quantiled ? 'quantiled' : ''}}'>
     <div class='color-legend '>{{{legend}}}</div>
     {{#colors:i}}
@@ -82,12 +82,12 @@
 
 <script id='map_out_of_view_layers_template' type='text/ractive'>
   {{#if (out_of_view_layers(layers.active, map_state.zoom)).length > 0}}
-    <div class='out-of-zoom-alerts' on-tap>
+    <div class='out-of-zoom-alerts'>
       {{#(out_of_view_layers(layers.active, map_state.zoom))}}
         <div class='alert alert-warning'>
           <label>{{{name}}} </label>
           is not visible at this zoom level.
-          <a class='btn btn-sm btn-primary' on-click='zoom-to-view-layer'> Zoom to Layer </a>
+          <a class='btn btn-sm btn-primary' on-tap='zoom-to-view-layer'> Zoom to Layer </a>
         </div>
       {{/(out_of_view_layers(layers.active, map_state.zoom))}}
     </div>
@@ -115,7 +115,7 @@
                 {{#if layer_import.import_file_processing}}
                   Loading ... <span class='fa fa-spinner fa-spin-custom'></span>
                 {{else}}
-                  <span class='btn btn-primary' on-click='upload-layer-import-file'> Import </span>
+                  <span class='btn btn-primary' on-tap='upload-layer-import-file'> Import </span>
                 {{/if layer_import.import_file_processing}}
               {{/if layer_import.import_file}}
             </div>
@@ -401,10 +401,10 @@
                 <div class='col-xs-10'>
                   <span class='error'> Error Loading </span>
                   {{#if (show_error_details)}}
-                    <a on-click='toggle-show-feature-info-response-details'> Hide Details. </a>
+                    <a on-tap='toggle-show-feature-info-response-details'> Hide Details. </a>
                     <pre>{{error}}</pre>
                   {{else}}
-                    <a on-click='toggle-show-feature-info-response-details'> Show Details. </a>
+                    <a on-tap='toggle-show-feature-info-response-details'> Show Details. </a>
                   {{/if (show_error_details)}}
                 </div>
               {{else}}
@@ -470,7 +470,7 @@
           {{#if sharing_modal.token }}
             {{#if "loading" === sharing_modal.token}}
               <div class='col-xs-3'> &nbsp; </div>
-              <a disabled class='btn btn-primary col-xs-6' on-click="request-share-link-token">
+              <a disabled class='btn btn-primary col-xs-6' on-tap="request-share-link-token">
                 <span class='fa fa-spinner fa-spin-custom'></span>
                 Requesting Link...
               </a>
@@ -484,7 +484,7 @@
             {{/if}}
           {{ else }}
             <div class='col-xs-3'> &nbsp; </div>
-            <a class='btn btn-primary col-xs-6' on-click="request-share-link-token"> Request Link </a>
+            <a class='btn btn-primary col-xs-6' on-tap="request-share-link-token"> Request Link </a>
             <div class='col-xs-3'> &nbsp; </div>
           {{/if sharing_modal.token}}
         </div>
@@ -611,7 +611,7 @@
           {{/if}}
 
           {{#wizard.adding_layers_popup}}
-            <span class='arrow_box notice-me-banner' on-click="remove-layer-add-notice">
+            <span class='arrow_box notice-me-banner' on-tap="remove-layer-add-notice">
               <span>After adding layers to the map, click on the Controls &amp; Legends tab to dig deeper!</span>
             </span>
           {{/wizard.adding_layers_popup}}
@@ -792,15 +792,15 @@
       <div class='row'>
         <div class='sector-select'>
           <label> Sectors: </label>
-          <div class='selected-text-container' on-click='toggle-sector-dropdown'>
+          <div class='selected-text-container' on-tap='toggle-sector-dropdown'>
             <span class='selected'>{{selected_sectors_text(sectors.selected)}}</span>
           </div>
-          <span on-click='toggle-sector-dropdown'
+          <span on-tap='toggle-sector-dropdown'
            class='fa fa-caret-down'></span>
           {{#if sectors.show_dropdown}}
             <div class='sector-selection-dropdown'>
               {{#sectors.all}}
-                <div on-click='toggle-sector-selection'>
+                <div on-tap='toggle-sector-selection'>
                   {{#if is_sector_selected(sectors.selected, .)}}
                     <span class='fa fa-check-square-o'></span>
                   {{else}}
@@ -810,10 +810,10 @@
                 </div>
               {{/sectors.all}}
               <hr/>
-              <span class='btn btn-block btn-primary' on-click='toggle-sector-dropdown'>
+              <span class='btn btn-block btn-primary' on-tap='toggle-sector-dropdown'>
                 Done
               </span>
-              <span class='btn btn-sm btn-block btn-secondary' on-click='clear-sector-dropdown'>
+              <span class='btn btn-sm btn-block btn-secondary' on-tap='clear-sector-dropdown'>
                 Clear All
               </span>
             </div>

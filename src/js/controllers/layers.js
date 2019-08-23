@@ -112,7 +112,7 @@ Controllers.Layers = {
   },
   remove_active: function (cp, evt) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
-    _.remove(new_active_layers, {"id": evt.context.id});
+    _.remove(new_active_layers, {"id": evt.get().id});
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
   },
   visible_all_layers: function (cp, evt) {
@@ -145,24 +145,24 @@ Controllers.Layers = {
   },
   toggle_active_collapsed: function (cp, evt) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
-    var layer = _.find(new_active_layers, "id", evt.context.id);
+    var layer = _.find(new_active_layers, "id", evt.get().id);
     layer.is_collapsed = !layer.is_collapsed;
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
   },
   make_active_hidden: function (cp, evt) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
-    _.find(new_active_layers, "id", evt.context.id).is_hidden = true;
+    _.find(new_active_layers, "id", evt.get().id).is_hidden = true;
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
   },
   make_active_visible: function (cp, evt) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
-    _.find(new_active_layers, "id", evt.context.id).is_hidden = false;
+    _.find(new_active_layers, "id", evt.get().id).is_hidden = false;
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
   },
   move_active_to_top: function (cp, evt) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
-    var layer = _.find(new_active_layers, {"id":  evt.context.id});
-    _.remove(new_active_layers, {"id": evt.context.id});
+    var layer = _.find(new_active_layers, {"id":  evt.get().id});
+    _.remove(new_active_layers, {"id": evt.get().id});
     new_active_layers.unshift(layer);
 
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
