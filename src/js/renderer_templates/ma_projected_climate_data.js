@@ -1,7 +1,4 @@
 const findDataForMAProjectedData = (layer_data, area, season, year, scenario) => {
-  let year_adjustment_map = {
-
-  };
   let found_value = null;
   // console.log("Looking for " , area, season, year);
   try {
@@ -47,7 +44,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
 
     clone_layer_name: function(active_layer) {
       let p = active_layer.parameters.options;
-      var name =  opts.title + " Y:" + active_layer.parameters.years[p.year_indx] + "s S:" + p.season + " by " + p.summary;
+      var name =  opts.title + " Y:" + active_layer.parameters.year_map[active_layer.parameters.years[p.year_indx]] + "s S:" + p.season + " by " + p.summary;
       return name;
     },
     info_template: `
@@ -106,6 +103,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                 {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
               </tbody>
           </table>
+        </div>
     `,
     legend_template: `
       <div class='detail-block show-confidence'>
@@ -129,7 +127,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         <input type="range" value="{{parameters.options.year_indx}}"
           min="0"
           max="{{parameters.years.length-1}}">
-        {{parameters.years[parameters.options.year_indx]}}
+        {{parameters.year_map[parameters.years[parameters.options.year_indx]]}}
       </div>
       <div class='detail-block show-confidence'>
         <label decorator='tooltip:Choose a Season'> Season: </label>
@@ -197,7 +195,6 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
           'high': scale
         };
       });
-      console.log(active_layer.parameters.metrics_ranges);
     },
     onEachGeometry: (layer_data, active_layer, feature, layer) => {
       let p = active_layer.parameters.options;
