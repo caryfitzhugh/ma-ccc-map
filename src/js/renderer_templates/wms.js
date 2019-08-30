@@ -20,11 +20,11 @@ RendererTemplates.wms = function (layer_id, opts) {
                       maxZoom: opts.parameters.max_zoom || 18},
                     get_wms_opts(active_layer)));
           layer.on("tileload", function (loaded) {
-            Views.ControlPanel.fire("tile-layer-loaded", active_layer);
+            Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer);
           });
           layer.on("tileerror", function (err) {
             console.warn("layer_id", "WMS Renderer",  err);
-            Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
+            Views.ControlPanel.fire("tile-layer-loading-error", {},  active_layer);
           });
           layer.on("load", function (loaded) {
             if (opts.on_load) {

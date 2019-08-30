@@ -62,7 +62,7 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
                 }
               });
               win(layer);
-              Views.ControlPanel.fire("tile-layer-loaded", active_layer);
+              Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer);
             })
           },
           () => {
@@ -88,7 +88,7 @@ RendererTemplates.geojson_points = function (layer_id, opts) {
         )
       })
       .catch((err) => {
-        Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
+        Views.ControlPanel.fire("tile-layer-loading-error", {}, active_layer);
       })
     }
   });

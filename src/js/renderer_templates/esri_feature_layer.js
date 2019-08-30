@@ -58,7 +58,7 @@ RendererTemplates.esri_feature_layer = function (layer_id, opts) {
           get_esri_opts(active_layer),
           () => {
             var layer = L.esri.featureLayer(_.merge({useCors: false, pane: pane}, get_esri_opts(active_layer)));
-            layer.on("load", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
+            layer.on("load", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer); });
             layer.on("requesterror", function (err) { Renderers.add_layer_error(active_layer);});
             layer.on("error", function (err) { Renderers.add_layer_error(active_layer);});
 

@@ -70,7 +70,7 @@ RendererTemplates.esri_feature_layer_points = function (layer_id, opts) {
 
             var layer = L.esri.featureLayer(eopts);
 
-            layer.on("load", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", active_layer); });
+            layer.on("load", function (loaded) { Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer); });
             layer.on("requesterror", function (err) { Renderers.add_layer_error(active_layer);});
             layer.on("error", function (err) { Renderers.add_layer_error(active_layer);});
 

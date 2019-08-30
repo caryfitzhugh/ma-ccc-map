@@ -84,7 +84,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
         _.each(_.keys(table_data).sort(), (k) => {
           sorted_table_data.push(table_data[k]);
         });
-        Views.ControlPanel.fire("layer-show-singleton-details",
+        Views.ControlPanel.fire("layer-show-singleton-details", {},
             active_layer, {name: feature.properties.name, table_data: sorted_table_data, year: year, likelihood: likelihood});
       }
     });

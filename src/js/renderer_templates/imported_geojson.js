@@ -38,7 +38,7 @@ RendererTemplates.imported_geojson = function (layer_id, opts) {
                 );
             }
           });
-        Views.ControlPanel.fire("tile-layer-loaded", active_layer);
+        Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer);
         return layer;
       });
 

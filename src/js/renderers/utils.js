@@ -38,10 +38,10 @@ var Renderers = {
   geojson_add_to_map: function (map, active_layer, addable) {
     addable.addTo(map);
     active_layer.leaflet_layer_ids = [addable._leaflet_id];
-    Views.ControlPanel.fire("tile-layer-loaded", active_layer);
+    Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer);
   },
   add_layer_error: function (active_layer) {
-    Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
+    Views.ControlPanel.fire("tile-layer-loading-error", {}, active_layer);
   },
   random: () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -176,11 +176,11 @@ var Renderers = {
   },
   // This is used by map layer dialogs to "Zoom to " something
   zoom_to: function (center, zoom) {
-    Views.ControlPanel.fire("map-set-view", center, zoom);
+    Views.ControlPanel.fire("map-set-view", {}, center, zoom);
   },
   zoom_to_bounding_box: function (bbox_string) {
     [west, south, east, north] = bbox_string.split(',').map(parseFloat);
-    Views.ControlPanel.fire("map-set-bbox", west, south, east, north);
+    Views.ControlPanel.fire("map-set-bbox", {}, west, south, east, north);
   },
   utils: {
     zoom_to_location_link: function (geometry) {

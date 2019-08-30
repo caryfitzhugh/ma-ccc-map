@@ -216,11 +216,11 @@ Views.ControlPanel.on({
     var map = Views.ControlPanel.get('map');
     map.zoomOut();
   },
-  "map-set-view": function (center, zoom ) {
+  "map-set-view": function (evt, center, zoom ) {
     var map = Views.ControlPanel.get('map');
     map.setView(center, zoom);
   },
-  "map-set-bbox": function (west,south,east,north) {
+  "map-set-bbox": function (evt, west, south, east, north) {
     var map = Views.ControlPanel.get('map');
     map.fitBounds(new L.LatLngBounds(new L.LatLng(south, west), new L.LatLng(north, east)));
   },
@@ -249,11 +249,11 @@ Views.ControlPanel.on({
     var cp = Views.ControlPanel;
     Controllers.Layers.update_layers_parameters(cp, active_layer);
   },
-  "tile-layer-loaded": function (active_layer, force_reload ) {
+  "tile-layer-loaded": function (evt, active_layer, force_reload , b, c, d, e, g) {
     var cp = Views.ControlPanel;
     Controllers.Layers.mark_layer_as_loaded(cp, active_layer, true, force_reload);
   },
-  "tile-layer-loading-error": function (active_layer) {
+  "tile-layer-loading-error": function (evt, active_layer) {
     var cp = Views.ControlPanel;
     Controllers.Layers.mark_layer_as_loaded(cp, active_layer, false);
   },
@@ -591,7 +591,7 @@ Views.ControlPanel.observe("map_controls.active_base_layer", function (base_laye
   }
 });
 
-Views.ControlPanel.on("layer-show-singleton-details", function (active_layer, data) {
+Views.ControlPanel.on("layer-show-singleton-details", function (evt, active_layer, data) {
     var cp = Views.ControlPanel;
     cp.set("map_details.location", true);
     cp.set("map_details.feature_info_requests", [{name: active_layer.name, active_layer: active_layer, response_id: "singleton"}]);

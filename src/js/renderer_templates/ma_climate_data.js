@@ -180,11 +180,11 @@ RendererTemplates.ma_climate_data = function (layer_id, opts) {
                   }
                 });
                 win(layer);
-                Views.ControlPanel.fire("tile-layer-loaded", active_layer);
+                Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer);
               })
               .catch((err) => {
                 if (err.status !== 200) {
-                  Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
+                  Views.ControlPanel.fire("tile-layer-loading-error", {}, active_layer);
                 }
                 lose();
               });

@@ -42,10 +42,10 @@ RendererTemplates.wms("impervious_surface", {
         for (let i=0; i < buckets.length; i += Math.floor((buckets.length - 1) / 8)) {
           active_layer.parameters.color_buckets.push(buckets[i]);
         }
-        Views.ControlPanel.fire("tile-layer-loaded", active_layer, true);
+        Views.ControlPanel.fire("tile-layer-loaded", {}, active_layer, true);
       },
       error:   function (err) {
-        Views.ControlPanel.fire("tile-layer-loading-error", active_layer);
+        Views.ControlPanel.fire("tile-layer-loading-error", {}, active_layer);
       }
     });
   },
@@ -86,7 +86,7 @@ RendererTemplates.wms("impervious_surface", {
       <div class='col-xs-10'>
         {{#json.features}}
           <div>
-            <strong>{{properties.PALETTE_INDEX}}% Impervious Surface</strong> at the clicked location.  Impervious surfaces increase temperatures and impede drainage.  Surface temperatures can rise by <a href="https://www.researchgate.net/profile/Alfonso_Crisci/publication/322066994_Urban_Imperviousness_Effects_on_Summer_Surface_Temperatures_Nearby_Residential_Buildings_in_Different_Urban_Zones_of_Parma/links/5bb224e2299bf13e6059d993/Urban-Imperviousness-Effects-on-Summer-Surface-Temperatures-Nearby-Residential-Buildings-in-Different-Urban-Zones-of-Parma.pdf?origin=publication_detail" target="blank_">up to 1.8°F</a> for every 20% increase in imperviousness.    
+            <strong>{{properties.PALETTE_INDEX}}% Impervious Surface</strong> at the clicked location.  Impervious surfaces increase temperatures and impede drainage.  Surface temperatures can rise by <a href="https://www.researchgate.net/profile/Alfonso_Crisci/publication/322066994_Urban_Imperviousness_Effects_on_Summer_Surface_Temperatures_Nearby_Residential_Buildings_in_Different_Urban_Zones_of_Parma/links/5bb224e2299bf13e6059d993/Urban-Imperviousness-Effects-on-Summer-Surface-Temperatures-Nearby-Residential-Buildings-in-Different-Urban-Zones-of-Parma.pdf?origin=publication_detail" target="blank_">up to 1.8°F</a> for every 20% increase in imperviousness.
           </div>
         {{ else }}
           Unknown / No Response
