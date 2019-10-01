@@ -15,7 +15,7 @@ RendererTemplates.wms("biomap_core", {
   clone_layer_name: function(active_layer) {
     return active_layer.name + " Layer:" + active_layer.parameters.layer;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     var layer = active_layer.parameters.layer;
     return  {
@@ -29,7 +29,7 @@ RendererTemplates.wms("biomap_core", {
 /*  get_feature_info_url: function (active_layer) {
     var layer = active_layer.parameters.layer;
 
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA."+layer+"&"+
           "QUERY_LAYERS=massgis:GISDATA."+layer+"&"+
@@ -54,7 +54,7 @@ RendererTemplates.wms("biomap_core", {
       </div>
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-          <img src='http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.{{parameters.layer}}&format=image/png'/>
+          <img src='https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.{{parameters.layer}}&format=image/png'/>
       </div>
 
 

@@ -8,7 +8,7 @@ RendererTemplates.wms("env_justice", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
@@ -21,7 +21,7 @@ RendererTemplates.wms("env_justice", {
   },
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.EJ_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.EJ_POLY&"+
@@ -39,7 +39,7 @@ RendererTemplates.wms("env_justice", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.EJ_POLY&format=image/png")}}'/>
+        <img src='{{CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.EJ_POLY&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -52,7 +52,7 @@ RendererTemplates.wms("env_justice", {
               <tr>
                 <th> Town </th>
                 <th> Census 2010<br/>Summary ID </th>
-                <th> % Minority </th> 
+                <th> % Minority </th>
                 <th> Median household<br/>income </th>
                 <th> % No high school<br/>diploma</th>
                 <th> % No English </th>
@@ -70,7 +70,7 @@ RendererTemplates.wms("env_justice", {
                   Unknown / No Response
                 {{/json.features}}
               </tbody>
-          </table>           
+          </table>
       </div>
   `
 });

@@ -10,7 +10,7 @@ RendererTemplates.wms("openspace_type", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
@@ -23,7 +23,7 @@ RendererTemplates.wms("openspace_type", {
   },
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.OPENSPACE_ARC&"+
           "QUERY_LAYERS=massgis:GISDATA.OPENSPACE_ARC&"+
@@ -41,7 +41,7 @@ RendererTemplates.wms("openspace_type", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.OPENSPACE_ARC&STYLES=GISDATA.OPENSPACE_ARC&format=image/png")}}'/>
+        <img src='{{CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.OPENSPACE_ARC&STYLES=GISDATA.OPENSPACE_ARC&format=image/png")}}'/>
       </div>
   `,
   info_template: `

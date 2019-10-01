@@ -10,7 +10,7 @@ RendererTemplates.wms("flood_zones_q3", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
@@ -23,7 +23,7 @@ RendererTemplates.wms("flood_zones_q3", {
   },
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&"+
           "QUERY_LAYERS=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&"+
@@ -41,7 +41,7 @@ RendererTemplates.wms("flood_zones_q3", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&format=image/png")}}'/>
+        <img src='{{CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.Q3FLOOD_POLY_NO_NFHL&format=image/png")}}'/>
       </div>
   `,
   info_template: `
@@ -55,7 +55,7 @@ RendererTemplates.wms("flood_zones_q3", {
                 <th> County </th>
                 <th> FIRM Panel </th>
                 <th> Quad </th>
-                <th> Zone </th> 
+                <th> Zone </th>
                 <th> SFHA </th>
               </tr>
             </thead>
@@ -72,7 +72,7 @@ RendererTemplates.wms("flood_zones_q3", {
                   Unknown / No Response
                 {{/json.features}}
               </tbody>
-          </table>         
+          </table>
       </div>
   `
 });

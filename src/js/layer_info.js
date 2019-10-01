@@ -957,7 +957,7 @@ var available_layers = [
     "source": "Natural Heritage and Endangered Species Program (NHESP) ",
     "source_url": "https://docs.digital.mass.gov/dataset/massgis-data-nhesp-certified-vernal-pools",
     "sectors": ["Agriculture", "Forestry","Economy","Natural Resources/Habitats"],
-    "download_url": "http://giswebservices.massgis.state.ma.us/geoserver/wfs?request=GetFeature&service=wfs&version=1.0.0&typename=massgis:GISDATA.CVP_PT&outputformat=SHAPE-ZIP",
+    "download_url": "https://giswebservices.massgis.state.ma.us/geoserver/wfs?request=GetFeature&service=wfs&version=1.0.0&typename=massgis:GISDATA.CVP_PT&outputformat=SHAPE-ZIP",
     "metadata_url": "https://docs.digital.mass.gov/dataset/massgis-data-nhesp-certified-vernal-pools",
   },
   {

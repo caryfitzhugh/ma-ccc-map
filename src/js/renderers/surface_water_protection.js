@@ -13,7 +13,7 @@ RendererTemplates.wms("surface_water_protection", {
   clone_layer_name: function(active_layer) {
     return active_layer.name + " Layer:" + active_layer.parameters.style;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     var layer = active_layer.parameters.style;
     return  {
@@ -28,7 +28,7 @@ RendererTemplates.wms("surface_water_protection", {
   get_feature_info_url: function (active_layer) {
     var layer = active_layer.parameters.style;
 
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.SWP_ZONES_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.SWP_ZONES_POLY&"+
@@ -52,7 +52,7 @@ RendererTemplates.wms("surface_water_protection", {
         {{/u.to_sorted_values_from_hash(parameters.options.style)}}
         </select>
       </div>
-       <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=" + encodeURIComponent("massgis:GISDATA.SWP_ZONES_POLY") + "&style=" + encodeURIComponent(parameters.style) + "&format=image/png")}}'/>
+       <img src='{{CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=" + encodeURIComponent("massgis:GISDATA.SWP_ZONES_POLY") + "&style=" + encodeURIComponent(parameters.style) + "&format=image/png")}}'/>
   `,
   info_template: `
       <div class='col-xs-2'>

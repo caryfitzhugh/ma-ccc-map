@@ -11,7 +11,7 @@ RendererTemplates.wms("acec", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: "http://giswebservices.massgis.state.ma.us/geoserver/wms/",
+  url: "https://giswebservices.massgis.state.ma.us/geoserver/wms/",
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
@@ -25,7 +25,7 @@ RendererTemplates.wms("acec", {
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
 
-    return "http://giswebservices.massgis.state.ma.us/geoserver/wms/" +
+    return "https://giswebservices.massgis.state.ma.us/geoserver/wms/" +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.ACECS_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.ACECS_POLY&"+
@@ -43,7 +43,7 @@ RendererTemplates.wms("acec", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.ACECS_POLY&format=image/png")}}'/> Areas of Concern
+        <img src='{{CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.ACECS_POLY&format=image/png")}}'/> Areas of Concern
       </div>
   `,
   info_template: `

@@ -10,7 +10,7 @@ RendererTemplates.wms("aquifers", {
   clone_layer_name: function(active_layer) {
     return active_layer.name;
   },
-  url: CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms"),
+  url: CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms"),
   wms_opts:(active_layer) => {
     //var year = active_layer.parameters.year;
     return  {
@@ -23,7 +23,7 @@ RendererTemplates.wms("aquifers", {
   },
   get_feature_info_url: function (active_layer) {
     //var year = active_layer.parameters.year;
-    return CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms") +
+    return CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms") +
           "?SERVICE=WMS&VERSION=1.1.1&"+
           "REQUEST=GetFeatureInfo&LAYERS=massgis:GISDATA.AQUIFERS_POLY&"+
           "QUERY_LAYERS=massgis:GISDATA.AQUIFERS_POLY&"+
@@ -40,7 +40,7 @@ RendererTemplates.wms("aquifers", {
   legend_template: `
       <div class='detail-block show-confidence'>
         <label> Legend: </label>
-        <img src='{{CDN("http://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.AQUIFERS_POLY&format=image/png")}}'/>
+        <img src='{{CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=massgis:GISDATA.AQUIFERS_POLY&format=image/png")}}'/>
       </div>
   `,
   info_template: `
