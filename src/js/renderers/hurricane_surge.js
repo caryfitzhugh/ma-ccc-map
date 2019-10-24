@@ -11,9 +11,10 @@ RendererTemplates.esri("hurricane_surge", {
   },
   legend_template: `
     <div class='detail-block show-confidence'>
-    <div class='detail-block legend taccimo '>
-      <label> Legend </label>
-      <img  src="img/hurricane_surge.png">
+      <div class='detail-block legend taccimo '>
+        <label> Legend </label>
+        <img  src="img/hurricane_surge.png">
+      </div>
     </div>
   `,
   clone_layer_name: function (active_layer) {
@@ -23,7 +24,7 @@ RendererTemplates.esri("hurricane_surge", {
   esri_opts: function (active_layer) {
 
     return {
-      url: CDN("http://gisprpxy.itd.state.ma.us/arcgisserver/rest/services/MEMA/InundataionZones/MapServer"),
+      url: CDN("https://gisprpxy.itd.state.ma.us/arcgisserver/rest/services/MEMA/InundataionZones/MapServer"),
       layers: [ 0 ],
       attribution: 'MEMA',
       f:"image"
