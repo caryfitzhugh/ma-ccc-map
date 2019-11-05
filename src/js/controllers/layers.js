@@ -112,7 +112,13 @@ Controllers.Layers = {
   },
   remove_active: function (cp, evt) {
     var new_active_layers = _.cloneDeep(cp.get("layers.active"));
-    _.remove(new_active_layers, {"id": evt.get().id});
+    let id = null;
+    if (evt.get) {
+      id = evt.get().id;
+    } else {
+      id = evt.id;
+    }
+    _.remove(new_active_layers, {"id": id});
     cp.set("layers.active", Controllers.Layers.sort_active_layers(new_active_layers));
   },
   visible_all_layers: function (cp, evt) {
