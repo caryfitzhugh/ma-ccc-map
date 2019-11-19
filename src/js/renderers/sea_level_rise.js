@@ -136,6 +136,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
               </tr>
             </tbody>
           </table>
+        </div>
   `,
   legend_template: `
       <div class='detail-block opacity'>
