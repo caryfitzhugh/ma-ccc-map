@@ -19,14 +19,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 header {
-  height: 80px;
+  height: 100px;
   z-index: 99999999999;
 }
 
 #map {
   width: auto;
   position: absolute;
-  top: 80px;
+  top: 100px;
   bottom: 0;
   right: 0;
   left: 0;
@@ -44,7 +44,7 @@ header {
 .layer-controls {
   position: fixed;
   z-index: 1001;
-  top: 80px;
+  top: 100px;
   left: 0;
   /*background: white;*/
   width: 400px;
@@ -152,7 +152,7 @@ header {
 .layer-controls .tray {
   background: white;
   position: fixed;
-  top: 117px; /*111px;*/
+  top: 137px; /*117px;*/ /*111px;*/
   left: 0;
   width: 400px;
   overflow:hidden;
@@ -191,7 +191,7 @@ header {
   width: 100%;
   font-size: 16px;
   line-height: 35px;
-  padding: 5px 20px 5px 80px;
+  padding: 5px 20px 5px 100px;
   position: relative;
 }
 
@@ -312,7 +312,7 @@ header {
 }
 
 .layer-controls .tray .footer .btn-secondary {
-  background: #f27421;
+  background: #ca4d00;
   color: white;
 }
 
@@ -334,7 +334,7 @@ header {
   line-height: 80px;
   background: #f6892e;
   border-radius: 40px;
-  height: 80px;
+  height: 100px;
   width: 80px;
   display:inline-block;
 }
@@ -348,7 +348,7 @@ header {
   margin-bottom: 30px;
   color: white;
   font-size: 40px;
-  line-height: 80px;
+  line-height: 100px;
   background: #f6892e;
   border-radius: 40px;
   height: 80px;
@@ -452,7 +452,7 @@ header {
   margin-bottom: 30px;
   color: white;
   font-size: 40px;
-  line-height: 80px;
+  line-height: 100px;
   background: #f6892e;
   border-radius: 40px;
   height: 80px;
@@ -1119,7 +1119,7 @@ header {
     width: auto;
   }
   .map-controls {
-    top: 115px;
+    top: 135px;
   }
   .print-control {
     display: none;
@@ -1327,7 +1327,7 @@ header .slate-text {
   font-weight: 300;
 }
 header .orange-text {
-  color: #f27421;
+  color: #ca4d00;
   font-weight: 700;
 }
 header .gray-text {
@@ -1370,7 +1370,7 @@ header .right-side .search button {
   padding: 12px;
   color: white;
   font-size: 20px;
-  background: #f27421;
+  background: #ca4d00;
 
 }
 
