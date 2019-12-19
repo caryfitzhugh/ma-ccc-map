@@ -201,3 +201,22 @@ img{page-break-inside:avoid;}
     color: #113f83;
     font-weight: 400;
 }
+
+.up-triangle {
+    font-size: 3em;
+    position: absolute;
+    z-index: 99999;
+    text-align: center;
+    right: 30px;
+    top: 90px;
+}
+.up-triangle .triangle {
+    color: #113f83;
+    border-bottom: 15px solid #113f83;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    width: 0;
+    height: 0;
+    display: inline-block;
+}
