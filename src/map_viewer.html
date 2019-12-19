@@ -14,10 +14,30 @@
   <link rel='stylesheet prefetch' href='./vendor/leaflet-1.0.3/dist/leaflet.css'>
   <link rel="stylesheet" href="./css/main.css?__inline=true" media='all'>
   <link rel="stylesheet" href="./css/header.css?__inline=true" media='all'>
+  <script type='text/javascript' src='./js/header.js?__inline=true'></script>
 </head>
 
 <body>
     <header class='hide-printing'>
+      <script type='text/javascript'>
+        function searchKeydown(e) {
+          if (e.key == "Enter") {
+            window.location.href = "/search?query=" + encodeURIComponent(event.target.value);
+          }
+        }
+        function toggleMenuShow(e) {
+            var element = document.getElementById("menu-show");
+            if (element.style.display == 'none') {
+              element.style.display = null;
+            } else {
+              element.style.display = 'none';
+            }
+        }
+      </script>
+      <div id='menu-show' style='display: none'>
+        <div class="mega-menu no-select"><div class="container"><div class="row"><header><h1><!-- react-text: 444 --> <!-- /react-text --><a href="/about">Supporting the Commonwealth through up-to-date climate change science: </a></h1></header><nav class="row"><section class="col tool-n-data-col"><h2> Tools &amp; Data</h2><hr><h3><a href="/data/documents">Documents</a></h3><h3><a href="/data/data">Data</a></h3><h3><a href="/data/maps">Maps</a></h3><h3><a href="/search">Resource Clearinghouse</a></h3></section><section class="col learn-col col-xs-12"><h2>Learn</h2><hr><div class="row"><section class="col col-sm-4 no-pad-r"><h3>Explore Sectors:</h3><ul><li><a href="/sectors/agriculture">Agriculture</a></li><li><a href="/sectors/coastal-zones">Coastal Zones</a></li><li><a href="/sectors/economy">Economy</a></li><li><a href="/sectors/energy">Energy</a></li><li><a href="/sectors/forestry">Forestry</a></li><li><a href="/sectors/infrastructure">Infrastructure</a></li><li><a href="/sectors/local-government">Local Government</a></li></ul></section><section class="col col-sm-4 no-pad-r"><h3>&nbsp;</h3><ul><li><a href="/sectors/natural-resources-habitats">Natural Resources / Habitats</a></li><li><a href="/sectors/public-health">Public Health</a></li><li><a href="/sectors/public-safety-emergency-response">Public Safety / Emergency Response</a></li><li><a href="/sectors/recreation">Recreation</a></li><li><a href="/sectors/transportation">Transportation</a></li><li><a href="/sectors/water-resources">Water Resources</a></li></ul></section><section class="col col-sm-4 no-pad-r"><h3>Identify Changes:</h3><ul><li><a href="/changes/sea-level-rise">Sea Level Rise</a></li><li><a href="/changes/extreme-weather">Extreme Weather</a></li><li><a href="/changes/changes-in-precipitation">Changes in Precipitation</a></li><li><a href="/changes/rising-temperatures">Rising Temperatures</a></li></ul></section></div></section><section class="col take-action-col"><h2>Take Action</h2><hr><div class="row"><section class="col col-sm-4 no-pad-r"><h3>MVP Program:</h3><ul><li><a href="/mvp">MVP Program Information</a></li></ul></section><section class="col col-sm-4 no-pad-r"><h3>State Hazard Mitigation and Climate Adaptation Plan:</h3><ul><li><a href="/shmcap-portal/index.html">Our Plan </a></li><li><a href="/shmcap-portal/index.html#/action-tracker/">Massachusetts State Action Tracker </a></li></ul></section><section class="col col-sm-4 no-pad-r"><h3>Additional Planning Resources:</h3><ul><li><a href="/actions/planning">Plan Development</a></li><li><a href="/actions/implementation">Implementation</a></li><li><a href="/actions/outreach-education">Outreach / Education</a></li></ul></section></div></section></nav></div></div></div>
+      </div>
+      </div>
       <div class='container'>
         <div class="header-wrap">
           <div class="px-5 header">
@@ -35,17 +55,16 @@
               <div class="search-bar ">
                 <div class="input-group input-group-sm">
                   <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-w-16 fa fa-search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
-                  <input onclick type="text" class="form-control" aria-label="Enter search string for resources and press enter to search" placeholder="SEARCH" value="">
+                  <input id='search_header_input' onkeydown="searchKeydown(event)" type="text" class="form-control" aria-label="Enter search string for resources and press enter to search" placeholder="SEARCH" value="">
                 </div>
               </div>
-              <div class="mega-menu-toggle no-select">
+              <div class="mega-menu-toggle no-select show-cursor" onclick="toggleMenuShow(event)">
                 <label> Menu </label>
                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-w-14 fa fa-bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </header>
 
     <div class='main-header hide-printing'> </div>

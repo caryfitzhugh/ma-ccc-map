@@ -137,3 +137,67 @@ img{page-break-inside:avoid;}
 @media (min-width:1200px){
 .container{width:1140px;max-width:100%;}
 }
+
+/*! CSS Used from: http://uatclimatechange.org/static/css/main.912c9e39.css */
+.header-wrap a:active,.header-wrap a:focus,.header-wrap a:hover,.header-wrap a:visited{text-decoration:none!important;}
+.mega-menu{position:absolute;top:86px;left:0;right:0;z-index:101;background:hsla(0,0%,94%,.9);border:1px solid #113f83;padding:1em 4em; z-index:9999;}
+.mega-menu header h1{font-weight:400;color:#113f83;font-size:1.5rem;margin-bottom:1em;}
+
+.mega-menu .tool-n-data-col{-ms-flex:0 0 12%;flex:0 0 12%;max-width:12%;min-width:130px;}
+.mega-menu .tool-n-data-col h3,.mega-menu .tool-n-data-col h3>a{font-size:1.05em;}
+.mega-menu .take-action-col{-ms-flex:0 0 40%;flex:0 0 40%;max-width:40%;}
+.mega-menu .learn-col{-ms-flex:0 0 46%;flex:0 0 46%;max-width:46%;}
+.mega-menu hr{border-top:5px solid #ca4d00;margin:0 -5px;}
+.mega-menu h2{color:#113f83;font-weight:700;font-size:1em;}
+.mega-menu section.no-pad-r{padding-right:0;}
+.mega-menu h3{margin:10px 0;}
+.mega-menu h3,.mega-menu h3>a{color:#113f83;font-weight:700;font-size:1.15em;}
+.mega-menu li{list-style-type:none;position:relative;padding-left:5px;margin-top:12px;font-size:14px;}
+.mega-menu ul{-webkit-padding-start:8px;-moz-padding-start:8px;padding-inline-start:8px;list-style-type:circle;}
+.mega-menu li:before{content:"\2022";font-size:35px;position:absolute;top:-17px;left:-11px;color:#ca4d00;}
+@media (max-width:1024px){
+.mega-menu .learn-col,.mega-menu .take-action-col,.mega-menu .tool-n-data-col{width:100%;max-width:100%;min-width:100%;}
+}
+
+#menu-show h1 a, .menu-show h1 a:hover {
+  color: #113f83;
+  font-size: 24px;
+}
+#menu-show header {
+  height: auto;
+}
+.mega-menu .tool-n-data-col {
+  float: left;
+  -ms-flex: 0 0 12%;
+  flex: 0 0 12%;
+  max-width: 12%;
+  min-width: 130px;
+}
+
+.mega-menu .learn-col {
+  float: left;
+  -ms-flex: 0 0 46%;
+  flex: 0 0 46%;
+  max-width: 46%;
+}
+.mega-menu .take-action-col {
+  float: left;
+    -ms-flex: 0 0 40%;
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+
+.mega-menu li:before {
+    content: "\2022";
+    font-size: 35px;
+    position: absolute;
+    top: -17px;
+    left: -11px;
+    color: #ca4d00;
+}
+.mega-menu li a {
+    text-decoration: none!important;
+    cursor: pointer;
+    color: #113f83;
+    font-weight: 400;
+}
