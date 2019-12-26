@@ -69,6 +69,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
             </tbody>
           </table>
+        </div>
     `,
     legend_template: `
       <div class='detail-block show-confidence'>
