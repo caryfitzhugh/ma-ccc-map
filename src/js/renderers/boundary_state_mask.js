@@ -11,14 +11,14 @@ RendererTemplates.wms("boundary_state_mask", {
   },
   url: CDN(GEOSERVER + "/ma/wms/"),
   wms_opts:(active_layer) => {
-    var style = 'state_mask_' +active_layer.parameters.style;
+    var style = 'state_mask_' + active_layer.parameters.style;
     return  {
       layers: 'ma:state_mask',
       format: "image/png",
       styles: style,
       opacity: 0,
       zIndex: -1,
-      transparent: true,
+      transparent: true
     };
   },
   legend_template: `
@@ -31,6 +31,7 @@ RendererTemplates.wms("boundary_state_mask", {
               <option value='black'>Black</option>
               <option value='white'>White</option>
           </select>
+        </div>
       </div>
   `,
   info_template: `
