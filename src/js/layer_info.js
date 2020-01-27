@@ -41,9 +41,8 @@ var available_layers = [
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "<p>Cartographic Boundary Shapefiles (CBF) of MA counties. These cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database. These boundary files are specifically designed for small scale thematic mapping. Generalized boundary files are clipped to a simplified version of the U.S. outline. As a result, some off-shore areas may be excluded from the generalized files.</p>",
     "source": "U.S. Census Bureau",
-    "source_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html",
+    "source_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2019.html",
     "download_url": "https://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:county_boundary&maxFeatures=500&outputFormat=SHAPE-ZIP",
-    "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_description.html.",
   },
   {
     "id": "boundary_huc8",
@@ -64,7 +63,7 @@ var available_layers = [
     "description": "<p>This dataset is a digital hydrologic unit boundary layer that is at the  Watershed (10-digit) level. Each basin is identified by a unique Hydrologic Unit Code (HUC), as well a name, at each level. HUCs are identifiers as assigned to basin polygons by the U.S. Geological Survey (USGS).</p>",
     "source": "MassGIS",
     "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/nrcshuc.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/nrcshuc.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/nrcshuc.html"
   },
   {
@@ -75,7 +74,7 @@ var available_layers = [
     "description": "<p>MassGIS has produced a statewide digital datalayer of the 27 major drainage basins of Massachusetts as defined by the USGS Water Resources Division and the MA Water Resources Commission.</p>",
     "source": "MA Water Resources Commission",
     "source_url": "https://www.mass.gov/orgs/water-resources-commission",
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/majorbasins.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/majorbasins.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/majbas.html"
   },
   {
@@ -85,9 +84,9 @@ var available_layers = [
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "<p>Derived from cartographic boundary files from the Census Bureau’s MAF/TIGER geographic database. These boundary files are specifically designed for small scale thematic mapping. Generalized boundary files are clipped to a simplified version of the U.S. outline. As a result, some off-shore areas may be excluded from the generalized files.</p>",
     "source": "U.S. Census Bureau",
-    "source_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html",
+    "source_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2019.html",
     "download_url": "https://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:state_boundary&maxFeatures=50&outputFormat=SHAPE-ZIP",
-    "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_description.html.",
+    "metadata_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2019.html",
   },
   {
     "id": "boundary_state_mask",
@@ -96,9 +95,9 @@ var available_layers = [
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "description": "<p>Derived from cartographic boundary files from the Census Bureau’s MAF/TIGER geographic database. These boundary files are specifically designed for small scale thematic mapping. Generalized boundary files are clipped to a simplified version of the U.S. outline. As a result, some off-shore areas may be excluded from the generalized files.</p>",
     "source": "U.S. Census Bureau",
-    "source_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html",
+    "source_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2019.html",
     "download_url": "https://geoserver.nescaum-ccsc-dataservices.com/geoserver/ma/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ma:state_mask&maxFeatures=50&outputFormat=SHAPE-ZIP",
-    "metadata_url": "https://www.census.gov/geo/maps-data/data/cbf/cbf_description.html.",
+    "metadata_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2019.html",
   },
 
 
@@ -140,7 +139,7 @@ var available_layers = [
     "folder": "Climate Observations.Precipitation",
     "name": "Consecutive Dry Days (Observed)",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "description": "<p>Consecutuve dry days (no measureable precipitation) summarized by area (state,county,basin) and decade over the period 1960-2005. Observational dataset: Livneh et al. (2015). <br>Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015)</p>",
+    "description": "<p>Consecutive dry days (no measureable precipitation) summarized by area (state,county,basin) and decade over the period 1960-2005. Observational dataset: Livneh et al. (2015). <br>Data Source: Statistically downscaled CMIP5 daily Climate Observations using Localized Constructed Analogs (LOCA; Pierce et al., 2014), Observational data: A spatially comprehensive, meteorological data set for Mexico, the U.S., and southern Canada (Livneh et al., 2015)</p>",
     "source": "University of California San Diego",
     "source_url": "http://loca.ucsd.edu/",
     //"download_url": "https://repository.nescaum-ccsc-dataservices.com/data/ma/temperature.json",
@@ -483,7 +482,7 @@ var available_layers = [
     "source_url": "https://coast.noaa.gov/slr",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
     "download_url": null,
-    "metadata_url": "https://coast.noaa.gov/digitalcoast/tools/slr",
+    "metadata_url": "https://coast.noaa.gov/slrdata/ ",
   },
 /*  {
     "id": "orthos1990s",
@@ -504,7 +503,7 @@ var available_layers = [
     "source": "Department of Conservation and Recreation",
     "source_url": "http://www.mass.gov/eea/agencies/dcr/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Energy","Local Government","Natural Resources/Habitats","Recreation","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/acecs.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/acecs.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/acecs.html",
   },
   {
@@ -515,7 +514,7 @@ var available_layers = [
     "source": "Massachusetts Coastal Zone Management Program",
     "source_url": "http://www.mass.gov/eea/agencies/czm/",
     "sectors": ["Infrastructure","Coastal Zone","Natural Resources/Habitats","Recreation","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/barrb.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/barrb.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/state-designated-barrier-beaches-.html",
   },
   {
@@ -526,7 +525,7 @@ var available_layers = [
     "source": "Massachusetts Office of Dam Safety",
     "source_url": "http://www.mass.gov/eea/agencies/dcr/conservation/dam-safety/",
     "sectors": ["Energy","Local Government","Natural Resources/Habitats","Public Safety/Emergency Response","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/dams.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/dams.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/dams.html",
   },
   {
@@ -537,7 +536,7 @@ var available_layers = [
     "source": "MassDEP",
     "source_url": "http://www.mass.gov/eea/agencies/massdep/water/wastewater/groundwater-discharge-permitting.html",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Local Government","Natural Resources/Habitats","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/gwp.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/gwp.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/gwp.html",
   },
   {
@@ -546,7 +545,7 @@ var available_layers = [
     "name": "Public Water Supplies",
     "description": "<p>The Public Water Supply (PWS) datalayer contains the locations of public community surface and groundwater supply sources and public non-community supply sources as defined in 310 CMR 22.00. The public water supply systems represented in this datalayer are based primarily on information in the DEP’s Water Quality Testing System (WQTS) database. The WQTS database is the Department’s central database for tracking water supply data. The PWS datalayer also contains the locations of proposed wells that have a defined DEP approved wellhead protection area (Zone IIs).</p>",
     "source": "MassDEP",
-    "source_url": "http://www.mass.gov/eea/agencies/massdep/water/wastewater/groundwater-discharge-permitting.html",
+    "source_url": " https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection",
     "sectors": ["Agriculture","Forestry","Infrastructure","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Water Resources"],
     "download_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/order-restricted-data.html",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/pws.html",
@@ -559,7 +558,7 @@ var available_layers = [
     "source": "MassDEP Drinking Water Program Drinking Water Program",
     "source_url": "http://www.mass.gov/dep/water/drinking.htm",
     "sectors": ["Agriculture","Forestry","Infrastructure","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/zone2_zone1_iwpa.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/zone2_zone1_iwpa.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/dep-wellhead-protection-areas-zone-ii-iwpa.html",
   },
   {
@@ -570,7 +569,7 @@ var available_layers = [
     "source": "MassDEP",
     "source_url": "http://www.mass.gov/dep/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Local Government","Natural Resources/Habitats","Infrastructure","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/orw.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/orw.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/orw.html",
   },
   {
@@ -581,7 +580,7 @@ var available_layers = [
     "source": "Massachusetts Department of Public Utilities",
     "source_url": "http://www.mass.gov/eea/grants-and-tech-assistance/guidance-technical-assistance/agencies-and-divisions/dpu/",
     "sectors": ["Coastal Zone","Economy","Energy","Local Government","Public Health","Public Safety/Emergency Response","Infrastructure"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/pubutil.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/pubutil.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/pubutil.html",
   },
   {
@@ -592,7 +591,7 @@ var available_layers = [
     "source": "Massachusetts Department of Public Utilities",
     "source_url": "http://www.mass.gov/eea/grants-and-tech-assistance/guidance-technical-assistance/agencies-and-divisions/dpu/",
     "sectors": ["Economy","Energy","Local Government","Public Safety/Emergency Response"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/pubutil.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/pubutil.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/pubutil.html",
   },
   {
@@ -638,7 +637,7 @@ var available_layers = [
     "source": "MassGIS",
     "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/aquifers.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/aquifers.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/aquifers-.html",
   },
   {
@@ -671,8 +670,8 @@ var available_layers = [
     "source": "MassGIS",
     "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
     "sectors": ["Public Health","Public Safety/Emergency Response","Infrastructure"],
-    "download_url": "https://docs.digital.mass.gov/dataset/massgis-data-town-and-city-halls",
-    "metadata_url": "http://download.massgis.digital.mass.gov/shapefiles/state/townhalls_pt.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/townhalls_pt.zip",
+    "metadata_url": "https://docs.digital.mass.gov/dataset/massgis-data-town-and-city-halls",
   },
   {
     "id": "surface_water_protection",
@@ -682,7 +681,7 @@ var available_layers = [
     "source": "Mass Department of Environmental Protection",
     "source_url": "http://www.mass.gov/dep",
     "sectors": ["Agriculture","Forestry","Infrastructure","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/swp_zones.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/swp_zones.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/swp.html",
   },
   {
@@ -705,7 +704,7 @@ var available_layers = [
       "source_url": "http://www.mrlc.gov",
       "sectors": ["Agriculture","Natural Resources/Habitats","Infrastructure"],
       "download_url": null,
-      "metadata_url": "https://www.mrlc.gov/sites/default/files/metadata/NLCD_2016_Land_Cover_L48.xml",
+      "metadata_url": "mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/NLCD_2016_Land_Cover_L48.xml",
   },
   {
     "id": "impervious_surface",
@@ -716,7 +715,7 @@ var available_layers = [
     "source_url": "http://www.mrlc.gov",
     "sectors": ["Coastal Zone","Local Government","Infrastructure","Water Resources"],
     "download_url": null,
-    "metadata_url": "https://www.mrlc.gov/sites/default/files/metadata/NLCD_2016_Impervious_L48.xml",
+    "metadata_url": "https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/NLCD_2016_Impervious_L48.xml",
   },
   {
     "id": "dcr_roads_trails",
@@ -726,7 +725,7 @@ var available_layers = [
     "source": "MA Department of Conservation and Recreation",
     "source_url": "http://www.mass.gov/eea/agencies/dcr/",
     "sectors": ["Local Government","Recreation","Infrastructure"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/dcrtrails.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/dcrtrails.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/dcrtrails.html",
   },
   {
@@ -737,7 +736,7 @@ var available_layers = [
     "source": "MA Department of Conservation and Recreation",
     "source_url": "http://www.mass.gov/eea/agencies/dcr/",
     "sectors": ["Local Government","Recreation","Infrastructure"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/biketrails_arc.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/biketrails_arc.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/bicycle-trails.html",
   },
   {
@@ -748,7 +747,7 @@ var available_layers = [
     "source": "Mass Department of Environmental Protection",
     "source_url": "http://www.mass.gov/dep/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Local Government","Natural Resources/Habitats","Infrastructure","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/wetlandsdep_poly.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/wetlandsdep_poly.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/depwetlands112000.html",
   },
   {
@@ -759,7 +758,7 @@ var available_layers = [
     "source": "MassGIS",
     "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Local Government","Natural Resources/Habitats","Infrastructure","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/towns.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/towns.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/towns.html",
   },
   {
@@ -770,7 +769,7 @@ var available_layers = [
     "source": "MassGIS",
     "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
     "sectors": ["Local Government","Public Safety/Emergency Response"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/firestations_pt.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/firestations_pt.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/fire-stations-.html",
   },
   {
@@ -781,7 +780,7 @@ var available_layers = [
     "source": "MassGIS",
     "source_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
     "sectors": ["Local Government","Public Safety/Emergency Response"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/policestations.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/policestations.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/policestations.html",
   },
   {
@@ -836,7 +835,7 @@ var available_layers = [
     "source": "The Massachusetts Natural Heritage & Endangered Species Program",
     "source_url": "http://www.mass.gov/eea/agencies/dfg/dfw/natural-heritage/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Natural Resources/Habitats","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/biomap2.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/biomap2.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/biomap2.html",
   },
   {
@@ -858,7 +857,7 @@ var available_layers = [
     "source": "FEMA",
     "source_url": "http://www.fema.gov/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/nfhl.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/nfhl.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/nfhl.html",
   },
   {
@@ -869,7 +868,7 @@ var available_layers = [
     "source": "FEMA",
     "source_url": "http://www.fema.gov/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Recreation","Infrastructure","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/FEMA_Q3_Flood.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/FEMA_Q3_Flood.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/q3.html",
   },
   {
@@ -913,7 +912,7 @@ var available_layers = [
     "source": "Massachusetts Department of Public Health",
     "source_url": "https://www.mass.gov/orgs/department-of-public-health",
     "sectors": ["Coastal Zone","Economy","Local Government","Natural Resources/Habitats","Public Safety/Emergency Response","Infrastructure","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/marinebeaches.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/marinebeaches.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/marinebeaches.html",
   },
   {
@@ -924,7 +923,7 @@ var available_layers = [
     "source": "Massachusetts Technology Collaborative",
     "source_url": "http://www.masstech.org/",
     "sectors": ["Economy","Energy","Local Government"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/state/windpower.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/windpower.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/wind-power-density-at-50m.html",
   },
   {
