@@ -556,7 +556,7 @@ var available_layers = [
     "name": "Wellhead Protection Areas",
     "description": "<p>Wellhead protection areas are important for protecting the recharge area around public water supply (PWS) groundwater sources. A Zone II is a wellhead protection area that has been determined by hydro-geologic modeling and approved by the Department of Environmental Protection’s (DEP) Drinking Water Program (DWP). In cases where hydro-geologic modeling studies have not been performed and there is no approved Zone II, an Interim Wellhead Protection Area (IWPA) is established based on DEP DWP well pumping rates or default values. Certain land uses may be either prohibited or restricted in both approved (Zone II) and interim (IWPA) wellhead protection areas. For MassDEP's regulatory wording of these zones please see Water Supply Protection Area Definitions.</p>",
     "source": "MassDEP Drinking Water Program Drinking Water Program",
-    "source_url": "http://www.mass.gov/dep/water/drinking.htm",
+    "source_url": "https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection",
     "sectors": ["Agriculture","Forestry","Infrastructure","Coastal Zone","Economy","Energy","Local Government","Natural Resources/Habitats","Public Health","Public Safety/Emergency Response","Water Resources"],
     "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/zone2_zone1_iwpa.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/dep-wellhead-protection-areas-zone-ii-iwpa.html",
@@ -704,7 +704,7 @@ var available_layers = [
       "source_url": "http://www.mrlc.gov",
       "sectors": ["Agriculture","Natural Resources/Habitats","Infrastructure"],
       "download_url": null,
-      "metadata_url": "mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/NLCD_2016_Land_Cover_L48.xml",
+      "metadata_url": "https://mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/NLCD_2016_Land_Cover_L48.xml",
   },
   {
     "id": "impervious_surface",
@@ -813,7 +813,7 @@ var available_layers = [
     "source": "Executive Office of Energy and Environmental Affairs",
     "source_url": "http://www.mass.gov/eea/",
     "sectors": ["Agriculture","Forestry","Coastal Zone","Local Government","Natural Resources/Habitats","Water Resources"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/open_spc/openspace.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/state/openspace.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/osp.html",
   },
 /*  {
@@ -879,7 +879,7 @@ var available_layers = [
     "source": "Executive Office of Energy and Environmental Affairs",
     "source_url": "http://www.mass.gov/eea/agencies/massdep/service/justice/",
     "sectors": ["Infrastructure","Economy","Energy","Local Government","Public Health","Public Safety/Emergency Response"],
-    "download_url": "http://wsgw.mass.gov/data/gispub/shape/census2010/ej2010.zip",
+    "download_url": "http://download.massgis.digital.mass.gov/shapefiles/census2010/ej2010.zip",
     "metadata_url": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/cen2010ej.html",
   },
   {
