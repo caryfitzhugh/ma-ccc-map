@@ -22,14 +22,14 @@ RendererTemplates.esri("noaa_slr", {
   },
   legend_template: `
     <div class='detail-block opacity'>
-      <label decorator='tooltip:Choose a sea level rise scenario'> Predicted Rise: </label>
+      <label as-tooltip='"Choose a sea level rise scenario"'> Predicted Rise: </label>
       <input type='range'
         min='0'
         max='6'
         value= '{{parameters.sea_level_height}}'> {{parameters.sea_level_height}} ft.
     </div>
     <div class='detail-block show-confidence'>
-      <label decorator='tooltip:Choose a layer to display'> Layer: </label>
+      <label as-tooltip='"Choose a layer to display"'> Layer: </label>
       <select value='{{parameters.display_layer}}'>
        {{#u.to_sorted_values_from_hash(parameters.options.display_layer)}}
           <option value='{{key}}'>{{value}}</option>

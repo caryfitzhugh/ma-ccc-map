@@ -26,8 +26,8 @@ RendererTemplates.wms("boundary_state_mask", {
         <label> Legend: </label>
         <img src='${CDN(GEOSERVER)}/ma/wms?request=GetLegendGraphic&LAYER=ma:state_mask&style=state_mask_{{parameters.style}}&format=image/png'/> State Mask
         <div class='detail-block show-confidence'>
-          <label decorator='tooltip:Choose a color'> Color: </label>
-          <select value='{{parameters.style}}'>         
+          <label as-tooltip='"Choose a color"'> Color: </label>
+          <select value='{{parameters.style}}'>
               <option value='black'>Black</option>
               <option value='white'>White</option>
           </select>

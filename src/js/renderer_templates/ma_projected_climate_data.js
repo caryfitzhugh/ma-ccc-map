@@ -84,7 +84,8 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                     <td> High RCP8.5 </td>
 
                     {{#u.sort_by(values, 'year')}}
-                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}' decorator='tooltip:Likely range (10-90th percentile): {{range_high[0] > 0 ? '+' : ''}}{{range_high[0]}} to {{range_high[0] > 0 ? '+' : ''}}{{range_high[1]}}'>
+                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}' as-tooltip
+                        data-tooltip="Likely range (10-90th percentile): {{range_high[0] > 0 ? '+' : ''}}{{range_high[0]}} to {{range_high[0] > 0 ? '+' : ''}}{{range_high[1]}}">
                       {{{u.add_sign(u.to_fixed(delta_high, ${opts.info_precision}))}}}</td>
                     {{/sort_by(values, 'year')}}
                   </tr>
@@ -96,7 +97,8 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
                     <td> Medium RCP4.5 </td>
 
                     {{#u.sort_by(values, 'year')}}
-                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}' decorator='tooltip:Likely range (10-90th percentile): {{range_low[0] > 0 ? '+' : ''}}{{range_low[0]}} to {{range_low[1] > 0 ? '+' : ''}}{{range_low[1]}}'>
+                      <td class='{{((year === geojson.location_data.year) ? 'active-year' : '')}}' as-tooltip
+                        data-tooltip="Likely range (10-90th percentile): {{range_low[0] > 0 ? '+' : ''}}{{range_low[0]}} to {{range_low[1] > 0 ? '+' : ''}}{{range_low[1]}}">
                       {{{u.add_sign(u.to_fixed(delta_low, ${opts.info_precision}))}}}</td>
                     {{/sort_by(values, 'year')}}
                   </tr>
@@ -107,7 +109,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
     `,
     legend_template: `
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose an Emissions Scenario'> Scenario: </label>
+        <label as-tooltip='"Choose an Emissions Scenario"'> Scenario: </label>
         <select value='{{parameters.options.scenario}}'>
           {{#u.to_sorted_values_from_hash(parameters.all_scenarios)}}
             <option value='{{key}}'>{{{value}}}</option>
@@ -115,7 +117,7 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         </select>
       </div>
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Summary Area'> Summary: </label>
+        <label as-tooltip='"Choose a Summary Area"'> Summary: </label>
         <select value='{{parameters.options.summary}}'>
           {{#u.to_sorted_values_from_hash(parameters.all_summaries)}}
             <option value='{{key}}'>{{{value}}}</option>
@@ -123,14 +125,14 @@ RendererTemplates.ma_projected_climate_data = function (layer_id, opts) {
         </select>
       </div>
       <div class='detail-block opacity'>
-        <label  decorator='tooltip:Use slider to adjust Decade'> Year: </label>
+        <label  as-tooltip='"Use slider to adjust Decade"'> Year: </label>
         <input type="range" value="{{parameters.options.year_indx}}"
           min="0"
           max="{{parameters.years.length-1}}">
         {{parameters.year_map[parameters.years[parameters.options.year_indx]]}}
       </div>
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Season'> Season: </label>
+        <label as-tooltip='"Choose a Season"'> Season: </label>
         <select value='{{parameters.options.season}}'>
           {{#u.to_sorted_values_from_hash(parameters.all_seasons)}}
             <option value='{{key}}'>{{value}}</option>

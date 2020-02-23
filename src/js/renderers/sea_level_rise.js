@@ -140,7 +140,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
   `,
   legend_template: `
       <div class='detail-block opacity'>
-        <label  decorator='tooltip:Use slider to adjust Year'> Year: </label>
+        <label  as-tooltip='"Use slider to adjust Year"'> Year: </label>
         <input type="range" value="{{parameters.options.year_indx}}"
           min="0"
           max="{{parameters.years.length-1}}">
@@ -148,7 +148,7 @@ RendererTemplates.geojson_points("sea_level_rise", {
       </div>
 
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a scenario'> Scenario: </label>
+        <label as-tooltip='"Choose a scenario"'> Scenario: </label>
         <select value='{{parameters.options.likelihood_indx}}'>
           <option value='0'>Intermediate</option>
           <option value='1'>Intermediate-High</option>

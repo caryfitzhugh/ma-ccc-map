@@ -63,7 +63,9 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
                 <tr class="{{(season === geojson.location_data.season ? 'active-season' : '')}}">
                   <td>{{u.capitalize(season)}}</td>
                   {{#u.sort_by(values, 'year')}}
-                    <td decorator="tooltip: Range: {{range}} " class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{delta}}}</td>
+                    <td as-tooltip
+                      data-tooltip="Range: {{range}}"
+                      class='{{(year === geojson.location_data.year ? 'active-year' : '')}}'>{{{delta}}}</td>
                   {{/sort_by(values, 'year')}}
                 </tr>
               {{/u.sort_by(geojson.location_data.area_data.properties.data, 'season')}}
@@ -73,7 +75,7 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
     `,
     legend_template: `
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Summary Area'> Summary: </label>
+        <label as-tooltip='"Choose a Summary Area"'> Summary: </label>
         <select value='{{parameters.options.summary}}'>
           {{#u.to_sorted_values_from_hash(parameters.all_summaries)}}
             <option value='{{key}}'>{{{value}}}</option>
@@ -81,14 +83,14 @@ RendererTemplates.ma_observed_climate_data = function (layer_id, opts) {
         </select>
       </div>
       <div class='detail-block opacity'>
-        <label  decorator='tooltip:Use slider to adjust Decade'> Decade: </label>
+        <label  as-tooltip='"Use slider to adjust Decade"'> Decade: </label>
         <input type="range" value="{{parameters.options.year_indx}}"
           min="0"
           max="{{parameters.years.length-1}}">
         {{parameters.years[parameters.options.year_indx]}}s
       </div>
       <div class='detail-block show-confidence'>
-        <label decorator='tooltip:Choose a Season'> Season: </label>
+        <label as-tooltip='"Choose a Season"'> Season: </label>
         <select value='{{parameters.options.season}}'>
           {{#u.to_sorted_values_from_hash(parameters.all_seasons)}}
             <option value='{{key}}'>{{value}}</option>

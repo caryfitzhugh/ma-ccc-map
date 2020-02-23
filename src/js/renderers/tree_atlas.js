@@ -29,7 +29,7 @@ RendererTemplates.esri("tree_atlas", {
   },
   legend_template: `
     <div class='detail-block show-confidence'>
-      <label decorator='tooltip:Choose a tree species'> Species: </label>
+      <label as-tooltip='"Choose a tree species"'> Species: </label>
 
       <select value='{{parameters.species}}'>
         {{#u.to_sorted_values_from_hash(parameters.options.species)}}
@@ -38,7 +38,7 @@ RendererTemplates.esri("tree_atlas", {
       </select>
     </div>
     <div class='detail-block show-confidence'>
-      <label decorator='tooltip:Choose a tree species'> Scenario: </label>
+      <label as-tooltip='"Choose a tree species"'> Scenario: </label>
       <select value='{{parameters.scenario}}'>
         {{#u.to_sorted_values_from_hash(parameters.options.scenarios)}}
           <option value='{{key}}'>{{value}}</option>
