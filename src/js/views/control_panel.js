@@ -1,4 +1,4 @@
-/*global L , Views, Ractive, console, _, Controllers.Layers */
+
 Views.ControlPanel = new Ractive({
   template: "#control_panel_template",
   el:  "control_panel_root",

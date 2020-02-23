@@ -245,7 +245,9 @@ Controllers.Layers = {
     }));
   },
 
-  add_tree_node:  function (all_layers, node, folder_name, layer_id, force_expanded) {
+  add_tree_node:  function (all_layers, node, folder_name, layer_id, expand_depth) {
+    let force_expanded = expand_depth > 0;;
+
     if (folder_name.length === 0) {
       node.children = node.children.concat(layer_id);
     } else {
@@ -256,7 +258,7 @@ Controllers.Layers = {
         child_layer = {folder_name: this_level_name, is_expanded: force_expanded, children: []};
         node.children = node.children.concat(child_layer);
       }
-      Controllers.Layers.add_tree_node(all_layers, child_layer, folder_name, layer_id, force_expanded);
+      Controllers.Layers.add_tree_node(all_layers, child_layer, folder_name, layer_id, (expand_depth - 1));
     }
     node.children = _.sortBy(node.children, function (child_id_or_folder) {
       var child = _.find(all_layers, "id", child_id_or_folder);
@@ -305,14 +307,21 @@ Controllers.Layers = {
               return cs === ls;
             });
           });
+          force_expanded = add_layer;
         }
 
+        // Hide things with blank folders
+        if (layer.folder === '') {
+          add_layer = false;
+        }
+
+        console.log(layer.folder);
         if (add_layer && layer.folder) {
           new_tree = Controllers.Layers.add_tree_node(layer_defaults,
                         new_tree,
                         layer.folder.split("."),
                         id,
-                        force_expanded);
+                        force_expanded ? 1000 : 1);
         }
       }
     });
