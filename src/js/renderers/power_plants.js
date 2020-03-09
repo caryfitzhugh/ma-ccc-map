@@ -42,6 +42,7 @@ RendererTemplates.geojson_points("power_plants", {
            Renderers.utils.zoom_to_location_link( feature.geometry );
   },
   legend_template: `
+    {{#if json.features}}
       <div class='detail-block show-confidence' style='float: left; clear: both;'>
         {{#u.to_sorted_values_from_hash(parameters.options.power_plants_to_key)}}
           <div style='width: 50%; float: left;'>
@@ -50,5 +51,6 @@ RendererTemplates.geojson_points("power_plants", {
           </div>
         {{/u.to_sorted_values_from_hash(parameters.options.power_plants_to_key)}}
       </div>
+    {{/if json.features}}
   `,
 });

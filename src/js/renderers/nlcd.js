@@ -42,6 +42,7 @@ RendererTemplates.wms("nlcd", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -54,5 +55,6 @@ RendererTemplates.wms("nlcd", {
           Unknown / No Response
         {{/json.features}}
       </div>
+    {{/if json.features}}
   `
 });

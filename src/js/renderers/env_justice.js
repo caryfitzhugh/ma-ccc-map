@@ -43,6 +43,7 @@ RendererTemplates.wms("env_justice", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -72,5 +73,6 @@ RendererTemplates.wms("env_justice", {
               </tbody>
           </table>
       </div>
+    {{/if json.features}}
   `
 });

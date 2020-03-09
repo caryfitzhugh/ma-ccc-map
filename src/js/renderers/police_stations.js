@@ -43,6 +43,7 @@ RendererTemplates.wms("police_stations", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -56,5 +57,6 @@ RendererTemplates.wms("police_stations", {
           Unknown / No Response
         {{/json.features}}
       </div>
+    {{/if json.features}}
   `
 });

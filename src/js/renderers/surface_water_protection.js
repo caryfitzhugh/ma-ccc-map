@@ -55,6 +55,7 @@ RendererTemplates.wms("surface_water_protection", {
        <img src='{{CDN("https://giswebservices.massgis.state.ma.us/geoserver/wms?request=GetLegendGraphic&LAYER=" + encodeURIComponent("massgis:GISDATA.SWP_ZONES_POLY") + "&style=" + encodeURIComponent(parameters.style) + "&format=image/png")}}'/>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -67,5 +68,6 @@ RendererTemplates.wms("surface_water_protection", {
           Unknown / No Response
         {{/json.features}}
       </div>
+    {{/if json.features}}
   `
 });

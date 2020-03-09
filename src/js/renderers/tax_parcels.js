@@ -45,6 +45,7 @@ RendererTemplates.wms("tax_parcels", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -56,6 +57,7 @@ RendererTemplates.wms("tax_parcels", {
         {{ else }}
          Zoom in to view and query the tax parcels layer.
         {{/json.features}}
-      </div>
+      </div>\
+    {{/if json.features}}
   `
 });

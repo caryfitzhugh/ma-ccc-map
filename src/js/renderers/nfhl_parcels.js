@@ -45,6 +45,7 @@ RendererTemplates.wms("nfhl_parcels", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -55,5 +56,6 @@ RendererTemplates.wms("nfhl_parcels", {
           </div>
         {{/json.features}}
       </div>
+    {{/if json.features}}
   `
 });

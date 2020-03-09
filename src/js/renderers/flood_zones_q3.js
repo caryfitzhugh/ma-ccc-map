@@ -45,6 +45,7 @@ RendererTemplates.wms("flood_zones_q3", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -74,5 +75,6 @@ RendererTemplates.wms("flood_zones_q3", {
               </tbody>
           </table>
       </div>
+    {{/if json.features}}
   `
 });

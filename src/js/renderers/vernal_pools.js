@@ -43,6 +43,7 @@ RendererTemplates.wms("vernal_pools", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -53,5 +54,6 @@ RendererTemplates.wms("vernal_pools", {
           </div>
         {{/json.features}}
       </div>
+    {{/if json.features}}
   `
 });

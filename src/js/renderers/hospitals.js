@@ -24,7 +24,7 @@ RendererTemplates.geojson_points("hospitals", {
   popupContents: function (feature) {
     var index = feature.properties.reason_cls
 
-    return "<strong" + feature.properties.shortname + "</strong></br>" +
+    return "<strong>" + feature.properties.shortname + "</strong></br>" +
            "Address: " + feature.properties.address + ", " + feature.properties.town + "<br/>"+
             "Emergency Room:" + feature.properties.er_status  + "<br/>"+
              "Trauma Center: " + feature.properties.trauma +  "<br/>"+

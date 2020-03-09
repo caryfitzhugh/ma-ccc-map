@@ -44,6 +44,7 @@ RendererTemplates.wms("aquifers", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
       </div>
@@ -56,5 +57,6 @@ RendererTemplates.wms("aquifers", {
           Unknown / No Response
         {{/json.features}}
       </div>
+    {{/if json.features}}
   `
 });

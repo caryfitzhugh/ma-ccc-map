@@ -45,6 +45,7 @@ RendererTemplates.wms("extreme_heat_tract", {
       </div>
   `,
   info_template: `
+    {{#if json.features}}
       <div class='col-xs-2'>
         <label> {{name}} </label>
         <i>Data summarized by MA Department of Public Health from 2010 census data.</i>
@@ -81,5 +82,6 @@ RendererTemplates.wms("extreme_heat_tract", {
               </tbody>
           </table>         
       </div>
+    {{/if json.features}}
   `
 });
