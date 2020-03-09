@@ -72,7 +72,7 @@ Controllers.Sharing = {
           cp.set("layers.active", json.active_layers);
           /// Get the center and zoom from map state
           map.setView(json.map_state.center,json.map_state.zoom);
-
+          cp.set("layer_controls.active_tab", "legends");
         }
 
         map.invalidateSize();
